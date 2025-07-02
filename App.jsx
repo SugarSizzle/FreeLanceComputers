@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import { HeroSection } from './components/HeroSection'
 import { Navigation } from './components/Navigation'
 import { Services } from './components/Services'
