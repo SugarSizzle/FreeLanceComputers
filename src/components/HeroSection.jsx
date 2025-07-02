@@ -13,7 +13,7 @@ export  const HeroSection= () =>{
           <h1 className="hero-section-main-text">
             Bringing Your Tech
             <br />
-            To <span className="text-blue-400">Life</span>
+            To <span className="">Life</span>
           </h1>
           <p className="hero-section-secondary-text">
             Offering A Wide Range of Services To Help You When

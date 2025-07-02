@@ -17,8 +17,8 @@ export const StackedCardTestimonials = () => {
   return (
     <section className="review-section-container">
       <div className="review-section-what-customers-think-container">
-        <h3 className="text-5xl font-semibold">What our customers think</h3>
-        <p className="text-slate-500 my-4">
+        <h3 className="">What our customers think</h3>
+        <p className="">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
           commodi sint, similique cupiditate possimus suscipit delectus illum
           eos iure magnam!
@@ -46,11 +46,11 @@ const SelectBtns = ({ numTracks, setSelected, selected }) => {
           <button
             key={n}
             onClick={() => setSelected(n)}
-            className="h-1.5 w-full bg-slate-300 relative"
+            className=""
           >
             {selected === n ? (
               <motion.span
-                className="absolute top-0 left-0 bottom-0 bg-slate-950"
+                className=""
                 initial={{
                   width: "0%",
                 }}
@@ -66,7 +66,7 @@ const SelectBtns = ({ numTracks, setSelected, selected }) => {
               />
             ) : (
               <span
-                className="absolute top-0 left-0 bottom-0 bg-slate-950"
+                className=""
                 style={{
                   width: selected > n ? "100%" : "0%",
                 }}
@@ -134,13 +134,13 @@ const Card = ({
       onClick={() => setSelected(position)}
       className="individual-card-container"
     >
-      <Icon className="text-7xl mx-auto" />
-      <p className="text-lg lg:text-xl font-light italic my-8">
+      <Icon className="" />
+      <p className="">
         "{description}"
       </p>
       <div>
-        <span className="block font-semibold text-lg">{name}</span>
-        <span className="block text-sm">{title}</span>
+        <span className="">{name}</span>
+        <span className="">{title}</span>
       </div>
     </motion.div>
   );
