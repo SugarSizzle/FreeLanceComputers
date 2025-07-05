@@ -20,7 +20,7 @@ const servicesImage =[
 ]
 
 // const [serviceTextState, setServiceTextState] = useState(servicesText)
-// const [serviceImageState, setServiceImageState] = useState(servicesImage)
+// const [serviceImageState, setServiceImageState] = useState()
 
 export const Services = () => {
 
@@ -48,8 +48,15 @@ export const Services = () => {
       </div>
 
     <div className='services-information-container'>
-        {/* <img src={serviceImageState} className='services-information-image' alt="image of service here" /> */}
-        <p className='services-information-text'>howdy</p>
+        <img src={ComputerRepairs} className='services-information-image' alt="image of service here" />
+        <p className='services-information-text'>
+        We Remove Viruses, Malware, and other threats from your computer.
+        Here are some of the things the right way, and make sure you get the best service.
+        </p>
+
+        <div className="services-get-touch-container">
+          <button className="services-get-touch-button">Get In Touch</button>
+        </div>
     </div>
 
 
