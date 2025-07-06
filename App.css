@@ -75,7 +75,7 @@ color: #f8f8f8;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 140vh;
  
  
 }
@@ -200,20 +200,73 @@ font-weight: 900;
 
 .services-information-container {
  width: 95vw;
- height: 80vh;
+ height: 50vh;
  display:flex;
 }
 
 .services-information-image{
   width: 50%;
   height: 100%;
-  border:blue solid 1px;
+
 }
 .services-information-text{
 color:whitesmoke;
   width: 50%;
   height: 100%;
-  border:green solid 1px;
+ 
+}
+
+
+/*virus protection*/
+
+.virus-protection-3D-container{
+  height: 40vh;
+  width: 100vw;
+ 
+}
+
+.virus-protection-hero-section-text-container{
+  height: 45vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:whitesmoke;
+  margin:auto;
+  border-bottom: 1px solid #6e6e6e;
+  
+
+}
+
+.virus-protection-hero-section-title{
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 2.5;
+  margin:0;
+}
+
+.virus-protection-hero-section-text{
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 2;
+  width:90%;
+  margin:auto;
+  color: #D7D7D7;
+}
+
+.virus-protection-hero-section-button{
+  width: 35vw;
+  height: 6vh;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .8rem;
+  font-weight: 900;
+  margin:auto;
 }
 
 
