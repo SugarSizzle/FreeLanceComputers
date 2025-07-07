@@ -3,7 +3,7 @@ import ComputerRepairs from '../../images/ComputerRepairs.jpg'
 import ComputerUpgrades from '../../images/ComputerUpgrades.jpg'
 import DataRecovery from '../../images/DataRecovery.jpg'
 import VirusRemoval from '../../images/Virus.jpg'
-import '../../App.css'
+import '../App.css'
 
 const servicesText =[
     'Virus Removal',

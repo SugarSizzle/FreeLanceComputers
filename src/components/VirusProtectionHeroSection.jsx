@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-export const VirusProtectoinHeroSection = () => {
+export const VirusProtectionHeroSection = () => {
     return (
     <>
         <div className='virus-protection-3D-container'>

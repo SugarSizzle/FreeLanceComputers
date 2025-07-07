@@ -131,7 +131,7 @@ color: #f8f8f8;
   height: 5vh;
   border-radius: 10px;
   border: none;
-  background-color: #b90f0f;
+  background-color: #ffffff;
   color: #000000;
   font-family: 'JetBrains Mono', monospace;
   font-size: .9rem;
@@ -400,8 +400,305 @@ color: #000000;
  
 }
 
+/*  virus protection the pages */
+
+.virus-protection-information-header{
+  font-weight: 400;
+  color:#06F816;
+  align-self: flex-start;
+  margin-left: 6vw;
+  font-size: 1rem;
+  padding:0;
+ 
+}
 
 
+.virus-protection-hero-section-button{
+  width: 40vw;
+  height: 5vh;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 900;
+
+}
+
+
+
+
+.virus-protection-information-container{
+  margin-top: 20vh;
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:whitesmoke; 
+  padding:0;
+
+}
+
+.virus-protection-information-title{
+  font-size: 1.7rem;
+  font-weight: 900;
+  margin:0;
+  margin-bottom: 5vh;
+  width:100vw;
+  line-height: 1.8;
+ 
+}
+
+.virus-protection-information-text{
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color:#D7D7D7;
+  width:90vw;
+ 
+}
+
+
+.virus-protection-images-container, .virus-dangers-information-image-container{
+
+  height: 40vh;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:auto;
+  margin-bottom:10vh;
+  
+}
+
+.virus-security-code-image{
+  background-image: url('../images/securityCode.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  
+
+}
+
+
+
+
+
+.virus-security-image {
+  width: 50vw;
+  height:20vh;
+  background-image: url('../images/security.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 2;
+  margin-top: 20vh;
+  margin-left: -12.5vw;
+  
+}
+
+
+
+.virus-dangers-information-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  position: relative;
+}
+
+
+
+
+.virus-dangers-information-container{
+  height:80vw;
+  width:90vw;
+  margin:auto;
+  color:whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.virus-dangers-information-header{
+  color:#FFA600;
+  align-self: flex-start;
+  font-size: .9rem;
+
+}
+
+.virus-dangers-information-title{
+  
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+
+}
+
+.virus-dangers-information-text{
+
+  font-size: 1rem;
+  font-weight: 500;
+  color:#D7D7D7;
+  width:90vw;
+  line-height: 1.5;
+ 
+}
+
+.virus-dangers-image-virus-death{
+  width: 40vw;
+  height: 30vh;
+  background-image: url('../images/virusDeath.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  margin-top:35vh;
+  margin-left: -18.5vw;
+  
+}
+
+.virus-dangers-image-virus{
+  background-image: url('/images/VirusSideways.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40vw;
+  height: 40vw;
+  
+}
+
+/* Get In Touch Component */
+
+.get-in-touch-container{
+  background-color: #252525;
+  border-radius: 1rem;
+  height: 140vh;
+  width: 95vw;
+  margin:auto;
+  color:whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}
+
+.get-in-touch-title{
+
+.get-in-touch-title {
+  background: linear-gradient(to right, #3A8DFF, #6CE0FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+}
+
+.get-in-touch-contact-info-container{
+  display:flex;
+  flex-direction: column;
+  gap: 5vh;
+  align-items: left;
+  
+}
+
+.get-in-touch-contact-name-container{
+  display:flex;
+  flex-direction: column;
+
+}
+.get-in-touch-contact-name-input{
+margin:5vw;
+align-self: left;
+
+}
+
+.get-in-touch-contact-method-title{
+ 
+  margin-bottom:5vh;
+}
+
+.get-in-touch-contact-method-container{
+  height:20vh;
+  margin-top:5vh;
+  
+  
+}
+.get-in-touch-contact-method-input-container{
+  display:flex;
+  flex-direction: row;
+  gap:1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.get-in-touch-contact-info-input, .get-in-touch-contact-name-input{
+  width:50vw;
+  height:5vh;
+  margin-left:5vw;
+  border-radius: 1rem;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 800;
+  text-align: left;
+  padding:.3rem;
+
+  
+  
+}
+
+.get-in-touch-contact-info-textarea{
+  width:80vw;
+  height:20vh;
+  border-radius: 1rem;
+  align-self: center;
+  text-align: center;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 800;
+  padding: 1rem;
+
+}
+
+.get-in-touch-contact-info-button{
+  align-self: center;
+  width:40vw;
+  height:5vh;
+  border-radius: 1rem;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 900;
+}
 
 
 

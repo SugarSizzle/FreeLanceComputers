@@ -4,7 +4,7 @@ import { Footer } from '../Layout/Footer';
 import { HeroSection } from '../components/HeroSection';
 import { Services } from '../components/Services';
 import { Store } from '../components/Store';
-import '../../App.css'
+import '../App.css'
 
 export const HomePage = () => {
 
