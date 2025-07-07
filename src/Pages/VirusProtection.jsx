@@ -4,7 +4,7 @@ import { Footer } from '../Layout/Footer'
 import { VirusProtectionHeroSection } from '../components/VirusProtectionHeroSection'
 import { VirusProtectionInformation } from '../components/VirusProtectionInformation'
 import { VirusDangersInformation } from '../components/VirusDangersInformation'
-import { GetInTouch } from '../components/GetInTouch'
+import { VirusGetInTouch } from '../components/VirusGetInTouch'
 
 export const VirusProtection = () => {
     return (
@@ -13,7 +13,7 @@ export const VirusProtection = () => {
             <VirusProtectionHeroSection/>
             <VirusProtectionInformation/>
             <VirusDangersInformation/>
-            <GetInTouch/>
+            <VirusGetInTouch/>
             <Footer/>
         </>
     )
