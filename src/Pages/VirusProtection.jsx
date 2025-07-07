@@ -1,14 +1,19 @@
 import React from 'react'
 import { Navigation } from '../Layout/Navigation'
 import { Footer } from '../Layout/Footer'
-import { VirusProtectoinHeroSection } from '../components/VirusProtectoinHeroSection'
+import { VirusProtectionHeroSection } from '../components/VirusProtectionHeroSection'
+import { VirusProtectionInformation } from '../components/VirusProtectionInformation'
+import { VirusDangersInformation } from '../components/VirusDangersInformation'
+import { GetInTouch } from '../components/GetInTouch'
+
 export const VirusProtection = () => {
     return (
         <>
             <Navigation/>
-            <VirusProtectoinHeroSection/>
-
-
+            <VirusProtectionHeroSection/>
+            <VirusProtectionInformation/>
+            <VirusDangersInformation/>
+            <GetInTouch/>
             <Footer/>
         </>
     )
