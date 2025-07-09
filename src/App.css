@@ -833,6 +833,11 @@ align-self: left;
 
 /* Data Recovery Methods Section */
 
+.data-recovery-methods-container{
+ 
+  margin-bottom:20vh;
+}
+
 .data-recovery-methods-information-container{
   height: 50vh;
   width: 90vw;
@@ -904,6 +909,186 @@ align-self: left;
 .data-recovery-methods-information-text{
 
   font-size: .70rem;
+  margin-left:5vw;
+}
+
+/* Data Recovery Get In Touch Section */
+
+
+.data-recovery-line-light{
+
+  width:80vw;
+  
+  /* background-color: #696969; */
+  border-top:1px solid #ffffff;
+  margin:auto;
+  
+  /* box-shadow: inset 0px 10px 20px 5px rgb(0, 0, 0); */
+
+}
+
+.data-recovery-get-in-touch-header-container{
+
+  color:whitesmoke;
+  height:40vh;
+  width:95vw;
+  padding-top:20vh;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+  
+}
+
+
+.data-recovery-get-in-touch-header{
+  font-size: 1rem;
+  font-weight: 600;
+  color:#ffffff;
+  align-self: center;
+  margin-left: 6vw;
+
+}
+
+.data-recovery-get-in-touch-text{
+
+  margin-left:6vw;
+  font-size:.8rem;
+  line-height:2;
+  font-weight:300;
+
+}
+
+.data-recovery-get-in-touch-form-contact-info-container{
+  display:flex;
+  flex-direction: column;
+  width:100vw;
+  margin:auto;
+  gap:3vh;
+  
+
+}
+
+.data-recovery-get-in-touch-form-header{
+  color:whitesmoke;
+  font-size:.85rem;
+  
+}
+
+.data-recovery-get-in-touch-form-name-input{
+
+  width:50vw;
+  height:5vh;
+  border-radius: 1rem;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 900;
+  text-align: left;
+  padding:.3rem;
+  margin-left:10vw;
+  
+
+}
+
+.data-recovery-get-in-touch-form-contact-method-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  width:95vw;
+  height:10vh;
+ 
+  margin-top:8vh;
+ 
+}
+
+.data-recovery-get-in-touch-form-contact-method-title{
+
+  font-size:.85rem;
+  font-weight: 400;
+  color:whitesmoke;
+  margin-left:10vw;
+  width:100vw;
+  margin:auto;
+}
+
+.data-recovery-get-in-touch-form-contact-method-input{
+  width:3vw;
+  height:3vh;
+  border-radius: 1rem;
+  border:none;
+  
+}
+
+.data-recovery-get-in-touch-form-contact-method-label{
+
+  font-size:.85rem;
+  font-weight: 400;
+  color:whitesmoke;
+  margin-left: 1vw;
+  
+}
+
+
+.radio-group{
+  width:90vw;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:4vw;
+  margin-top:2vh;
+}
+
+/* Data Recovery Get In Touch Form Textarea */
+.data-recovery-get-in-touch-form-textarea-container{
+  margin-top:7vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width:95vw;
+}
+
+.data-recovery-get-in-touch-form-textarea-header{
+  margin-bottom:5vh;
+  margin-left:3vw;
+  color:whitesmoke;
+  font-size:.8rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.data-recovery-get-in-touch-form-textarea{
+  display:flex;
+  width:90vw;
+  height:18vh;
+  border-radius: 1rem;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .8rem;
+  font-weight: 900;
+  padding:.3rem;
+  margin-left:5vw;
+  margin-bottom:5vh;
+
+}
+
+.data-recovery-get-in-touch-form-submit-button{
+
+  width:40vw;
+  height:5vh;
+  border-radius: 1rem;
+  border:none;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 900;
   margin-left:5vw;
 }
 
