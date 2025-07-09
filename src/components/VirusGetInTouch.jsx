@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const GetInTouch = () => {
+export const VirusGetInTouch = () => {
     return (
         <>
             <div className='get-in-touch-container'>

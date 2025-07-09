@@ -6,8 +6,7 @@ import { HomePage } from './Pages/HomePage'
 import { AboutPage } from './Pages/AboutPage'
 import { VirusProtection } from './Pages/VirusProtection'
 import { DataRecoveryPage } from './Pages/DataRecoveryPage'
-// import { ComputerUpgrades } from './Pages/ComputerUpgrades'
-// import { ComputerRepairs } from './Pages/ComputerRepairs'
+import { ComputerRepairs } from './Pages/ComputerRepairs'
 
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/virus-protection" element={<VirusProtection />} />
         <Route path="/data-recovery" element={<DataRecoveryPage />} />
-        {/* <Route path="/computer-upgrades" element={<ComputerUpgrades />} />
-        <Route path="/computer-repairs" element={<ComputerRepairs />} /> */}
+        <Route path="/computer-repairs" element={<ComputerRepairs />} />
       </Routes>
     </div>
   )
