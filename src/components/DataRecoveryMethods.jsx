@@ -41,7 +41,7 @@ export const DataRecoveryMethods = () => {
                 <div className="data-recovery-methods-information-text-container">
                     <h3 className="data-recovery-methods-information-text-header" >Header Here, will finish later</h3>
                         <p className="data-recovery-methods-information-text" >Text Here, will finish later. We can have methods here, and explain data recovery 
-                            methods here.
+                            methods here. Maybe a fading out effect on the text here, to match the effect of the border
                         </p>
 
                 </div>
