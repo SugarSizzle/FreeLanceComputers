@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 
-export const Store = () => {
+export const HomePageStoreSection = () => {
 
 
 
@@ -39,7 +40,7 @@ export const Store = () => {
             <div className="submit-button-container">
 
                 <button className='submit-button'>Submit</button>
-                <button className='all-selections-button'>All Selections</button>
+                <Link to="/products"><button className='all-selections-button'>All Selections</button></Link>
 
             </div>
 
@@ -49,5 +50,3 @@ export const Store = () => {
         </>
     )
 }
-
-export default Store;

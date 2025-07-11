@@ -1,5 +1,5 @@
 {
-  "name": "Cornwell Computers",
+  "name": "cornwell-computers",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.5",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.19.1",
     "git": "^0.1.5",
     "lucide-react": "^0.294.0",
@@ -40,5 +44,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project is built with React and Vite.",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SugarSizzle/FreeLanceComputers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SugarSizzle/FreeLanceComputers/issues"
+  },
+  "homepage": "https://github.com/SugarSizzle/FreeLanceComputers#readme"
 }
