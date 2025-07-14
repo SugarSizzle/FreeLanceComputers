@@ -4,6 +4,14 @@ import { supabase } from '../lib/supabase';
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  
+
 
   useEffect(() => {
     async function fetchProducts() {
@@ -22,17 +30,20 @@ export const Products = () => {
   console.log(products); // Good for dev only; remove in production
 
   return (
-    <div>
+    <div className='products-container'>
       {error && <h2 style={{ color: 'red' }}>Error: {error}</h2>}
 
       {products.length === 0 && !error && <p>Loading products...</p>}
 
+    
       {products.map((p) => (
-        <div key={p.id}>
-          <img src={p.image_url} alt={p.name} width="200" />
-          <h3>{p.name}</h3>
-          <p>{p.description}</p>
-          <strong>${p.price}</strong>
+        console.log(p.img_url),
+        <div className='individual-product-container' key={p.id}>
+          <img className='individual-product-image' src={p.img_url} alt={p.name} />
+          <div className='individual-product-info-container'>
+            <h3 className='individual-product-name'>{p.name}</h3>
+            <p className='individual-product-price'>${p.price}</p>
+          </div>
         </div>
       ))}
     </div>

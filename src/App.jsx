@@ -18,7 +18,7 @@ function App() {
         <Route path="/virus-protection" element={<VirusProtection />} />
         <Route path="/data-recovery" element={<DataRecoveryPage />} />
         <Route path="/computer-repairs" element={<ComputerRepairs />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/products" element={<Store />} />
       </Routes>
     </div>
   )
