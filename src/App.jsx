@@ -9,6 +9,7 @@ import { DataRecoveryPage } from './Pages/DataRecoveryPage'
 import { ComputerRepairs } from './Pages/ComputerRepairs'
 import { Store } from './Pages/Store'
 import { Products } from './components/Products'
+import ProductsDetails from './components/ProductsDetails'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/data-recovery" element={<DataRecoveryPage />} />
         <Route path="/computer-repairs" element={<ComputerRepairs />} />
         <Route path="/products" element={<Store />} />
+        <Route path="/products/:id" element={<ProductsDetails />} />
       </Routes>
     </div>
   )
