@@ -1341,3 +1341,12 @@ display: flex;
   
 }
 
+/* Products Details Page */
+
+.product-details-container{
+  height: 100vh;
+  width: 100vw;
+  color:whitesmoke;
+  display:flex;
+  flex-direction: column;
+  align-items: center;

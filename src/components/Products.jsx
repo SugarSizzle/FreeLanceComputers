@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { Link } from 'react-router-dom';
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -37,14 +38,16 @@ export const Products = () => {
 
     
       {products.map((p) => (
-        console.log(p.img_url),
-        <div className='individual-product-container' key={p.id}>
-          <img className='individual-product-image' src={p.img_url} alt={p.name} />
-          <div className='individual-product-info-container'>
-            <h3 className='individual-product-name'>{p.name}</h3>
-            <p className='individual-product-price'>${p.price}</p>
+        
+        <Link to={`/products/${p.id}`}>
+          <div className='individual-product-container' key={p.id}>
+            <img className='individual-product-image' src={p.img_url} alt={p.name} />
+            <div className='individual-product-info-container'>
+              <h3 className='individual-product-name'>{p.name}</h3>
+              <p className='individual-product-price'>${p.price}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
