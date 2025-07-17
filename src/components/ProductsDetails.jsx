@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase';
 import { Navigation } from '../Layout/Navigation';
 import { Footer } from '../Layout/Footer';
 import { FaArrowCircleDown } from "react-icons/fa";
-       
+import ProductCard from './ProductCard';
 
 export default function ProductsDetails() { 
 
@@ -46,15 +46,9 @@ useEffect(() => {
 
     fetchProduct();
 }, [id]);
+    console.log(product)
 
-
-    // this will be code for the alt images that you can select, will uncomment when completely done
-    // const mappedAltImages =product.img_url.map((image, index) => (
-    //     <div key={index} className='product-details-alt-images-container'>
-    //         <img src={image} alt={`Product Image ${index + 1}`} className='product-details-alt-images' />
-    //     </div>
-    // ));
-
+   
 
 
     return (
@@ -78,24 +72,30 @@ useEffect(() => {
                                 this is where the alt images will go
                         </div> */}
 
-                        <div className='product-details-information-container'> 
+                        {/* <div className='product-details-information-container'> 
                             <h1 className='product-details-name'>{product.name} {product.Type} </h1>
                              
                             <p className='product-details-price'>${product.price}</p>
-                        </div>
+                        </div> */}
 
 
-                        <div className='product-details-description-container'>
+                        {/* <div className='product-details-description-container'>
                             <p className='product-details-description'>{product.description}</p>
+                        </div>
+
+                        <div    className='product-details-specs-container'>
                             
-                        </div>
+                        <p className='product-details-specs-items'>Specs</p>
+                        <p className='product-details-specs-items'>Go </p>
+                        <p className='product-details-specs-items'>Here</p>
+                        <p className='product-details-specs-items'>For </p>
+                        <p className='product-details-specs-items'>Now</p>
+
+                        </div> */}
                         
-                        <div className="product-details-more-information-container">
-                            <h3 className='product-details-more-information-title'>More Info</h3>
-                            <FaArrowCircleDown className='product-details-more-information-down-arrow' />
+                      
 
-                        </div>
-
+                            <ProductCard productData={product} />
                     
 
                     </>
