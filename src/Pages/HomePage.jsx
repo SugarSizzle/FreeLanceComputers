@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigation } from '../Layout/Navigation';
 import { Footer } from '../Layout/Footer';
-import { HeroSection } from '../components/HeroSection';
-import { Services } from '../components/Services';
-import { HomePageStoreSection } from '../components/HomePageStoreSection';
-import '../App.css'
+import { HomePageHeroSection } from '../components/HomePageHeroSection/HomePageHeroSection';
+import { HomePageServices } from '../components/HomePageServices/HomePageServices';
+import { HomePageStoreSection } from '../components/HomePageStoreSection/HomePageStoreSection';
+
 
 export const HomePage = () => {
 
@@ -12,11 +12,11 @@ export const HomePage = () => {
     return(
        <>
        <Navigation />
-       <HeroSection />
+       <HomePageHeroSection />
        <div className="review-section-container">
           <h1>Review Section Here</h1>
         </div>
-       <Services />
+       <HomePageServices />
        <HomePageStoreSection />
        <Footer />
        </>

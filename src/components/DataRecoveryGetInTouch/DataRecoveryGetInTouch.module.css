@@ -1,0 +1,277 @@
+.dataRecoveryGetInTouchHeaderContainer{
+
+    color:whitesmoke;
+    height:40vh;
+    width:95vw;
+    padding-top:20vh;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    
+  }
+  
+  
+
+  .dataRecoveryGetInTouchHeader{
+    font-weight: 600;
+    color:#ffffff;
+    align-self: center;
+    margin-left: 6vw;
+  
+  }
+  
+  .dataRecoveryGetInTouchText{
+  
+    margin-left:6vw;
+    font-size:.8rem;
+    line-height:2;
+    font-weight:300;
+  
+  }
+  
+  .dataRecoveryGetInTouchFormContactInfoContainer{
+    display:flex;
+    flex-direction: column;
+    width:100vw;
+    margin:auto;
+    gap:3vh;
+    
+  
+  }
+  
+  .dataRecoveryGetInTouchFormHeader{
+    color:whitesmoke;
+    font-size:.85rem;
+    
+  }
+  
+  .dataRecoveryGetInTouchFormNameInput{
+  
+    width:50vw;
+    height:5vh;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    text-align: left;
+    padding:.3rem;
+    margin-left:10vw;
+    
+  
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width:95vw;
+    height:10vh;
+    margin-top:8vh;
+    background-color:D7D7D7;
+   
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodTitle{
+  
+    font-size:.85rem;
+    font-weight: 400;
+    color:whitesmoke;
+    margin-left:10vw;
+    width:100vw;
+    margin:auto;
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodInput{
+    width:3vw;
+    height:3vh;
+    border-radius: 1rem;
+    border:none;
+    
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodLabel{
+  
+    font-size:.85rem;
+    font-weight: 400;
+    color:whitesmoke;
+    margin-left: 1vw;
+    
+  }
+
+  
+.dataRecoveryGetInTouchHeaderContainer{
+
+    color:whitesmoke;
+    height:40vh;
+    width:95vw;
+    padding-top:20vh;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    
+  }
+  
+  
+  .dataRecoveryGetInTouchHeader{
+    font-size: 1rem;
+    font-weight: 600;
+    color:#ffffff;
+    align-self: center;
+    margin-left: 6vw;
+  
+  }
+  
+  .dataRecoveryGetInTouchText{
+  
+    margin-left:6vw;
+    font-size:.8rem;
+    line-height:2;
+    font-weight:300;
+  
+  }
+  
+  .dataRecoveryGetInTouchFormContactInfoContainer{
+    display:flex;
+    flex-direction: column;
+    width:100vw;
+    margin:auto;
+    gap:3vh;
+    
+  
+  }
+  
+  .dataRecoveryGetInTouchFormHeader{
+    color:whitesmoke;
+    font-size:.85rem;
+    
+  }
+  
+  .dataRecoveryGetInTouchFormNameInput{
+  
+    width:50vw;
+    height:5vh;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    text-align: left;
+    padding:.3rem;
+    margin-left:10vw;
+    
+  
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width:95vw;
+    height:10vh;
+   
+    margin-top:8vh;
+   
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodTitle{
+  
+    font-size:.85rem;
+    font-weight: 400;
+    color:whitesmoke;
+    margin-left:10vw;
+    width:100vw;
+    margin:auto;
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodInput{
+    width:3vw;
+    height:3vh;
+    border-radius: 1rem;
+    border:none;
+    
+  }
+  
+  .dataRecoveryGetInTouchFormContactMethodLabel{
+  
+    font-size:.85rem;
+    font-weight: 400;
+    color:whitesmoke;
+    margin-left: 1vw;
+    
+  }
+
+  .dataRecoveryLineLight{
+    width:80vw;
+    border-top:1px solid #ffffff;
+    margin:auto;
+  }
+
+  
+.dataRecoveryRadioGroup{
+    width:90vw;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:4vw;
+    margin-top:2vh;
+  }
+  
+  /* Data Recovery Get In Touch Form Textarea */
+  .dataRecoveryGetInTouchFormTextareaContainer{
+    margin-top:7vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width:95vw;
+  }
+  
+  .dataRecoveryGetInTouchFormTextareaHeader{
+    margin-bottom:5vh;
+    margin-left:3vw;
+    color:whitesmoke;
+    font-size:.8rem;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  .dataRecoveryGetInTouchFormTextarea{
+    display:flex;
+    width:90vw;
+    height:18vh;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    font-weight: 900;
+    padding:.3rem;
+    margin-left:5vw;
+    margin-bottom:5vh;
+  
+  }
+  
+  .dataRecoveryGetInTouchFormSubmitButton{
+  
+    width:40vw;
+    height:5vh;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    margin-left:5vw;
+  }
+  
+  

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import styles from "./ProductCard.module.css"
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 
 
 export default function ProductCard({ productData }) {

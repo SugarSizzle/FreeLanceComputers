@@ -1,0 +1,70 @@
+.heroSectionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+   
+   
+  }
+  
+
+  .mainTextContainer {
+  
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+   
+  
+  }
+  
+  .heroSectionMainText {
+    color: #f8f8f8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+  }
+  
+  .heroSectionSecondaryText {
+    color: #D7D7D7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size:.8rem;
+    font-weight: 500;
+    line-height: 2;
+    margin-top: 1.5rem;
+  
+  }
+  
+  .heroSection3DContainer {
+    height: 40%;
+    width:100%;
+   
+  }
+  
+  .heroSectionButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6vw;
+   
+    width: 100%;
+    
+  }
+  
+  .heroSectionGetStartedButton, .heroSectionGetInTouchButton {
+    width: 40vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  
+  
