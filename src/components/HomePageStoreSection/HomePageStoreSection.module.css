@@ -1,0 +1,84 @@
+.homePageStoreContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 70vh;
+    background: #1f2020;
+    width:90vw;
+    margin: auto;
+    border-radius: 1rem;
+  
+  }
+  
+  
+  .homePageStoreTitle{
+    background: linear-gradient(to right, #edb902, #e89005);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+    text-align: left;
+    margin-left: 5vw;
+  }
+  
+  .homePageStorePreferenceText{
+    color:whitesmoke;
+    margin:none;
+  }
+  
+  .homePageStorePreferenceText{
+    color: #edb902;
+  }
+  
+  .homePageStorePreferenceContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10vw;
+    height:50%;
+  }
+  
+  .homePageStorePreferenceButton{
+  
+    width: 5vw;
+    height: 3vh;
+    border: none;
+    background-color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+  
+  }
+  
+  .homePageSubmitButtonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+    height:50%;
+  }
+  
+  .homePageSubmitButton{
+   width:30vw;
+   height:5vh;
+   border:none;
+   border-radius: .5rem;
+   font-family: 'JetBrains Mono', monospace;
+   font-weight: 700;
+   font-size: .9rem;
+   color: #000000;
+  
+  }
+  
+  .allSelectionsButton{
+  width: 60vw;
+  height:8vh;
+  border:none;
+  border-radius: .5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #000000;
+  
+  }
+  

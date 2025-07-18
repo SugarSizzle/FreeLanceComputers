@@ -1,0 +1,23 @@
+
+/* Computer Repairs Hero Section */
+.computerRepairsHero3DSectionContainer{
+
+    height: 30vh;
+    width: 100vw;
+    color:whitesmoke;
+    
+}
+
+.computerRepairsHeroSectionHeaderSpan{
+
+  color:#00FF08
+
+}
+
+.computerRepairsHeroSectionHeader{
+
+  font-size: 1.1rem;
+  color:whitesmoke;
+  line-height: 2;
+
+}
