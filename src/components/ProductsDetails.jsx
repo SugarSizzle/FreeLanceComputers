@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase';
 import { Navigation } from '../Layout/Navigation';
 import { Footer } from '../Layout/Footer';
 import { FaArrowCircleDown } from "react-icons/fa";
-import ProductCard from './ProductCard';
+import ProductCard from './ProductCard/ProductCard';
 
 export default function ProductsDetails() { 
 

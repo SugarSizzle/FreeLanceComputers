@@ -3,7 +3,7 @@ import ComputerRepairs from '../../images/ComputerRepairs.jpg'
 import ComputerUpgrades from '../../images/ComputerUpgrades.jpg'
 import DataRecovery from '../../images/DataRecovery.jpg'
 import VirusRemoval from '../../images/Virus.jpg'
-import '../App.css'
+import styles from './HomePageServices.module.css'
 
 const servicesText =[
     'Virus Removal',
@@ -20,23 +20,22 @@ const servicesImage =[
 ]
 
 
-export const Services = () => {
+export const HomePageServices = () => {
   const [selectedService, setSelectedService] = useState('Virus Removal')
   const [theme, setTheme] = useState('.selected-service')
 
 
   const mappedServices=servicesText.map((service, index)=>{
     return(
-      <div  className={`individual-service-container ${theme}`} key={index} onClick={()=>setSelectedService(service)}>
-        <h3 className='service-title'>{service}</h3>
+      <div  className={`${styles.individualServiceContainer} ${theme}`} key={index} onClick={()=>setSelectedService(service)}>
+        <h3 className={styles.serviceTitle}>{service}</h3>
       </div>
     )
   })
 
   
 
-  
-  
+
 
   function BackgroundColorServiceText(){
     if(selectedService === 'Virus Removal'){
@@ -54,31 +53,23 @@ export const Services = () => {
   }
 
 
-
-
-
-
-
-
-
-
   return (
     <>
-      <h1 className="services-header-title">Services</h1>
-      <div className='services-container'>
-        <div className="services-section-container">
+      <h1 className={styles.servicesHeaderTitle}>Services</h1>
+      <div className={styles.servicesContainer}>
+        <div className={styles.servicesSectionContainer}>
           {mappedServices}
         </div>
 
-        <div className='services-information-container'>
-          <img src={ComputerRepairs} className='services-information-image' alt="image of service here" />
-          <p className='services-information-text'>
+        <div className={styles.servicesInformationContainer}>
+          <img src={ComputerRepairs} className={styles.servicesInformationImage} alt="image of service here" />
+          <p className={styles.servicesInformationText}>
             We Remove Viruses, Malware, and other threats from your computer.
             Here are some of the things the right way, and make sure you get the best service.
           </p>
 
-          <div className="services-get-touch-container">
-            <button className="services-get-touch-button">Get In Touch</button>
+          <div className={styles.servicesGetTouchContainer}>
+            <button className={styles.servicesGetTouchButton}>Get In Touch</button>
           </div>
         </div>
       </div>
