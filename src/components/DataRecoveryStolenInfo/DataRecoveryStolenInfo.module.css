@@ -1,0 +1,72 @@
+.dataRecoveryStolenInfoContainer{
+    height: 40vh;
+    width: 95vw;
+    margin:auto;
+    color:whitesmoke;
+    display:flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    text-align: left;
+  }
+  
+  .dataRecoveryStolenInfoRecoveryText{
+    font-size: .8rem;
+    font-weight: 600;
+    color:#00FF08;
+    align-self: flex-start;
+  
+  }
+  
+  .dataRecoveryStolenInfoHeader{
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+  
+  }
+  
+  .dataRecoveryStolenInfoText{
+    width: 95vw;
+    font-size: .6rem;
+    font-weight: 600;
+    color:#D7D7D7;
+    line-height: 2;
+  
+  }
+  
+  .dataRecoveryStolenInfoImageContainer{
+    
+    height: 70vh;
+    width: 95vw;
+    margin:auto;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dataRecoveryStolenInfoImage{
+    width: 50vw;
+    height: 30vh;
+    background-image: url('/images/stolenData.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+    position: relative;
+    right: -10vw;
+    top: -10vh;
+    border-radius: 1rem;
+  }
+  
+  .dataRecoveryStolenInfoCodeImage{
+    width: 50vw;
+    height: 30vh;
+    background-image: url('/images/StolenDataCode.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    position: relative;
+    left: -5vw;
+    top: 10vh;
+    border-radius: 1rem;
+  }
+  

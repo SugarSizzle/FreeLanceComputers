@@ -3,12 +3,14 @@
     width: 90vw;
     max-width: 28rem;
     animation: fadeIn 0.6s ease-out;
+    height:180vh;
+    
   }
   
   .fadingBorder {
     position: relative;
     background: linear-gradient(180deg, hsl(0, 0%, 16.5%) 0%, hsl(0, 0%, 10.2%) 50%, hsl(0, 0%, 0%) 100%);
-    border-radius: 16px;
+    border-radius: 1rem;
     padding: 2px;
     transition: all 0.3s ease;
   }
@@ -24,14 +26,15 @@
       hsla(0, 0%, 100%, 0.3) 0%, 
       hsla(0, 0%, 100%, 0.1) 30%, 
       hsla(0, 0%, 100%, 0.05) 60%, 
-      hsla(0, 0%, 100%, 0) 100%);
-    border-radius: 16px;
+      hsla(0, 0%, 15%, 0) 100%);
+    border-radius: 1rem;
     pointer-events: none;
   }
   
   .fadingBorder:hover {
-    box-shadow: 0 0 30px hsla(0, 0%, 100%, 0.1);
-    transform: translateY(-2px);
+     box-shadow: 0 0 30px hsla(0, 0%, 100%, 0.1);
+     transform: translateY(-10px); 
+     
   }
   
   .cardInner {
@@ -65,13 +68,8 @@
       hsla(0, 0%, 100%, 0.9) 40%, 
       hsla(0, 0%, 100%, 0.6) 70%, 
       hsla(0, 0%, 100%, 0.3) 90%, 
-      hsla(0, 0%, 100%, 0.1) 100%);
-    -webkit-mask: linear-gradient(180deg, 
-      hsla(0, 0%, 100%, 1) 0%, 
-      hsla(0, 0%, 100%, 0.9) 40%, 
-      hsla(0, 0%, 100%, 0.6) 70%, 
-      hsla(0, 0%, 100%, 0.3) 90%, 
-      hsla(0, 0%, 100%, 0.1) 100%);
+      rgba(255, 255, 255, 0.24) 100%);
+
   }
   
   .productHeader {
@@ -82,7 +80,7 @@
   
   .productTitle {
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
     margin: 0;
@@ -90,7 +88,7 @@
   
   .productPrice {
     color: white;
-    font-size: 1.875rem;
+    font-size: 1.2rem;
     font-weight: 100;
     margin: 0;
   }
@@ -142,7 +140,7 @@
   }
   
   .collapsibleSection {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid #D7D7D7;
     padding-top: 1rem;
   }
   
@@ -151,7 +149,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgb(255, 255, 255);
     background: none;
     border: none;
     cursor: pointer;
@@ -161,7 +159,7 @@
   }
   
   .collapsibleButton:hover {
-    color: white;
+    color: whitesmoke;
   }
   
   .chevronIcon {
@@ -189,7 +187,7 @@
   
   .contentList {
     margin-top: 1rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(255, 255, 255);
     font-size: 0.875rem;
     display: flex;
     flex-direction: column;
@@ -220,15 +218,7 @@
     font-size: 1rem;
   }
   
-  .addToCartButton:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-  }
-  
-  .addToCartButton:active {
-    transform: scale(0.98);
-  }
-  
+
   @keyframes fadeIn {
     0% { 
       opacity: 0; 
