@@ -1,5 +1,5 @@
 import React from 'react'
-import { VirusGetInTouch as GetInTouch  } from '../VirusGetInTouch'
+import { VirusGetInTouch as GetInTouch  } from '../VirusGetInTouch/VirusGetInTouch'
  import styles from './ComputerRepairsInformation.module.css'
 
 export const ComputerRepairsInformation = () => {
