@@ -1,0 +1,115 @@
+
+
+.getInTouchContainer{
+    background-color: #252525;
+    border-radius: 1rem;
+    height: 140vh;
+    width: 95vw;
+    margin:auto;
+    color:whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+  }
+  
+  .getInTouchTitle{
+  
+  .get-in-touch-title {
+    background: linear-gradient(to right, #3A8DFF, #6CE0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  }
+  
+  .getInTouchContactInfoContainer{
+    display:flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: left;
+    
+  }
+  
+  .getInTouchContactNameContainer{
+    display:flex;
+    flex-direction: column;
+  
+  }
+  .getInTouchContactNameInput{
+  margin:5vw;
+  align-self: left;
+  
+  }
+  
+  .getInTouchContactMethodTitle{
+   
+    margin-bottom:5vh;
+  }
+  
+  .getInTouchContactMethodContainer{
+    height:20vh;
+    margin-top:5vh;
+    
+    
+  }
+  .getInTouchContactMethodInputContainer{
+    display:flex;
+    flex-direction: row;
+    gap:1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+  .getInTouchContactInfoInput, .getInTouchContactNameInput{
+    width:50vw;
+    height:5vh;
+    margin-left:5vw;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 800;
+    text-align: left;
+    padding:.3rem;
+  
+    
+    
+  }
+  
+  .getInTouchContactInfoTextarea{
+    width:80vw;
+    height:20vh;
+    border-radius: 1rem;
+    align-self: center;
+    text-align: center;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 800;
+    padding: 1rem;
+  
+  }
+  
+  .getInTouchContactInfoButton{
+    align-self: center;
+    width:40vw;
+    height:5vh;
+    border-radius: 1rem;
+    border:none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  

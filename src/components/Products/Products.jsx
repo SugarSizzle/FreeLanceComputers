@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { Link } from 'react-router-dom';
+import styles from './Products.module.css';
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,7 @@ export const Products = () => {
   console.log(products); // Good for dev only; remove in production
 
   return (
-    <div className='products-container'>
+    <div className={styles.productsContainer}>
       {error && <h2 style={{ color: 'red' }}>Error: {error}</h2>}
 
       {products.length === 0 && !error && <p>Loading products...</p>}
@@ -40,11 +41,11 @@ export const Products = () => {
       {products.map((p) => (
         
         <Link to={`/products/${p.id}`}>
-          <div className='individual-product-container' key={p.id}>
-            <img className='individual-product-image' src={p.img_url} alt={p.name} />
-            <div className='individual-product-info-container'>
-              <h3 className='individual-product-name'>{p.name}</h3>
-              <p className='individual-product-price'>${p.price}</p>
+          <div className={styles.individualProductContainer} key={p.id}>
+            <img className={styles.individualProductImage} src={p.img_url} alt={p.name} />
+            <div className={styles.individualProductInfoContainer}>
+              <h3 className={styles.individualProductName}>{p.name}</h3>
+              <p className={styles.individualProductPrice}>${p.price}</p>
             </div>
           </div>
         </Link>

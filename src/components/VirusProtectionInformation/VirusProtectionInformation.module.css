@@ -1,0 +1,35 @@
+.virusSecurityCodeImage{
+    background-image: url('../images/securityCode.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    
+  
+  }
+  
+  
+  
+  
+  
+  .virusSecurityImage {
+    width: 50vw;
+    height:20vh;
+    background-image: url('../images/security.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    margin-top: 20vh;
+    margin-left: -12.5vw;
+    
+  }
+  

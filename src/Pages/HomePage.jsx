@@ -16,7 +16,7 @@ export const HomePage = () => {
        <div className="review-section-container">
           <h1>Review Section Here</h1>
         </div>
-       <HomePageServices />
+        <HomePageServices />
        <HomePageStoreSection />
        <Footer />
        </>

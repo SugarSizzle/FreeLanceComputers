@@ -1,15 +1,13 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
-
 import { HomePage } from './Pages/HomePage'
 import { AboutPage } from './Pages/AboutPage'
 import { VirusProtection } from './Pages/VirusProtection'
 import { DataRecoveryPage } from './Pages/DataRecoveryPage'
 import { ComputerRepairs } from './Pages/ComputerRepairs'
 import { Store } from './Pages/Store'
-import { Products } from './components/Products'
-import ProductsDetails from './components/ProductsDetails'
+import ProductsDetails from './components/ProductsDetails/ProductsDetails'
 
 function App() {
   return (

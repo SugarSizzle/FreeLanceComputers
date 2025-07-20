@@ -1,0 +1,42 @@
+.websiteNameContainer {
+
+    width: 25vw;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10vw;
+    }
+    
+    .websiteName {
+      font-size: 24px;
+      font-weight: bold;
+      color: #f8f8f8;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-style: normal;
+    }
+    
+    .navigationContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+      
+    }
+    
+    .iconContainer {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6vw;
+    margin-right:8vw;
+    }
+    
+    
+    .navIcon{
+    color: #f8f8f8;
+     
+    } 
+    
