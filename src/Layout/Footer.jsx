@@ -1,37 +1,38 @@
 import React from 'react';
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+import styles from './Footer.module.css'
 
 export const Footer = () => {
 
     return(
         <>
-    <div className='footer-container'>
+    <div className={styles.footerContainer}>
 
-        <div className='footer-services-container'>
-            <h1 className='footer-services-title'>Services</h1>
+        <div className={styles.footerServicesContainer}>
+            <h1 className={styles.footerServicesTitle}>Services</h1>
 
-                <Link to="/virus-protection" className='footer-services-text'>Virus Removal</Link>
-                <Link to="/data-recovery" className='footer-services-text'>Data Recovery</Link>
-                <Link to="/computer-upgrades" className='footer-services-text'>Computer Upgrades</Link>
-                <Link to="/computer-repairs" className='footer-services-text'>Computer Repairs</Link>
+                <Link to="/virus-protection" className={styles.footerServicesText}>Virus Removal</Link>
+                <Link to="/data-recovery" className={styles.footerServicesText}>Data Recovery</Link>
+                <Link to="/computer-upgrades" className={styles.footerServicesText}>Computer Upgrades</Link>
+                <Link to="/computer-repairs" className={styles.footerServicesText}>Computer Repairs</Link>
 
         </div>
 
-        <div    className='footer-contact-container'>
-            <h1 className='footer-contact-title'>Contact</h1>
-                <h3 className='footer-contact-text'>Address Here</h3>
-                <h3 className='footer-contact-text'>Phone Number Here</h3>
+        <div    className={styles.footerContactContainer}>
+            <h1 className={styles.footerContactTitle}>Contact</h1>
+                <h3 className={styles.footerContactText}>Address Here</h3>
+                <h3 className={styles.footerContactText}>Phone Number Here</h3>
 
         </div>
 
        
     </div>
 
-    <div className="footer-social-media-container">
-        <FaInstagram className='footer-social-media-icon'/>
-        <FaFacebook className='footer-social-media-icon'/>
-        <FaTwitter className='footer-social-media-icon'/>
+    <div className={styles.footerSocialMediaContainer}>
+        <FaInstagram className={styles.footerSocialMediaIcon}/>
+        <FaFacebook className={styles.footerSocialMediaIcon}/>
+        <FaTwitter className={styles.footerSocialMediaIcon}/>
     
     </div>
 
