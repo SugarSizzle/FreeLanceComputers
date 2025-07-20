@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import styles from "./ProductCard.module.css"
 import { supabase } from '../../lib/supabase';
-
+import { FinancingSection } from "../Financing/FinancingSection";
 
 export default function ProductCard({ productData }) {
 
@@ -82,19 +82,20 @@ export default function ProductCard({ productData }) {
               </div>
             </div>
             
-            {/* Features Section */}
+      
             <div className={styles.collapsibleSection}>
               <button 
                 className={styles.collapsibleButton}
                 onClick={toggleFeatures}>
                 <span>Financing</span>
                 <ChevronDown className={`${styles.chevronIcon} ${featuresExpanded ? styles.expanded : ''}`}/>
-
+            
               </button>
               <div className={`${styles.collapsibleContent} ${featuresExpanded ? styles.expanded : ''}`}>
-                <div className={styles.contentList}>
+                <FinancingSection />
+             
                    
-                </div>
+                
               </div>
             </div>
           </div>
