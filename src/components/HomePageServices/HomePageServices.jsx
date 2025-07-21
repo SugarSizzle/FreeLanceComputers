@@ -4,6 +4,7 @@ import ComputerUpgrades from '../../images/ComputerUpgrades.jpg'
 import DataRecovery from '../../images/DataRecovery.jpg'
 import VirusRemoval from '../../images/Virus.jpg'
 import styles from './HomePageServices.module.css'
+import { LayoutGroup, motion } from 'framer-motion'
 
 const servicesText =[
     'Virus Removal',
@@ -20,6 +21,8 @@ const servicesImage =[
 ]
 
 
+
+
 export const HomePageServices = () => {
   const [selectedService, setSelectedService] = useState('Virus Removal')
   const [theme, setTheme] = useState('.selected-service')
@@ -33,6 +36,7 @@ export const HomePageServices = () => {
     )
   })
 
+  const [selected, setSelected] = useState('Virus Removal')
   
 
 
@@ -57,9 +61,30 @@ export const HomePageServices = () => {
     <>
       <h1 className={styles.servicesHeaderTitle}>Services</h1>
       <div className={styles.servicesContainer}>
-        <div className={styles.servicesSectionContainer}>
-          {mappedServices}
+      
+        <LayoutGroup>
+        <div className={styles.serviceList}>
+          {servicesText.map((service) => (
+            <div
+              key={service}
+              className={styles.serviceItem}
+              onClick={() => setSelected(service)}
+            >
+              {selected === service && (
+                <motion.div
+                  className={styles.activeBackground}
+                  layoutId="highlight"
+                  transition={{ type: "tween", stiffness: 600, damping: 0 }}
+                />
+              )}
+              <span className={styles.serviceText}>{service}</span>
+            </div>
+          ))}
         </div>
+      </LayoutGroup>
+
+
+      
 
         <div className={styles.servicesInformationContainer}>
           <img src={ComputerRepairs} className={styles.servicesInformationImage} alt="image of service here" />
@@ -72,6 +97,12 @@ export const HomePageServices = () => {
             <button className={styles.servicesGetTouchButton}>Get In Touch</button>
           </div>
         </div>
+
+        <div className={styles.container}>
+     
+    </div>
+
+
       </div>
     </>
   )
