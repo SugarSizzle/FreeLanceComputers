@@ -5,7 +5,6 @@ import { Navigation } from '../../Layout/Navigation';
 import { Footer } from '../../Layout/Footer';
 import { FaArrowCircleDown } from "react-icons/fa";
 import ProductCard from '../ProductCard/ProductCard';
-
 import styles from './ProductsDetails.module.css';
 
 export default function ProductsDetails() { 
