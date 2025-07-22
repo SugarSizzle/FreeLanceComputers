@@ -9,6 +9,7 @@ import { ComputerRepairs } from './Pages/ComputerRepairs'
 import { Store } from './Pages/Store'
 import ProductsDetails from './components/ProductsDetails/ProductsDetails'
 
+
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
         <Route path="/computer-repairs" element={<ComputerRepairs />} />
         <Route path="/products" element={<Store />} />
         <Route path="/products/:id" element={<ProductsDetails />} />
+       
       </Routes>
     </div>
   )
