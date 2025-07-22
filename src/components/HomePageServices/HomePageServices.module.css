@@ -1,39 +1,12 @@
-.servicesContainer {
-    margin-top: 10vh;
-    height: 80vh;
-    width: 100vw;
-    width: 95vw;
-    margin: auto;
-    border-radius: 1rem;
-    position: relative;
-    background: #000000; /* or whatever your background color should be */
-  }
-  
-
- 
-  
-  .servicesHeaderTitle {
-    color:#4570ff;
-    display: flex;
-    margin-left:5vw;
-    font-size: 1rem;
-  }
-  
-  
-  
-  
-
-  
-  .individualServiceContainer {
+.individualServiceContainer {
     width:25%;
-  }
-  
-  .serviceTitle {
-  
+}
+
+.serviceTitle {
     font-size: .8rem;
-  }
-  
-  .servicesInformationContainer {
+}
+
+.servicesInformationContainer {
    width: 95vw;
    height: 80vh;
    display:grid;
@@ -42,19 +15,24 @@
    "button button";
    grid-template-columns: 45% 45%;
    grid-template-rows: 50% 50%;
-   
    gap:8vw;
-  }
-  
-  .servicesInformationImage{
+   border:#282c30 solid 1px;
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
+   border-bottom-left-radius: 1rem;
+   border-bottom-right-radius: 1rem;
+   margin:auto;
+}
+
+.servicesInformationImage{
     width: 100%;
     height: 100%;
     border-radius: 1rem;
     margin-top:5vh;
     margin-left:5vw;
     grid-area: image;
-  }
-  .servicesInformationText{
+}
+.servicesInformationText{
   color:whitesmoke;
     width: 100%;
     height: 100%;
@@ -64,16 +42,16 @@
     grid-area: text;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  }
-  
-  .servicesGetTouchContainer{
+}
+
+.servicesGetTouchContainer{
     grid-area: button;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .servicesGetTouchButton {
+}
+
+.servicesGetTouchButton {
     width: 40vw;
     height: 5vh;
     border-radius: 10px;
@@ -83,70 +61,73 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     font-weight: 900;
-  }
-  
+}
 
-
-  /*Service List*/
-
-  .container {
+.container {
     display: flex;
- 
     margin-top: 5rem;
-   
-  
-  }
-
-  .servicesSectionContainer {
-  
-    color:whitesmoke;
-    width: 95vw;
-    height: 15;
-    border-radius: 1rem;
-    border:1px solid whitesmoke;
-    border-radius: 1rem;
-
-    display: flex;
-    
-  
-  }
-
-  
-  .serviceList {
-    display: flex;
-    gap: .25rem;
-    background: #000000;
-    padding: 0.5rem;
-    
-    width:95vw;
+}
 
 
+/*Header styling*/
 
-  }
+.servicesContainer{
+  display:flex;
+  flex-direction: row;
+  width: 95vw;
+  height: 15vh;
+  border:#3b3f44 solid 1px;
+  justify-content: space-between;
+  align-items: center;
+  margin:auto;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+}
+
+.serviceList{
+ 
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  list-style: none;
+  gap:1.5rem;
+  margin:0;
+
+
+
+}
+
+.serviceItem{
+
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  z-index: 1;
+  color:whitesmoke;
+  font-weight: 600;
+  font-size: .75rem;
+  left:-5%;
+ 
+ 
+}
+
+.serviceBackground{
+  position:absolute;
+  z-index: -1;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom, #2e3135 40% , #000000 90%);
+  border: 1px solid #282c30;
+  width: 125%;
+  height: 125%;
+ 
+}
+
+
   
-  .serviceItem {
-    position: relative;
-    padding: 0.25rem .75rem;
-    cursor: pointer;
-    font-weight: bold;
-    color: white;
-    border-radius: 0.75rem;
-    overflow: hidden;
-  }
-  
-  .serviceText {
-    position: relative;
-    font-size: .7rem;
-    z-index: 2;
-  }
-  
-  .activeBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: #ffffff6b;
-    border-radius: 0.75rem;
-    z-index: 1;
-  }
+
+ 
