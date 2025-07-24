@@ -33,6 +33,7 @@
     grid-area: image;
 }
 .servicesInformationText{
+  font-size: .8rem;
   color:whitesmoke;
     width: 100%;
     height: 100%;
