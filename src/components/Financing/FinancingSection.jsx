@@ -51,7 +51,7 @@ export const FinancingSection = () => {
 
             </div>
 
-
+            
 
         </div>
 
