@@ -1,15 +1,47 @@
-.virusSecurityCodeImage{
-    background-image: url('../images/securityCode.png');
+
+  .virusProtectionInformationContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: #ffffff;
+    width: 90vw;
+    height: 70vh;
+    text-align: left;
+    padding-left: 5vw;
+
+
+  }
+
+
+  .virusProtectionImagesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 90vw;
+    height: 40vh;
+    margin:auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .virusSecurityCodeImage{
+    background-image: url('../../images/securityCode.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 30vw;
-    height: 30vw;
+    width: 60vw;
+    height: 40vw;
     border-radius: 10px;
     border: none;
     outline: none;
-    
-  
+    position: relative;
+    z-index: 1;
+    left: 10vw;
+    top: -10vh;
   }
   
   
@@ -19,7 +51,7 @@
   .virusSecurityImage {
     width: 50vw;
     height:20vh;
-    background-image: url('../images/security.png');
+    background-image: url('../../images/security.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,9 +59,29 @@
     border: none;
     outline: none;
     position: relative;
+    left: -10vw;
     z-index: 2;
-    margin-top: 20vh;
-    margin-left: -12.5vw;
-    
+
+  }
+
+  .virusProtectionInformationHeader{
+    margin:0;
+    color:#27fa32;
+    align-self: flex-start;
+    font-size: .8rem;
+
+  }
+
+  .virusProtectionInformationTitle{
+    margin:0;
+  }
+
+  .virusProtectionInformationText{
+
+    font-size: .85rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: left;
+
   }
   
