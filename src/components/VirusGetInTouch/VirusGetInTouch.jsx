@@ -1,7 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './VirusGetInTouch.module.css'
+import { motion, useScroll, useTransform } from 'framer-motion'
+
 
 export const VirusGetInTouch = () => {
+
+    const [selectedType, setSelectedType] = useState([]);
+
+    const toggleSelection = (value, selectedList, setSelectedList) => {
+        if(selectedList.includes(value)){
+            setSelectedList(selectedList.filter(item => item !== value));
+            }
+        else {
+            setSelectedList([...selectedList, value])
+
+        }
+    }
+
+    const CustomCheckbox = ({checked, onChange, label}) => {
+
+        return (
+            <>
+                <motion.div 
+                className={`${styles.checkbox} ${checked ? styles.checked : styles.unchecked}`}
+                animate={checked ? 'checked' : 'unchecked'}
+                variants={{
+                    unchecked: {scale:.8 , opacity:.7},
+                    checked: {
+                        scale:1.1,
+                        rotate:360,
+                        transition: {type: 'spring',}
+
+                    }
+
+                }}
+                onClick={onChange}
+                whileHover={{scale:1.02}}
+                whileTap={{scale:0.98}}
+                >
+
+                {checked &&  (
+
+                    <motion.div 
+                    className={styles.checkboxInner}
+                    initial={{scale:0 , opacity:0, rotate:0}}
+                    animate={{scale:1 , opacity:1, rotate:360}}
+                    transition={{duration:0.2}}
+                
+                    />
+
+                )
+
+                    
+                }
+                
+                </motion.div>
+                <span className={styles.checkboxLabel}>{label}</span>
+
+            </>
+
+        )
+
+
+
+    }
+
+
     return (
         <>
             <div className={styles.getInTouchContainer}>
@@ -21,14 +85,26 @@ export const VirusGetInTouch = () => {
                         <div className={styles.getInTouchContactMethodContainer}>
                             <p className={styles.getInTouchContactMethodTitle}>Preferred Contact Method</p>
                                 <div className={styles.getInTouchContactMethodInputContainer}>   
-                                    <input className={styles.getInTouchContactMethodInput} type="radio" name='contact-method' value='email' />
-                                    <label htmlFor="email">Email</label>
 
-                                    <input className={styles.getInTouchContactMethodInput} type="radio" name='contact-method' value='phone' />
-                                    <label htmlFor="phone">Phone</label>
+                                    <CustomCheckbox
+                                    checked={selectedType.includes('email')}
+                                    onChange={() =>toggleSelection('email', selectedType, setSelectedType)}
+                                    label="Email"
+                                    />
 
-                                    <input className={styles.getInTouchContactMethodInput} type="radio" name='contact-method' value='text' />
-                                    <label htmlFor="text">Text</label>
+                                   <CustomCheckbox
+                                        checked={selectedType.includes('phone')}
+                                        onChange={() =>toggleSelection('phone', selectedType, setSelectedType)}
+                                        label="Phone"
+                                   />
+
+                                    <CustomCheckbox
+                                        checked={selectedType.includes('text')}
+                                        onChange={() =>toggleSelection('text', selectedType, setSelectedType)}
+                                        label="Text"
+                                    />
+
+
                                 </div>  
                         </div>
 

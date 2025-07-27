@@ -24,15 +24,6 @@ export const HomePageStoreSection = () => {
     };
 
 
-     useEffect(()=>{
-      console.log(selectedType)
-     },[selectedType])
-
-     useEffect(()=>{
-      console.log(selectedCondition)
-     },[selectedCondition])
-
-
     const filterProductsLogic = async () => {
 
         const {data , error} = await supabase
@@ -61,11 +52,11 @@ export const HomePageStoreSection = () => {
             className={`${styles.checkbox} ${checked ? styles.checked : styles.unchecked}`}
             animate={checked ? 'checked' : 'unchecked'}
             variants={{
-              unchecked: { scale: .8, rotate: 360 , opacity:1},
+              unchecked: { scale: .8, opacity:1},
               checked: {
                 scale: 1.1,
                 rotate: 360,
-                transition: { type: 'spring', stiffness: 300, damping: 20 }
+                transition: { type: 'spring', }
               }
             }}
           >
