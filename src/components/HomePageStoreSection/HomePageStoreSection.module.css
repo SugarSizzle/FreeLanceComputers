@@ -1,14 +1,40 @@
-.homePageStoreContainer{
+
+
+.homePageStoreContainer,.homePageStoreOuterBorder{
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 70vh;
-    background: #1f2020;
-    width:90vw;
+    width: 90vw;
+    height: 90vh;
+    background: linear-gradient(to bottom, #0f0816, #0b090e);
     margin: auto;
     border-radius: 1rem;
-  
+    padding-bottom:1.3rem;
+    border: 1px solid #ffffff;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+   
   }
+
+  
+
+  .filterSectionBackground{
+    background-color: #ffffff0d;
+    border-radius: 1rem;
+    width: 95%;
+    height: 100%;
+    padding-bottom:2.5rem;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+
+  }
+
   
   
   .homePageStoreTitle{
@@ -17,36 +43,43 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-top: 20vh;
-    margin-bottom: 10vh;
+    
     text-align: left;
     margin-left: 5vw;
   }
-  
-  .homePageStorePreferenceText{
-    color:whitesmoke;
-    margin:none;
+
+  .homePageStoreNewPreferenceText{
+    color: #ffffff;
+    margin-top: 10vh;
+    
   }
+
   
+ 
   .homePageStorePreferenceText{
-    color: #edb902;
+
+    color: #ffffff;
   }
+
+
   
   .homePageStorePreferenceContainer{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:10vw;
-    height:50%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    
+    
   }
   
   .homePageStorePreferenceButton{
-  
+    border-radius: .25rem;
     width: 5vw;
     height: 3vh;
     border: none;
     background-color: #ffffff;
     font-family: 'JetBrains Mono', monospace;
-  
+    position: relative;
   }
   
   .homePageSubmitButtonContainer{
@@ -66,7 +99,9 @@
    font-family: 'JetBrains Mono', monospace;
    font-weight: 700;
    font-size: .9rem;
-   color: #000000;
+  background: linear-gradient(to right, #0f0816, #9000fa);
+  color: #ffffff;
+  border: 1px solid #9d65da;
   
   }
   
@@ -78,7 +113,90 @@
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   font-size: .9rem;
-  color: #000000;
+  color: #ffffff;
+  border: 1px solid #9d65da;
+  background: linear-gradient(to right, #0f0816, #9000fa);
+
+    
   
   }
   
+
+  .checkIcon{
+ 
+    position: absolute;
+    top:5;
+    right:5;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+    color: #000000;
+    z-index: 1;
+    font-size:1.35rem;
+    
+  }
+
+.preferencePair {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: start;
+  margin-left: 10vw;
+  
+}
+
+.checkboxContainer{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width:10vw;
+  height:5vh;
+
+  margin:auto;
+  
+}
+
+.checkbox{
+
+  width: 6vw;
+  height: 6vw;
+  background: #9000fa;
+  border: 2px solid #9000fa;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+
+}
+
+.checkboxInner{
+
+  width: 50%;
+  height: 50%;
+  background-color: #a02bf3;
+  border-radius: 25%;
+  margin:auto;
+ 
+}
+
+
+
+
+.unchecked{
+  opacity:0;
+  background-color: #0c0c0c;
+  
+}
+
+.checked{
+
+  background: #000000;
+  box-shadow: 0 0 8px #9000fa;
+}
+
