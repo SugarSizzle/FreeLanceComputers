@@ -1,5 +1,10 @@
 
 
+.virusDangersContainer{
+  margin-top: 10rem;
+}
+
+
 .virusDangersInformationImageContainer {
     display: flex;
     justify-content: center;
@@ -39,19 +44,19 @@
   }
   
   .virusDangersInformationText{
-  
+    margin-top: 3rem;
     font-size: 1rem;
     font-weight: 500;
     color:#D7D7D7;
     width:90vw;
-    line-height: 1.5;
+    line-height: 1.75;
    
   }
   
   .virusDangersImageVirusDeath{
     width: 40vw;
     height: 30vh;
-    background-image: url('../images/virusDeath.png');
+    background-image: url('../../images/virusDeath.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,7 +71,7 @@
   }
   
   .virusDangersImageVirus{
-    background-image: url('/images/VirusSideways.png');
+    background-image: url('../../images/VirusSideways.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

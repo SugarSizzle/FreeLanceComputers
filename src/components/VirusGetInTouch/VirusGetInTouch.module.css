@@ -15,15 +15,53 @@
   }
   
   .getInTouchTitle{
-  
-  .get-in-touch-title {
     background: linear-gradient(to right, #3A8DFF, #6CE0FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
   }
-  
+
+ 
+
+  .checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+    background-color: #fcfcfc;
+    width:5vw;
+    height:5vh;
+  }
+
+  .checkbox:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .checked{
+
+
+  }
+
+  .unchecked{
+
+
+  }
+
+  .checkboxInner{
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to bottom, #000000 30%, #7a7a7a);
+    border-radius: 0.25rem;
+  }
+
+  .checkboxLabel{
+    color: whitesmoke;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
   }
   
   .getInTouchContactInfoContainer{
