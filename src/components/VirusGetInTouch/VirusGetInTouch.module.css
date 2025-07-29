@@ -1,17 +1,55 @@
 
 
 .getInTouchContainer{
-    background-color: #252525;
+    background: linear-gradient(to bottom, #000000 30%);
+    border: 1px solid #d7d7d7;
     border-radius: 1rem;
-    height: 140vh;
+    height: 160vh;
     width: 95vw;
     margin:auto;
     color:whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    
+  }
+
+  .getInTouchContainer:hover{
+    border: 1px solid #3A8DFF;
+    
+ 
+    box-shadow: 0 0 20px 0 rgb(255, 255, 255);
+   
+
+
+    border: 1px solid #3A8DFF;
+
+ 
+  }
+
+  .getInTouchTitleContainer{
+
+  
     margin-top: 20vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 3rem;
+
+  }
+
+  .getInTouchFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+   
+    gap: 2rem;
   }
   
   .getInTouchTitle{
@@ -20,6 +58,26 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 70%;
+    margin:auto;
+
+   
+  }
+
+  .getInTouchTitleDivider{
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #3A8DFF, #6CE0FF, #3A8DFF, transparent);
+    margin: 0 auto;
+    position: relative;
+
+    
+   
   }
 
  
@@ -30,25 +88,19 @@
     justify-content: center;
     cursor: pointer;
     border-radius: 0.25rem;
-    transition: background-color 0.2s;
-    background-color: #fcfcfc;
-    width:5vw;
-    height:5vh;
+    width:7vw;
+    height:4vh;
+    
   }
 
   .checkbox:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #ffffff;
+    border-color: #000000;
+    transition: all 0.3 ease;
   }
 
-  .checked{
 
 
-  }
-
-  .unchecked{
-
-
-  }
 
   .checkboxInner{
     width: 50%;
@@ -63,6 +115,16 @@
     font-size: 0.9rem;
     font-weight: 600;
   }
+  
+  .checkboxWrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+ 
+
   
   .getInTouchContactInfoContainer{
     display:flex;
@@ -111,30 +173,87 @@
     border-radius: 1rem;
     border:none;
     background-color: #ffffff;
-    color: #000000;
+    color: #3A8DFF;
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     font-weight: 800;
     text-align: left;
     padding:.3rem;
-  
+    transition: all 0.3s ease;
     
+  
+
     
   }
+
+
+  .getInTouchContactInfoInput, .getInTouchContactNameInput{
+    color: #3A8DFF;
+   
+
+    &::placeholder {
+      color: #000000;
+      opacity: 1;
+    }
+    
+    &:hover::placeholder {
+      color: #3A8DFF;
+      opacity: 1;
+      background-color:transparent;
+
+    }
+
+    &:focus::placeholder {
+      color: #3A8DFF;
+      
+      opacity: 1;
+      background-color: transparent;
+    }
+
+    &:focus{
+      outline: none;
+      background-color: #000000;
+      color: #3A8DFF;
+      border: 1px solid #3A8DFF;
+      transition: all 0.3s ease;
+      
+    }
+
+    &:hover{
+      background: linear-gradient(to right, #000000);
+      color: #ffffff;
+      border: 1px solid #3A8DFF;
+      transition: all 0.3s ease; 
+     
+    }
+
+  }
+
   
   .getInTouchContactInfoTextarea{
+    color: #3A8DFF;
     width:80vw;
     height:20vh;
     border-radius: 1rem;
     align-self: center;
-    text-align: center;
-    border:none;
-    background-color: #ffffff;
-    color: #000000;
+    text-align: left;
+    outline: none;
+    background-color: #000000;
     font-family: 'JetBrains Mono', monospace;
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 800;
     padding: 1rem;
+
+    &::placeholder{
+      color: #3A8DFF;
+      opacity: 1;
+      background-color: transparent;
+
+
+
+
+
+    }
   
   }
   
@@ -149,5 +268,32 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #000000 60%, #ffffff);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+    
+    &:hover::before {
+      left: 0;
+    }
+    
+    &:hover{
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      transition: all 0.4s ease;
+      transform: scale(1.05);
+    }
   }
   
