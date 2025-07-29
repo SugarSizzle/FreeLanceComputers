@@ -8,11 +8,12 @@ import { DataRecoveryPage } from './Pages/DataRecoveryPage'
 import { ComputerRepairs } from './Pages/ComputerRepairs'
 import { Store } from './Pages/Store'
 import ProductsDetails from './components/ProductsDetails/ProductsDetails'
-
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/virus-protection" element={<VirusProtection />} />
