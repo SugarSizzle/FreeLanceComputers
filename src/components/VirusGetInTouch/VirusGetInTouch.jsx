@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './VirusGetInTouch.module.css'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 export const VirusGetInTouch = () => {
 
     const [selectedType, setSelectedType] = useState([]);
+
+
 
     const toggleSelection = (value, selectedList, setSelectedList) => {
         if(selectedList.includes(value)){
@@ -17,26 +19,49 @@ export const VirusGetInTouch = () => {
         }
     }
 
+    // const ref = useRef(null)
+
+    // const {scrollYProgress} = useScroll({
+
+    //     target:ref ,
+    //     offset: ["start 100%", "end 100%"]
+
+    // })
+
+    
+
+
+    // const opacity = useTransform(scrollYProgress, [0, .5], [0, 1])
+
+
     const CustomCheckbox = ({checked, onChange, label}) => {
+        const [isHovered, setIsHovered] = useState(false);
 
         return (
-            <>
+            <motion.div 
+                className={styles.checkboxWrapper}
+                onHoverStart={() => setIsHovered(true)}
+                onHoverEnd={() => setIsHovered(false)}
+            >
                 <motion.div 
                 className={`${styles.checkbox} ${checked ? styles.checked : styles.unchecked}`}
                 animate={checked ? 'checked' : 'unchecked'}
                 variants={{
-                    unchecked: {scale:.8 , opacity:.7},
+                    unchecked: {scale:.8 , opacity:.7,rotate:-90},
                     checked: {
                         scale:1.1,
                         rotate:360,
-                        transition: {type: 'spring',}
+                        opacity:1,
+                        transition: {type: 'spring', rotate: {duration:0.3} }
 
                     }
 
                 }}
                 onClick={onChange}
-                whileHover={{scale:1.02}}
-                whileTap={{scale:0.98}}
+                style={{ backgroundColor: 'whitesmoke' }}
+                whileHover={{scale:1.05, backgroundColor: '#ffffff', transition: {type: 'spring', duration:0.3}  }}
+                whileTap={{scale:1.2}}
+
                 >
 
                 {checked &&  (
@@ -55,22 +80,41 @@ export const VirusGetInTouch = () => {
                 }
                 
                 </motion.div>
-                <span className={styles.checkboxLabel}>{label}</span>
+                <motion.span 
+                className={styles.checkboxLabel}
+                animate={{ 
+                    color: isHovered ? '#3A8DFF' : (checked ? '#3A8DFF' : '#ffffff'),
+                    scale: isHovered ? 1.1 : 1
+                }}
+                transition={{ type: 'spring', duration: 0.3 }}
+                >{label}</motion.span>
 
-            </>
-
+            </motion.div>
         )
-
-
-
     }
 
 
     return (
         <>
-            <div className={styles.getInTouchContainer}>
+        <motion.div 
+            whileInView={{opacity: 1, y: 0}}
+            transition={{delay: 0.1, duration: 0.2, type: 'ease-in-out', }}
+            initial={{opacity: 0, y: 200}}
+            className={styles.getInTouchTitleContainer}>
+           
+            <div className={styles.getInTouchTitleDivider}/>
+            <h2 className={styles.getInTouchTitle}>Get In Touch</h2>
+        </motion.div>
+      
+            <motion.div
+            whileInView={{opacity: 1, y: 0}}
+            transition={{delay: 0.3, duration: 0.3, type: 'ease-in-out', }}
+            initial={{opacity: 0, y: 200}}
+           
+        
+           
+            className={styles.getInTouchContainer}>
                 <div className={styles.getInTouchTitleContainer}>
-                    <h2 className={styles.getInTouchTitle}>Get In Touch</h2>
                 </div>
                 
                 <div className={styles.getInTouchFormContainer}>
@@ -121,9 +165,10 @@ export const VirusGetInTouch = () => {
                 </div>
                
                
-            </div>
+            </motion.div>
         </>
     )
 
 
 }
+

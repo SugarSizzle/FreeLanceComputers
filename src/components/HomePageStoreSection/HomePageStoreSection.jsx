@@ -1,9 +1,8 @@
 import React, { useState , useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import styles from './HomePageStoreSection.module.css'
-import { FaCheck } from 'react-icons/fa'; 
 import { supabase } from '../../lib/supabase';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 
 export const HomePageStoreSection = () => {
@@ -67,7 +66,6 @@ export const HomePageStoreSection = () => {
                   className={styles.checkboxInner}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1, rotate: 360 }}
-                 
                   transition={{ duration: 0.2 }}
                 />
               )}
