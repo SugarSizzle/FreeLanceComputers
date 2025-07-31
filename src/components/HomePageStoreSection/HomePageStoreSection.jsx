@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import styles from './HomePageStoreSection.module.css'
 import { supabase } from '../../lib/supabase';
 import { motion } from 'framer-motion';
@@ -10,29 +10,55 @@ export const HomePageStoreSection = () => {
 
   const [selectedType, setSelectedType] = useState([]);
   const [selectedCondition, setSelectedCondition] = useState([]);
-   
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
 
 
-    const toggleSelection = (value , selectedList, setSelectedList) => {
-
+    const toggleSelection = (value , selectedList, setSelectedList, key ,) => {
+      let updatedList;
       if(selectedList.includes(value)){
-        setSelectedList(selectedList.filter(item => item !== value));
+        updatedList = selectedList.filter(item => item !== value);
       }else{
-        setSelectedList([...selectedList, value]);
+        updatedList = [...selectedList, value];
       }
+
+      setSelectedList(updatedList);
+      console.log(updatedList);
+      const params = new URLSearchParams(searchParams);
+      console.log(params);
+      if (updatedList.length > 0){
+        console.log(key);
+        params.set(key, updatedList.join(','));
+      } else {
+
+        params.delete(key);
+
+      }
+      console.log(params);
+      setSearchParams(params);
+
     };
 
 
     const filterProductsLogic = async () => {
-
-        const {data , error} = await supabase
-        .from('products')
-        .select('*')
-        .in('type', selectedType)
-        .in('condition',selectedCondition)
-      
-        
+        navigate({
+          pathname:'/products',
+          search: `${searchParams.toString()}`
+        })
     }
+
+    useEffect(() => {
+
+      const type = searchParams.get('type');
+      const condition = searchParams.get('condition');
+
+      if(type) setSelectedType(type.split(','));
+      if(condition) setSelectedCondition(condition.split(','))
+
+    }, []);
+
+
 
 
 
@@ -40,7 +66,7 @@ export const HomePageStoreSection = () => {
       
    
       return (
-      
+        
         <motion.div
           className={styles.checkboxContainer}
           onClick={onChange}
@@ -77,6 +103,7 @@ export const HomePageStoreSection = () => {
       );
     };
 
+   
     return(
         <>
         <h3 className={styles.homePageStoreTitle}>Check out our store</h3>
@@ -89,13 +116,13 @@ export const HomePageStoreSection = () => {
                      
                      <CustomCheckbox
                      checked ={selectedType.includes('Laptop')}
-                     onChange={() => toggleSelection('Laptop', selectedType, setSelectedType)}
+                     onChange={() => toggleSelection('Laptop', selectedType, setSelectedType, 'type')}
                      label="Laptop"
                      />
                      <motion.h3 
                        className={styles.homePageStorePreferenceText}
-                       animate={{ opacity: selectedType.includes('Laptop') ? 1 : 0.5 }}
-                       transition={{ duration: 0.3 }}
+                       animate={{ opacity: selectedType.includes('Laptop') ? 1 : 0.5 , color: selectedType.includes('Laptop') ? '#b54ffd' : '#ffffff' }}
+                       transition={{ duration: 0.5 }}
                      >
                        Laptop
                      </motion.h3>
@@ -103,13 +130,13 @@ export const HomePageStoreSection = () => {
                    <div className={styles.preferencePair}>
                      <CustomCheckbox
                      checked ={selectedType.includes('Desktop')}
-                     onChange={() => toggleSelection('Desktop', selectedType, setSelectedType)}
+                     onChange={() => toggleSelection('Desktop', selectedType, setSelectedType, 'type')}
                      label="Desktop"
                      />
                      <motion.h3  
                        className={styles.homePageStorePreferenceText}
-                       animate={{ opacity: selectedType.includes('Desktop') ? 1 : 0.5 }}
-                       transition={{ duration: 0.3 }}
+                       animate={{ opacity: selectedType.includes('Desktop') ? 1 : 0.5 , color: selectedType.includes('Desktop') ? '#b54ffd' : '#ffffff' }}
+                       transition={{ duration: 0.5 }}
                      >
                        Desktop
                      </motion.h3>
@@ -122,14 +149,14 @@ export const HomePageStoreSection = () => {
                <div className={styles.preferencePair}>
                  <CustomCheckbox
                  checked ={selectedCondition.includes('New')}
-                 onChange={() => toggleSelection('New', selectedCondition, setSelectedCondition)}
+                 onChange={() => toggleSelection('New', selectedCondition, setSelectedCondition, 'condition')}
                  label="New"
                  />
                  <motion.h3 
                    className={`${styles.homePageStorePreferenceText}`}
                  
-                   animate={{ opacity: selectedCondition.includes('New') ? 1 : 0.5 }}
-                   transition={{ duration: 0.3 }}
+                   animate={{ opacity: selectedCondition.includes('New') ? 1 : 0.5 , color: selectedCondition.includes('New') ? '#b54ffd' : '#ffffff' }}
+                   transition={{ duration: 0.5 }}
                  >
                    New
                  </motion.h3>
@@ -137,13 +164,13 @@ export const HomePageStoreSection = () => {
                <div className={styles.preferencePair}>
                  <CustomCheckbox
                  checked ={selectedCondition.includes('Used')}
-                 onChange={() => toggleSelection('Used', selectedCondition, setSelectedCondition)}
+                 onChange={() => toggleSelection('Used', selectedCondition, setSelectedCondition, 'condition')}
                  label="Used"
                  />
                  <motion.h3 
                    className={styles.homePageStorePreferenceText}
-                   animate={{ opacity: selectedCondition.includes('Used') ? 1 : 0.5 }}
-                   transition={{ duration: 0.3 }}
+                   animate={{ opacity: selectedCondition.includes('Used') ? 1 : 0.5 , color: selectedCondition.includes('Used') ? '#b54ffd' : '#ffffff' }}
+                   transition={{ duration: 0.5 }}
                  >
                    Used
                  </motion.h3>
@@ -152,17 +179,22 @@ export const HomePageStoreSection = () => {
 
             <div className={styles.homePageSubmitButtonContainer}>
 
-              <button className={styles.homePageSubmitButton}>Submit</button>
-              <Link to="/products"><button className={styles.allSelectionsButton}>All Selections</button></Link>
+              <button onClick={filterProductsLogic} className={styles.homePageSubmitButton}>Submit</button>
+              {
+                (selectedType.length > 0 || selectedCondition.length > 0) && (
+                  <button onClick={() => {
+                    setSelectedType([]);
+                    setSelectedCondition([]);
+                    setSearchParams(new URLSearchParams());
+                  }} className={styles.clearFiltersButton}>Clear Filters</button>
+                )
+              }
 
               </div>
 
           </div>  
           
 
-
-     
- 
         </>
     )
 }

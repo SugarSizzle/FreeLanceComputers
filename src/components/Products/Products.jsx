@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import styles from './Products.module.css';
 import {motion} from 'framer-motion';
 
@@ -16,25 +16,42 @@ export const Products = () => {
 
   
 
+  const [searchParams] =useSearchParams();
+   
+  const typeFilter = searchParams.get('type')?.split(',') || [];
+  const conditionFilter = searchParams.get('condition')?.split(',') || [];
+
 
   useEffect(() => {
     async function fetchProducts() {
-      const { data, error } = await supabase.from("products").select("*");
-      if (error) {
-        console.error("Supabase error:", error);
+
+      let query = supabase.from('products').select("*");
+
+      if(typeFilter.length > 0) {
+        query = query.in("type" , typeFilter);
+      }
+
+      if(conditionFilter.length > 0) {
+        query = query.in('condition' , conditionFilter);
+      }
+
+      const {data ,error} = await query;
+
+      if(error) {
+        console.error("Supabase error:" , error);
         setError(error.message);
-      } else {
+      } else{
         setProducts(data);
       }
     }
 
     fetchProducts();
-  }, []);
+  }, [searchParams]);
 
 
 
 
-  console.log(products); // Good for dev only; remove in production
+
 
   const paginatedProducts = currentProducts.map((product) => {
 
