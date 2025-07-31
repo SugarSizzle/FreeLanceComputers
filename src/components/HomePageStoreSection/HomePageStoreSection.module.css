@@ -1,19 +1,24 @@
 
 
-.homePageStoreContainer,.homePageStoreOuterBorder{
+.homePageStoreContainer{
     display: flex;
     flex-direction: column;
     width: 90vw;
     height: 90vh;
-    background: linear-gradient(to bottom, #0f0816, #0b090e);
+    background: #000000;
     margin: auto;
     border-radius: 1rem;
     padding-bottom:1.3rem;
-    border: 1px solid #ffffff;
+    border: 1px solid #9000fa;
     top:0;
     left:0;
     right:0;
     bottom:0;
+
+    &:hover{
+      box-shadow: 0 0 15px #9000fa;
+      transition: all 0.5s ease;
+    }
    
   }
 
@@ -38,7 +43,7 @@
   
   
   .homePageStoreTitle{
-    background: linear-gradient(to right, #edb902, #e89005);
+    background: linear-gradient(to right, #cd92f7, #9000fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -49,7 +54,7 @@
   }
 
   .homePageStoreNewPreferenceText{
-    color: #ffffff;
+    color: #b54ffd;
     margin-top: 10vh;
     
   }
@@ -58,7 +63,7 @@
  
   .homePageStorePreferenceText{
 
-    color: #ffffff;
+    color: #b54ffd;
   }
 
 
@@ -105,9 +110,9 @@
   
   }
   
-  .allSelectionsButton{
-  width: 60vw;
-  height:8vh;
+  .clearFiltersButton{
+  width: 40vw;
+  height:5vh;
   border:none;
   border-radius: .5rem;
   font-family: 'JetBrains Mono', monospace;
@@ -116,7 +121,7 @@
   color: #ffffff;
   border: 1px solid #9d65da;
   background: linear-gradient(to right, #0f0816, #9000fa);
-
+    
     
   
   }
@@ -171,7 +176,12 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
+
+  &:hover{
+    box-shadow: 0 0 10px #9000fa;
+    transition: all 0.5s ease;
+  }
 
 }
 
@@ -182,6 +192,7 @@
   background-color: #a02bf3;
   border-radius: 25%;
   margin:auto;
+  
  
 }
 
@@ -195,8 +206,8 @@
 }
 
 .checked{
-
+  
   background: #000000;
-  box-shadow: 0 0 8px #9000fa;
+  box-shadow: 0 0 10px #9000fa;
 }
 
