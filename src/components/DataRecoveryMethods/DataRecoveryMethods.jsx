@@ -1,23 +1,83 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './DataRecoveryMethods.module.css'
+import { motion } from 'framer-motion'
+import { supabase } from '../../lib/supabase'
 
 export const DataRecoveryMethods = () => {
 
-        const dataRecoveryMethods =[
-            'System Repair Tools',
-            'File Restoration',
-            'Hard Drive Recovery',
-            'Data Backups'
-        ]
       
-        const mappedDataRecoveryMethods=dataRecoveryMethods.map((method, index)=>{
-          return(
-            <div  className={styles.dataRecoveryIndividualMethodContainer} key={index} >
-              <h3 className={styles.dataRecoveryIndividualMethodTitle}>{method}</h3>
-            </div>
+
+        
+                 const [method, setMethod] = useState([])
+         const [currentMethod, setCurrentMethod] = useState(null)
+        
+        useEffect(() => {
+            const fetchDataMethod = async () => {
+              try {
+                const { data, error } = await supabase
+                  .from('methods')
+                  .select('*');
+         
+                if (error) throw error;
+         
+                                 setMethod(data);
+                 if (data && data.length > 0) {
+                     setCurrentMethod(data[0]); 
+                 }
+                 console.log('Loaded data:', data)
+              } catch (error) {
+                console.error('Supabase error:', error);
+             
+              }
+            };
+            
+            fetchDataMethod();
+          }, []);
+     
+
+       
+
+
+
+
+        const mappedDataRecoveryMethods=method.map((method, index)=>{
+         
+            return(
+           
+            <motion.li
+            key={method.id}
+              layoutId={`method-${method.id}`}
+              style= {{
+                color: currentMethod === method ? '#EDB900' : 'whitesmoke',
+                
+            }}
+              onClick={() => setCurrentMethod(method)}
+              className={styles.dataRecoveryIndividualMethodTitle}>{method.title}
+           
+
+                {currentMethod === method && (
+                    <motion.div 
+                    style={{border: currentMethod === method ? '1px solid #EDB900' : '1px solid transparent'}}
+                    layoutId={`method-background`}
+                    className={styles.methodBackground}></motion.div>
+                )}
+            </motion.li>
           )
         })
-      
+        
+
+        const methodInfo = currentMethod ? (
+            <div className={styles.dataRecoveryMethodsInformationTextContainer}>
+                <h3 className={styles.dataRecoveryMethodsInformationTextHeader} >{currentMethod.header}</h3>
+                <p className={styles.dataRecoveryMethodsInformationText} >{currentMethod.description}</p>
+
+                <div className={styles.dataRecoveryMethodsInfoContainer}>
+                    <p className={styles.dataRecoveryMethodsInfoText}>{currentMethod.methods[0]}</p>
+                    <p className={styles.dataRecoveryMethodsInfoText}>{currentMethod.methods[1]}</p>
+
+                </div>
+            </div>
+         ) : null
 
 
     return (
@@ -34,17 +94,11 @@ export const DataRecoveryMethods = () => {
             <p className={styles.dataRecoveryMethodsInformationHeader}>Methods</p>
             <div className={styles.dataRecoveryMethodsInformationContainer}>
                 
-                <div className={styles.dataRecoveryMethodsSectionContainer}>
+            <div className={styles.dataRecoveryMethodsSectionContainer}>
                 {mappedDataRecoveryMethods}
-                </div>
+            </div>
 
-                <div className={styles.dataRecoveryMethodsInformationTextContainer}>
-                    <h3 className={styles.dataRecoveryMethodsInformationTextHeader} >Header Here, will finish later</h3>
-                        <p className={styles.dataRecoveryMethodsInformationText} >Text Here, will finish later. We can have methods here, and explain data recovery 
-                            methods here. Maybe a fading out effect on the text here, to match the effect of the border
-                        </p>
-
-                </div>
+                {methodInfo}
 
             </div>
 

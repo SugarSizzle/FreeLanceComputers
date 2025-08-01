@@ -41,8 +41,7 @@ export const HomePageServices = () => {
   }, []);
 
 
-  console.log( currentService)
-  console.log(  services)
+
 
   return (
     <>
