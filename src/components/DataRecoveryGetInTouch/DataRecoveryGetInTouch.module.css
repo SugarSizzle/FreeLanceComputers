@@ -1,12 +1,13 @@
 .dataRecoveryGetInTouchHeaderContainer{
 
     color:whitesmoke;
-    height:40vh;
+    height:20vh;
     width:95vw;
-    padding-top:20vh;
+   
     display:flex;
     flex-direction: column;
     text-align: left;
+  
     
   }
   
@@ -35,6 +36,7 @@
     width:100vw;
     margin:auto;
     gap:3vh;
+  
     
   
   }
@@ -42,6 +44,8 @@
   .dataRecoveryGetInTouchFormHeader{
     color:whitesmoke;
     font-size:.85rem;
+    text-align: center;
+    width:100vw;
     
   }
   
