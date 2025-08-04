@@ -1,0 +1,53 @@
+.recoveryMethodsCollapseHeader{
+  font-weight: 600;
+  color: whitesmoke;
+  font-size: .95rem;
+}
+
+.recoveryMethodsCollapseArrow{
+  font-size: 1.2rem;
+  color: whitesmoke;
+  transition: transform 0.3s ease;
+}
+
+.recoveryCollapseHeaderContainer{
+  display: flex;
+  flex-direction: row;
+  margin:auto;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 6vw;
+  margin-right: 10vw;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.recoveryCollapseInfoContainer{
+  width: 85vw;
+  margin: auto;
+  margin-left: 6vw;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+/* Animated border styles */
+.animatedBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: whitesmoke;
+  width: 100%;
+}
+
+.dataRecoveryMethodsInfoContainer{
+  cursor: pointer;
+  width:85vw;
+}
+
+.dataRecoveryMethodsInfoText{
+  line-height: 1.9;
+  font-size: .70rem;
+}
