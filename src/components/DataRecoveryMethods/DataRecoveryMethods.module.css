@@ -1,6 +1,8 @@
 .dataRecoveryMethodsContainer{
  
     margin-bottom:20vh;
+   
+   
 
   }
   
@@ -9,8 +11,9 @@
     width: 95vw;
  
     min-height: 80vh;
+   
     margin: auto;
- 
+    
     background: #000000;
     color:rgba(255, 255, 255, 0.849);
     border: 1px solid rgb(255, 255, 255);
@@ -19,7 +22,7 @@
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     text-align: left;
- 
+   
   
   }
   
@@ -140,70 +143,7 @@
   }
 
 
-  .recoveryMethodsCollapseHeader{
-    font-weight: 600;
-    color: whitesmoke;
-    font-size: .95rem;
-    
-  
-
-  }
-
-  .recoveryMethodsCollapseArrow{
-    font-size: 1.2rem;
-    color: whitesmoke;
-    transition: transform 0.3s ease;
-  }
-
-.recoveryCollapseHeaderContainer{
-  display: flex;
-  flex-direction: row;
-  margin:auto;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 6vw;
-  margin-right: 10vw;
-  cursor: pointer;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.recoveryCollapseInfoContainer{
-  width: 85vw;
-  margin: auto;
-  margin-left: 6vw;
-  padding: 1rem 0;
-  margin-bottom: 2rem;
-}
-
-/* Animated border styles */
-.animatedBorder {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: whitesmoke;
-  width: 100%;
-}
 
 
-.requestServicesContainer{
 
-  width: 95vw;
-  margin: auto;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  
-
-}
-
-.requestServicesHeader{
-  font-size: 1rem;
-  color: whitesmoke;
-  font-weight: 600;
-}
 

@@ -36,7 +36,7 @@ export const VirusGetInTouch = () => {
 
     const CustomCheckbox = ({checked, onChange, label}) => {
         const [isHovered, setIsHovered] = useState(false);
-
+        const [isChecked, setIsChecked] = useState(false);
         return (
             <motion.div 
                 className={styles.checkboxWrapper}
