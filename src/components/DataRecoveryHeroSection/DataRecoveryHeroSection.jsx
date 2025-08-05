@@ -1,9 +1,19 @@
 import React from 'react'
 import styles from './DataRecoveryHeroSection.module.css'
+import { useRef } from 'react'
 
 
 
 export const DataRecoveryHeroSection = () => {
+
+    const methodsRef = useRef(null)
+
+    const scrollToSection = () => {
+        const formSection = document.getElementById('methods');
+        if(formSection){
+            formSection.scrollIntoView({behavior: 'smooth'});
+        }
+    }
 
     return (
         <>
@@ -18,7 +28,7 @@ export const DataRecoveryHeroSection = () => {
             memories, or confidential information that has been  stolen. 
             </p>
 
-            <button className={styles.dataRecoveryHeroSectionButton}>
+            <button onClick={() => scrollToSection()} className={styles.dataRecoveryHeroSectionButton}>
                 Get Started
             </button>
 
