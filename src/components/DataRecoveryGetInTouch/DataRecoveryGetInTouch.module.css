@@ -1,71 +1,110 @@
-.dataRecoveryGetInTouchHeaderContainer{
+.dataRecoveryGetInTouchIcon{
 
+  font-size: 3rem;
+  margin-bottom: 5vh;
+  
+
+}
+
+
+.getInTouchContainer{
+  border:1px solid whitesmoke;
+  border-radius: 1rem;
+  width:95vw;
+  height:180vh;
+  margin:auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
+  &:hover{
+    box-shadow: 0 0 10px 0 #EDB900;
+    border:1px solid #EDB900;
+  }
+  
+
+}
+
+ 
+
+.dataRecoveryGetInTouchHeaderContainer{
     color:whitesmoke;
-    height:20vh;
-    width:95vw;
-   
+    width:90vw;
     display:flex;
     flex-direction: column;
-    text-align: left;
-  
-    
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 0;
+    margin: 0 auto;
+ 
+ 
   }
   
   
 
   .dataRecoveryGetInTouchHeader{
     font-weight: 600;
-    color:#ffffff;
-    align-self: center;
-    margin-left: 6vw;
+    background-image: linear-gradient(to right, #e6c241, #edb900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2vh;
+    text-align: center;
+  
   
   }
   
   .dataRecoveryGetInTouchText{
   
-    margin-left:6vw;
     font-size:.8rem;
     line-height:2;
     font-weight:300;
-  
-  }
-  
-  .dataRecoveryGetInTouchFormContactInfoContainer{
-    display:flex;
-    flex-direction: column;
-    width:100vw;
-    margin:auto;
-    gap:3vh;
-  
-    
-  
-  }
-  
-  .dataRecoveryGetInTouchFormHeader{
-    color:whitesmoke;
-    font-size:.85rem;
     text-align: center;
-    width:100vw;
-    
-  }
-  
-  .dataRecoveryGetInTouchFormNameInput{
-  
-    width:50vw;
-    height:5vh;
-    border-radius: 1rem;
-    border:none;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .9rem;
-    font-weight: 900;
-    text-align: left;
-    padding:.3rem;
-    margin-left:10vw;
-    
+    max-width: 80vw;
   
   }
+  
+     .dataRecoveryGetInTouchFormContactInfoContainer{
+     display: flex;
+     flex-direction: column;
+     width: 90vw;
+     margin: auto;
+     gap: 2vh;
+     justify-content: space-between;
+     align-items: center;
+    
+   
+
+   
+   }
+  
+  
+  
+     .dataRecoveryGetInTouchFormNameInput{
+   
+     width: 80vw;
+     height: 6vh;
+     border-radius: 1rem;
+     background-color: #ffffff;
+     color: #000000;
+     font-family: 'JetBrains Mono', monospace;
+     font-size: .9rem;
+     font-weight: 900;
+     text-align: left;
+     padding: 0.5rem;
+     outline: none;
+     margin: 1vh 0;
+     
+     &:focus{
+       color: #EDB900;
+       background-color: #000000;
+       border: 1px solid #EDB900;
+       box-shadow: 0 0 10px 0 #EDB900;
+     }
+     
+   
+   }
   
   .dataRecoveryGetInTouchFormContactMethodContainer{
     display:flex;
@@ -107,28 +146,7 @@
   }
 
   
-.dataRecoveryGetInTouchHeaderContainer{
 
-    color:whitesmoke;
-    height:40vh;
-    width:95vw;
-    padding-top:20vh;
-    display:flex;
-    flex-direction: column;
-    text-align: left;
-    
-  }
-  
-  
-  .dataRecoveryGetInTouchHeader{
-    font-size: 1rem;
-    font-weight: 600;
-    color:#ffffff;
-    align-self: center;
-    margin-left: 6vw;
-  
-  }
-  
   .dataRecoveryGetInTouchText{
   
     margin-left:6vw;
@@ -138,39 +156,11 @@
   
   }
   
-  .dataRecoveryGetInTouchFormContactInfoContainer{
-    display:flex;
-    flex-direction: column;
-    width:100vw;
-    margin:auto;
-    gap:3vh;
-    
   
-  }
   
-  .dataRecoveryGetInTouchFormHeader{
-    color:whitesmoke;
-    font-size:.85rem;
-    
-  }
+ 
   
-  .dataRecoveryGetInTouchFormNameInput{
   
-    width:50vw;
-    height:5vh;
-    border-radius: 1rem;
-    border:none;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .9rem;
-    font-weight: 900;
-    text-align: left;
-    padding:.3rem;
-    margin-left:10vw;
-    
-  
-  }
   
   .dataRecoveryGetInTouchFormContactMethodContainer{
     display:flex;
@@ -195,12 +185,16 @@
   }
   
   .dataRecoveryGetInTouchFormContactMethodInput{
-    width:3vw;
+    width:5vw;
     height:3vh;
     border-radius: 1rem;
     border:none;
     
   }
+  
+ 
+
+
   
   .dataRecoveryGetInTouchFormContactMethodLabel{
   
@@ -213,8 +207,17 @@
 
   .dataRecoveryLineLight{
     width:80vw;
-    border-top:1px solid #ffffff;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #EDB900, transparent);
     margin:auto;
+    position: relative;
+    box-shadow: 
+      0 2px 4px rgba(237, 185, 0, 0.6),
+      0 4px 8px rgba(237, 185, 0, 0.4),
+      0 8px 16px rgba(237, 185, 0, 0.3),
+      0 12px 24px rgba(237, 185, 0, 0.2);
+    filter: drop-shadow(0 1px 2px rgba(237, 185, 0, 0.8));
+    margin-bottom:10vh;
   }
 
   
@@ -230,12 +233,10 @@
   
   /* Data Recovery Get In Touch Form Textarea */
   .dataRecoveryGetInTouchFormTextareaContainer{
-    margin-top:7vh;
+    margin-top:8vh;
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    width:95vw;
+    margin-bottom:5vh;
   }
   
   .dataRecoveryGetInTouchFormTextareaHeader{
@@ -249,33 +250,115 @@
   
   .dataRecoveryGetInTouchFormTextarea{
     display:flex;
-    width:90vw;
+    width:90%;
     height:18vh;
     border-radius: 1rem;
     border:none;
-    background-color: #ffffff;
-    color: #000000;
+
     font-family: 'JetBrains Mono', monospace;
     font-size: .8rem;
     font-weight: 900;
     padding:.3rem;
     margin-left:5vw;
     margin-bottom:5vh;
-  
+    outline:none;
+
+    &:focus{
+      color:#EDB900;
+      background-color: #000000;
+      border:1px solid whitesmoke;
+      box-shadow: 0 0 10px 0 whitesmoke;
+    }
   }
   
-  .dataRecoveryGetInTouchFormSubmitButton{
-  
+    .dataRecoveryGetInTouchFormSubmitButton{
+
     width:40vw;
     height:5vh;
     border-radius: 1rem;
     border:none;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
+    border:1px solid whitesmoke;
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     font-weight: 900;
     margin-left:5vw;
+    align-self: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #EDB900, #ffffff);
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+
+    &:hover{
+      transform: scale(1.05);
+      color: #000000;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &::before {
+        left: 0;
+      }
+      
+      &:active{
+        transform: scale(0.95);
+        transition: all 0.1s ease;
+      }
+    }
+   
   }
   
   
+
+  .checkboxWrapper{
+    width:30vw; 
+    height:13vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin:auto;
+  }
+
+  .checkbox{
+    border-radius: .5rem;
+    width:8vw;
+    height:5vh;
+    border:1px solid #ffffff;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:1vw;
+
+  }
+
+     .checkboxInner{
+     width:50%;
+     height:50%;
+      border-radius: .25rem;
+    
+   }
+
+  .checkboxLabel{
+
+    font-size:.85rem;
+    font-weight: 600;
+    color:whitesmoke;
+    margin-left: 1vw;
+
+  }
+

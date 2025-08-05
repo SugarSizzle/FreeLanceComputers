@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styles from './DataRecoveryGetInTouch.module.css'
+import { FaWpforms } from "react-icons/fa";
+
 
 export const DataRecoveryGetInTouch = () => {
 
@@ -74,7 +76,7 @@ export const DataRecoveryGetInTouch = () => {
                 <motion.span 
                 className={styles.checkboxLabel}
                 animate={{ 
-                    color: isHovered ? '#3A8DFF' : (checked ? '#EDB900' : '#ffffff'),
+                    color: isHovered ? '#EDB900' : (checked ? '#EDB900' : '#ffffff'),
                     scale: isHovered ? 1.1 : 1
                 }}
                 transition={{ type: 'spring', duration: 0.3 }}
@@ -87,50 +89,104 @@ export const DataRecoveryGetInTouch = () => {
 
 
     return(
-        <div id='get-in-touch'>
-        <div className={styles.dataRecoveryLineLight} />
-            <div className={styles.dataRecoveryGetInTouchHeaderContainer}>
-                <h3 className={styles.dataRecoveryGetInTouchHeader}>Get In Touch</h3>
-                <p className={styles.dataRecoveryGetInTouchText}>
-                   Did you not find what you were looking for? Fill out the form below
-                   with your custom request, and we'll get back to you shortly!
-                </p>
+    <>
+        <motion.div 
+        initial={{opacity:0, scale:0.85, y:200}}
+        whileInView={{opacity:1, scale:1, y:0}}
+        transition={{duration:.25, ease:'easeInOut'}}
+        viewport={{ once: true }}
+        className={styles.dataRecoveryLineLight} />
+            <motion.div 
+            initial={{opacity:0, scale:0.85, y:200}}
+            whileInView={{opacity:1, scale:1, y:0}}
+            transition={{duration:.25, ease:'easeInOut'}}
+            viewport={{ once: true }}
+            className={styles.getInTouchContainer} 
+            id='get-in-touch'>
+            
+                <div className={styles.dataRecoveryGetInTouchHeaderContainer}>
+                    <FaWpforms className={styles.dataRecoveryGetInTouchIcon} />
+                    <h3 className={styles.dataRecoveryGetInTouchHeader}>Get In Touch</h3>
+                    <p className={styles.dataRecoveryGetInTouchText}>
+                    Did you not find what you were looking for? Fill out the form below
+                    with your custom request, and we'll get back to you shortly!
+                    </p>
+                </div>
+
+                <div className={styles.dataRecoveryGetInTouchFormContainer}>
+
+                    <form>
+
+                        <div className={styles.dataRecoveryGetInTouchFormContactInfoContainer}>
+                            <motion.input 
+                                initial={{opacity:0, scale:0.85, x:200}}
+                                whileInView={{opacity:1, scale:1, x:0}}
+                                transition={{duration:.25, ease:'easeInOut'}}
+                                viewport={{ once: true }}
+                                className={styles.dataRecoveryGetInTouchFormNameInput} 
+                                type="text" 
+                                placeholder='First Name' />
+                            <motion.input 
+                                initial={{opacity:0, scale:0.85, x:200}}
+                                whileInView={{opacity:1, scale:1, x:0}}
+                                transition={{duration:.25, ease:'easeInOut'}}
+                                viewport={{ once: true }}
+                                className={styles.dataRecoveryGetInTouchFormNameInput} 
+                                type="text" 
+                                placeholder='Last Name' />
+                            <motion.input 
+                                initial={{opacity:0, scale:0.85, x:200}}
+                                whileInView={{opacity:1, scale:1, x:0}}
+                                transition={{duration:.25, ease:'easeInOut'}}
+                                viewport={{ once: true }}
+                                className={styles.dataRecoveryGetInTouchFormNameInput} 
+                                type="text" 
+                                placeholder='Email' />
+                            <motion.input 
+                                initial={{opacity:0, scale:0.85, x:200}}
+                                whileInView={{opacity:1, scale:1, x:0}}
+                                transition={{duration:.25, ease:'easeInOut'}}
+                                viewport={{ once: true }}
+                                className={styles.dataRecoveryGetInTouchFormNameInput} 
+                                type="text" 
+                                placeholder='Phone Number' />
+                        </div>
+
+                        <div className={styles.dataRecoveryGetInTouchFormContactMethodContainer}>   
+                                <p className={styles.dataRecoveryGetInTouchFormContactMethodTitle}>Preferred Contact Method</p>
+                                <motion.div 
+                                    initial={{opacity:0, scale:0.85, x:200}}
+                                    whileInView={{opacity:1, scale:1, x:0}}
+                                    transition={{duration:.25, ease:'easeInOut'}}
+                                    viewport={{ once: true }}
+                                    className={styles.dataRecoveryRadioGroup}>
+                                    <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('email')} onChange={() => toggleSelection('email', selectedType, setSelectedType)} label='Email' />
+                                    <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('phone')} onChange={() => toggleSelection('phone', selectedType, setSelectedType)} label='Phone' />
+                                    <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('text')} onChange={() => toggleSelection('text', selectedType, setSelectedType)} label='Text' />
+                                </motion.div>
+                        </div>
+
+                        <motion.div 
+                            initial={{opacity:0, scale:0.85, x:200}}
+                            whileInView={{opacity:1, scale:1, x:0}}
+                            transition={{duration:.25, ease:'easeInOut'}}
+                            viewport={{ once: true }}
+                            className={styles.dataRecoveryGetInTouchFormTextareaContainer}>
+
+                                
+                            <p className={styles.dataRecoveryGetInTouchFormTextareaHeader}>Give a detailed description of your problem, this will help us ensure the best approach to helping you!</p>
+                            <textarea className={styles.dataRecoveryGetInTouchFormTextarea} placeholder='Tell Us About Your Problem' />
+                            <button className={styles.dataRecoveryGetInTouchFormSubmitButton}> SUBMIT </button>
+
+
+                        </motion.div>
+
+                    </form>
             </div>
 
-            <div className={styles.dataRecoveryGetInTouchFormContainer}>
 
-                <form>
-
-                    <div className={styles.dataRecoveryGetInTouchFormContactInfoContainer}>
-                        <p className={styles.dataRecoveryGetInTouchFormHeader}>Fill out the form, and we'll get you to you shortly.</p>
-                        <input className={styles.dataRecoveryGetInTouchFormNameInput} type="text" placeholder='First Name' />
-                        <input className={styles.dataRecoveryGetInTouchFormNameInput} type="text" placeholder='Last Name' />
-                        <input className={styles.dataRecoveryGetInTouchFormNameInput} type="text" placeholder='Email' />
-                        <input className={styles.dataRecoveryGetInTouchFormNameInput} type="text" placeholder='Phone Number' />
-                    </div>
-
-                    <div className={styles.dataRecoveryGetInTouchFormContactMethodContainer}>   
-                            <p className={styles.dataRecoveryGetInTouchFormContactMethodTitle}>Preferred Contact Method</p>
-                            <div className={styles.dataRecoveryRadioGroup}>
-                                <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('email')} onChange={() => toggleSelection('email', selectedType, setSelectedType)} label='Email' />
-                                <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('phone')} onChange={() => toggleSelection('phone', selectedType, setSelectedType)} label='Phone' />
-                                <CustomCheckbox className={styles.dataRecoveryGetInTouchFormContactMethodInput} checked={selectedType.includes('text')} onChange={() => toggleSelection('text', selectedType, setSelectedType)} label='Text' />
-                            </div>
-                    </div>
-
-                    <div className={styles.dataRecoveryGetInTouchFormTextareaContainer}>
-                        <p className={styles.dataRecoveryGetInTouchFormTextareaHeader}>Give a detailed description of your problem, this will help us ensure the best approach to helping you!</p>
-                        <textarea className={styles.dataRecoveryGetInTouchFormTextarea} placeholder='Tell Us About Your Problem' />
-                        <button className={styles.dataRecoveryGetInTouchFormSubmitButton}> SUBMIT </button>
-
-
-                    </div>
-
-                </form>
-            </div>
-
-
-        </div>
+        </motion.div>
+    </>
     )
 
 
