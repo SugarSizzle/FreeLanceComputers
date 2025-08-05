@@ -6,37 +6,14 @@ import { supabase } from '../../lib/supabase'
 
 
 
-export  const MethodsCollapsableSection = () => {
+export  const MethodsCollapsableSection = ({ currentMethod }) => {
 
-    const [method, setMethod] = useState([])
-    const [currentMethod, setCurrentMethod] = useState(null)
     const [isOpenMethods, setIsOpenMethods] = useState(false)
     const [isOpenRequest, setIsOpenRequest] = useState(false)
     
-    useEffect(() => {
-        const fetchDataMethod = async () => {
-          try {
-            const { data, error } = await supabase
-              .from('methods')
-              .select('*');
-     
-            if (error) throw error;
-     
-            setMethod(data);
-            if (data && data.length > 0) {
-                setCurrentMethod(data[0]); 
-            }
-            console.log('Loaded data:', data)
-          } catch (error) {
-            console.error('Supabase error:', error);
-         
-          }
-        };
-        
-        fetchDataMethod();
-      }, []);
-    
       
+
+
 
     const highlightTextBeforeColon = (text) => {
         if (!text) return null;
@@ -58,7 +35,11 @@ export  const MethodsCollapsableSection = () => {
     };
 
 
+
+
   
+console.log(` this is the method ${currentMethod}`)
+
 
 
 
@@ -72,6 +53,9 @@ export  const MethodsCollapsableSection = () => {
           </p>
         </div>
        ) : null
+
+
+
 
 
 
