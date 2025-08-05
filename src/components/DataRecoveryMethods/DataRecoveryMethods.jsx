@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useRef} from 'react'
 import styles from './DataRecoveryMethods.module.css'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { supabase } from '../../lib/supabase'
 import { FaArrowDownLong } from "react-icons/fa6";
 import {MethodsCollapsableSection} from './MethodsCollapsableSection'
 import { RequestService } from './RequestService'
 
-export const DataRecoveryMethods = () => {
 
+export const DataRecoveryMethods = () => {
+        const ref = useRef(null)
       
         const [method, setMethod] = useState([])
         const [currentMethod, setCurrentMethod] = useState(null)
@@ -37,25 +38,10 @@ export const DataRecoveryMethods = () => {
             fetchDataMethod();
           }, []);
      
+
+
+        
  
-        const highlightTextBeforeColon = (text) => {
-            if (!text) return null;
-            
-            const colonIndex = text.indexOf(':');
-            if (colonIndex === -1) {
-                return <span>{text}</span>;
-            }
-            
-            const beforeColon = text.substring(0, colonIndex);
-            const afterColon = text.substring(colonIndex);
-            
-            return (
-                <span>
-                    <span style={{ color: '#EDB900', fontWeight: 'bold' }}>{beforeColon}</span>
-                    <span>{afterColon}</span>
-                </span>
-            );
-        };
      
         const mappedDataRecoveryMethods=method.map((method, index)=>{
          
@@ -89,13 +75,36 @@ export const DataRecoveryMethods = () => {
          ) : null
 
 
-          
+
+
+      const {scrollYProgress} = useScroll({
+        target:ref,
+        offset: ['start 90%', 'end 20%']
+
+      })  
         
+      const opacity = useTransform(scrollYProgress, [0, .3], [0, 1])
+
+      useEffect(() => {
+        const unsubscribe = scrollYProgress.on('change', (value) =>{
+          console.log(value)
+        })
+
+        return () => unsubscribe()
+      },[])
 
 
     return (
         <>
-        <div className={styles.dataRecoveryMethodsContainer}>
+        <motion.div 
+        ref={ref} 
+        id='methods' 
+        className={styles.dataRecoveryMethodsContainer} 
+        style={{opacity:opacity}}
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:1, ease:'easeInOut'}}
+        >
          
             <p className={styles.dataRecoveryMethodsInformationHeader}>Methods</p>
             <div className={styles.dataRecoveryMethodsInformationContainer}>
@@ -108,14 +117,14 @@ export const DataRecoveryMethods = () => {
                     {methodInfo}
                 </div>
 
-              <MethodsCollapsableSection />
+              <MethodsCollapsableSection currentMethod={currentMethod} />
 
               <RequestService />
                 
             </div>
 
        
-        </div>
+        </motion.div>
         </>
     )
 }

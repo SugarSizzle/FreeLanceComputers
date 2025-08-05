@@ -19,19 +19,6 @@ export const VirusGetInTouch = () => {
         }
     }
 
-    // const ref = useRef(null)
-
-    // const {scrollYProgress} = useScroll({
-
-    //     target:ref ,
-    //     offset: ["start 100%", "end 100%"]
-
-    // })
-
-    
-
-
-    // const opacity = useTransform(scrollYProgress, [0, .5], [0, 1])
 
 
     const CustomCheckbox = ({checked, onChange, label}) => {
