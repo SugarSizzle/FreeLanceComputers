@@ -214,37 +214,65 @@
     margin-bottom:5vh;
   }
   
-  .requestServiceFormSubmitButton{
+
+
+
+
+
+
+
+  .requestServiceFormSubmitButton, .notWhatYouNeedButton{
     width:40vw;
     height:5vh;
     border-radius: 1rem;
-    border:none;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
+    border:1px solid whitesmoke;
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     font-weight: 900;
     margin-left:5vw;
-  }
-
-  .requestServiceFormSubmitButtonContainer{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width:100%;
-  }
-
-  .requestServiceFormSubmitButton{
-    width:40vw;
-    height:5vh;
-    border-radius: 1rem;
-    border:none;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'JetBrains Mono', monospace;
     margin-top:5vh;
-    margin-bottom:5vh;
+    align-self: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #EDB900, #ffffff);
+      transition: left 0.5s ease;
+      z-index: -1;
+     
+
+    }
+
+    &:hover{
+      transform: scale(1.05);
+      color: #000000;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border:1px solid #ffffff;
+
+      &::before{
+        left:0;
+      }
+    }
+
+    &:active{
+      transform: scale(0.95);
+      transition: all 0.1s ease;
+      border:1px solid #EDB900;
+    }
+
+
+
   }
 
   .checkboxWrapper{
@@ -294,17 +322,9 @@
     font-weight: 900;
   }
 
-  .requestServiceFormSubmitButton:hover{
-    background-color: #000000;
-    color: #EDB900;
-    border: 2px solid #ffffff;
-    transition: all 0.3s ease;
-  }
 
-  .requestServiceFormSubmitButton:active{
-    background-color: #000000;
-    border: 2px solid #EDB900;
-  }
+
+
 
   .notWhatYouNeed{
     height:30vh;
@@ -328,15 +348,3 @@
     width:100vw;
   }
 
-  .notWhatYouNeedButton{
-    width:40vw;
-    height:5vh;
-    border-radius: 1rem;
-    border:none;
-    font-size:.9rem;
-    font-weight: 800;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'JetBrains Mono', monospace;
-    margin-top:5vh;
-  }

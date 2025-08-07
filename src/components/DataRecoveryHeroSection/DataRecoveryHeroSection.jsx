@@ -10,6 +10,7 @@ export const DataRecoveryHeroSection = () => {
 
     const scrollToSection = () => {
         const formSection = document.getElementById('methods');
+        
         if(formSection){
             formSection.scrollIntoView({behavior: 'smooth'});
         }

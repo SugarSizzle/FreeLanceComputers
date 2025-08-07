@@ -38,7 +38,7 @@ export  const MethodsCollapsableSection = ({ currentMethod }) => {
 
 
   
-console.log(` this is the method ${currentMethod}`)
+
 
 
 
@@ -63,6 +63,7 @@ console.log(` this is the method ${currentMethod}`)
 
     <>
         <div 
+            
             onClick={() => setIsOpenMethods(!isOpenMethods)}
             className={styles.recoveryCollapseHeaderContainer}
         >
