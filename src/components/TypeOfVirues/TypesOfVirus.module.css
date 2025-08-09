@@ -1,0 +1,110 @@
+
+
+.typeOfVirusContainer{
+    
+    width:95vw;
+    height:120vh;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    border:1px solid #aaa;
+    border-radius:1rem;
+    padding-top:2vh;
+    margin-top:35vh;
+
+
+}
+
+.virusHeader{
+    
+    color:#e53935;
+    font-size:.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 900;
+    margin-bottom:2vh;
+    margin-left:3vw;
+    text-align: left;
+}
+
+.virusContainer{
+    width:98%;
+    padding-left:1vw;
+    padding-right:1vw;
+    height:10vh;
+    display:flex;
+    flex-direction: row;
+    gap:1vw;
+    margin-left:auto;
+    margin-right:auto;
+    border-bottom:1px solid #aaa;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    scroll-behavior: smooth;
+
+}
+
+
+
+.virusTitle{
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+ 
+    font-size:.8rem;
+    width:100%;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.virusBackground{
+    width:100%;
+    height:50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem;
+    z-index: -1;
+    background: linear-gradient(to bottom, #2b2a2a , #020202 );
+}
+
+.virusInfoContainer{
+
+    width:100%;
+    height:60vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.virusInfoHeader{
+   color:#e53935 ;
+    font-size:1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 900;
+    margin-bottom:2vh;
+    align-self: start;
+    margin-left:3vw;
+}
+
+.virusInfoDescription{
+    color:#d7d7d7;
+    font-size:.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    margin-bottom:2vh;
+    margin-left:10vw;
+    text-align: left;
+    line-height: 2;
+
+
+
+}

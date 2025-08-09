@@ -12,8 +12,7 @@ export const DataRecoveryMethods = () => {
       
         const [method, setMethod] = useState([])
         const [currentMethod, setCurrentMethod] = useState(null)
-        const [isOpenMethods, setIsOpenMethods] = useState(false)
-        const [isOpenRequest, setIsOpenRequest] = useState(false)
+      
         
         useEffect(() => {
             const fetchDataMethod = async () => {
@@ -85,13 +84,7 @@ export const DataRecoveryMethods = () => {
         
       const opacity = useTransform(scrollYProgress, [0, .3], [0, 1])
 
-      useEffect(() => {
-        const unsubscribe = scrollYProgress.on('change', (value) =>{
-          console.log(value)
-        })
-
-        return () => unsubscribe()
-      },[])
+     
 
 
     return (
