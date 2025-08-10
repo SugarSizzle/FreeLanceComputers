@@ -1,13 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './VirusGetInTouch.module.css'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { FaWpforms } from "react-icons/fa";
+import { useVirus } from '../UseVirusContext';
 
 
 export const VirusGetInTouch = () => {
 
     const [selectedType, setSelectedType] = useState([]);
-   
+    const { selectedVirus } = useVirus();
+    const [message, setMessage] = useState('');
 
+    // Auto-fill the message only when report button is clicked
+    useEffect(() => {
+        if (selectedVirus && selectedVirus.type && selectedVirus.reportClicked) {
+            setMessage(`I am contacting you about ${selectedVirus.type} virus. Please help me resolve this issue.`);
+        }
+    }, [selectedVirus]);
 
 
 
@@ -33,18 +42,24 @@ export const VirusGetInTouch = () => {
                 onHoverEnd={() => setIsHovered(false)}
             >
                 <motion.div 
+                
                 className={`${styles.checkbox} ${checked ? styles.checked : styles.unchecked}`}
                 animate={checked ? 'checked' : 'unchecked'}
                 variants={{
-                    unchecked: {scale:.8 , opacity:.7,rotate:-90},
+                    unchecked: {scale:.8 , opacity:.7, rotate:-90},
                     checked: {
                         scale:1.1,
-                        rotate:360,
+                        rotate: [0, -90, 360],
                         opacity:1,
-                        transition: {type: 'spring', rotate: {duration:0.3} }
-
+                        transition: {
+                            type: 'spring', 
+                            rotate: {
+                                duration: .8,
+                                times: [0, 0.5, 1],
+                                ease: "easeInOut"
+                            }
+                        }
                     }
-
                 }}
                 onClick={onChange}
                 style={{ backgroundColor: 'whitesmoke' }}
@@ -72,7 +87,7 @@ export const VirusGetInTouch = () => {
                 <motion.span 
                 className={styles.checkboxLabel}
                 animate={{ 
-                    color: isHovered ? '#3A8DFF' : (checked ? '#3A8DFF' : '#ffffff'),
+                    color: isHovered ? '#E63946' : (checked ? '#E63946' : '#ffffff'),
                     scale: isHovered ? 1.1 : 1
                 }}
                 transition={{ type: 'spring', duration: 0.3 }}
@@ -99,14 +114,13 @@ export const VirusGetInTouch = () => {
             whileInView={{opacity: 1, y: 0}}
             transition={{delay: 0.3, duration: 0.3, type: 'ease-in-out', }}
             initial={{opacity: 0, y: 200}}
-           
-        
-           
+            id="get-in-touch"
             className={styles.getInTouchContainer}>
                 <div className={styles.getInTouchTitleContainer}>
                 </div>
                 
                 <div className={styles.getInTouchFormContainer}>
+                    <FaWpforms className={styles.getInTouchFormIcon} />
                     <h3>Fill out the form, and we'll get to you shortly</h3>
 
                     <form>  
@@ -147,7 +161,9 @@ export const VirusGetInTouch = () => {
 
                         <textarea 
                         id='virus-report-message' 
-                        className={styles.getInTouchContactInfoTextarea} 
+                        className={styles.getInTouchContactInfoTextarea}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                         placeholder='Tell Us About Your Problem' />
                         <button className={styles.getInTouchContactInfoButton} type='submit'>Submit</button>
                     </div>
