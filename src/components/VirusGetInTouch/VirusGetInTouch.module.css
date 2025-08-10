@@ -1,8 +1,19 @@
 
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 .getInTouchContainer{
-    background: linear-gradient(to bottom, #000000 30%);
-    border: 1px solid #d7d7d7;
+    background:  #0A0A0A ;
+    border: 1px solid 	#ffffff33;
     border-radius: 1rem;
     height: 160vh;
     width: 95vw;
@@ -15,30 +26,43 @@
     
   }
 
-  .getInTouchContainer:hover{
-    border: 1px solid #3A8DFF;
+  .getInTouchFormIcon{
+    font-size: 3.5rem;
+    color: #F5F5F5;
+    margin-bottom: 2rem;
+   
+    &:hover{
+      color: #FF4D4D;
+      transition: all 0.5s ease;
+    }
+
+  }
+
+
+     .getInTouchContainer:hover{
+     border: 1px solid #FF4D4D;
+     
+  
+     box-shadow: 0 0 20px 0 rgba(229, 57, 53, 0.6);
     
  
-    box-shadow: 0 0 20px 0 rgb(255, 255, 255);
-   
-
-
-    border: 1px solid #3A8DFF;
-
  
-  }
+     border: 1px solid #FF4D4D;
+ 
+  
+   }
 
   .getInTouchTitleContainer{
 
   
-    margin-top: 20vh;
-    margin-bottom: 5vh;
+    margin-top: 8vh;
+    margin-bottom: 3vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 3rem;
+    gap: 2rem;
 
   }
 
@@ -49,35 +73,56 @@
     justify-content: center;
     width: 100%;
    
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
-  .getInTouchTitle{
-    background: linear-gradient(to right, #3A8DFF, #6CE0FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.25rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-    text-align: center;
-    width: 70%;
-    margin:auto;
-
-   
-  }
+     .getInTouchTitle{
+     background: linear-gradient(to right, #FF4D4D, #ff6b6b);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     color: transparent;
+     font-family: 'JetBrains Mono', monospace;
+     font-size: 1.25rem;
+     font-weight: 900;
+     margin-bottom: 2rem;
+     text-align: center;
+     width: 70%;
+     margin:auto;
+ 
+    
+   }
 
   .getInTouchTitleDivider{
     width: 80%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #3A8DFF, #6CE0FF, #3A8DFF, transparent);
+    height: 3px;
+    background: linear-gradient(to right, transparent, #ff0000, #fd5059, #fd5059, #ff0000, transparent);
     margin: 0 auto;
     position: relative;
+    border-radius: 2px;
+    box-shadow: 
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 20px rgba(255, 105, 180, 0.4),
+      0 0 30px rgba(255, 20, 147, 0.2),
+      inset 0 0 15px rgba(255, 105, 180, 0.3);
+    animation: glowPulse 4s ease-in-out infinite alternate;
+  }
 
-    
-   
+  @keyframes glowPulse {
+    0% {
+      box-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.6),
+        0 0 20px rgba(255, 105, 180, 0.4),
+        0 0 30px rgba(255, 20, 147, 0.2),
+        inset 0 0 25px rgba(255, 105, 180, 0.3);
+    }
+    100% {
+      box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.8),
+        0 0 25px rgba(255, 105, 180, 0.6),
+        0 0 35px rgba(255, 20, 147, 0.4),
+        inset 0 0 30px rgba(255, 105, 180, 0.5);
+    }
   }
 
  
@@ -105,7 +150,7 @@
   .checkboxInner{
     width: 50%;
     height: 50%;
-    background: linear-gradient(to bottom, #000000 30%, #7a7a7a);
+    background: linear-gradient(to bottom, #0A0A0A 30%, #E63946);
     border-radius: 0.25rem;
   }
 
@@ -166,96 +211,95 @@
   
   
   
-  .getInTouchContactInfoInput, .getInTouchContactNameInput{
-    width:50vw;
-    height:5vh;
-    margin-left:5vw;
-    border-radius: 1rem;
-    border:none;
-    background-color: #ffffff;
-    color: #3A8DFF;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .9rem;
-    font-weight: 800;
-    text-align: left;
-    padding:.3rem;
-    transition: all 0.3s ease;
-    
-  
-
-    
-  }
-
-
-  .getInTouchContactInfoInput, .getInTouchContactNameInput{
-    color: #3A8DFF;
-   
-
-    &::placeholder {
-      color: #000000;
-      opacity: 1;
-    }
-    
-    &:hover::placeholder {
-      color: #3A8DFF;
-      opacity: 1;
-      background-color:transparent;
-
-    }
-
-    &:focus::placeholder {
-      color: #3A8DFF;
-      
-      opacity: 1;
-      background-color: transparent;
-    }
-
-    &:focus{
-      outline: none;
-      background-color: #000000;
-      color: #3A8DFF;
-      border: 1px solid #3A8DFF;
-      transition: all 0.3s ease;
-      
-    }
-
-    &:hover{
-      background: linear-gradient(to right, #000000);
-      color: #ffffff;
-      border: 1px solid #3A8DFF;
-      transition: all 0.3s ease; 
+     .getInTouchContactInfoInput, .getInTouchContactNameInput{
+     width:50vw;
+     height:5vh;
+     margin-left:5vw;
+     border-radius: 1rem;
+     border:none;
+     background-color: #ffffff;
+     color: #e53935;
+     font-family: 'JetBrains Mono', monospace;
+     font-size: .9rem;
+     font-weight: 800;
+     text-align: left;
+     padding:.3rem;
+     transition: all 0.3s ease;
      
-    }
+   
+ 
+     
+   }
 
-  }
+
+     .getInTouchContactInfoInput, .getInTouchContactNameInput{
+     color: #ffffff;
+      background-color: #000000;
+      border: 1px solid #B0B0B0;
+ 
+     &::placeholder {
+       color: 	rgba(255,255,255,0.2);
+       opacity: 1;
+     }
+     
+     &:hover::placeholder {
+       color: #E63946;
+       opacity: 1;
+       background-color:transparent;
+ 
+     }
+ 
+     &:focus::placeholder {
+       color: #e53935;
+       opacity: 1;
+       background-color: transparent;
+     }
+ 
+     &:focus{
+       outline: none;
+       background-color: #000000;
+       color: #e53935;
+       border: 1px solid #e53935;
+       transition: all 0.3s ease;
+       
+     }
+ 
+     &:hover{
+       background: linear-gradient(to right, #000000);
+       border: 1px solid #e53935;
+       transition: all 0.3s ease; 
+      
+     }
+ 
+   }
 
   
-  .getInTouchContactInfoTextarea{
-    color: #3A8DFF;
-    width:80vw;
-    height:20vh;
-    border-radius: 1rem;
-    align-self: center;
-    text-align: left;
-    outline: none;
-    background-color: #000000;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .8rem;
-    font-weight: 800;
-    padding: 1rem;
-
-    &::placeholder{
-      color: #3A8DFF;
-      opacity: 1;
-      background-color: transparent;
-
-
-
-
-
-    }
-  
-  }
+     .getInTouchContactInfoTextarea{
+     color: #e53935;
+     width:80vw;
+     height:20vh;
+     border-radius: 1rem;
+     align-self: center;
+     text-align: left;
+     outline: none;
+     background-color: #000000;
+     font-family: 'JetBrains Mono', monospace;
+     font-size: .8rem;
+     font-weight: 800;
+     padding: 1rem;
+ 
+     &::placeholder{
+       color: #e53935;
+       opacity: 1;
+       background-color: transparent;
+ 
+ 
+ 
+ 
+ 
+     }
+   
+   }
   
   .getInTouchContactInfoButton{
     align-self: center;
@@ -273,17 +317,19 @@
     position: relative;
     overflow: hidden;
     
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, #000000 60%, #ffffff);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
+         &::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: -100%;
+       width: 100%;
+       height: 100%;
+       background-size: 400% 400%;
+       background: linear-gradient(45deg, #e53935, #ff6b6b, #e53935, #c62828);
+       transition: left 0.4s ease;
+       z-index: -1;
+       animation: gradientShift 3s ease infinite;
+     }
     
     &:hover::before {
       left: 0;

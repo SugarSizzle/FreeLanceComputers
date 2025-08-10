@@ -7,7 +7,7 @@
     margin:auto;
     display:flex;
     flex-direction: column;
-    border:1px solid #aaa;
+    border:1px solid rgba(255,255,255,0.2);
     border-radius:1rem;
     padding-top:2vh;
     margin-top:35vh;
@@ -26,26 +26,94 @@
     text-align: left;
 }
 
+.virusIcon{
+    font-size:0.75rem;
+    color:#e53935;
+    margin-left: 0.5rem;
+}
+
 .virusContainer{
     width:98%;
     padding-left:1vw;
     padding-right:1vw;
-    height:10vh;
+    height:15vh;
     display:flex;
     flex-direction: row;
     gap:1vw;
     margin-left:auto;
     margin-right:auto;
-    border-bottom:1px solid #aaa;
+    border-bottom:1px solid rgba(255,255,255,0.2);
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+    scrollbar-color: #e53935 #0A0A0A;
     scroll-behavior: smooth;
-
+    position: relative;
+    
+    /* Custom Webkit Scrollbar Styling */
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #0A0A0A;
+        border-radius: 4px;
+        margin: 0 1vw;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: linear-gradient(to right, #e53935, #ff6b6b);
+        border-radius: 4px;
+        border: 1px solid #0A0A0A;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to right, #ff6b6b, #e53935);
+        box-shadow: 0 0 8px rgba(229, 57, 53, 0.6);
+    }
+    
+    &::-webkit-scrollbar-corner {
+        background: #0A0A0A;
+    }
 }
 
+.scrollToSeeMoreContainer {
+    position: absolute;
+    bottom: 0.0rem;
+    left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+    gap: 0.5rem;
+}
 
+.scrollToSeeMore{
+    color:#e53935;
+    font-size:.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    opacity: 0.9;
+    animation: scrollHint 2s ease-in-out infinite alternate;
+}
+
+.scrollToSeeMoreIcon{
+    font-size:1.5rem;
+    color:#e53935;
+    margin-left: 0.5rem;
+    animation: scrollHint 2s ease-in-out infinite alternate;
+}
+
+@keyframes scrollHint {
+    0% {
+        opacity: 0.6;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(2vw);
+    }
+}
 
 .virusTitle{
     text-decoration: none;
@@ -58,6 +126,13 @@
     position: relative;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+}
+
+.virusTitleContent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
 }
 
 .virusBackground{
