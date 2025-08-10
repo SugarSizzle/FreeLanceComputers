@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import styles from './VirusesDamages.module.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaArrowDownLong } from "react-icons/fa6";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { useVirus } from '../UseVirusContext';
 
 export const VirusesDamages = ({ data, }) => {
 
-
-
-
+    const { setSelectedVirus } = useVirus();
 
     const scrollToSection = () => {
         const formSection = document.getElementById('get-in-touch');
@@ -73,6 +73,11 @@ export const VirusesDamages = ({ data, }) => {
                 >
                     Damages
                 </motion.h3>
+             
+                <p 
+                style={{color: isOpenDamages ? '#e53935' : '#d7d7d7'}}
+                className={styles.clickToSeeMore}>Click to see more</p>
+                
                 <motion.div
                     animate={{ 
                         color: isOpenDamages ? '#e53935' : '#d7d7d7',
@@ -84,7 +89,12 @@ export const VirusesDamages = ({ data, }) => {
                         style={{color: isOpenDamages ? '#e53935' : '#d7d7d7'}}
                         className={styles.damagesCollapseArrow}/>
                 </motion.div>
+
+               
+                    
+         
                 
+              
                 <motion.div
                     className={styles.animatedBorder}
                     animate={{
@@ -94,6 +104,10 @@ export const VirusesDamages = ({ data, }) => {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                 />
             </div>
+           
+              
+           
+           
             
             <AnimatePresence>
                 {isOpenDamages && (
@@ -111,7 +125,20 @@ export const VirusesDamages = ({ data, }) => {
 
 
         <div className={styles.reportButtonContainer}>
-            <button className={styles.reportButton} >Report This Virus</button>
+            <button 
+                className={styles.reportButton} 
+                onClick={() => {
+                    if (data) {
+                        setSelectedVirus({
+                            ...data,
+                            reportClicked: true
+                        });
+                        scrollToSection();
+                    }
+                }}
+            >
+                Report This Virus
+            </button>
         </div>
 
         </>

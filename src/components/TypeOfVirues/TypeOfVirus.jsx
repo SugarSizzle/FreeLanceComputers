@@ -8,13 +8,25 @@ import { FaVirus } from "react-icons/fa";
 import { GiTrojanHorse } from "react-icons/gi";
 import { GiLeechingWorm } from "react-icons/gi";
 import { GiSpy } from "react-icons/gi";
-
-
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { useVirus } from '../UseVirusContext'
 
 export const TypeOfVirus = () => {
 
     const [typesOfVirus, setTypesOfVirus] = useState([])
     const [currentVirus, setCurrentVirus] = useState(null)
+    const virusContext = useVirus();
+    
+    // Safety check to ensure context is available
+    if (!virusContext) {
+        console.warn('VirusContext is not available');
+        return null;
+    }
+    
+    const {selectedVirus, setSelectedVirus} = virusContext;
+
+
+    console.log(currentVirus)
 
 
     useEffect(() => {
@@ -45,13 +57,13 @@ export const TypeOfVirus = () => {
 
         return(
             <motion.li
-          
+             
                 key={virus.id}
                 layoutId={`virus-${virus.id}`}
                 style={{
                     color: currentVirus === virus ? '#e53935 ' : '#cccccc'
                 }}
-                onClick={() => setCurrentVirus(virus)}
+                onClick={() => {setCurrentVirus(virus), setSelectedVirus(virus)}}
                 className={styles.virusTitle}>
                 <div className={styles.virusTitleContent}>
                     <span>{virus.type}</span>
@@ -93,7 +105,7 @@ export const TypeOfVirus = () => {
                 <div className={styles.virusContainer}>
                     {mappedViruses}
                     <div className={styles.scrollToSeeMoreContainer}>
-                    <p className={styles.scrollToSeeMore}>Scroll to see more</p>
+                    <p className={styles.scrollToSeeMore}>Scroll</p> <FaLongArrowAltRight className={styles.scrollToSeeMoreIcon}/>
                 </div>
                 </div>
                

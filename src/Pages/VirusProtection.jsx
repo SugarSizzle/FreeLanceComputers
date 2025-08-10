@@ -6,6 +6,7 @@ import { VirusProtectionInformation } from '../components/VirusProtectionInforma
 import { VirusDangersInformation } from '../components/VirusDangersInformation/VirusDangersInformation'
 import { VirusGetInTouch } from '../components/VirusGetInTouch/VirusGetInTouch'
 import { TypeOfVirus } from '../components/TypeOfVirues/TypeOfVirus'
+import { UseVirusContext } from '../components/UseVirusContext'
 
 
 export const VirusProtection = () => {
@@ -19,9 +20,10 @@ export const VirusProtection = () => {
             <VirusProtectionHeroSection/>
             <VirusProtectionInformation/>
             <VirusDangersInformation/>
-            <TypeOfVirus/>
-            <VirusGetInTouch/>
-           
+            <UseVirusContext>
+                <TypeOfVirus/>
+                <VirusGetInTouch/>      
+            </UseVirusContext>
             <Footer/>
         </>
     )
