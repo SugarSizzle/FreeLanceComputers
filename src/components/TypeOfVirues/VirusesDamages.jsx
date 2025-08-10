@@ -6,12 +6,16 @@ import { FaArrowDownLong } from "react-icons/fa6";
 export const VirusesDamages = ({ data, }) => {
 
 
+
+
+
     const scrollToSection = () => {
         const formSection = document.getElementById('get-in-touch');
         if(formSection){
             formSection.scrollIntoView({behavior: 'smooth'});
         }
     }
+
 
 
 
@@ -44,6 +48,7 @@ export const VirusesDamages = ({ data, }) => {
         <div className={styles.damagesInfoContainer}>
             <p className={styles.damagesInfoText}>
                 {highlightTextBeforeColon(data.damages[0])}
+              
             </p>
             <p className={styles.damagesInfoText}>
                 {highlightTextBeforeColon(data.damages[1])}

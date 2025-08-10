@@ -3,7 +3,11 @@ import styles from './TypesOfVirus.module.css'
 import { supabase } from '../../lib/supabase'
 import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import { VirusesDamages } from './VirusesDamages'
-
+import { FaViruses } from "react-icons/fa";
+import { FaVirus } from "react-icons/fa";
+import { GiTrojanHorse } from "react-icons/gi";
+import { GiLeechingWorm } from "react-icons/gi";
+import { GiSpy } from "react-icons/gi";
 
 
 
@@ -48,17 +52,26 @@ export const TypeOfVirus = () => {
                     color: currentVirus === virus ? '#e53935 ' : '#cccccc'
                 }}
                 onClick={() => setCurrentVirus(virus)}
-                className={styles.virusTitle}>{virus.type}
+                className={styles.virusTitle}>
+                <div className={styles.virusTitleContent}>
+                    <span>{virus.type}</span>
+                    {virus.type === 'Trojan' && <GiTrojanHorse className={styles.virusIcon} style={{color: currentVirus === virus ? '#e53935' : '#cccccc'}}/>}
+                    {virus.type === 'Adware' && <FaVirus className={styles.virusIcon} style={{color: currentVirus === virus ? '#e53935' : '#cccccc'}}/>}
+                    {virus.type === 'Worm' && <GiLeechingWorm className={styles.virusIcon} style={{color: currentVirus === virus ? '#e53935' : '#cccccc'}}/>}
+                    {virus.type === 'Spyware' && <GiSpy className={styles.virusIcon} style={{color: currentVirus === virus ? '#e53935' : '#cccccc'}}/>}
+                    {virus.type === 'Ransomeware' && <FaViruses className={styles.virusIcon} style={{color: currentVirus === virus ? '#e53935' : '#cccccc'}}/>}
+                </div>
 
                 {currentVirus === virus && (
                     <motion.div
-                    style={{border: currentVirus === virus ? '1px solid #888888 ' : '1px solid transparent'}}
+                    style={{border: currentVirus === virus ? '1px solid rgba(255,255,255,0.2) ' : '1px solid transparent'}}
                     layoutId={`virus-background`}
                     className={styles.virusBackground}></motion.div>
                 )}
-                
+
 
             </motion.li>
+
 
         )
 
@@ -79,8 +92,11 @@ export const TypeOfVirus = () => {
             <div className={styles.typeOfVirusContainer}>
                 <div className={styles.virusContainer}>
                     {mappedViruses}
-
+                    <div className={styles.scrollToSeeMoreContainer}>
+                    <p className={styles.scrollToSeeMore}>Scroll to see more</p>
                 </div>
+                </div>
+               
 
                     {
                     currentVirus && (

@@ -7,7 +7,7 @@
     margin:auto;
     display:flex;
     flex-direction: column;
-    border:1px solid #aaa;
+    border:1px solid rgba(255,255,255,0.2);
     border-radius:1rem;
     padding-top:2vh;
     margin-top:35vh;
@@ -26,6 +26,12 @@
     text-align: left;
 }
 
+.virusIcon{
+    font-size:0.75rem;
+    color:#e53935;
+    margin-left: 0.5rem;
+}
+
 .virusContainer{
     width:98%;
     padding-left:1vw;
@@ -36,16 +42,32 @@
     gap:1vw;
     margin-left:auto;
     margin-right:auto;
-    border-bottom:1px solid #aaa;
+    border-bottom:1px solid rgba(255,255,255,0.2);
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
     scroll-behavior: smooth;
-
+    position: relative;
 }
 
+.scrollToSeeMoreContainer{
+    position: absolute;
+    bottom: 0.0rem;
+    left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+}
 
+.scrollToSeeMore{
+    color:#d7d7d7;
+    font-size:.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    opacity: 0.8;
+}
 
 .virusTitle{
     text-decoration: none;
@@ -58,6 +80,13 @@
     position: relative;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+}
+
+.virusTitleContent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
 }
 
 .virusBackground{
