@@ -3,16 +3,11 @@ import styles from './VirusGetInTouch.module.css'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 
-export const VirusGetInTouch = ({ preFilledMessage }) => {
+export const VirusGetInTouch = () => {
 
     const [selectedType, setSelectedType] = useState([]);
-    const [message, setMessage] = useState(preFilledMessage);
+   
 
-    useEffect(() => {
-
-        setMessage(preFilledMessage);
-
-    }, [preFilledMessage])
 
 
 
@@ -151,8 +146,6 @@ export const VirusGetInTouch = ({ preFilledMessage }) => {
                         <input className={styles.getInTouchContactInfoInput} type="text" placeholder='Email' />
 
                         <textarea 
-                        value={preFilledMessage}
-                        onChange={(e) =>    preFilledMessage(e.target.value)}
                         id='virus-report-message' 
                         className={styles.getInTouchContactInfoTextarea} 
                         placeholder='Tell Us About Your Problem' />
