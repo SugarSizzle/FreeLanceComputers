@@ -100,6 +100,12 @@ export const ComputerRepairsDamages = () => {
              
             )}
 
+                <div className={styles.repairsContainer}>
+                        <p 
+                      
+                        className={styles.repairsTitle}>Repairs</p>
+                        <FaArrowRight/>
+                    </div>
 
         </div>
 
