@@ -9,7 +9,10 @@ import { ComputerRepairsInformation } from '../components/ComputerRepairsInforma
 
 
 
+
 export const ComputerRepairs =() => {
+
+
 
     return(
         <>
