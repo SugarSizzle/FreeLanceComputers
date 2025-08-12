@@ -3,7 +3,7 @@
 
 
 .computerRepairsDamagesContainer{
-    height: 200vh;
+    height: atuo;
     width: 90vw;
     margin:auto;
     color:whitesmoke;
@@ -85,6 +85,7 @@
   margin-top: 1rem;
   width: 70vw;
   align-self: center;
+  margin-bottom: 2rem;
  
 }
 

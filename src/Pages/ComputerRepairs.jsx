@@ -18,9 +18,9 @@ export const ComputerRepairs =() => {
         <>
         <Navigation/>
         <ComputerRepairsHeroSection/>
-        <ComputerRepairsPricing/>
-        <ComputerRepairsDamages/>
         <ComputerRepairsInformation/>
+        <ComputerRepairsDamages/>
+        <ComputerRepairsPricing/>
         <Footer/>
         </>
     )
