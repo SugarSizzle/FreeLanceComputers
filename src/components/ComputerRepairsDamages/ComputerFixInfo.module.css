@@ -1,13 +1,210 @@
-.fixInfoContainer{
-    margin-top: 2rem;
-    width: 90%;
-    height: 20vh;
+.fixInfoEntireContainer{
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 1rem;
-    padding: 1rem;
-
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #0A0A0A;
 }
+
+.fixInfoContainer{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.fixInfoTitle, .diagnosticsTitle{
+    font-size: 1rem;
+    font-weight: 800;
+    color: #F5F5F5;
+    margin-bottom: 0rem;
+}
+
+.potentialFixesContainer, .diagnosticsContainer{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.diagnosticsContainer{
+    width: 95%;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.potentialFixesTitleContainer, .diagnosticsTitleEntireContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.potentialFixesTitle, .diagnosticsTitle{
+    font-size: .8rem;
+    font-weight: 400;
+    margin-bottom: 0rem;
+    color: #F5F5F5;
+    margin-left: 1rem;
+}
+
+.diagnosticsTitle{
+    font-size: .9rem;
+    margin-left: .5rem;
+}
+
+
+
+.potentialFixesClickToSee, .diagnosticsClickToSee{
+    font-size: .7rem;
+    font-weight: 400;
+    margin-bottom: 0rem;
+    color: #B0B0B0;
+    margin-left: 1rem;
+  
+}
+
+.diagnosticsArrow{
+    margin-right: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.potentialFixesArrow{
+    transition: transform 0.3s ease;
+}
+
+
+.potentialFixesItemContainer{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.potentialFixesItemTitle, .diagnosticsItemTitle{
+    font-size: .75rem;
+    font-weight: 400;
+    margin-bottom: 0rem;
+    color: #B0B0B0;
+    text-align: left;
+    line-height: 1.5;
+    margin-left: 1.5rem;
+}
+
+
+
+.diagnosticsTitleContainer{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    margin-left: -0.5rem;
+}
+
+.repairsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 99%;
+    height: 20vh;
+}
+
+.toggleText{
+    font-size: .75rem;
+    font-weight: 400;
+    margin-bottom: 0rem;
+    color: #03ff2d;
+    align-self: center;
+    margin: 0;
+}
+
+.pageToggleContainer{
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    margin-right: 1rem;
+}
+
+.toggleArrow{
+    margin: auto;
+    color: #03ff2d;
+}
+
+.requestServiceContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.requestServiceButton{
+    width: 35vw;
+    height: 6vh;
+    font-size: .8rem;
+    color: #000000;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #03ff2d;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    position: relative;
+    overflow: hidden;
+    margin-left: 1rem;
+}
+
+.requestServiceButton::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #c13cff, #6be7f7, #03ff2d, #03ff2d);
+    background-size: 200% 100%;
+    z-index: -1;
+    transition: all 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+.requestServiceButton:hover{
+    color: #0A0A0A;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
