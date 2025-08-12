@@ -3,6 +3,8 @@ import styles from './ComputerRepairsDamages.module.css'
 import { supabase } from '../../lib/supabase.js'
 import { FaArrowRight } from 'react-icons/fa'
 import { ComputerDamagesInfo } from './ComputerDamagesInfo.jsx'
+import { ComputerFixInfo } from './ComputerFixInfo.jsx'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export const ComputerRepairsDamages = () => {
 
@@ -10,6 +12,8 @@ export const ComputerRepairsDamages = () => {
     const [currentDamage, setCurrentDamage] = useState(null)
     const [currentGroup, setCurrentGroup] = useState(0)
     const itemsPerPage = 3
+    const [viewInfo, setViewInfo] = useState(true)
+
 
     useEffect(() => {
         const fetchDataVirus = async () => {
@@ -60,11 +64,18 @@ export const ComputerRepairsDamages = () => {
 
     const mappedDamages = itemsToShow.map((damage, index) => {
         return (
-            <div 
+        <AnimatePresence initial={false} mode='wait'>
+            <motion.div 
+            key={damage.id || index}
+            initial={{ x: 300, }}
+            animate={{ x: 0,  }}
+            exit={{ x: -300, }}
+            transition={{ duration: 0.3, ease: "easeInOut", }}
             onClick={() => setCurrentDamage(damage)}
-            key={damage.id || index} className={styles.damageTitleContainer}>
+            className={styles.damageTitleContainer}>
                 <p className={styles.damageTitle}>{damage.title}</p>
-            </div>
+            </motion.div>
+        </AnimatePresence>
         )
     })
 
@@ -72,11 +83,12 @@ export const ComputerRepairsDamages = () => {
     return(
      
         <div className={styles.computerRepairsDamagesContainer}>
-            <p className={styles.computerRepairsDamagesSectionHeader}>Need Repairs?</p>
+            
+      
             <div className={styles.computerRepairsDamagesListContainer}>
                 {currentDamage && mappedDamages }
             </div>
-
+        
 
             {shouldShowNavigation && (
                 <div className={styles.navigationContainer}>
@@ -93,19 +105,45 @@ export const ComputerRepairsDamages = () => {
                     </p>
                 </div>
             )}
-           
-            {currentDamage && (
-              
-                    <ComputerDamagesInfo damage={currentDamage}/>
-             
-            )}
-
-                <div className={styles.repairsContainer}>
-                        <p 
-                      
-                        className={styles.repairsTitle}>Repairs</p>
-                        <FaArrowRight/>
-                    </div>
+                                         <AnimatePresence 
+                         initial={false}
+                         mode='wait'
+                         
+                     >
+                         {currentDamage && (
+                             <AnimatePresence mode="wait">
+                                 {viewInfo ? (
+                                     <motion.div
+                                         key={`damages-${currentDamage.id}`}
+                                         initial={{ x: 300, opacity: 0 }}
+                                         animate={{ x: 0, opacity: 1 }}
+                                         exit={{ x: -300, opacity: 0 }}
+                                         transition={{ duration: 0.4, ease: "easeInOut" }}
+                                     >
+                                         <ComputerDamagesInfo 
+                                             damage={currentDamage}
+                                             onToggle={() => setViewInfo(!viewInfo)}
+                                             viewInfo={viewInfo}
+                                         />
+                                     </motion.div>
+                                 ) : (
+                                     <motion.div
+                                         key={`fixes-${currentDamage.id}`}
+                                         initial={{ x: 300, opacity: 0 }}
+                                         animate={{ x: 0, opacity: 1 }}
+                                         exit={{ x: -300, opacity: 0 }}
+                                         transition={{ duration: 0.4, ease: "easeInOut" }}
+                                     >
+                                         <ComputerFixInfo 
+                                             damage={currentDamage}
+                                             onToggle={() => setViewInfo(!viewInfo)}
+                                             viewInfo={viewInfo}
+                                         />
+                                     </motion.div>
+                                 )}
+                             </AnimatePresence>
+                         )}
+                     </AnimatePresence>
 
         </div>
 
