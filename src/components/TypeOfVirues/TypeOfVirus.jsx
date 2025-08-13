@@ -9,7 +9,7 @@ import { GiTrojanHorse } from "react-icons/gi";
 import { GiLeechingWorm } from "react-icons/gi";
 import { GiSpy } from "react-icons/gi";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import { useVirus } from '../UseVirusContext'
+import { useVirus } from '../../Context/UseVirusContext'
 
 export const TypeOfVirus = () => {
 

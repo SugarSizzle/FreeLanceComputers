@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './VirusGetInTouch.module.css'
 import { motion } from 'framer-motion'
 import { FaWpforms } from "react-icons/fa";
-import { useVirus } from '../UseVirusContext';
+import { useVirus } from '../../Context/UseVirusContext';
 
 
 export const VirusGetInTouch = () => {

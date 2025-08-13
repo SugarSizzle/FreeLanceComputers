@@ -3,7 +3,7 @@ import styles from './VirusesDamages.module.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaArrowDownLong } from "react-icons/fa6";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import { useVirus } from '../UseVirusContext';
+import { useVirus } from '../../Context/UseVirusContext';
 
 export const VirusesDamages = ({ data, }) => {
 
