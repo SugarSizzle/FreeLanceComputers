@@ -9,20 +9,34 @@
     }
     
     .websiteName {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 1.5rem;
       color: #f8f8f8;
       font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      font-style: normal;
+      font-weight: 700;
+      text-decoration: none;
     }
     
     .navigationContainer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
     
-      
+    .navigationLinks {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .navigationLinks h3 {
+      color: #f8f8f8;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .navigationLinks h3:hover {
+      color: #cccccc;
     }
     
     .iconContainer {
@@ -32,11 +46,58 @@
     align-items: center;
     gap: 6vw;
     margin-right:8vw;
+    
     }
     
     
     .navIcon{
     color: #f8f8f8;
+
      
+    } 
+
+    .mobileMenu {
+      position: relative;
+      display: none;
+    }
+    
+    .hamburgerIcon {
+      color: #f8f8f8;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .hamburgerIcon:hover {
+      color: #cccccc;
+    }
+    
+    /* Responsive classes */
+    .desktopOnly {
+      display: flex;
+    }
+    
+    .mobileOnly {
+      display: none;
+    }
+    
+    /* Media queries for responsive behavior */
+    @media (max-width: 768px) {
+      .desktopOnly {
+        display: none;
+      }
+      
+      .mobileOnly {
+        display: block;
+      }
+      
+      .websiteNameContainer {
+        width: auto;
+        margin-left: 2rem;
+      }
+      
+      .iconContainer {
+        gap: 2rem;
+        margin-right: 2rem;
+      }
     } 
     
