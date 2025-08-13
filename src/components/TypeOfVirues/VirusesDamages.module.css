@@ -119,11 +119,6 @@
     overflow: hidden;
     cursor: pointer;
 
-
-
-
-
-
     &::before{
         content:'';
         position:absolute;
