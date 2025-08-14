@@ -1,0 +1,138 @@
+.servicesSecondOverlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.servicesHeaderContainer {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.servicesHeaderSecondOverlay {
+    font-size: 1.1rem;
+    color: #B0B0B0;
+
+}
+
+.closeIconSecondOverlay {
+    font-size: 1.5rem;
+    color: #B0B0B0;
+    background-color: #000;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 3em;
+    border:none;
+
+
+}
+
+.cardContainer {
+    display: grid;
+    width: 90vw;
+    grid-template-areas:
+    'virus data'
+    'computer computer';
+    gap: 2rem;
+    margin: auto;
+    padding: 2rem;
+    flex: 2;
+}
+
+.cardVirus, .cardData, .cardUpgrade {
+    border: 1px solid #B0B0B0;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+   
+    display: flex;
+   position: relative;
+
+}
+
+.cardVirus {
+    grid-area: virus;
+}
+
+.cardData {
+    grid-area: data;
+}
+
+.cardUpgrade {
+    grid-area: computer;
+}
+
+.cardTitle {
+    color: #f8f8f8;
+    font-size: 1rem;
+    margin: .25rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f8f8f8;
+    padding: .25rem;
+    
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.arrowIcon {
+    color: #B0B0B0;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: start;
+    margin-left: 1em;
+    
+
+}
+
+.arrowIcon:hover {
+    color: #f8f8f8;
+    transform: scale(1.1);
+}
+
+.addedInfoContainer {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.addedInfoContainer h3 {
+    color: #B0B0B0;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
