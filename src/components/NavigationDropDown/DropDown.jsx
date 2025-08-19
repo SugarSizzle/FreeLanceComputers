@@ -4,12 +4,18 @@ import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import { GoArrowRight } from "react-icons/go";
 import { ServicesSecondOverlay } from './ServicesSecondOverlay';
-
+import { HelpSecondOverlay } from './HelpSecondOverlay';
 
 
 
 export const DropDown = ({ onClose }) => {
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [helpOpen, setHelpOpen] = useState(false);
+
+
+
+
+
     const openServices = () => {
         setServicesOpen(true);
     };
@@ -18,7 +24,13 @@ export const DropDown = ({ onClose }) => {
         setServicesOpen(false);
     };
 
+    const openHelp = () => {
+        setHelpOpen(true);
+    };
 
+    const closeHelp = () => {
+        setHelpOpen(false);
+    };
  
 
 
@@ -44,7 +56,7 @@ export const DropDown = ({ onClose }) => {
                         <GoArrowRight className={styles.arrowIcon} />
                     </div>
 
-                    <div className={styles.infoSubContainer}>
+                    <div onClick={openHelp} className={styles.infoSubContainer}>
                         <h3 className={styles.helpTitle}>Help</h3>
                         <GoArrowRight className={styles.arrowIcon} />
                     </div>
@@ -58,6 +70,10 @@ export const DropDown = ({ onClose }) => {
 
                
             </div>
+
+            {helpOpen && (
+                <HelpSecondOverlay onClose={closeHelp} />
+            )}
 
             {servicesOpen && (
                 <ServicesSecondOverlay onClose={closeServices} />
