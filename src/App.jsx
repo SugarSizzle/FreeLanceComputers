@@ -10,6 +10,7 @@ import { Store } from './Pages/Store'
 import ProductsDetails from './components/ProductsDetails/ProductsDetails'
 import ScrollToTop from './components/ScrollToTop'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ContactPage } from './Pages/ContactPage'
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function App() {
             <Route path="/computer-repairs" element={<ComputerRepairs />}  />
             <Route path="/products" element={<Store />}  />
             <Route path="/products/:id" element={<ProductsDetails />}  />
+            <Route path="/contact" element={<ContactPage />}  />
           </Routes>
         </motion.div>
       </AnimatePresence>
