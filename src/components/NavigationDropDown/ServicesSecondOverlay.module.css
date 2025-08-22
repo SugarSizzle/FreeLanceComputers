@@ -11,19 +11,20 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
+
+
 .servicesHeaderContainer {
-    width: 100%;
-    height: 10vh;
+
+  
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     padding: 2rem;
 }
 
 .servicesHeaderSecondOverlay {
-    font-size: 1.1rem;
-    color: #B0B0B0;
+    font-size: 1.2rem;
+    color: #f8f8f8;
 
 }
 
@@ -73,6 +74,7 @@
 
 .cardUpgrade {
     grid-area: computer;
+   
 }
 
 .cardTitle {
@@ -95,11 +97,10 @@
 
 .arrowIcon {
     color: #B0B0B0;
-    font-size: 2rem;
+    width: 10vw;
+    height: 5vh;
     cursor: pointer;
     transition: all 0.3s ease;
-    align-items: start;
-    margin-left: 1em;
     
 
 }
