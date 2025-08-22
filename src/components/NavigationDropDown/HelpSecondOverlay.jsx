@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './HelpSecondOverlay.module.css'
 import { IoMdArrowBack } from "react-icons/io";
 import virusCardBackground from '../../images/virusCardBackground.png';
+import contactCardBackground from '../../images/contactCardBackground.png';
+import { Link } from 'react-router-dom';
 
 export const HelpSecondOverlay = ({ onClose }) => {
 
@@ -10,27 +12,35 @@ export const HelpSecondOverlay = ({ onClose }) => {
         <div className={styles.helpSecondOverlay}>
             <div className={styles.helpHeaderContainer}>
                 <p className={styles.helpHeaderSecondOverlay}>Cornwell</p>
-                <button className={styles.closeIconSecondOverlay} onClick={onClose}>✕</button>
 
             </div>
             <IoMdArrowBack onClick={onClose} className={styles.arrowIcon} />
 
             <div className={styles.helpCardContainer}>
 
-                <div className={styles.helpQandA}>
-                    <h3 className={styles.helpQandATitle}>Q and A</h3>
-                </div>
+                <Link to="/contact">
+                    <div 
+                    style={{
+                        backgroundImage: `url(${contactCardBackground})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat'
+                    }}
+                    className={styles.helpContact}>
+                        <h3 className={styles.helpContactTitle}>Contact</h3>
+                    </div>
+                </Link>
 
                 <div 
-                    className={styles.helpContact}
+                    className={styles.helpQandA}
                     style={{
-                        backgroundImage: `url(${virusCardBackground})`,
+                       
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat'
                     }}
                 >
-                    <h3 className={styles.cardTitle}>Contact</h3>
+                    <h3 className={styles.helpQandATitle}>Q and A</h3>
                 </div>
 
                 <div className={styles.helpStatus}>
