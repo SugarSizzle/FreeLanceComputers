@@ -12,6 +12,8 @@ import ScrollToTop from './components/ScrollToTop'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ContactPage } from './Pages/ContactPage'
 import { QandA } from './Pages/QandA'
+import { SignInPage } from './Pages/SignInPage'
+
 function App() {
   const location = useLocation();
 
@@ -39,6 +41,7 @@ function App() {
             <Route path="/products/:id" element={<ProductsDetails />}  />
             <Route path="/contact" element={<ContactPage />}  />
             <Route path="/QandA" element={<QandA />}  />
+            <Route path="/signin" element={<SignInPage />}  />
           </Routes>
         </motion.div>
       </AnimatePresence>
