@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './ContactPage.module.css'
 import { Navigation } from '../Layout/Navigation'
 import { Footer } from '../Layout/Footer'
@@ -6,6 +6,11 @@ import { Footer } from '../Layout/Footer'
 
 
 export const ContactPage = () => {
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+    
+    const isFormValid = email.trim() !== '' && message.trim() !== ''
+    
     return (
         <>
         <Navigation />
@@ -14,34 +19,63 @@ export const ContactPage = () => {
 
 
                 <form className={styles.contactForm}>
-                    <label className={styles.contactFormLabel} htmlFor="name">Email Address</label>
-                    <input 
-                    className={styles.contactFormInput}
-                    type="text" placeholder='Enter Your Email' />
+                    <div className={styles.contactFormInputsContainer}>
+                        <label className={styles.contactFormLabel} htmlFor="name">Email Address</label>
+                        <input 
+                        className={styles.contactFormInput}
+                        type="text" 
+                        placeholder='Enter Your Email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        id="name" />
+                    </div>
 
-                    <label className={styles.contactFormLabel} htmlFor="message">Message</label>
-                    <textarea 
-                    className={styles.contactFormTextarea}
-                    placeholder='I was wondering if you can help me with...' />
+                    <div className={styles.contactFormTextareaContainer}>
+                        <label className={styles.contactFormLabelTextarea} htmlFor="message">How can we help?</label>
+                        <textarea 
+                        className={styles.contactFormTextarea}
+                        placeholder='I was wondering if you can help me with...'
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        id="message" />
 
+                    </div>
                     <button 
-                    className={styles.contactFormButton}
-                    type="submit">Submit</button>
+                    className={`${styles.contactFormButton} ${isFormValid ? styles.contactFormButtonActive : ''}`}
+                    type="submit"
+                    disabled={!isFormValid}>Submit</button>
                 </form>
 
+            
                 <div className={styles.altContactContainer}>
-                    <h1 className={styles.altContactTitle}>Call Us</h1>
-                    <p className={styles.altContactText}>We can be reached at +234 810 555 5555</p>
+                    <div className={styles.getHelpContainer}>
+                        <h3 className={styles.getHelpTitle}>Get Help</h3>
+                        <p className={styles.getHelpText}>freelancecomputers@gmail.com</p>
+                    </div>
 
-                    <h1 className={styles.altContactTitle}>Visit Us</h1>
-                    <p className={styles.altContactText}>We are located at 123 Main St, Coldwater, USA</p>
+                    <div className={styles.phoneContainer}>
+                        <h3 className={styles.phoneTitle}>Phone</h3>
+                        <p className={styles.phoneText}>+234 810 555 5555</p>
 
-                    <h3 className={styles.altContactTitle}>Working hours</h3>
-                        <p className={styles.altContactText}>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                        <p className={styles.altContactText}>Saturday: 10:00 AM - 2:00 PM</p>
-                        <p className={styles.altContactText}>Sunday: Closed</p>
+                    </div>
+
+
 
                 </div>
+
+                <div className={styles.workingHoursContainer}>
+                   
+                   <h3 className={styles.workingHoursTitle}>Meet in person</h3>
+                       <p className={styles.workingHoursText}>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                       <p className={styles.workingHoursText}>Saturday: 10:00 AM - 2:00 PM</p>
+                       <p className={styles.workingHoursText}>Sunday: Closed</p>
+
+               </div>
+
+                <div className={styles.addressContainer}>
+                    <p className={styles.addressText}>123 Main St, Coldwater, USA</p>
+                </div>
+
                     
             </div>
         <Footer />

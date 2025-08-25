@@ -5,6 +5,7 @@ import virusCardBackground from '../../images/virusCardBackground.png';
 import contactCardBackground from '../../images/contactCardBackground.png';
 import { Link } from 'react-router-dom';
 
+
 export const HelpSecondOverlay = ({ onClose }) => {
 
     return (
@@ -31,17 +32,11 @@ export const HelpSecondOverlay = ({ onClose }) => {
                     </div>
                 </Link>
 
-                <div 
-                    className={styles.helpQandA}
-                    style={{
-                       
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                >
-                    <h3 className={styles.helpQandATitle}>Q and A</h3>
-                </div>
+                <Link className={styles.helpQandA} to="/QandA">
+                  
+                        <h3 className={styles.helpQandATitle}>Q and A</h3>
+
+                </Link>
 
                 <div className={styles.helpStatus}>
                     <h3 className={styles.cardTitle}>Status</h3>

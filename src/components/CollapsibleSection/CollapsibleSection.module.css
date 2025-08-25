@@ -1,0 +1,88 @@
+.collapsibleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-bottom: 2.5rem;
+    margin: auto;
+    text-align: left;
+    position: relative;
+}
+
+.collapsibleTitleContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.collapsibleTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.collapsibleTitleText {
+    font-size: 0.8rem;
+    color: #B0B0B0;
+    margin: 0.5rem 0 0 0;
+    font-weight: 400;
+}
+
+.arrowIcon {
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    position: absolute;
+    right: 0;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.collapsibleContent {
+    width: 100%;
+    padding: 1rem 0;
+    overflow: hidden;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+        transform: translateY(0);
+    }
+}
+
+/* Custom styling for Q&A content */
+.qaTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.qaText {
+    font-size: 1rem;
+    color: #B0B0B0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.qaText:first-of-type {
+    margin-top: 0;
+}
+
