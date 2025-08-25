@@ -56,9 +56,8 @@ export const ServicesSecondOverlay = ({ onClose }) => {
                     backgroundRepeat: 'no-repeat'
                 }}
                  className={styles.cardUpgrade} to="/computer-repairs">
-                  
-                        <h3 className={styles.cardTitle}>Computer Repairs</h3>
                     
+                    <h3 className={styles.cardTitle}>Computer Repairs</h3>
             </Link>   
                 
             </div>
