@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './ContactPage.module.css'
 import { Navigation } from '../Layout/Navigation'
 import { Footer } from '../Layout/Footer'
+import { Link } from 'react-router-dom'
 
 
 
@@ -40,10 +41,12 @@ export const ContactPage = () => {
                         id="message" />
 
                     </div>
-                    <button 
+                    <Link 
+                    to="/signin"
                     className={`${styles.contactFormButton} ${isFormValid ? styles.contactFormButtonActive : ''}`}
-                    type="submit"
-                    disabled={!isFormValid}>Submit</button>
+                    >
+                        Submit
+                    </Link>
                 </form>
 
             

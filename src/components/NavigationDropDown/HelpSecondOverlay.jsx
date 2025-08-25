@@ -33,9 +33,7 @@ export const HelpSecondOverlay = ({ onClose }) => {
                 </Link>
 
                 <Link className={styles.helpQandA} to="/QandA">
-                  
-                        <h3 className={styles.helpQandATitle}>Q and A</h3>
-
+                    <h3 className={styles.helpQandATitle}>Q and A</h3>
                 </Link>
 
                 <div className={styles.helpStatus}>
