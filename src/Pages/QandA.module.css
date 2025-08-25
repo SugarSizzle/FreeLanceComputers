@@ -1,0 +1,149 @@
+.qAndAPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    background: linear-gradient(145deg, #F5F5F5, #999999);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
+/* Q&A specific styling */
+.qaTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.qaText {
+    font-size: .8rem;
+    color: #B0B0B0;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+}
+
+.qaText:first-of-type {
+    margin-top: 0;
+}
+
+/* Was This Helpful Container */
+.wasThisHelpful {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-top: 1px solid #2c3034;
+}
+
+.wasThisHelpful h3 {
+    font-size: 1.2rem;
+    color: #F5F5F5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.thumbsContainer {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.thumbsButton {
+    background: none;
+    border: 2px solid #B0B0B0;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #B0B0B0;
+    font-size: 1.2rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.thumbsButton:hover {
+    transform: scale(1.1);
+    border-color: #F5F5F5;
+    color: #F5F5F5;
+}
+
+.thumbsUpClicked {
+    border-color: #4ade80 !important;
+    color: #4ade80 !important;
+    background-color: rgba(74, 222, 128, 0.1);
+}
+
+.thumbsDownClicked {
+    border-color: #f87171 !important;
+    color: #f87171 !important;
+    background-color: rgba(248, 113, 113, 0.1);
+}
+
+.getInTouchButton {
+    background: linear-gradient(90deg, #181717, #4e4e4e);
+    background-size: 300% 100%;
+    color: #F5F5F5;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: slideUp 0.5s ease-out, gradientShift 3s ease-in-out infinite;
+}
+
+.getInTouchButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 245, 245, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
