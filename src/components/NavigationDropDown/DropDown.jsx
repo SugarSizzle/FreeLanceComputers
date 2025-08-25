@@ -5,6 +5,7 @@ import { MdClose } from "react-icons/md";
 import { GoArrowRight } from "react-icons/go";
 import { ServicesSecondOverlay } from './ServicesSecondOverlay';
 import { HelpSecondOverlay } from './HelpSecondOverlay';
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,8 +47,8 @@ export const DropDown = ({ onClose }) => {
                 </div>
                 
                 <div className={styles.buttonContainer}>
-                    <button className={styles.signInButton}>Sign In</button>
-                    <button className={styles.getStartedButton}>Get Started</button>
+                    <Link to="/signin" className={styles.signInButton}>Sign In</Link>
+                    <Link to="/signin" className={styles.getStartedButton}>Get Started</Link>
                 </div>
 
                 <div className={styles.infoSection}>
