@@ -118,6 +118,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     animation: slideUp 0.5s ease-out, gradientShift 3s ease-in-out infinite;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .getInTouchButton:hover {

@@ -1,0 +1,158 @@
+.signInContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    background-color: #151619;
+    margin:auto;
+}
+
+.signInCard {
+    background-color: #1a1d21;
+    border: 1px solid #2c3034;
+    border-radius: 1rem;
+    padding: 3rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.signInTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(145deg, #F5F5F5, #999999);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+}
+
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #B0B0B0;
+    transition: color 0.3s ease;
+}
+
+.inputField {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #2c3034;
+    border-radius: 0.5rem;
+    background-color: #151619;
+    color: #F5F5F5;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: #B0B0B0;
+    box-shadow: 0 0 10px rgba(44, 48, 52, 0.8);
+}
+
+.inputField::placeholder {
+    color: #666;
+}
+
+.submitButton {
+    background: linear-gradient(90deg, #181717, #4e4e4e);
+    background-size: 300% 100%;
+    color: #F5F5F5;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: gradientShift 3s ease-in-out infinite;
+    margin-top: 1rem;
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 245, 245, 0.3);
+}
+
+.switchMode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2c3034;
+}
+
+.switchText {
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.switchButton {
+    background: none;
+    border: 1px solid #B0B0B0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.switchButton:hover {
+    border-color: #F5F5F5;
+    color: #F5F5F5;
+    background-color: rgba(245, 245, 245, 0.1);
+}
+
+.forgotPassword {
+    display: flex;
+    justify-content: center;
+}
+
+.forgotPasswordButton {
+    background: none;
+    border: none;
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: underline;
+}
+
+.forgotPasswordButton:hover {
+    color: #F5F5F5;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

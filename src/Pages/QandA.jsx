@@ -5,6 +5,7 @@ import { CollapsibleSection } from '../components/CollapsibleSection'
 import styles from './QandA.module.css'
 import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export const QandA = () => {
     const [thumbsUpClicked, setThumbsUpClicked] = useState(false)
@@ -218,9 +219,9 @@ export const QandA = () => {
                         </button>
                     </div>
                     {hasVoted && (
-                        <button className={styles.getInTouchButton}>
+                        <Link to="/signin" className={styles.getInTouchButton}>
                             Get in Touch
-                        </button>
+                        </Link>
                     )}
                 </div>
 
