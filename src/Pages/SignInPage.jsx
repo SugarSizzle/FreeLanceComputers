@@ -1,18 +1,38 @@
 import React, { useState } from 'react'
 import { Navigation } from '../Layout/Navigation'
 import { Footer } from '../Layout/Footer'
+import {useActionState} from 'react'
 import styles from './SignInPage.module.css'
+import { useAuth } from '../Context/AuthContext'
 
 export const SignInPage = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [isSignUp, setIsSignUp] = useState(false)
+    const {signInUser} = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isSignUp, setIsSignUp] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // Handle sign in/sign up logic here
-        console.log('Form submitted:', { email, password, isSignUp })
-    }
+    
+    const [error, submitAction, isPending] = useActionState(
+        async (previousState, formData) => {
+            const email = formData.get('email');
+            const password = formData.get('password');
+
+            try {
+                const {success, data, error: signinError} = await signInUser(email, password);
+
+                if(signinError){
+                    return new Error(signinError)
+                }
+                if(success && data?.session){
+                    return null
+                }
+                return null
+            } catch( error){
+                console.error('Sign in error' , error.message)
+                return new Error('An expected error occured. Please try again later.');
+            }
+        }, null
+    );
 
     return (
         <>
@@ -23,7 +43,7 @@ export const SignInPage = () => {
                         {isSignUp ? 'Create Account' : 'Sign In'}
                     </h1>
                     
-                    <form onSubmit={handleSubmit} className={styles.signInForm}>
+                    <form action={submitAction} className={styles.signInForm}>
                         <div className={styles.inputContainer}>
                             <label htmlFor="email" className={styles.inputLabel}>
                                 Email Address
@@ -31,6 +51,7 @@ export const SignInPage = () => {
                             <input
                                 type="email"
                                 id="email"
+                                name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className={styles.inputField}
@@ -46,6 +67,7 @@ export const SignInPage = () => {
                             <input
                                 type="password"
                                 id="password"
+                                name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 className={styles.inputField}
@@ -69,10 +91,16 @@ export const SignInPage = () => {
                             </div>
                         )}
 
-                        <button type="submit" className={styles.submitButton}>
-                            {isSignUp ? 'Create Account' : 'Sign In'}
+                        <button type="submit" className={styles.submitButton} disabled={isPending}>
+                            {isPending ? 'Signing in...' : (isSignUp ? 'Create Account' : 'Sign In')}
                         </button>
                     </form>
+
+                    {error && (
+                        <div className={styles.errorMessage}>
+                            {error.message}
+                        </div>
+                    )}
 
                     <div className={styles.switchMode}>
                         <p className={styles.switchText}>
