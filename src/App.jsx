@@ -13,6 +13,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ContactPage } from './Pages/ContactPage'
 import { QandA } from './Pages/QandA'
 import { SignInPage } from './Pages/SignInPage'
+import Overview from './Pages/Dashboard/DashboardOverview'
+import Services from './Pages/Dashboard/DashboardServices'
+import Orders from './Pages/Dashboard/DashboardOrders'
+import Financing from './Pages/Dashboard/DashboardFinancing'
+import Appointments from './Pages/Dashboard/DashboardAppointments'
+import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
+
+
 
 function App() {
   const location = useLocation();
@@ -42,6 +50,12 @@ function App() {
             <Route path="/contact" element={<ContactPage />}  />
             <Route path="/QandA" element={<QandA />}  />
             <Route path="/signin" element={<SignInPage />}  />
+            <Route path="/dashboardoverview" element={<Overview />}  />
+            <Route path="/dashboardservices" element={<Services />}  />
+            <Route path="/dashboardorders" element={<Orders />}  />
+            <Route path="/dashboardfinancing" element={<Financing />}  />
+            <Route path="/dashboardappointments" element={<Appointments />}  />
+            <Route path="/dashboardactivityfeed" element={<ActivityFeed />}  />
           </Routes>
         </motion.div>
       </AnimatePresence>
