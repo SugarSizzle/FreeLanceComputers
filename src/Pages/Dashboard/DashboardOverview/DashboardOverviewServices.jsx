@@ -1,93 +1,68 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styles from './DashboardOverviewServices.module.css'
-import { ChevronRight, ChevronLeft, Shield, Database, Wrench } from 'lucide-react'
+import { ChevronRight, Settings, ShoppingCart, Calendar, DollarSign } from 'lucide-react'
+import { useRef } from 'react'
 
 export const DashboardOverviewServices = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef(null);
+    const scrollContainerRef = useRef(null);
+    const [showScrollArrow, setShowScrollArrow] = useState(true);
+   
 
     const services = [
-        { 
-            name: 'Device Repair', 
-            icon: <Wrench size={32} />,
-            description: 'Professional hardware repairs and maintenance'
-        },
-        { 
-            name: 'Virus Removal', 
-            icon: <Shield size={32} />,
-            description: 'Complete malware and virus protection'
-        },
-        { 
-            name: 'Data Recovery', 
-            icon: <Database size={32} />,
-            description: 'Recover lost or corrupted data'
+        { name: 'Services', icon: <Settings size={24} /> },
+        { name: 'Orders', icon: <ShoppingCart size={24} /> },
+        { name: 'Appointments', icon: <Calendar size={24} /> },
+        { name: 'Financing', icon: <DollarSign size={24} /> }
+      ];
+    
+
+    const handleScroll = () => {
+        if (scrollContainerRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+          const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 1; // -1 for rounding errors
+          setShowScrollArrow(!isAtEnd);
         }
-    ];
+      };
+    
+      // Scroll to next item
+      const scrollToNext = () => {
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollBy({
+            left: 350, // Adjust based on card width + gap
+            behavior: 'smooth'
+          });
+        }
+      };
 
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === services.length - 1 ? 0 : prevIndex + 1
-        );
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === 0 ? services.length - 1 : prevIndex - 1
-        );
-    };
-
-    const goToSlide = (index) => {
-        setCurrentIndex(index);
-    };
 
     return (
-        <div className={styles.servicesContainer}>
-            <h3 className={styles.servicesTitle}>Services</h3>
-            <div className={styles.carouselContainer}>
-                <button 
-                    className={styles.carouselButton} 
-                    onClick={prevSlide}
-                    style={{ left: '10px' }}
-                >
-                    <ChevronLeft size={24} />
-                </button>
-                
-                <div className={styles.carouselWrapper}>
-                    <div 
-                        className={styles.carouselTrack}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                        {services.map((service, index) => (
-                            <div key={index} className={styles.serviceCard}>
-                                <h4 className={styles.serviceTitle}>{service.name}</h4>
-                                <p className={styles.serviceDescription}>{service.description}</p>
-                                <div className={styles.serviceIcon}>
-                                    {service.icon}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+<div className={styles.servicesContainer}>
+        <h3 className={styles.servicesTitle}>Services</h3>
+        <div className={styles.servicesScrollWrapper}>
+          <div 
+            className={styles.servicesScroll}
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+          >
+            {services.map((service, index) => (
+              <div key={index} className={styles.serviceCard}>
+                <div className={styles.serviceIcon}>
+                  {service.icon}
                 </div>
-
-                <button 
-                    className={styles.carouselButton} 
-                    onClick={nextSlide}
-                    style={{ right: '10px' }}
-                >
-                    <ChevronRight size={24} />
-                </button>
-            </div>
-
-            <div className={styles.carouselDots}>
-                {services.map((_, index) => (
-                    <button
-                        key={index}
-                        className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
-                        onClick={() => goToSlide(index)}
-                    />
-                ))}
-            </div>
+                <p className={styles.serviceName}>{service.name}</p>
+              </div>
+            ))}
+          </div>
+          {showScrollArrow && (
+            <button 
+              className={styles.scrollArrow}
+              onClick={scrollToNext}
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
         </div>
+      </div>
     )
 }
 
