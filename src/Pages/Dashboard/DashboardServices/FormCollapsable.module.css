@@ -1,0 +1,34 @@
+.formContainer{
+    width: 90vw;
+    margin: auto;
+    margin-top: 2rem;
+
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+
+.formInputsContainer{
+    display: flex;
+    flex-direction: column;
+    width:90vw;
+    height:auto;
+    align-items: center;
+}
+
+.formInput{
+    height:20vh;
+    width:70vw;
+    border-radius: 1rem;
+    outline: none;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ffffff;
+    padding: 1rem;
+    resize: vertical;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    text-align: left;
+    vertical-align: top;
+}
+
+
