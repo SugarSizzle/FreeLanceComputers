@@ -1,126 +1,71 @@
 .servicesContainer {
-  width: 95vw;
-  margin: auto;
-  margin-top: 3rem;
-}
-
-.servicesTitle {
-  color: #b0b0b0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.carouselContainer {
-  position: relative;
-  width: 100%;
-  height: 25vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carouselWrapper {
-  width: 90vw;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 1rem;
-}
-
-.carouselTrack {
-  display: flex;
-  width: 300%;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-
-.serviceCard {
-  width: 90vw;
-  height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  padding: 2rem;
-  position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.serviceTitle {
-  color: #b0b0b0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-}
-
-.serviceDescription {
-  color: #b0b0b0;
-  font-size: 1rem;
-  margin: 0;
-  margin-top: 4rem;
-  opacity: 0.8;
-}
-
-.serviceIcon {
-  color: #b0b0b0;
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  opacity: 0.7;
-}
-
-.carouselButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #b0b0b0;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.carouselButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carouselDots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.activeDot {
-  background: #b0b0b0;
-}
+    width: 95vw;
+    margin: auto;
+    margin-top: 3rem;
+  }
+  
+  .servicesTitle {
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .servicesScroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #b0b0b0;
+  }
+  
+  .servicesScrollWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .scrollArrow {
+    position: absolute;
+    bottom: -45px;
+    left: 95%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #b0b0b0, #b0b0b0);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100%;
+    width: 10vw;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 1;
+    animation: fadeInOut 0.3s ease-in-out;
+  }
+  
+  .scrollArrow:hover {
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  }
+  
+  .scrollArrow:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
   
   .servicesScroll::-webkit-scrollbar {
     height: 8px;
