@@ -1,0 +1,102 @@
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  padding: 2rem 0;
+}
+
+.carouselTrack {
+  display: flex;
+  cursor: grab;
+  align-items: center;
+}
+
+.carouselTrack:active {
+  cursor: grabbing;
+}
+
+.carouselImage {
+  aspect-ratio: 16 / 9;
+  width: 100vw;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  background-color: #262626;
+  object-fit: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceText {
+  color: white;
+  font-size: .8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  position: relative;
+  left: -30%;
+  top: -40%;
+}
+
+.serviceIcon {
+  color: white;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.dotsContainer {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+  transition: color 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: #fafafa;
+}
+
+.inactiveDot {
+  background-color: #737373;
+}
+
+.moreInfoContainer {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  padding: 1rem;
+  margin:auto;
+  gap: 2rem;
+}
+
+.moreInfoButton{
+    width: 50vw;
+    height: 7vh;
+    border-radius: 1rem;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
+}
+
+
