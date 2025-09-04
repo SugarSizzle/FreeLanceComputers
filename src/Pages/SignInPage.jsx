@@ -4,12 +4,16 @@ import { Footer } from '../Layout/Footer'
 import {useActionState} from 'react'
 import styles from './SignInPage.module.css'
 import { useAuth } from '../Context/AuthContext'
+import {useNavigate} from 'react-router-dom'
+
 
 export const SignInPage = () => {
     const {signInUser} = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSignUp, setIsSignUp] = useState(false);
+
+    const navigate = useNavigate();
 
     
     const [error, submitAction, isPending] = useActionState(
@@ -24,7 +28,9 @@ export const SignInPage = () => {
                     return new Error(signinError)
                 }
                 if(success && data?.session){
+                    navigate('/dashboardoverview')
                     return null
+
                 }
                 return null
             } catch( error){
