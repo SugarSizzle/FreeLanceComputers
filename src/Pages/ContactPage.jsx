@@ -14,7 +14,7 @@ export const ContactPage = () => {
     
     return (
         <>
-        <Navigation />
+      
             <div className={styles.contactPageContainer}>
                 <h1 className={styles.contactPageTitle}>Get In Touch</h1>
 
@@ -81,7 +81,7 @@ export const ContactPage = () => {
 
                     
             </div>
-        <Footer />
+       
         </>
     )
 }

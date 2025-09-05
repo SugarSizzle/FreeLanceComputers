@@ -10,9 +10,9 @@ export const Store = () => {
 
   return (
     <>
-      <Navigation />
+
       <Products />
-      <Footer />
+     
 
     </>
     

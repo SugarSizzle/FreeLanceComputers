@@ -46,7 +46,7 @@ const Overview = () => {
   return (
 
    <>
-      <Navigation />
+    
 
       <div className={styles.welcomeSection}>
         <p className={styles.welcomeText}>Welcome, user</p> 
@@ -76,7 +76,7 @@ const Overview = () => {
 
            
              {/* <iframe src="https://my.spline.design/virusicon-3GkORIWP7858sjIHh0p3q9zX-XLh/" frameborder="0" width="100%" height="100%"></iframe>  */}
-      <Footer />
+   
     </>
  
   );
