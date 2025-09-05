@@ -42,7 +42,7 @@ export const SignInPage = () => {
 
     return (
         <>
-            <Navigation />
+          
             <div className={styles.signInContainer}>
                 <div className={styles.signInCard}>
                     <h1 className={styles.signInTitle}>
@@ -127,7 +127,7 @@ export const SignInPage = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+         
         </>
     )
 }
