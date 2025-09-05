@@ -20,7 +20,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #2c3034;
+
+
     }
     
     .navigationLinks {
