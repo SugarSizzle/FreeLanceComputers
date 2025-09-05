@@ -16,12 +16,12 @@ export const ComputerRepairs =() => {
 
     return(
         <>
-        <Navigation/>
+       
         <ComputerRepairsHeroSection/>
         <ComputerRepairsInformation/>
         <ComputerRepairsDamages/>
         <ComputerRepairsPricing/>
-        <Footer/>
+       
         </>
     )
  

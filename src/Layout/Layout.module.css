@@ -1,0 +1,11 @@
+.mainContent {
+  padding-top: 6rem; /* Adjust based on navigation height */
+  min-height: calc(100vh - 6rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainContent {
+    padding-top: 5rem; /* Slightly less padding on mobile */
+  }
+}

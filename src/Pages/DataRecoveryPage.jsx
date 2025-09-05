@@ -32,12 +32,12 @@ export const DataRecoveryPage = () => {
             window.scrollTo({top:0, })
         }}
         >
-            <Navigation />
+           
             <DataRecoveryHeroSection />
             <DataRecoveryStolenInfo />
             <DataRecoveryMethods />
             <DataRecoveryGetInTouch />
-            <Footer />
+            
         </motion.div>
     )
 

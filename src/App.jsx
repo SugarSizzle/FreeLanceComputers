@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Outlet } from 'react-router-dom'
 import './App.css'
 import { HomePage } from './Pages/HomePage'
 import { AboutPage } from './Pages/AboutPage'
@@ -17,10 +17,9 @@ import Overview from './Pages/Dashboard/DashboardOverview/DashboardOverview'
 import {DashboardServices} from './Pages/Dashboard/DashboardServices/DashboardServices'
 import Orders from './Pages/Dashboard/DashboardOrders'
 import Financing from './Pages/Dashboard/DashboardFinancing'
-import Appointments from './Pages/Dashboard/DashboardAppointments'
+import {DashboardAppointments} from './Pages/Dashboard/DashboardAppointments/DashboardAppointments'
 import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
-
-
+import { Layout } from './Layout/Layout'
 
 function App() {
   const location = useLocation();
@@ -41,21 +40,24 @@ function App() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <Routes location={location}>
-            <Route path="/" element={<HomePage />}  />
-            <Route path="/virus-protection" element={<VirusProtection />}  />
-            <Route path="/data-recovery" element={<DataRecoveryPage />}  />
-            <Route path="/computer-repairs" element={<ComputerRepairs />}  />
-            <Route path="/products" element={<Store />}  />
-            <Route path="/products/:id" element={<ProductsDetails />}  />
-            <Route path="/contact" element={<ContactPage />}  />
-            <Route path="/QandA" element={<QandA />}  />
-            <Route path="/signin" element={<SignInPage />}  />
-            <Route path="/dashboardoverview" element={<Overview />}  />
-            <Route path="/dashboardservices" element={<DashboardServices />}  />
-            <Route path="/dashboardorders" element={<Orders />}  />
-            <Route path="/dashboardfinancing" element={<Financing />}  />
-            <Route path="/dashboardappointments" element={<Appointments />}  />
-            <Route path="/dashboardactivityfeed" element={<ActivityFeed />}  />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/virus-protection" element={<VirusProtection />} />
+              <Route path="/data-recovery" element={<DataRecoveryPage />} />
+              <Route path="/computer-repairs" element={<ComputerRepairs />} />
+              <Route path="/products" element={<Store />} />
+              <Route path="/products/:id" element={<ProductsDetails />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/QandA" element={<QandA />} />
+              <Route path="/signin" element={<SignInPage />} />
+              <Route path="/dashboardoverview" element={<Overview />} />
+              <Route path="/dashboardservices" element={<DashboardServices />} />
+              <Route path="/dashboardorders" element={<Orders />} />
+              <Route path="/dashboardfinancing" element={<Financing />} />
+              <Route path="/dashboardappointments" element={<DashboardAppointments />} />
+              <Route path="/dashboardactivityfeed" element={<ActivityFeed />} />
+              <Route path="/dashboardappointments" element={<DashboardAppointments />} />
+            </Route>
           </Routes>
         </motion.div>
       </AnimatePresence>

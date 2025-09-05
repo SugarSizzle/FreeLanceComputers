@@ -11,14 +11,14 @@ export const HomePage = () => {
 
     return(
        <>
-       <Navigation />
+      
        <HomePageHeroSection />
        <div className="review-section-container">
           <h1>Review Section Here</h1>
         </div>
         <HomePageServices />
        <HomePageStoreSection />
-       <Footer />
+     
        </>
     )
 }

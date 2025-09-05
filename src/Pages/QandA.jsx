@@ -26,7 +26,7 @@ export const QandA = () => {
 
     return (
         <>
-            <Navigation />
+          
             <div className={styles.qAndAPageContainer}>
                 <h1 className={styles.pageTitle}>Frequently Asked Questions</h1>
                 
@@ -226,7 +226,7 @@ export const QandA = () => {
                 </div>
 
             </div>
-            <Footer />
+           
         </>
     )
 }
