@@ -1,0 +1,32 @@
+
+.moreAppointmentsContainer{
+    text-align: left;
+    margin-left: 5vw;
+    margin-bottom:3rem;
+}
+
+.moreAppointmentsText{
+    color: #b0b0b0;
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.appointmentsFilterContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90vw;
+    margin:auto;
+}
+
+.appointmentsFilterButton{
+    width: 40vw;
+    height: 7vh;
+    border: none;
+    border-radius: .5rem;
+    letter-spacing: 1.5px;
+    border: 1px solid #ffffff23;
+
+}
+
+
