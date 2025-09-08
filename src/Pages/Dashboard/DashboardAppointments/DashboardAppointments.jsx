@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './DashboardAppointments.module.css'
 import { supabase } from '../../../lib/supabase'
-
+import { DashboardAppointmentsPrevAppointments } from './DashboardAppointmentsPrevAppointments'
 
 export const DashboardAppointments = () => {
+
 
 
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -106,6 +107,10 @@ export const DashboardAppointments = () => {
 
 
             </div>
+            <DashboardAppointmentsPrevAppointments />
+
+                
+
         </>
     )
 }
