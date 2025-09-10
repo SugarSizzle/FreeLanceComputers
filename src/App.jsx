@@ -20,6 +20,7 @@ import Financing from './Pages/Dashboard/DashboardFinancing'
 import {DashboardAppointments} from './Pages/Dashboard/DashboardAppointments/DashboardAppointments'
 import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
 import { Layout } from './Layout/Layout'
+import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/DashboardReviewOverlay'
 
 function App() {
   const location = useLocation();
@@ -56,7 +57,7 @@ function App() {
               <Route path="/dashboardfinancing" element={<Financing />} />
               <Route path="/dashboardappointments" element={<DashboardAppointments />} />
               <Route path="/dashboardactivityfeed" element={<ActivityFeed />} />
-              <Route path="/dashboardappointments" element={<DashboardAppointments />} />
+              <Route path="/review" element={<DashboardReviewOverlay />} />
             </Route>
           </Routes>
         </motion.div>

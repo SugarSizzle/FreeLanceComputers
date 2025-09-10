@@ -152,4 +152,17 @@
     transform: translateY(-2px);
 }
 
+.techRating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.techRatingStar{
+    color: #ffffff;
+    font-size: .8rem;
+    font-weight: 500;
+}
 

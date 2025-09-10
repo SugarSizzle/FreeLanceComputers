@@ -1,0 +1,207 @@
+.overlay {
+  min-height: 100vh;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.overlayContent {
+  width: 90vw;
+
+  border: 1px solid #B0B0B0;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.backArrow {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.profileImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.stars {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.star {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.star.active {
+  color: #ffd700;
+}
+
+.experienceSection {
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.experienceLabel {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.experienceTextarea {
+  width: 90%;
+  height: 10vh;
+  min-height: 120px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.experienceTextarea:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.recommendSection {
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.recommendQuestion {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.recommendOptions {
+  display: flex;
+  gap: 2rem;
+}
+
+.recommendOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.recommendOption:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.recommendOption.selected {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.recommendRadio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.recommendRadio.selected {
+  border-color: #ffd700;
+  background-color: #ffd700;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #333;
+  color: #666;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: not-allowed;
+  transition: all 0.2s ease;
+}
+
+.submitButton.enabled {
+  background: linear-gradient(90deg, #b0b0b0, #ffffff, #b0b0b0);
+  background-size: 200% 100%;
+  color: #000000;
+  cursor: pointer;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.submitButton.enabled:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(176, 176, 176, 0.3);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.successMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #00ff00;
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.successMessage.show {
+  opacity: 1;
+}
