@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@imagekit/react": "^5.0.1",
     "@splinetool/react-spline": "^4.1.0",
     "@supabase/supabase-js": "^2.50.5",
     "cors": "^2.8.5",
