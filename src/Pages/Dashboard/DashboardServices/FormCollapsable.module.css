@@ -7,18 +7,28 @@
     padding: 1rem;
 }
 
+.formHeader{
+    color: #b0b0b0;
+    font-size: .8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    width: 95vw;
+  
+    text-align: left;
+}
 
 .formInputsContainer{
     display: flex;
     flex-direction: column;
-    width:90vw;
+    width:85vw;
     height:auto;
     align-items: center;
+    margin:auto;
 }
 
 .formInput{
     height:20vh;
-    width:70vw;
+    width:100%;
     border-radius: 1rem;
     outline: none;
     font-family: 'JetBrains Mono', monospace;

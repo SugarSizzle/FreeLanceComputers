@@ -110,9 +110,22 @@ const Images = ({ imgIndex }) => {
             <div className={styles.serviceText}>
               {item.name}
             </div>
-            <div className={styles.serviceIcon}>
+            <motion.div 
+              className={styles.serviceIcon}
+          
+              animate={{
+                scale: imgIndex === idx ? 1.3 : 1,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                duration: 0.3,
+                delay: 0.5
+              }}
+            >
               {item.icon}
-            </div>
+            </motion.div>
           </motion.div>
         );
       })}

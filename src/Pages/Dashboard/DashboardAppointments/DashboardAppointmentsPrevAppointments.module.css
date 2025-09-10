@@ -3,6 +3,7 @@
     text-align: left;
     margin-left: 5vw;
     margin-bottom:3rem;
+    margin-top: 2rem;
 }
 
 .moreAppointmentsText{
@@ -11,7 +12,7 @@
     font-weight: 500;
 }
 
-.appointmentsFilterContainer{
+.appointmentsFilterbuttonsContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -28,5 +29,103 @@
     border: 1px solid #ffffff23;
 
 }
+
+.appointmentsFilterContainer{
+    margin:auto;
+    height: auto;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.appointmentsTopRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.technicianPhoto{
+   
+    border-radius: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+}
+.technicianName , .technicianAction{
+
+    color: #b0b0b0;
+    font-size: .8rem;
+    font-weight: 500;
+  
+}
+
+
+.technicianRating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.technicianRatingStar{
+    color: #ffffff;
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.appointmentsFilterRight{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 1rem;
+    height: 50%;
+    
+}
+
+.appointmentDate, .appointmentTime, .appointmentStatus{
+    color: #b0b0b0;
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+
+.appointmentMoreInfoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: auto;
+}
+
+.appointmentMoreInfoButton, .appointmentLeaveReviewButton{
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: #b0b0b0;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height:6vh;
+
+}
+
+.appointmentMoreInfoButton:hover, .appointmentLeaveReviewButton:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+
+
 
 

@@ -7,7 +7,7 @@ export const FormCollapsable = () => {
   return (
     <>
         <div className={styles.formContainer}>
-                
+              <h3 className={styles.formHeader}>The more information you provide, the better we can help you.</h3>
             <form className={styles.formInputsContainer}>
                 <textarea 
                     className={styles.formInput} 

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styles from './DashboardAppointments.module.css'
 import { supabase } from '../../../lib/supabase'
 import { DashboardAppointmentsPrevAppointments } from './DashboardAppointmentsPrevAppointments'
+import { FaStarHalfAlt } from "react-icons/fa";
+import { IoStar } from "react-icons/io5";
+import { FaRegStar } from "react-icons/fa6";
 
 export const DashboardAppointments = () => {
 
@@ -77,7 +80,7 @@ export const DashboardAppointments = () => {
             </div>
 
             <div className={styles.myAppointmentsSection}>
-                <h3 className={styles.myAppointmentsTitle}>My Appointments</h3>
+                <h3 className={styles.myAppointmentsTitle}>Upcoming Appointments</h3>
                 <div className={styles.appointmentInfoContainer}>
                     <div className={styles.techInfoLeft}>
                         {technicians.length > 0 ? (
@@ -85,7 +88,13 @@ export const DashboardAppointments = () => {
                                 <div className={styles.techPhoto} style={{backgroundImage: `url(${technicians[0].photo})`}}/>
                                 <p className={styles.techName}>{technicians[0].name}</p>
                                 <p className={styles.techAction}>Hardware Repair</p>
-
+                                <div className={styles.techRating}>
+                                    <IoStar className={styles.techRatingStar} />
+                                    <IoStar className={styles.techRatingStar} />
+                                    <IoStar className={styles.techRatingStar} />
+                                    <IoStar className={styles.techRatingStar} />
+                                    <FaRegStar className={styles.techRatingStar} />
+                                </div>
                             </>
                         ) : (
                             <p className={styles.techName}>Loading...</p>
