@@ -1,19 +1,17 @@
 .overlay {
-  min-height: 100vh;
+  width: 100vw;
   background-color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+
 }
 
 .overlayContent {
-  width: 90vw;
-
-  border: 1px solid #B0B0B0;
+  width: 100%;
+  margin:auto;
   border-radius: 1rem;
   padding: 2rem;
-  background-color: #1a1a1a;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -34,33 +32,31 @@
 }
 
 .title {
-  font-size: 1rem;
+  font-size: .8rem;
   font-weight: bold;
 }
 
-.profileSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  color: white;
+
+.technicianPhoto {
+
+  border-radius: 1rem;
 }
 
+
 .profileImage {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 1rem;
   margin-bottom: 1rem;
-  color: #666;
+
+
 }
 
 .stars {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  margin:auto;
 }
 
 .star {
@@ -71,18 +67,30 @@
 }
 
 .star.active {
-  color: #ffd700;
+  color: #ffffff;
 }
 
 .experienceSection {
-  margin-bottom: 2rem;
-  color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: .25rem;
+   
 }
 
+
 .experienceLabel {
-  display: block;
+
   margin-bottom: 1rem;
   font-weight: bold;
+  font-size: .75rem;
+  width: 100%;
+
+
+  padding-bottom: 1rem;
+
 }
 
 .experienceTextarea {
@@ -100,7 +108,7 @@
 
 .experienceTextarea:focus {
   outline: none;
-  border-color: #666;
+  
 }
 
 .recommendSection {
@@ -111,11 +119,16 @@
 .recommendQuestion {
   margin-bottom: 1rem;
   font-weight: bold;
+  font-size: .8rem;
+
+  padding-bottom: 1rem;
 }
 
 .recommendOptions {
   display: flex;
   gap: 2rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .recommendOption {
@@ -127,13 +140,8 @@
   transition: background-color 0.2s ease;
 }
 
-.recommendOption:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 
-.recommendOption.selected {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+
 
 .recommendRadio {
   width: 20px;
@@ -145,8 +153,8 @@
 }
 
 .recommendRadio.selected {
-  border-color: #ffd700;
-  background-color: #ffd700;
+
+  background-color: #ffffff;
 }
 
 .submitButton {
@@ -175,6 +183,26 @@
   box-shadow: 0 4px 8px rgba(176, 176, 176, 0.3);
 }
 
+
+
+.successMessage {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #ffffff;
+  z-index: 1001;
+  padding: 1.5rem 0;
+}
+
+.successMessageContent {
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -185,23 +213,4 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-.successMessage {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #00ff00;
-  color: #000;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1001;
-}
-
-.successMessage.show {
-  opacity: 1;
 }
