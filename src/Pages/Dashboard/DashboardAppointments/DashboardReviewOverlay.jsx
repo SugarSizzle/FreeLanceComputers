@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './DashboardReviewOverlay.module.css';
+import { IKImage, IKContext } from 'imagekitio-react'
+
 
 export const DashboardReviewOverlay = () => {
   const navigate = useNavigate();
@@ -81,7 +84,13 @@ export const DashboardReviewOverlay = () => {
 
         <div className={styles.profileSection}>
           <div className={styles.profileImage}>
-            Photo placeholder
+            <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+              <IKImage
+                width={200}
+                height={250}
+                loading='lazy'
+                src={'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'} className={styles.technicianPhoto} />
+            </IKContext>
           </div>
           
           <div className={styles.stars}>
@@ -128,11 +137,26 @@ export const DashboardReviewOverlay = () => {
         </button>
       </div>
       
-      {showSuccessMessage && (
-        <div className={`${styles.successMessage} ${styles.show}`}>
-          Thanks for leaving a review!
-        </div>
-      )}
+      <AnimatePresence>
+        {showSuccessMessage && (
+          <motion.div 
+            className={styles.successMessage}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 30,
+              duration: 0.5 
+            }}
+          >
+            <div className={styles.successMessageContent}>
+              Thanks for leaving a review!
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

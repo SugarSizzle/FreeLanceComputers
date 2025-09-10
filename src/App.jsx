@@ -15,12 +15,12 @@ import { QandA } from './Pages/QandA'
 import { SignInPage } from './Pages/SignInPage'
 import Overview from './Pages/Dashboard/DashboardOverview/DashboardOverview'
 import {DashboardServices} from './Pages/Dashboard/DashboardServices/DashboardServices'
-import Orders from './Pages/Dashboard/DashboardOrders'
 import Financing from './Pages/Dashboard/DashboardFinancing'
 import {DashboardAppointments} from './Pages/Dashboard/DashboardAppointments/DashboardAppointments'
 import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
 import { Layout } from './Layout/Layout'
 import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/DashboardReviewOverlay'
+import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
 
 function App() {
   const location = useLocation();
@@ -53,7 +53,7 @@ function App() {
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/dashboardoverview" element={<Overview />} />
               <Route path="/dashboardservices" element={<DashboardServices />} />
-              <Route path="/dashboardorders" element={<Orders />} />
+              <Route path="/dashboardorders" element={<DashboardOrders />} />
               <Route path="/dashboardfinancing" element={<Financing />} />
               <Route path="/dashboardappointments" element={<DashboardAppointments />} />
               <Route path="/dashboardactivityfeed" element={<ActivityFeed />} />
