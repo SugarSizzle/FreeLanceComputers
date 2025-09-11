@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './DashboardOrders.module.css';
+import { DashboardFooter } from '../../../components/DashboardFooter';
 
  export const DashboardOrders = () => {
   const [activeButton, setActiveButton] = useState(null);
@@ -236,6 +237,7 @@ import styles from './DashboardOrders.module.css';
           </div>
         </div>
       </div>
+      <DashboardFooter />
     </div>
   );
 };
