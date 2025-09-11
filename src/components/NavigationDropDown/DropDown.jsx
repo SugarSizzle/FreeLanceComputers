@@ -5,14 +5,33 @@ import { MdClose } from "react-icons/md";
 import { GoArrowRight } from "react-icons/go";
 import { ServicesSecondOverlay } from './ServicesSecondOverlay';
 import { HelpSecondOverlay } from './HelpSecondOverlay';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
 
 
 export const DropDown = ({ onClose }) => {
     const [servicesOpen, setServicesOpen] = useState(false);
     const [helpOpen, setHelpOpen] = useState(false);
+    const {signOutUser, session} = useAuth();
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
 
+    const handleSignOut = async (e) => {
+        e.preventDefault();
+
+        const currentPath = location.pathname;
+        const isDashboardPage = currentPath.startsWith('/dashboard');
+
+        const {success, error} = await signOutUser();
+        if(success){
+            const redirectPath = isDashboardPage ? '/' : currentPath;
+            navigate(redirectPath);
+            onClose(); 
+        } else {
+            setError(error);
+        }
+    }
 
 
 
@@ -47,8 +66,16 @@ export const DropDown = ({ onClose }) => {
                 </div>
                 
                 <div className={styles.buttonContainer}>
-                    <Link to="/signin" className={styles.signInButton}>Sign In</Link>
-                    <Link to="/signin" className={styles.getStartedButton}>Get Started</Link>
+                    {session ? (
+                        <button onClick={handleSignOut} className={styles.signInButton}>
+                            Sign Out
+                        </button>
+                    ) : (
+                        <>
+                            <Link to="/signin" className={styles.signInButton}>Sign In</Link>
+                            <Link to="/signin" className={styles.getStartedButton}>Get Started</Link>
+                        </>
+                    )}
                 </div>
 
                 <div className={styles.infoSection}>

@@ -8,6 +8,7 @@ import { FaRegClock } from "react-icons/fa";
 import Spline from '@splinetool/react-spline';
 import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
 import {RecentActivities} from './RecentActivities.JSX';
+import { DashboardFooter } from '../DashboardFooter';
 
 const Overview = () => {
 
@@ -71,6 +72,8 @@ const Overview = () => {
 
       <DashboardOverviewServices />
       <RecentActivities />
+
+      <DashboardFooter />
 
    
 
