@@ -57,8 +57,25 @@ getInitialSession();
 
     }
 
+    const signOutUser = async (email , password) => {
+        try {
+            const {error} = await supabase.auth.signOut();
+            if(error){
+                console.error('Supabase sign-out error' , error.message)
+                return {success: false, error: error.message}
+            }
+            console.log('Supabase sign-out success')
+            return {success: true, data: null}
+        } catch(error){
+            console.error('Unexpected error during sign-out' , error.message)
+            return {success: false, error: 'An unexpected error occured. Please try again.'}
+        }
+    }
+
+    
+
     return (
-        <AuthContext.Provider value={{session, signInUser}}>
+        <AuthContext.Provider value={{session, signInUser, signOutUser}}>
             {children}
         </AuthContext.Provider>
 

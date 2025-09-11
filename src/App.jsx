@@ -21,9 +21,12 @@ import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
 import { Layout } from './Layout/Layout'
 import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/DashboardReviewOverlay'
 import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import { Navigate } from 'react-router-dom'
 
 function App() {
   const location = useLocation();
+
 
   // Scroll to top when location changes
   useEffect(() => {
@@ -51,13 +54,20 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/QandA" element={<QandA />} />
               <Route path="/signin" element={<SignInPage />} />
-              <Route path="/dashboardoverview" element={<Overview />} />
-              <Route path="/dashboardservices" element={<DashboardServices />} />
-              <Route path="/dashboardorders" element={<DashboardOrders />} />
-              <Route path="/dashboardfinancing" element={<Financing />} />
-              <Route path="/dashboardappointments" element={<DashboardAppointments />} />
-              <Route path="/dashboardactivityfeed" element={<ActivityFeed />} />
-              <Route path="/review" element={<DashboardReviewOverlay />} />
+              
+          
+             
+              
+              <Route path="/dashboard" element={<ProtectedRoute />}>
+                <Route path="overview" element={<Overview />} />
+                <Route path="services" element={<DashboardServices />} />
+                <Route path="orders" element={<DashboardOrders />} />
+                <Route path="financing" element={<Financing />} />
+                <Route path="appointments" element={<DashboardAppointments />} />
+                <Route path="activityfeed" element={<ActivityFeed />} />
+                <Route path="review" element={<DashboardReviewOverlay />} />
+              </Route>
+              
             </Route>
           </Routes>
         </motion.div>

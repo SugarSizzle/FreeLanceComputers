@@ -4,7 +4,7 @@ import { Footer } from '../Layout/Footer'
 import {useActionState} from 'react'
 import styles from './SignInPage.module.css'
 import { useAuth } from '../Context/AuthContext'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 
 
 export const SignInPage = () => {
@@ -14,6 +14,10 @@ export const SignInPage = () => {
     const [isSignUp, setIsSignUp] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    // Get the page the user was trying to access before being redirected to sign-in
+    const from = location.state?.from?.pathname || '/dashboard/overview';
 
     
     const [error, submitAction, isPending] = useActionState(
@@ -28,7 +32,7 @@ export const SignInPage = () => {
                     return new Error(signinError)
                 }
                 if(success && data?.session){
-                    navigate('/dashboardoverview')
+                    navigate(from, { replace: true });
                     return null
 
                 }
