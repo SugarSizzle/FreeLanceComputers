@@ -5,6 +5,7 @@ import {Navigation} from '../../../Layout/Navigation';
 import {Footer} from '../../../Layout/Footer';
 import {SwipeCarousel} from './SwipeCarousel';
 import {FormCollapsable} from './FormCollapsable';
+import { DashboardFooter } from '../DashboardFooter';
 
 export const DashboardServices = () => {
  
@@ -19,8 +20,8 @@ export const DashboardServices = () => {
             </div>
             <FormCollapsable />
 
-
-        <Footer />
+            <Footer />
+            <DashboardFooter />
         </>
     )
 };
