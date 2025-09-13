@@ -5,7 +5,7 @@ import {Navigation} from '../../../Layout/Navigation';
 import {Footer} from '../../../Layout/Footer';
 import {SwipeCarousel} from './SwipeCarousel';
 import {FormCollapsable} from './FormCollapsable';
-import { DashboardFooter } from '../DashboardFooter';
+import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
 
 export const DashboardServices = () => {
  

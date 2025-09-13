@@ -23,6 +23,7 @@ import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/
 import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { Navigate } from 'react-router-dom'
+import { DashboardFooter } from './Pages/Dashboard/DashboardFooter/DashboardFooter'
 
 function App() {
   const location = useLocation();
