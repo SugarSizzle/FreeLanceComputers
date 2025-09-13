@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Monitor, Settings, X, Shield, Wrench, HardDrive, Calendar, Clock, DollarSign, User, Bug, Database, ShoppingCart, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import styles from './DashboardOverview.module.css';
-import {Navigation} from '../../../Layout/Navigation';
 import { FaRegClock } from "react-icons/fa";
 import Spline from '@splinetool/react-spline';
 import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
