@@ -3,7 +3,6 @@ import { Monitor, Settings, X, Shield, Wrench, HardDrive, Calendar, Clock, Dolla
 import { useNavigate } from 'react-router-dom';
 import styles from './DashboardOverview.module.css';
 import {Navigation} from '../../../Layout/Navigation';
-import {Footer} from '../../../Layout/Footer';
 import { FaRegClock } from "react-icons/fa";
 import Spline from '@splinetool/react-spline';
 import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
