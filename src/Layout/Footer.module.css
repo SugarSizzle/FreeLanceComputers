@@ -1,48 +1,172 @@
 .footerContainer{
     display: flex;
     gap:5vw;
+    flex-direction:column;
     justify-content: center;
     width: 100vw;
-    height: 40vh;
+    height: auto;
     color:whitesmoke;
     margin-top:10vh;
-    border-top: 1px solid rgb(119, 119, 119);
+    border-top: 1px solid #7777773d;
+  }
+
+  .upperContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+  }
+
+  .lowerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+    margin-bottom:5vh;
+    margin:auto;
   }
   
-  
-  .footerContactContainer , .footerServicesContainer{
+  .subscribeTitle{
+    font-size:1.2rem;
+    font-weight:600;
+    margin:0;
+    
+  }
+
+  .footerColumnSubscribe{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height:25vh;
+  }
+
+  .subscribeInput{
+    width:80%;
+    border:none;
+    border-radius: .5rem;
+    padding: .7rem;
+    align-self: center;
+    outline:none;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    color: #ffffff;
+    background-color: #000000;
+    border:1px solid #7777773d;
+    border-radius: .5rem;
+
+  }
+ 
+  .subscribeButton{
+    width:60%;
+    border:none;
+    border-radius: .5rem;
+    padding: .7rem;
+    align-self: left;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left:8vw;
+    background-color: #000000;
+    border:1px solid #7777773d;
+    border-radius: .5rem;
+    color: #ffffff2d;
+    transition: all 0.3s ease;
+  }
+
+  .subscribeButtonActive {
+    background: linear-gradient(90deg, #666666, #ffffffcc, #666666);
+    background-size: 300% 300%;
+    animation: gradientShift 5s ease infinite;
+    color: #000000;
+    font-weight: 800;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .linkTitle{
+    font-size:1rem;
+    font-weight:600;
+
+  }
+
+  .LinkColumn{
+    width:50%;
+    height:15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .servicesColumn,
+  .followUsColumn{
+    width:50%;
+    height:25vh;
     display: flex;
     flex-direction: column;
   }
-  
-  .footerServicesTitle, .footerContactTitle{
-    font-size: 1.5rem;
-    margin-bottom:3vh;
-    margin-top:5vh;
-   
-  
+
+  .link{
+    font-size:.8rem;
+    font-weight:700;
+    text-decoration: none;
+    color:#b0b0b0;
+    cursor: pointer;
   }
-  
-  .footerServicesText, .footerContactText{
-    font-size: .95rem;
+
+  .linkTitle{
+    font-size:1rem;
   }
+
+ .servicesColumn{
+  display: flex;
+  flex-direction: column;
+  gap:.5rem;
+  justify-content: space-around;
+ 
+  text-align: center;
+  margin-bottom:5vh;
   
-  .footerSocialMediaContainer{
-   
-    height:15vh;
-    width:100vw;
-    display:flex;
+ }
+
+ .followUsLinks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:15vh;
+  margin:auto;
+  width:50%;
+ }
+
+  .copyrightContainer{
+  
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap:15vw;
-  }
-  
-  .footerSocialMediaIcon{
-    font-size: 3rem;
-    color:whitesmoke;
+    font-size:.8rem;
+    width:80%;
+    margin:auto;
     
-  
-   
   }
+
+ 
+
+
+ 
+
+
   
+
   
