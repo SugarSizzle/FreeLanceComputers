@@ -9,7 +9,6 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
   return (
     <div className={styles.container}>
 
-     
       <div className={styles.mainContent}>
    
         <div className={styles.titleSection}>
