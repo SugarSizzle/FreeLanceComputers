@@ -1,105 +1,111 @@
-import React, { useState, useEffect } from 'react';
-import ComputerRepairs from '../../images/ComputerRepairs.webp';
-import ComputerUpgrades from '../../images/ComputerUpgrades.webp';
-import DataRecovery from '../../images/DataRecovery.webp';
-import VirusRemoval from '../../images/Virus.jpg';
-import styles from './HomePageServices.module.css';
+import React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { supabase } from '../../lib/supabase';
+import { IKContext, IKImage } from 'imagekitio-react';
+import styles from './HomePageServices.module.css';
 
-
-const imageMap = {
-   VirusRemoval,
-   DataRecovery,
-   ComputerUpgrades,
-   ComputerRepairs
-};
 
 export const HomePageServices = () => {
-  const [services, setServices] = useState([]);
-  const [error, setError] = useState(null);
-  const [currentService, setCurrentService] = useState(null);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('services')
-          .select('*');
+  const [activeService, setActiveService] = useState(3);
 
-        if (error) throw error;
 
-        setServices(data);
-        setCurrentService(data[0]); // set first service by default
-      } catch (error) {
-        console.error('Supabase error:', error);
-        setError(error.message);
-      }
-    };
+  const services = [
+    {
+      id: 1,
+      service: "Virus Removal",
+      description: " We provide comprehensive malware and virus removal services to protect your system, data, and privacy. Our team uses advanced tools to detect, eliminate, and prevent infections with minimal disruption.",
+      image: "ServicesImages/Virus.jpg"
+    },
+    {
+      id: 2,
+      service: "Data Recovery",
+      description: "We specialize in advanced data recovery solutions, utilizing state-of-the-art tools and techniques to retrieve lost or inaccessible data. Whether it's personal files or critical business information, we're committed to recovering what matters most.",
+      image: "ServicesImages/DataRecovery.jpg"
+    },
+    {
+      id: 3,
+      service: "Computer Upgrades",
+      description: "Boost your system's speed, storage, and performance with professional upgrade services. Whether for gaming, work, or everyday use, we help extend the life and capability of your machine with optimized, future-ready components.",
+      image: "ServicesImages/ComputerUpgrades.jpg"
+    },
+    {
+      id: 4,
+      service: "Computer Repairs",
+      description: "We offer reliable computer repair services for desktops, laptops, and custom systems. From hardware replacements to software diagnostics, we ensure fast, effective solutions to get your device running smoothly again.",
+      image: "ServicesImages/florian-olivo-tGfRYSO0fjg-unsplash.jpg"
+    }
+  ];
 
-    fetchServices();
-  }, []);
-
+  const currentService = services.find(service => service.id === activeService);
 
 
 
   return (
-    <>
-      <div className={styles.servicesContainer}>
-        <ul className={styles.serviceList}>
-          {services.map((service, index) => (
-            <motion.li
-              key={service.id || index}
-              layoutId="service"
-              onClick={() => setCurrentService(service)}
-              className={styles.serviceItem}
+    <IKContext urlEndpoint="https://ik.imagekit.io/irpk6rtbq">
+      <div className={styles.serviceTableContainer}>
+        <div className={styles.serviceTabs}>
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className={styles.serviceTab}
+              onClick={() => setActiveService(service.id)}
             >
               {service.service}
-
-              {currentService.id === service.id && (
+              {activeService === service.id && (
                 <motion.div
-                  layoutId="serviceBackground"
-                  className={styles.serviceBackground}
+                  layoutId="activeTab"
+                  className={styles.activeTabBackground}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30
+                  }}
                 />
               )}
-            </motion.li>
+            </div>
           ))}
-        </ul>
+        </div>
+
+        <div className={styles.serviceContent}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              layoutId="serviceContent"
+              key={activeService}
+            
+          
+              className={styles.contentWrapper}
+            >
+              <div className={styles.contentLayout}>
+                <div className={styles.imageSection}>
+                  <IKImage 
+                    path={currentService.image}
+                    alt={currentService.service}
+                    className={styles.serviceImage}
+                    transformation={[
+                      {
+                        width: 300,
+                        height: 200,
+                        cropMode: 'maintain_ratio'
+                      }
+                    ]}
+                  />
+                </div>
+                <div className={styles.textSection}>
+                  <p className={styles.serviceDescription}>
+                    {currentService.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <button className={styles.ctaButton}>
+            Get Started
+          </button>
+        </div>
       </div>
+    </IKContext>
+  )
+}
 
-        
-      <AnimatePresence
-      mode='wait'
-      >     
-      {currentService && (
-     
-        <motion.div
-        
-        key={currentService.id}
-        initial={{ opacity: 0, x:'-100%', scale:0 }}
-        animate={{ opacity: 1, x:0, scale:1 }}
-        exit={{ opacity: 0 , x:'-100%', scale:0}}
-        transition={{ duration: 0.25 }}
-        
-        className={styles.servicesInformationContainer}>
-          <img
-            src={currentService.image || ''}
-
-            className={styles.servicesInformationImage}
-            alt="Service"
-          />
-          <p className={styles.servicesInformationText}>
-            {currentService.description}
-          </p>
-
-          <div className={styles.servicesGetTouchContainer}>
-            <button className={styles.servicesGetTouchButton}>Get In Touch</button>
-          </div>
-        </motion.div>
-      )}
-      </AnimatePresence>
-
-     
-    </>
-  );
-};
