@@ -61,7 +61,7 @@ export const HomePageStoreSection = () => {
 
 
 
-
+    
     const CustomCheckbox = ({ checked, onChange, label }) => {
       
    
@@ -121,7 +121,7 @@ export const HomePageStoreSection = () => {
                      />
                      <motion.h3 
                        className={styles.homePageStorePreferenceText}
-                       animate={{ opacity: selectedType.includes('Laptop') ? 1 : 0.5 , color: selectedType.includes('Laptop') ? '#b54ffd' : '#ffffff' }}
+                       animate={{ opacity: selectedType.includes('Laptop') ? 1 : 0.5 , color: selectedType.includes('Laptop') ? '#ffffff' : '#ffffff' }}
                        transition={{ duration: 0.5 }}
                      >
                        Laptop
@@ -135,7 +135,7 @@ export const HomePageStoreSection = () => {
                      />
                      <motion.h3  
                        className={styles.homePageStorePreferenceText}
-                       animate={{ opacity: selectedType.includes('Desktop') ? 1 : 0.5 , color: selectedType.includes('Desktop') ? '#b54ffd' : '#ffffff' }}
+                       animate={{ opacity: selectedType.includes('Desktop') ? 1 : 0.5 , color: selectedType.includes('Desktop') ? '#ffffff' : '#ffffff' }}
                        transition={{ duration: 0.5 }}
                      >
                        Desktop
@@ -155,7 +155,7 @@ export const HomePageStoreSection = () => {
                  <motion.h3 
                    className={`${styles.homePageStorePreferenceText}`}
                  
-                   animate={{ opacity: selectedCondition.includes('New') ? 1 : 0.5 , color: selectedCondition.includes('New') ? '#b54ffd' : '#ffffff' }}
+                   animate={{ opacity: selectedCondition.includes('New') ? 1 : 0.5 , color: selectedCondition.includes('New') ? '#ffffff' : '#ffffff' }}
                    transition={{ duration: 0.5 }}
                  >
                    New
@@ -169,7 +169,7 @@ export const HomePageStoreSection = () => {
                  />
                  <motion.h3 
                    className={styles.homePageStorePreferenceText}
-                   animate={{ opacity: selectedCondition.includes('Used') ? 1 : 0.5 , color: selectedCondition.includes('Used') ? '#b54ffd' : '#ffffff' }}
+                   animate={{ opacity: selectedCondition.includes('Used') ? 1 : 0.5 , color: selectedCondition.includes('Used') ? '#ffffff' : '#ffffff' }}
                    transition={{ duration: 0.5 }}
                  >
                    Used
