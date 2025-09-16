@@ -80,7 +80,7 @@ export const HomePageStoreSection = () => {
               unchecked: { scale: .8, opacity:1},
               checked: {
                 scale: 1.1,
-                rotate: 360,
+                rotate: 180,
                 transition: { type: 'spring', }
               }
             }}
@@ -91,7 +91,7 @@ export const HomePageStoreSection = () => {
                   key="checkbox-inner"
                   className={styles.checkboxInner}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1, rotate: 360 }}
+                  animate={{ scale: 1, opacity: 1, rotate: 180 }}
                   transition={{ duration: 0.2 }}
                 />
               )}
