@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Routes, Route, useLocation, Outlet } from 'react-router-dom'
 import './App.css'
 import { HomePage } from './Pages/HomePage'
-import { AboutPage } from './Pages/AboutPage'
+
 import { VirusProtection } from './Pages/VirusProtection'
 import { DataRecoveryPage } from './Pages/DataRecoveryPage'
 import { ComputerRepairs } from './Pages/ComputerRepairs'
@@ -24,7 +24,7 @@ import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrder
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { Navigate } from 'react-router-dom'
 import { DashboardFooter } from './Pages/Dashboard/DashboardFooter/DashboardFooter'
-
+import { AboutPage } from './Pages/AboutPage'
 function App() {
   const location = useLocation();
 
@@ -55,6 +55,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/QandA" element={<QandA />} />
               <Route path="/signin" element={<SignInPage />} />
+              <Route path="/about" element={<AboutPage />} />
               
           
              
