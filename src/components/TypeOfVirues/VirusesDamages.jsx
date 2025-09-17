@@ -75,18 +75,18 @@ export const VirusesDamages = ({ data, }) => {
                 </motion.h3>
              
                 <p 
-                style={{color: isOpenDamages ? '#e53935' : '#d7d7d7'}}
-                className={styles.clickToSeeMore}>Click to see more</p>
+               
+                className={styles.clickToSeeMore}>Click to see {isOpenDamages ? 'less' : 'more'}</p>
                 
                 <motion.div
                     animate={{ 
-                        color: isOpenDamages ? '#e53935' : '#d7d7d7',
+                 
                         rotate: isOpenDamages ? 0 : 180 
                     }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                 >
                     <FaArrowDownLong 
-                        style={{color: isOpenDamages ? '#e53935' : '#d7d7d7'}}
+                        style={{color: isOpenDamages ? '#b0b0b0' : '#ffffff25'}}
                         className={styles.damagesCollapseArrow}/>
                 </motion.div>
 

@@ -17,7 +17,7 @@ export const TypeOfVirus = () => {
     const [currentVirus, setCurrentVirus] = useState(null)
     const virusContext = useVirus();
     
-    // Safety check to ensure context is available
+   
     if (!virusContext) {
         console.warn('VirusContext is not available');
         return null;

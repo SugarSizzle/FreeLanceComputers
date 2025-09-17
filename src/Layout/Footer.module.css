@@ -77,10 +77,9 @@
   }
 
   .subscribeButtonActive {
-    background: linear-gradient(90deg, #666666, #ffffffcc, #666666);
-    background-size: 300% 300%;
+    background: linear-gradient(45deg, #151619, #2d3035, #151619);    background-size: 300% 300%;
     animation: gradientShift 5s ease infinite;
-    color: #000000;
+    color: #ffffff;
     font-weight: 800;
   }
 
