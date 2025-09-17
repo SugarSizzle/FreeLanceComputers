@@ -12,18 +12,14 @@
 
 .damagesCollapseHeader{
     font-weight: 600;
-    color: #d7d7d7;
-    font-size: .95rem;
+    color: #b0b0b0;
+    font-size: 1.1rem;
 }
 
 .damagesCollapseArrow{
     font-size: 1.2rem;
-    color: #d7d7d7;
+    color: #b0b0b0;
     transition: transform 0.3s ease;
-}
-
-.damagesCollapseHeader{
-    font-size:1.1rem;
 }
 
 
@@ -40,19 +36,9 @@
     min-height: 3rem;
 }
 
-.clickToSeeMoreContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-    gap: 0.5rem;
-    align-self: flex-start;
-    border:1px solid red;
-}
-
 
 .clickToSeeMore{
-    color:#e53935;
+    color:#b0b0b0;
     font-size:.75rem;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
@@ -74,7 +60,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.25);
     width: 100%;
     opacity: 0;
 }
@@ -104,45 +90,41 @@
 
 
 .reportButton{
-
-    color: #d7d7d7;
-    border:none;
-    border-radius:1rem;
-    padding:1rem 2rem;
-    font-size:1rem;
-    font-weight:600;
-    border:1px solid rgba(255,255,255,0.2);
+    color: #b0b0b0;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid rgba(255,255,255,0.2);
     background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+}
 
-    &::before{
-        content:'';
-        position:absolute;
-        top:0;
-        left:-100%;
-        width:100%;
-        height:100%;
-        background: linear-gradient(45deg, #e53935, #000000, #000000, #e53935);
-        background-size: 400% 400%;
-        z-index:-1;
-        transition: left 0.4s ease;
-        animation: gradientShift 3s ease infinite;
-    }
+.reportButton::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #151619, #2d3035, #151619);
+    background-size: 400% 400%;
+    z-index: -1;
+    transition: left 0.4s ease;
+    animation: gradientShift 3s ease infinite;
+}
 
-    &:hover::before{
-        left:0;
-    }
+.reportButton:hover::before{
+    left: 0;
+}
 
-    &:hover{
-        color: #ffffff;
-        transform: scale(1.05);
-        border:1px solid #ffffff;
-        transition: all 0.4s ease;
-    }
-
-
+.reportButton:hover{
+    color: #ffffff;
+    transform: scale(1.05);
+    border: 1px solid #ffffff;
+    transition: all 0.4s ease;
 }
