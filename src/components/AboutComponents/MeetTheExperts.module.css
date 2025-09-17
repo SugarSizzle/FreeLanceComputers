@@ -1,0 +1,148 @@
+.meetTheExpertsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: auto;
+    width: 100vw;
+    height: auto;
+    padding-top: 4rem;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.heroSectionImageContainer{
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    
+}
+
+.heroSectionImage{
+    
+    object-fit:contain;
+}
+
+.headerTextContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    margin:auto;
+   
+}
+.meetTheExpertsDescription{
+    font-size: .6rem;
+    font-weight: 800;
+    line-height: 1.6;
+    text-align: center;
+    margin:auto;
+    margin-bottom: 1rem;
+    width: 100%;
+    color: #b0b0b0;
+}
+
+.expertsImageContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.imageWrapper{
+    width: 100%;
+   
+}
+
+
+.expertImage{
+    border-radius: .5rem .5rem 0 0;
+    width: 100%;
+   
+}
+
+.meetTheExpertsHeader{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.expertCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: .5rem .5rem .5rem .5rem;
+    width: 90%;
+    max-width: 90vw;
+    height:auto;
+    background-color: #0e101165;
+   
+  
+}
+
+.expertInfo{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    height: 15vh;
+    margin:0;
+   
+}
+
+.expertDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+  
+}
+
+.expertName{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffffe7;
+}
+
+.expertSpecialization{
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0;
+    color: #b0b0b0c9;
+    line-height: 1.4;
+    
+}
+
+.socialIcons{
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding:1rem;
+}
+
+.socialIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #ffffff55;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+
+
