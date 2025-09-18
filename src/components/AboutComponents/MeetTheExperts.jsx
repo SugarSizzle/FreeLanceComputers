@@ -10,11 +10,16 @@ export const MeetTheExperts = () => {
                 <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
                     <IKImage
                         className={styles.heroSectionImage}
-                        width={400}
-                        height={300}
                         loading='lazy'
-                        src='https://ik.imagekit.io/irpk6rtbq/AboutPageHeroSectionImage.png?updatedAt=1758131047843' 
-                        alt='Meet The Experts'  
+                        path='AboutPageHeroSectionImage.png' 
+                        alt='Meet The Experts'
+                        transformation={[
+                            {
+                                quality: 'auto',
+                                dpr: 'auto',
+                                f:'auto'
+                            }
+                        ]}
                     />
                 </IKContext>
             </div>
@@ -32,11 +37,26 @@ export const MeetTheExperts = () => {
                         <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
                             <IKImage 
                                 className={styles.expertImage}
-                              
-                                height={300}
                                 loading='lazy'
-                                src='https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513' 
-                                alt='Steve Dermin'  
+                                path='chalo-garcia-2mWKL_I70qk-unsplash.jpg'
+                                alt='Steve Dermin'
+                                transformation={[
+                                    {
+                                        quality: 100,
+                                        dpr: 'auto'
+                                    }
+                                ]}
+                                srcSet={[
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-768 768w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-1280 1280w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-1920 1920w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-2560 2560w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-3200 3200w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/chalo-garcia-2mWKL_I70qk-unsplash.jpg?updatedAt=1757094994513'}?tr=w-3840 3840w`
+                                  ].join(', ')}  
+
+                                sizes="100vw"  
+
                             />
                         </IKContext>
                     </div>
@@ -66,11 +86,26 @@ export const MeetTheExperts = () => {
                         <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
                             <IKImage 
                                 className={styles.expertImage}
-                                width={300}
-                                height={400}
                                 loading='lazy'
-                                src='https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290' 
-                                alt='Dwight Schrute'  
+                                path='sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg'
+                                alt='Dwight Schrute'
+                                transformation={[
+                                    {
+                                        quality: 100,
+                                        dpr: 'auto'
+                                    }
+                                ]}
+                                srcSet={[
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-768 768w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-1280 1280w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-1920 1920w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-2560 2560w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-3200 3200w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg?updatedAt=1757094996290'}?tr=w-3840 3840w`
+                                  ].join(', ')}  
+
+                                sizes="100vw"  
+
                             />
                         </IKContext>
                     </div>
@@ -99,11 +134,26 @@ export const MeetTheExperts = () => {
                         <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
                             <IKImage
                                 className={styles.expertImage}
-                                width={300}
-                                height={400}
                                 loading='lazy'
-                                src='https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211' 
-                                alt='Michael Garcia'  
+                                path='sergey-mikheev-_jasTqAtQtY-unsplash.jpg'
+                                alt='Michael Garcia'
+                                transformation={[
+                                    {
+                                        quality: 100,
+                                        dpr: 'auto'
+                                    }
+                                ]}
+                                srcSet={[
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-768 768w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-1280 1280w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-1920 1920w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-2560 2560w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-3200 3200w`,
+                                    `${'https://ik.imagekit.io/irpk6rtbq/sergey-mikheev-_jasTqAtQtY-unsplash.jpg?updatedAt=1757094996211'}?tr=w-3840 3840w`
+                                  ].join(', ')}  
+
+                                sizes="100vw"  
+
                             />
                         </IKContext>
                     </div>
