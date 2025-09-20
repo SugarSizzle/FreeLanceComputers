@@ -54,21 +54,12 @@
 }
 
 .avatarContainer::-webkit-scrollbar {
-  height: 4px;
+  display: none;
 }
 
-.avatarContainer::-webkit-scrollbar-track {
-  background: #FFFFFF25;
-  border-radius: 2px;
-}
-
-.avatarContainer::-webkit-scrollbar-thumb {
-  background: #FFFFFF25;
-  border-radius: 2px;
-}
-
-.avatarContainer::-webkit-scrollbar-thumb:hover {
-  background: #FFFFFF25;
+.avatarContainer {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .avatar {
@@ -103,7 +94,7 @@
   background: transparent;
   border-radius: 25%;
   cursor: pointer;
-  box-shadow: inset 0px 2.5px 4px #ffffff25, inset -2.5px 0px 4px
+  box-shadow: inset 0px 3.5px 4px #ffffff25, inset -2.5px 0px 4px
 }
 
 

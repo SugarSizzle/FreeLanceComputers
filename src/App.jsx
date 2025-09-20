@@ -8,7 +8,6 @@ import { DataRecoveryPage } from './Pages/DataRecoveryPage'
 import { ComputerRepairs } from './Pages/ComputerRepairs'
 import { Store } from './Pages/Store'
 import ProductsDetails from './components/ProductsDetails/ProductsDetails'
-import ScrollToTop from './components/ScrollToTop'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ContactPage } from './Pages/ContactPage'
 import { QandA } from './Pages/QandA'
@@ -22,14 +21,11 @@ import { Layout } from './Layout/Layout'
 import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/DashboardReviewOverlay'
 import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
 import { ProtectedRoute } from './components/ProtectedRoute'
-import { Navigate } from 'react-router-dom'
-import { DashboardFooter } from './Pages/Dashboard/DashboardFooter/DashboardFooter'
 import { AboutPage } from './Pages/AboutPage'
 function App() {
   const location = useLocation();
 
 
-  // Scroll to top when location changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
@@ -56,7 +52,7 @@ function App() {
               <Route path="/QandA" element={<QandA />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/about" element={<AboutPage />} />
-              
+            
           
              
               
