@@ -60,6 +60,7 @@ export const MeetTheExperts = () => {
                             />
                         </IKContext>
                     </div>
+                    
                     <div className={styles.expertInfo}>
                         <div className={styles.expertDetails}>
                             <h3 className={styles.expertName}>Steve Dermin</h3>
