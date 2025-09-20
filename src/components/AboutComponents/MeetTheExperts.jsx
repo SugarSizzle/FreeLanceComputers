@@ -6,23 +6,7 @@ export const MeetTheExperts = () => {
     return (
         <div className={styles.meetTheExpertsContainer}>
 
-            <div className={styles.heroSectionImageContainer}>
-                <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
-                    <IKImage
-                        className={styles.heroSectionImage}
-                        loading='lazy'
-                        path='AboutPageHeroSectionImage.png' 
-                        alt='Meet The Experts'
-                        transformation={[
-                            {
-                                quality: 'auto',
-                                dpr: 'auto',
-                                f:'auto'
-                            }
-                        ]}
-                    />
-                </IKContext>
-            </div>
+           
 
             <div className={styles.headerTextContainer}>
                 <h1 className={styles.meetTheExpertsHeader}>Meet The Experts</h1>
