@@ -1,9 +1,10 @@
 import styles from './AboutPageHeroSection.module.css'
 import { IKContext, IKImage } from 'imagekitio-react'
+import { useState, useEffect } from 'react'
 
 export const AboutPageHeroSection = () => {
 
- 
+   
 
     return(
     <>
@@ -30,23 +31,7 @@ export const AboutPageHeroSection = () => {
         </div>
 
                 
-        <div className={styles.successStoriesContainer}>
-        <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
-        <IKImage
-            className={styles.successStoriesImage}
-            loading='lazy'
-            path='AboutPageHeroSectionImage.png' 
-            alt='Success Stories'
-            transformation={[
-                {
-                    quality: 'auto',
-                    dpr: 'auto',
-                    f:'auto'
-                }
-            ]}
-            />
-        </IKContext>
-        </div>
+  
 
         </>
     )
