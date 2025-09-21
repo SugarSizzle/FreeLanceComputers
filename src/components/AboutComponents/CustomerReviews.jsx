@@ -58,7 +58,7 @@ const testimonials = [
 ];
 
 export default function CustomerReviews() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(4);
   const avatarContainerRef = useRef(null);
 
   const nextTestimonial = () => {
