@@ -22,7 +22,7 @@ export const MeetTheExperts = () => {
                             <IKImage 
                                 className={styles.expertImage}
                                 loading='lazy'
-                                path='chalo-garcia-2mWKL_I70qk-unsplash.jpg'
+                                path='ChaloMobileHeadshot.jpg'
                                 alt='Steve Dermin'
                                 transformation={[
                                     {
@@ -72,7 +72,7 @@ export const MeetTheExperts = () => {
                             <IKImage 
                                 className={styles.expertImage}
                                 loading='lazy'
-                                path='sergey-mikheev-CTEiUWpZZ3o-unsplash.jpg'
+                                path='OtherSergeyMobileHeadshotMobile.jpg'
                                 alt='Dwight Schrute'
                                 transformation={[
                                     {
@@ -120,7 +120,7 @@ export const MeetTheExperts = () => {
                             <IKImage
                                 className={styles.expertImage}
                                 loading='lazy'
-                                path='sergey-mikheev-_jasTqAtQtY-unsplash.jpg'
+                                path='SergeyMobileHeadshot.jpg'
                                 alt='Michael Garcia'
                                 transformation={[
                                     {

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import styles from './CustomerReviews.module.css';
+import { IKContext, IKImage } from 'imagekitio-react'
+
 const testimonials = [
   {
     id: 1,
@@ -105,15 +107,14 @@ export default function CustomerReviews() {
     <div className={`${styles.container} `}>
     
       <div className={styles.innerContainer}>
-        {/* Header */}
-        <div className={styles.header}>
-          <h2 className={`${styles.headerTitle1} `}>
-            What our customers
-          </h2>
-          <h2 className={`${styles.headerTitle2} `}>
-            are saying
-          </h2>
-        </div>
+          <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+            <IKImage
+              loading='lazy'
+              path='WhatCustomerSayingMobile.png'
+              alt='Customers Saying'
+              className={styles.headerImage}
+            />
+          </IKContext>
 
         <div className={styles.avatarContainer} ref={avatarContainerRef}>
           {testimonials.map((testimonial, index) => (
