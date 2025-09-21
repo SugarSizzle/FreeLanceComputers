@@ -22,6 +22,7 @@ import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/
 import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { AboutPage } from './Pages/AboutPage'
+import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
 function App() {
   const location = useLocation();
 
@@ -52,7 +53,7 @@ function App() {
               <Route path="/QandA" element={<QandA />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/about" element={<AboutPage />} />
-            
+              <Route path="/notsignedin" element={<NotSignedIn />} />
           
              
               
