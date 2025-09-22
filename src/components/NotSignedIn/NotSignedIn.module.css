@@ -1,0 +1,8 @@
+.container{
+    width: 90vw;
+    height: 50vh;
+    background-image: url('https://ik.imagekit.io/irpk6rtbq/WebsiteLogoMobile.png?updatedAt=1758459208456');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
