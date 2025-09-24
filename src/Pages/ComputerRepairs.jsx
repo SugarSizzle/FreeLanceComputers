@@ -5,12 +5,17 @@ import { ComputerRepairsHeroSection } from '../components/ComputerRepairsHeroSec
 import { ComputerRepairsPricing } from '../components/ComputerRepairsPricing/ComputerRepairsPricing'
 import { ComputerRepairsDamages } from '../components/ComputerRepairsDamages/ComputerRepairsDamages'
 import { ComputerRepairsInformation } from '../components/ComputerRepairsInformation/ComputerRepairsInformation'
+import { useAuth } from '../Context/AuthContext'
+import { NotSignedIn } from '../components/NotSignedIn/NotSignedIn'
+
 
 
 
 
 
 export const ComputerRepairs =() => {
+
+    const { session } = useAuth();
 
 
 
@@ -21,6 +26,10 @@ export const ComputerRepairs =() => {
         <ComputerRepairsInformation/>
         <ComputerRepairsDamages/>
         <ComputerRepairsPricing/>
+        {(!session) && (
+            <NotSignedIn />
+        )}
+        
        
         </>
     )

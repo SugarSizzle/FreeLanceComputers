@@ -3,6 +3,8 @@ import styles from './VirusGetInTouch.module.css'
 import { motion } from 'framer-motion'
 import { FaWpforms } from "react-icons/fa";
 import { useVirus } from '../../Context/UseVirusContext';
+import { useAuth } from '../../Context/AuthContext';
+import { NotSignedIn } from '../NotSignedIn/NotSignedIn';
 
 
 export const VirusGetInTouch = () => {
@@ -10,6 +12,7 @@ export const VirusGetInTouch = () => {
     const [selectedType, setSelectedType] = useState([]);
     const { selectedVirus } = useVirus();
     const [message, setMessage] = useState('');
+    const { session } = useAuth();
 
     // Auto-fill the message only when report button is clicked
     useEffect(() => {
@@ -97,6 +100,11 @@ export const VirusGetInTouch = () => {
         )
     }
 
+
+    // If user is not signed in, show NotSignedIn component
+    if (!session) {
+        return <NotSignedIn />;
+    }
 
     return (
         <>
