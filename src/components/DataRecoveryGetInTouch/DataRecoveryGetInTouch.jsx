@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styles from './DataRecoveryGetInTouch.module.css'
 import { FaWpforms } from "react-icons/fa";
+import { useAuth } from '../../Context/AuthContext';
+import { NotSignedIn } from '../NotSignedIn/NotSignedIn';
 
 
 export const DataRecoveryGetInTouch = () => {
 
     const [selectedType, setSelectedType] = useState([]);
+    const { session } = useAuth();
 
     
     const toggleSelection = (value, selectedList, setSelectedList) => {
@@ -86,7 +89,10 @@ export const DataRecoveryGetInTouch = () => {
         )
     }
 
-
+    // If user is not signed in, show NotSignedIn component
+    if (!session) {
+        return <NotSignedIn />;
+    }
 
     return(
     <>
