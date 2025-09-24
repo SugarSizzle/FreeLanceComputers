@@ -9,7 +9,8 @@
     margin:auto;
     margin-top: 10vh;
     border-radius: 1rem;
-    z-index: 10;
+
+    margin-bottom: 20vh;
   
 
 }
@@ -90,6 +91,7 @@
     text-decoration: none;
     animation: gradientShift 4s ease infinite;
     font-weight: 500;
+    
 }
 
 .buttonInvalid {
