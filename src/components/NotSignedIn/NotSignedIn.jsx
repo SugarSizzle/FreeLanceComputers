@@ -1,12 +1,13 @@
 import React, { useState,  } from 'react'
-import { motion, useTime, useTransform } from 'framer-motion'
+import { motion, useTime, useTransform, AnimatePresence } from 'framer-motion'
 import styles from './NotSignedIn.module.css'
 import { Link } from 'react-router-dom'
+import { WhySignUp } from './WhySignUp'
 export const NotSignedIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
-
+    const [showWhySignUp, setShowWhySignUp] = useState(false);
 
 
   
@@ -39,14 +40,12 @@ export const NotSignedIn = () => {
     };
 
     return (
-  
         <div className={styles.container}>
             <div className={styles.signUpNow}>
                 <h3 className={styles.title}>Sign Up Now</h3>
                 <p className={styles.Subtitle}>Get access to all our services and features</p>
 
                 <form className={styles.signUpForm}>
-
                     <input 
                     className={styles.signUpFormInput}
                     type="email" 
@@ -80,31 +79,31 @@ export const NotSignedIn = () => {
                     whileTap={isFormValid ? { scale: 0.98 } : {}}>
                         Continue
                     </motion.button>
-
                 </form>
 
-                <div className={styles.backgroundContainer}>
-
-                </div>
+                <div className={styles.backgroundContainer}></div>
 
                 <div className={styles.signinFooter}>
                     <h3 className={styles.signinFooterTitle}>Already have an account? <Link className={styles.signinFooterLink} to="/signin">Sign In</Link></h3>
                 </div>
                 <div className={styles.whySignUpContainer}>
                     <h3 className={styles.whySignUpTitle}>Why sign up?</h3>
-                    <button className={styles.whySignUpButton}> Click here</button>
+                    <motion.button 
+                        className={`${styles.whySignUpButton} ${isFormValid ? styles.buttonStatic : ''}`} 
+                        onClick={() => setShowWhySignUp(true)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                    > 
+                        Click here
+                    </motion.button>
                 </div>
-
             </div>
 
-          
-
+            <AnimatePresence>
+                {showWhySignUp && (
+                    <WhySignUp onBack={() => setShowWhySignUp(false)} />
+                )}
+            </AnimatePresence>
         </div>
-
- 
-
-        
-
-        
     );
 };
