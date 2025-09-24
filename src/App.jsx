@@ -23,6 +23,7 @@ import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrder
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { AboutPage } from './Pages/AboutPage'
 import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
+import { WhySignUp } from './components/NotSignedIn/WhySignUp'
 function App() {
   const location = useLocation();
 
@@ -54,7 +55,7 @@ function App() {
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
-          
+              <Route path="/why-sign-up" element={<WhySignUp />} />
              
               
               <Route path="/dashboard" element={<ProtectedRoute />}>

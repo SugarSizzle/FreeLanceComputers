@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef, } from 'react';
+import { motion, AnimatePresence, useTime, useTransform } from 'framer-motion';
 import { IKContext, IKImage } from 'imagekitio-react';
 import styles from './HomePageServices.module.css';
 
@@ -8,6 +8,13 @@ import styles from './HomePageServices.module.css';
 export const HomePageServices = () => {
 
   const [activeService, setActiveService] = useState(3);
+  const time = useTime();
+  const rotate = useTransform(time, [0, 1000, 3000], [0, -180, -280], {clamp: false});
+  const rotatingBg = useTransform(rotate , (r) =>{
+      return `conic-gradient(from ${r}deg, #ffffff, transparent, transparent, transparent,transparent)`
+  })
+
+
 
 
   const services = [
@@ -105,6 +112,15 @@ export const HomePageServices = () => {
           </button>
         </div>
       </div>
+
+      
+      <div className={styles.signUpButtonContainer}>
+            <button className={styles.signUpButton}>Sign Up</button>
+            <motion.div 
+            style={{background:rotatingBg}}
+            className={styles.animatedBorder}>
+            </motion.div>
+        </div>
     </IKContext>
   )
 }

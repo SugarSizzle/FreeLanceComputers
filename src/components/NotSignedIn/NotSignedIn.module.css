@@ -10,7 +10,6 @@
     margin-top: 10vh;
     border-radius: 1rem;
     z-index: 10;
-    position: relative;
   
 
 }
@@ -96,6 +95,7 @@
 .buttonInvalid {
     opacity: 0.1;
     cursor: not-allowed;
+    animation: none !important;
 }
 
 .buttonValid {
@@ -103,6 +103,7 @@
     cursor: pointer;
     color: #B0B0B0;
     font-weight: 500;
+    animation: gradientShift 4s ease infinite;
 }
 
 .backgroundContainer{
@@ -138,12 +139,12 @@
 
 .whySignUpContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 40vw;
+    width: 60vw;
     height: 10vh;
-    align-items: start;
+    align-items: center;
 }
 
 .whySignUpTitle{
@@ -153,14 +154,28 @@
     text-align: left;
 }
 .whySignUpButton{
-    background-color: #000000;
-    border: 1px solid #7777773d;
-    border-radius: .5rem;
-    color: #ffffff;
+    background: linear-gradient(90deg, #151619, #2d3035, #4a5568, #2d3035, #151619);
+    background-size: 200% 200%;
+    color: #B0B0B0;
+    border: 2px solid #2d3035;
+    border-radius: 8px;
     font-size:.8rem;
     font-weight: 500;
     cursor: pointer;
+    width: 30vw;
+    height: 5vh;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: gradientShift 4s ease infinite;
 }
+
+.buttonStatic {
+    background: #2d3035 !important;
+    animation: none !important;
+    background-size: 100% 100% !important;
+}
+
+
 
 
 
