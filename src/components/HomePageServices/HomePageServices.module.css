@@ -1,101 +1,75 @@
-.serviceTableContainer {
+.servicesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 70vw;
+  margin: 0 auto;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.serviceNamesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serviceName {
   background-color: #000000;
   color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ffffff25;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
   font-family: 'JetBrains Mono', monospace;
+}
+
+.serviceName:hover {
+  background-color: #1a1a1a;
+  border-color: #ffffff40;
+  transform: translateY(-2px);
+}
+
+.serviceName.selected {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.serviceDetails {
+  background-color: #000000;
+  color: #ffffff;
   border-radius: 12px;
   border: 1px solid #ffffff25;
-  height: auto;
-  width: 95vw;
-  max-width: 100%;
-  overflow: hidden;
-  margin: auto;
-}
-
-.serviceTabs {
-  display: flex;
-  background-color: #000000;
-  outline: none;
-  position: relative;
-  min-height: 60px;
-  border-bottom: 1px solid #b0b0b0;
-  justify-content: flex-start;
-  align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #b0b0b0 #000000;
-  padding: 0 10px;
-}
-
-
-.serviceTab {
-  flex: 0 0 auto;
-  padding: 8px 12px;
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 15px;
-  text-align: center;
-  white-space: nowrap;
-  font-family: 'JetBrains Mono', monospace;
-  position: relative;
-  z-index: 2;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: fit-content;
-  margin: 0 4px;
-}
-
-
-
-.serviceTab {
-  position: relative;
-  z-index: 2;
-}
-
-.activeTabBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, #b0b0b070, #000000);
-  border: 1px solid #ffffff55;
-  height: auto;
-  border-radius: 15px;
-  z-index: -1;
-}
-
-
-.serviceContent {
-  padding: 40px 30px;
-  min-height: 400px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  font-family: 'JetBrains Mono', monospace;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-.contentWrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.fadeIn {
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-.contentLayout {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  flex: 1;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.imageSection {
-  flex: 0 0 200px;
+.serviceImageContainer {
+  width: 100%;
 }
 
 .serviceImage {
@@ -105,8 +79,16 @@
   border-radius: 8px;
 }
 
-.textSection {
-  flex: 1;
+.serviceTextContainer {
+  text-align: center;
+}
+
+.serviceTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .serviceDescription {
@@ -117,109 +99,61 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
-.ctaButton {
-  background-color: #ffffff;
-  color: #000000;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 30px;
-  align-self: center;
-  transition: all 0.2s ease;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.ctaButton:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-1px);
-}
-
 @media (max-width: 768px) {
-  .serviceTableContainer {
-    margin: 10px;
-    border-radius: 8px;
+  .servicesContainer {
+    width: 90vw;
+    gap: 15px;
   }
   
-  .serviceTabs {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 10px;
-  }
-  
-  .serviceTab {
-    flex: 0 0 auto;
-    min-width: 120px;
-    padding: 12px 16px;
-    font-size: 13px;
+  .serviceName {
+    padding: 12px 15px;
+    font-size: 14px;
   }
 
-  .contentLayout {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .imageSection {
-    flex: none;
-    width: 100%;
+  .serviceDetails {
+    padding: 20px;
+    gap: 15px;
   }
 
   .serviceImage {
-    height: 180px;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    height: 200px;
   }
 
-  .serviceContent {
-    padding: 20px 15px;
-    min-height: 300px;
+  .serviceTitle {
+    font-size: 20px;
   }
 
   .serviceDescription {
     font-size: 14px;
     line-height: 1.5;
   }
-
-  .ctaButton {
-    padding: 10px 25px;
-    font-size: 13px;
-    margin-top: 20px;
-  }
 }
 
 @media (max-width: 480px) {
-  .serviceTableContainer {
-    margin: 5px;
+  .servicesContainer {
+    width: 95vw;
+    gap: 10px;
   }
   
-  .serviceTab {
-    min-width: 100px;
+  .serviceName {
     padding: 10px 12px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
-  .serviceContent {
-    padding: 15px 10px;
-    min-height: 250px;
+  .serviceDetails {
+    padding: 15px;
+    gap: 10px;
   }
 
   .serviceImage {
     height: 150px;
   }
 
+  .serviceTitle {
+    font-size: 18px;
+  }
+
   .serviceDescription {
     font-size: 13px;
   }
-
-  .ctaButton {
-    padding: 8px 20px;
-    font-size: 12px;
-  }
 }
-  
-
- 
