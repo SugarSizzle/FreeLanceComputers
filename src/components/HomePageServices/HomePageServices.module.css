@@ -2,52 +2,86 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 70vw;
+  width: 95vw;
+  
   margin: 0 auto;
   font-family: 'JetBrains Mono', monospace;
+}
+
+.serviceWrapper {
+  position: relative;
+  margin-bottom: 10px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #ffffff25;
+  border-radius: .5rem;
+}
+
+
+
+.animatedBorder{
+  position: absolute;
+  top: -.15rem;
+  left: -1px;
+  right: 0;
+  bottom: 0;
+  height: 105%;
+  background: #ffffff;
+  z-index: 1;
+  width: 101%;
+  border-radius: 8px;
 }
 
 .serviceNamesContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .serviceName {
   background-color: #000000;
   color: #ffffff;
   border-radius: 8px;
-  border: 1px solid #ffffff25;
-  padding: 15px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
   font-size: 16px;
   font-weight: 500;
-  text-align: center;
   font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  height: 60px;
 }
 
-.serviceName:hover {
-  background-color: #1a1a1a;
-  border-color: #ffffff40;
-  transform: translateY(-2px);
+.selected{
+  color: #32ff32;
 }
 
-.serviceName.selected {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+
+
+.serviceIcon {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
 }
 
-.serviceDetails {
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 12px;
+
+
+.serviceDetailsContainer {
+
+  width:80vw;
+  margin: auto;
+  border-radius: 1rem;
   border: 1px solid #ffffff25;
-  padding: 30px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2vh;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s ease forwards;
@@ -69,12 +103,13 @@
 }
 
 .serviceImageContainer {
-  width: 100%;
+  width:100%;
+  margin: auto;
 }
 
 .serviceImage {
   width: 100%;
-  height: 300px;
+  height: 30vh;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -84,76 +119,53 @@
 }
 
 .serviceTitle {
-  font-size: 24px;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 15px 0;
+  margin-bottom: 1rem;
   color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .serviceDescription {
-  font-size: 16px;
+  font-size: .8rem;
   line-height: 1.6;
-  margin: 0;
+  margin-bottom: 2rem;
   color: #b0b0b0;
   font-family: 'JetBrains Mono', monospace;
 }
 
-@media (max-width: 768px) {
-  .servicesContainer {
-    width: 90vw;
-    gap: 15px;
-  }
+.requestServiceButton {
+  background: linear-gradient(45deg, #151619, #2d3035, #151619);
+  background-size: 200% 200%;
+  color: #B0B0B0;
+  border: 2px solid #2d3035;
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width:80%;
+  text-align: center;
+  padding:.75rem;
+  margin:auto;
+  animation: gradientShift 4s ease infinite;
+  text-decoration: none;
   
-  .serviceName {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
-
-  .serviceDetails {
-    padding: 20px;
-    gap: 15px;
-  }
-
-  .serviceImage {
-    height: 200px;
-  }
-
-  .serviceTitle {
-    font-size: 20px;
-  }
-
-  .serviceDescription {
-    font-size: 14px;
-    line-height: 1.5;
-  }
+  font-weight: 500;
 }
 
-@media (max-width: 480px) {
-  .servicesContainer {
-    width: 95vw;
-    gap: 10px;
-  }
-  
-  .serviceName {
-    padding: 10px 12px;
-    font-size: 13px;
-  }
+.requestServiceButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(50, 255, 50, 0.3);
+}
 
-  .serviceDetails {
-    padding: 15px;
-    gap: 10px;
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-
-  .serviceImage {
-    height: 150px;
+  50% {
+    background-position: 100% 50%;
   }
-
-  .serviceTitle {
-    font-size: 18px;
-  }
-
-  .serviceDescription {
-    font-size: 13px;
+  100% {
+    background-position: 0% 50%;
   }
 }
