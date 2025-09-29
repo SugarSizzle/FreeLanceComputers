@@ -43,6 +43,7 @@ function App() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <Routes location={location}>
+          <Route path="/signin" element={<SignInPage />} />
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="/virus-protection" element={<VirusProtection />} />
@@ -52,7 +53,7 @@ function App() {
               <Route path="/products/:id" element={<ProductsDetails />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/QandA" element={<QandA />} />
-              <Route path="/signin" element={<SignInPage />} />
+              
               <Route path="/about" element={<AboutPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
