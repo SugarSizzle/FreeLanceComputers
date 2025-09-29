@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Navigation } from '../Layout/Navigation'
-import { Footer } from '../Layout/Footer'
 import {useActionState} from 'react'
 import styles from './SignInPage.module.css'
 import { useAuth } from '../Context/AuthContext'
-import {useNavigate, useLocation} from 'react-router-dom'
-
+import {useNavigate, useLocation, Link} from 'react-router-dom'
+import {IKContext, IKImage} from 'imagekitio-react'
+import { IoHomeOutline } from "react-icons/io5";
+import { TiArrowLeftOutline } from "react-icons/ti";
 
 export const SignInPage = () => {
     const {signInUser} = useAuth();
@@ -16,8 +16,10 @@ export const SignInPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     
-    // Get the page the user was trying to access before being redirected to sign-in
     const from = location.state?.from?.pathname || '/dashboard/overview';
+    
+    
+    const isFormComplete = email.trim() !== '' && password.trim() !== '';
 
     
     const [error, submitAction, isPending] = useActionState(
@@ -46,12 +48,17 @@ export const SignInPage = () => {
 
     return (
         <>
-          
             <div className={styles.signInContainer}>
+              
                 <div className={styles.signInCard}>
-                    <h1 className={styles.signInTitle}>
-                        {isSignUp ? 'Create Account' : 'Sign In'}
-                    </h1>
+               
+                <div className={styles.homeLinkContainer}>
+                    <Link to="/" className={styles.homeLink}>
+                        <IoHomeOutline className={styles.homeLinkIcon} />
+                    </Link>
+                </div>
+
+             
                     
                     <form action={submitAction} className={styles.signInForm}>
                         <div className={styles.inputContainer}>
@@ -101,7 +108,11 @@ export const SignInPage = () => {
                             </div>
                         )}
 
-                        <button type="submit" className={styles.submitButton} disabled={isPending}>
+                        <button 
+                            type="submit" 
+                            className={`${styles.submitButton} ${isFormComplete ? styles.submitButtonActive : styles.submitButtonInactive}`}
+                            disabled={isPending || !isFormComplete}
+                        >
                             {isPending ? 'Signing in...' : (isSignUp ? 'Create Account' : 'Sign In')}
                         </button>
                     </form>
@@ -124,11 +135,7 @@ export const SignInPage = () => {
                         </button>
                     </div>
 
-                    <div className={styles.forgotPassword}>
-                        <button className={styles.forgotPasswordButton}>
-                            Forgot Password?
-                        </button>
-                    </div>
+                  
                 </div>
             </div>
          
