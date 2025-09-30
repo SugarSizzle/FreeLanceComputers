@@ -4,6 +4,7 @@ import styles from './HomePageServices.module.css';
 import Spline from '@splinetool/react-spline';
 import { useTime, useTransform , AnimatePresence, motion} from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { SplineVirusIcon } from '../../images/SpineIcons/SplineVirusIcon';
 
 export const HomePageServices = () => {
 
@@ -13,20 +14,25 @@ export const HomePageServices = () => {
   const time = useTime();
   const rotate = useTransform(time, [0, 1000, 3000], [0, -180, -280], {clamp: false});
   const rotatingBg = useTransform(rotate , (r) =>{
-      return `conic-gradient(from ${r}deg, #32ff32, transparent, transparent, transparent,transparent)`
+      return `conic-gradient(from ${r}deg, #ffffff, transparent, transparent, transparent,transparent)`
   })
 
   const splineRef = useRef(null);
+  const splineVirusRef = useRef(null);
 
-  const triggerHoverEffect =  () => {
-    if(splineRef.current){
-      splineRef.current.emitEvent('mouseHOver',{value: true});
+
+
+  const triggerVirusIconAnimation = () => {
+    if(splineVirusRef.current){
+      splineVirusRef.current.emitEvent('mouseDown', 'trigger');
     }
   }
 
-
   const handleServiceClick = (serviceId) => {
     setActiveService(serviceId);
+    if(serviceId === 1) {
+      triggerVirusIconAnimation();
+    }
   };
 
   const handleLearnMoreClick = () => {
@@ -58,13 +64,10 @@ export const HomePageServices = () => {
             <div 
               className={`${styles.serviceName} ${activeService === 1 ? styles.selected : ''}`}
               onClick={() => handleServiceClick(1)}
-              onMouseEnter={triggerHoverEffect}
-              onMouseLeave={triggerHoverEffect}
             >
               <span>Virus Removal</span>
               <div className={styles.serviceIcon}>
-         
-         
+                <SplineVirusIcon splineRef={splineVirusRef} />
               </div>
             </div>
           </div>
@@ -78,8 +81,7 @@ export const HomePageServices = () => {
             <div 
               className={`${styles.serviceName} ${activeService === 2 ? styles.selected : ''}`}
               onClick={() => handleServiceClick(2)}
-              onMouseEnter={triggerHoverEffect}
-              onMouseLeave={triggerHoverEffect}
+             
             >
               <span>Data Recovery</span>
               <div className={styles.serviceIcon}>
@@ -98,8 +100,7 @@ export const HomePageServices = () => {
             <div 
               className={`${styles.serviceName} ${activeService === 3 ? styles.selected : ''}`}
               onClick={() => handleServiceClick(3)}
-              onMouseEnter={triggerHoverEffect}
-              onMouseLeave={triggerHoverEffect}
+             
             >
               <span>Computer Repairs</span>
               <div className={styles.serviceIcon}>
