@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-labelledby="title desc">
+  <title id="title">Technical Shield Logo (Monochrome)</title>
+  <desc id="desc">A shield outline with three circuit traces and three circular nodes.</desc>
+  <g fill="none" stroke="white" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Shield outline -->
+    <path d="M512 80
+             C 410 132, 308 164, 208 176
+             L 208 448
+             C 208 624, 324 764, 512 928
+             C 700 764, 816 624, 816 448
+             L 816 176
+             C 716 164, 614 132, 512 80 Z"/>
+    <!-- Center trace -->
+    <path d="M512 864 L512 560"/>
+    <!-- Left branch -->
+    <path d="M512 672 L400 560 L400 504"/>
+    <!-- Right branch with angle -->
+    <path d="M512 640 L624 528 L624 352"/>
+    <!-- Node circles -->
+    <circle cx="512" cy="496" r="36"/>
+    <circle cx="400" cy="456" r="36"/>
+    <circle cx="624" cy="312" r="36"/>
+  </g>
+</svg>
