@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-labelledby="title desc">
+  <title id="title">Technical Shield Logo (Gradient Outline)</title>
+  <desc id="desc">A shield outline with gradient stroke and gray circuit traces with circular nodes.</desc>
+  <defs>
+    <!-- Subtle metallic gradient for the outer shield -->
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e5e7eb"/>
+      <stop offset="50%" stop-color="#bfc5d0"/>
+      <stop offset="100%" stop-color="#9ca3af"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer shield -->
+  <path d="M512 80
+           C 410 132, 308 164, 208 176
+           L 208 448
+           C 208 624, 324 764, 512 928
+           C 700 764, 816 624, 816 448
+           L 816 176
+           C 716 164, 614 132, 512 80 Z"
+        fill="none" stroke="url(#metal)" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Circuitry group -->
+  <g fill="none" stroke="#d1d5db" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M512 864 L512 560"/>
+    <path d="M512 672 L400 560 L400 504"/>
+    <path d="M512 640 L624 528 L624 352"/>
+    <circle cx="512" cy="496" r="36"/>
+    <circle cx="400" cy="456" r="36"/>
+    <circle cx="624" cy="312" r="36"/>
+  </g>
+</svg>
