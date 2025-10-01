@@ -1,0 +1,43 @@
+.gridContainer{
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+  
+    overflow: hidden;
+    margin:auto;
+    margin-top: 10vh;
+
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.gridBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gridBg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 1) 70%);
+    pointer-events: none;
+}
+
+
+
+.beam {
+    position: absolute;
+    z-index: 10;
+}

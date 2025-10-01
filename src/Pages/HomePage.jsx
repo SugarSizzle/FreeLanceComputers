@@ -4,7 +4,7 @@ import { Footer } from '../Layout/Footer';
 import { HomePageHeroSection } from '../components/HomePageHeroSection/HomePageHeroSection';
 import { HomePageServices } from '../components/HomePageServices/HomePageServices';
 import { HomePageStoreSection } from '../components/HomePageStoreSection/HomePageStoreSection';
-
+import { HomePageContact } from '../components/HomePageContact/HomePageContact';
 
 export const HomePage = () => {
 
@@ -18,7 +18,7 @@ export const HomePage = () => {
         </div>
         <HomePageServices />
        <HomePageStoreSection />
-     
+       <HomePageContact />
        </>
     )
 }
