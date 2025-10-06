@@ -1,0 +1,47 @@
+.virusIconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightAppendage{
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+
+.active .rightAppendage{
+
+    transform: translateX(5px) rotate(15deg);
+}
+
+.leftBottomAppendage{
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+
+.active .leftBottomAppendage{
+    transform: rotate(-30deg);
+}
+
+.topAppendage{
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+
+.active .topAppendage{
+    transform: translateY(-15px);
+}
+
+.bigCircleBody, .littleCircleBody{
+    transition: all 0.5s ease;
+}
+
+.active .bigCircleBody{
+    fill: #ff0000;
+    fill-opacity: .8;
+}
+
+.active .littleCircleBody{
+    fill: #ff0000;
+    fill-opacity: 0.8;
+}

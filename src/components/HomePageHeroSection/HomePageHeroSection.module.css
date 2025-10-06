@@ -54,17 +54,49 @@
     
   }
   
-  .heroSectionGetStartedButton, .heroSectionGetInTouchButton {
-    width: 40vw;
-    height: 5vh;
+  .heroSectionGetStartedButton {
+    background: linear-gradient(90deg, #151619, #2d3035, #4a5568, #2d3035, #151619);
+    background-size: 200% 200%;
+    color: #B0B0B0;
+    border: 2px solid #2d3035;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width:50vw;
+    height:6vh;
+    text-align: center;
+    margin:auto;
+    animation: gradientShift 4s ease infinite;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+
+    
+  }
+
+  .heroSectionGetInTouchButton {
+    width: 50vw;
+    height: 6vh;
     border-radius: 10px;
-    border: none;
-    background-color: #ffffff;
-    color: #000000;
+    border: 2px solid #2d3035;
+    background-color: #000000;
+    color: #ffffff;
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     font-weight: 900;
     cursor: pointer;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   
   
