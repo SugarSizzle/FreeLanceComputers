@@ -1,0 +1,62 @@
+.presentContainer {
+    border-radius: .25rem;
+    width:20vw;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+ 
+  }
+  .presentText {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #B0B0B0;
+    transition: all 0.3s ease;
+  }
+
+
+  .presentSvg {
+    
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ffffff25;
+    box-shadow: none;
+    transition: all 0.3s ease;
+  }
+
+  .active .presentSvg {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0px 4px 4px #ffffff25, inset -2.5px 0px 4px
+  }
+
+  .active .presentBox {
+
+    transition: transform 0.7s ease;
+   transform: translateY(-30px) translateX(10px);
+  }
+
+  .active .presentText {
+    color: #ffffff;
+  }
+  
+
+  .lid,
+  .rightRibbon,
+  .leftRibbon {
+    transition: all 0.3s ease;
+  }
+  
+
+  .active .lid {
+    transform: translateX(-20px) translateY(-25px) rotate(-15deg);
+  }
+  
+  .active .rightRibbon,
+  .active .leftRibbon {
+    opacity: 0;
+  }
+  
