@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { IKContext, IKImage } from 'imagekitio-react';
 import styles from './HomePageServices.module.css';
-import Spline from '@splinetool/react-spline';
 import { useTime, useTransform , AnimatePresence, motion} from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { SplineVirusIcon } from '../../images/SpineIcons/SplineVirusIcon';
-
+import { VirusIcon } from '../../images/Icons/VirusIcon';
+import { DataRecoveryIcon } from '../../images/Icons/DataRecoveryIcon';
+import { ComputerRepairsIcon } from '../../images/Icons/ComputerRepairsIcon';
 export const HomePageServices = () => {
 
   const [activeService, setActiveService] = useState(3);
@@ -17,22 +17,16 @@ export const HomePageServices = () => {
       return `conic-gradient(from ${r}deg, #ffffff, transparent, transparent, transparent,transparent)`
   })
 
-  const splineRef = useRef(null);
-  const splineVirusRef = useRef(null);
 
-
-
-  const triggerVirusIconAnimation = () => {
-    if(splineVirusRef.current){
-      splineVirusRef.current.emitEvent('mouseDown', 'trigger');
-    }
-  }
+  const [activeVirus, setActiveVirus] = useState(false);
+  const [activeDataRecovery, setActiveDataRecovery] = useState(false);
+  const [activeComputerRepairs, setActiveComputerRepairs] = useState(false);
 
   const handleServiceClick = (serviceId) => {
     setActiveService(serviceId);
-    if(serviceId === 1) {
-      triggerVirusIconAnimation();
-    }
+    setActiveVirus(serviceId === 1);
+    setActiveDataRecovery(serviceId === 2);
+    setActiveComputerRepairs(serviceId === 3);
   };
 
   const handleLearnMoreClick = () => {
@@ -67,7 +61,7 @@ export const HomePageServices = () => {
             >
               <span>Virus Removal</span>
               <div className={styles.serviceIcon}>
-                <SplineVirusIcon splineRef={splineVirusRef} />
+                <VirusIcon isActive={activeVirus} />
               </div>
             </div>
           </div>
@@ -85,7 +79,7 @@ export const HomePageServices = () => {
             >
               <span>Data Recovery</span>
               <div className={styles.serviceIcon}>
-               
+                <DataRecoveryIcon isActive={activeDataRecovery} />
           
               </div>
             </div>
@@ -104,7 +98,7 @@ export const HomePageServices = () => {
             >
               <span>Computer Repairs</span>
               <div className={styles.serviceIcon}>
-             
+                <ComputerRepairsIcon isActive={activeComputerRepairs} />
                
               </div>
             </div>

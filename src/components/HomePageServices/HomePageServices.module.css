@@ -143,10 +143,11 @@
   text-align: center;
   padding:.75rem;
   margin:auto;
+  margin-bottom: 2rem;
   animation: gradientShift 4s ease infinite;
   text-decoration: none;
-  
   font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .requestServiceButton:hover {

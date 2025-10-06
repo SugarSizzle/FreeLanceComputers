@@ -53,11 +53,9 @@ function App() {
               <Route path="/products/:id" element={<ProductsDetails />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/QandA" element={<QandA />} />
-              
               <Route path="/about" element={<AboutPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
-             
               
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="overview" element={<Overview />} />

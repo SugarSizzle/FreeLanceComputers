@@ -1,0 +1,30 @@
+.mailWrap {
+    width: 100px;
+    height: 100px;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangleTop {
+    transform-origin: 68px 46.75px;
+    transition: transform 0.3s ease;
+}
+
+.mailWrap:hover .triangleTop {
+    transform: rotateX(180deg);
+}
+
+.mailBody {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: .5;
+}
+
+.mailLine {
+    stroke: #ffffff;
+    stroke-width: .5;
+}

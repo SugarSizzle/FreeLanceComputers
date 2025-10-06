@@ -2,9 +2,14 @@
  import styles from './HomePageContact.module.css'
  import {motion} from 'framer-motion'
 
+import { IKContext, IKImage } from 'imagekitio-react'
+import {Present} from '../../images/Icons/Present'
+import {CalendarIcon} from '../../images/Icons/CalendarIcon'
+import {ServicesIcon} from '../../images/Icons/ServicesIcon'
 
  export const HomePageContact = ({children}) => {
 
+    const [activeIcon, setActiveIcon] = useState(null);
     const gridBoxSize = 32;
     const BEAM_WIDTH_OFFSET = 1;
 
@@ -142,7 +147,7 @@
                 className={styles.gridBg}
                 style={{
                     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23b0b0b0' stroke-opacity='0.3'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`}}>
-                    
+                   
                 <div className={styles.gridBox}/>
                 <Beams/>
             </div>
@@ -152,12 +157,42 @@
 
 
     return (
-
-
+      <>
+        <div className={styles.getConnectedHeroContainer}>
+            <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+                <IKImage
+                    className={styles.getConnectedHeroImage}
+                    loading='lazy'
+                    path='GetConnectMobile.png?updatedAt=1759664262657'
+                    alt='Get Connected'
+                />
+            </IKContext>
+            
+        </div>
+        <div className={styles.content}>
+                <Present 
+                    className={styles.presentIcon}
+                    isActive={activeIcon === 'orders'}
+                    onClick={() => setActiveIcon(activeIcon === 'orders' ? null : 'orders')}
+                />
+                <CalendarIcon 
+                    className={styles.calendarIcon}
+                    isActive={activeIcon === 'appointments'}
+                    onClick={() => setActiveIcon(activeIcon === 'appointments' ? null : 'appointments')}
+                />
+                <ServicesIcon 
+                    className={styles.servicesIcon}
+                    isActive={activeIcon === 'services'}
+                    onClick={() => setActiveIcon(activeIcon === 'services' ? null : 'services')}
+                />
+            </div>
         <div className={styles.gridContainer}>
-            <div className={styles.content}> {children} </div>
+            
+            
             <BGGrid/>
         </div>
 
+
+    </>
     )
  }
