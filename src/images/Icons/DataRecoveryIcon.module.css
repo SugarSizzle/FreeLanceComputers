@@ -1,0 +1,67 @@
+.dataRecoveryIconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.largeBar, .midBar, .smallBar{
+    transform-origin: bottom;
+}
+
+@keyframes largeBarAnimation {
+    0% {
+        transform: scaleY(1);
+        stroke: white;
+    }
+    100% {
+        transform: scaleY(0.8);
+        stroke: #00ff00;
+    }
+    
+}
+
+@keyframes midBarAnimation {
+    0% {
+        transform: scaleY(1);
+        stroke: white;
+    }
+    100% {
+        transform: scaleY(0.3);
+        stroke: #00ff00;
+    }
+   
+}
+
+@keyframes smallBarAnimation {
+    0% {
+        transform: scaleY(1);
+        stroke: #00ff00;
+    }
+    100% {
+        transform: scaleY(3);
+        stroke: #00ff00;
+    }
+   
+}
+
+.active .largeBar{
+    animation: largeBarAnimation .5s ease-in-out ;
+    animation-delay: 0s;
+    animation-fill-mode:both
+}
+
+.active .midBar{
+    animation: midBarAnimation .5s ease-in-out ;
+    animation-delay: 0.2s;
+    animation-fill-mode:both
+
+   
+}
+
+.active .smallBar{
+    animation: smallBarAnimation .5s ease-in-out ;
+    animation-delay: 0.4s;
+    animation-fill-mode:both
+    
+}
+

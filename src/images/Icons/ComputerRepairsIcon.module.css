@@ -1,0 +1,41 @@
+.computerRepairsIconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rectangle{
+    transition: all 0.5s ease;
+    transform-origin: center;
+    fill: #b0b0b0;
+}
+
+.active .rectangle{
+    fill: #ffffff;
+
+}
+
+.monitor{
+    transition: all 0.5s ease;
+    transform-origin: center;
+    stroke: #b0b0b0;
+}
+
+.active .monitor{
+    fill: #0088ff;
+    fill-opacity: 0.2;
+    stroke: #ffffff;
+}
+
+.upgradeArrow{
+    transition: all 0.5s ease;
+    transform-origin: center;
+    opacity: 0;
+}
+
+.active .upgradeArrow{
+    transform: translateY(-60px);
+    fill: #00ff00;
+    opacity: 1;
+}
+
