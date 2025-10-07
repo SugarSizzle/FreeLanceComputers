@@ -1,229 +1,98 @@
-
-
-.homePageStoreContainer{
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    height: 90vh;
-    background: #000000;
-    margin: auto;
-    border-radius: 1rem;
-    padding-bottom:1.3rem;
-    border: 2px solid #ffffff25;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-
-    &:hover{
-      border: 2px solid #ffffff55;
-      box-shadow: 0 0 15px #ffffff25;
-      transition: all 0.5s ease;
-    }
-   
-  }
-
-  
-
-  .filterSectionBackground{
-    background-color: #ffffff0d;
-    border-radius: 1rem;
-    width: 95%;
-    height: 100%;
-    padding-bottom:2.5rem;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
-
-  }
-
-  
-  
-  .homePageStoreTitle{
-    background: linear-gradient(to right, #ffffff75, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-top: 20vh;
-    text-align: left;
-    margin-left: 5vw;
-  }
-
-  .homePageStoreNewPreferenceText{
-    color: #ffffff;
-    margin-top: 10vh;
-    
-  }
-
-  
- 
-  .homePageStorePreferenceText{
-    color: #ffffff;
-  }
-
-
-  
-  .homePageStorePreferenceContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    
-    
-  }
-  
-  .homePageStorePreferenceButton{
-    border-radius: .25rem;
-    width: 5vw;
-    height: 3vh;
-    border: none;
-    background-color: #ffffff;
-    font-family: 'JetBrains Mono', monospace;
-    position: relative;
-  }
-  
-  .homePageSubmitButtonContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10vw;
-    height:50%;
-  }
-  
-  .homePageSubmitButton{
-    background: linear-gradient(45deg, #151619, #2d3035, #151619);
-    background-size: 300% 100%;
-    color: #B0B0B0;
-    border: 2px solid #ffffff25;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: gradientShift 5s ease-in-out infinite;
-    width: 55vw;
-    height: 6vh;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .homePageSubmitButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(245, 245, 245, 0.3);
-  }
-  
-  .clearFiltersButton{
-  width: 40vw;
-  height:5vh;
-  border:none;
-  border-radius: .5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: .9rem;
-  color: #b0b0b0;
-  border: 1px solid #ffffff25;
-  background: linear-gradient(45deg, #151619, #2d3035, #151619);
-    
-    
-  
-  }
-  
-
-  .checkIcon{
- 
-    position: absolute;
-    top:5;
-    right:5;
-    left:0;
-    bottom:0;
-    width: 100%;
-    height: 100%;
-    color: #000000;
-    z-index: 1;
-    font-size:1.35rem;
-    
-  }
-
-.preferencePair {
+.container {
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  text-align: start;
-  margin-left: 10vw;
+  margin-top: 20vh;
+
+  box-sizing: border-box;
+}
+
+.heroImageContainer {
+  width: 100%;
+  height: 60vh;
+
+  overflow: hidden;
   
 }
 
-.checkboxContainer{
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  width:10vw;
-  height:5vh;
-  margin:auto;
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.checkbox{
-
-  width: 6vw;
-  height: 6vw;
-  
-  border: 2px solid #ffffff25;
-  border-radius: .5rem;
+.cardContainer {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  position: relative;
-  transition: all 0.5s ease;
-
-  &:hover{
-    box-shadow: 0 0 10px #ffffff50;
-    transition: all 0.5s ease;
-  }
-
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 5vh;
 }
 
-.checkboxInner{
+.phoneCard {
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
 
-  width: 50%;
-  height: 50%;
-  background-color: #ffffff;
-  border-radius: 25%;
-  margin:auto;
-  
+.phoneCard:hover {
+  transform: translateY(-5px);
+}
+
+.laptopCard {
+  width: 100%;
+  height: 50vh;
  
+  border-radius: 12px;
+  overflow: hidden;
+
+
 }
 
 
 
+.desktopCard {
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+ 
 
-.unchecked{
-  opacity:0;
-  background-color: #0c0c0c;
-  
 }
 
-.checked{
-  
-  background: #000000;
-  box-shadow: 0 0 10px #ffffff25;
+
+
+.phoneImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+.laptopImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
+
+.desktopImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
 
