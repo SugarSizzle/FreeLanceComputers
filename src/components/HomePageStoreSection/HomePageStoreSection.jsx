@@ -12,6 +12,7 @@ export const HomePageStoreSection = () => {
   const [selectedType, setSelectedType] = useState([]);
   const [selectedCondition, setSelectedCondition] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [showSubmitButton, setShowSubmitButton] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,6 +44,7 @@ export const HomePageStoreSection = () => {
 
 
     const filterProductsLogic = async () => {
+
         navigate({
           pathname:'/products',
           search: `${searchParams.toString()}`
@@ -50,14 +52,17 @@ export const HomePageStoreSection = () => {
     }
 
     useEffect(() => {
-
-      const type = searchParams.get('type');
-      const condition = searchParams.get('condition');
-
-      if(type) setSelectedType(type.split(','));
-      if(condition) setSelectedCondition(condition.split(','))
-
+      // Clear URL parameters on component mount to start fresh
+      setSearchParams(new URLSearchParams());
     }, []);
+
+    // Monitor selections to show/hide submit button
+    useEffect(() => {
+      const hasSelections = selectedType.length > 0 || selectedCondition.length > 0;
+      setShowSubmitButton(hasSelections);
+    }, [selectedType, selectedCondition]);
+
+    console.log(selectedType);
 
     return(
         
@@ -75,10 +80,19 @@ export const HomePageStoreSection = () => {
           </IKContext>
         </div>
 
+        <div className={styles.instructionContainer}>
+          <p className={styles.instructionText}>
+            From phones to desktops, just click on a card to select it.</p>
+        </div>
+
         <div className={styles.cardContainer}>
 
-          <div className={styles.phoneCard}>
+          <div 
+            className={`${styles.phoneCard} ${selectedType.includes('Phone') ? styles.selected : ''}`}
+            onClick={() => toggleSelection('Phone', selectedType, setSelectedType, 'type')}
+          >
             <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+              <h3 className={styles.phoneCardTitle}>Phones</h3>
               <IKImage
                 className={styles.phoneImage}
                 loading='lazy'
@@ -89,8 +103,12 @@ export const HomePageStoreSection = () => {
             </IKContext>
           </div>
 
-          <div className={styles.laptopCard}>
+          <div 
+            className={`${styles.laptopCard} ${selectedType.includes('Laptop') ? styles.selected : ''}`}
+            onClick={() => toggleSelection('Laptop', selectedType, setSelectedType, 'type')}
+          >
             <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+              <h3 className={styles.laptopCardTitle}>Laptops</h3>
               <IKImage
                 className={styles.laptopImage}
                 loading='lazy'
@@ -100,8 +118,12 @@ export const HomePageStoreSection = () => {
             </IKContext>
           </div>
        
-          <div className={styles.desktopCard}>
+          <div 
+            className={`${styles.desktopCard} ${selectedType.includes('Desktop') ? styles.selected : ''}`}
+            onClick={() => toggleSelection('Desktop', selectedType, setSelectedType, 'type')}
+          >
             <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+              <h3 className={styles.desktopCardTitle}>Desktops</h3>
               <IKImage
                 className={styles.desktopImage}
                 loading='lazy'
@@ -113,6 +135,38 @@ export const HomePageStoreSection = () => {
       
         </div>
 
+        <div className={styles.newOrUsedContainer}>
+          <h3 className={styles.newOrUsedTitle}>Preference in condition: </h3>
+          <button 
+            className={`${styles.newButton} ${selectedCondition.includes('new') ? styles.selected : ''}`}
+            onClick={() => toggleSelection('new', selectedCondition, setSelectedCondition, 'condition')}
+          >
+            New
+          </button>
+          
+          <button 
+            className={`${styles.usedButton} ${selectedCondition.includes('used') ? styles.selected : ''}`}
+            onClick={() => toggleSelection('used', selectedCondition, setSelectedCondition, 'condition')}
+          >
+            Used
+          </button>
+        </div>
+
+        <div className={styles.submitButtonContainer}>
+        {showSubmitButton && (
+           
+            <button className={styles.submitButton } onClick={filterProductsLogic}>Submit</button>
+            
+        
+        )}
+        <button
+              onClick={() => navigate('/products')}
+             className={styles.viewAllButton}>View All
+             </button>
+        </div>
+        
+        
+        
 
 
       </div>
