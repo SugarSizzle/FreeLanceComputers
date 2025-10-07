@@ -161,9 +161,10 @@ import {ServicesIcon} from '../../images/Icons/ServicesIcon'
         <div className={styles.getConnectedHeroContainer}>
             <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
                 <IKImage
+                    quality={100}
                     className={styles.getConnectedHeroImage}
                     loading='lazy'
-                    path='GetConnectMobile.png?updatedAt=1759664262657'
+                    path='NewGetConnectedDesktop.png?updatedAt=1759807840586'
                     alt='Get Connected'
                 />
             </IKContext>
