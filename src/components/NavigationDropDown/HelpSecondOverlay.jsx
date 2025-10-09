@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './HelpSecondOverlay.module.css'
 import { IoMdArrowBack } from "react-icons/io";
-import virusCardBackground from '../../images/virusCardBackground.png';
 import contactCardBackground from '../../images/contactCardBackground.png';
 import { Link } from 'react-router-dom';
+import { IKContext, IKImage } from 'imagekitio-react';
 
 
 export const HelpSecondOverlay = ({ onClose }) => {
@@ -15,22 +15,30 @@ export const HelpSecondOverlay = ({ onClose }) => {
                 <p className={styles.helpHeaderSecondOverlay}>Cornwell</p>
 
             </div>
+
             <IoMdArrowBack onClick={onClose} className={styles.arrowIcon} />
 
             <div className={styles.helpCardContainer}>
-
-                <Link to="/contact">
-                    <div 
-                    style={{
-                        backgroundImage: `url(${contactCardBackground})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                    className={styles.helpContact}>
-                        <h3 className={styles.helpContactTitle}>Contact</h3>
-                    </div>
+                <IKContext urlEndpoint='https://ik.imagekit.io/irpk6rtbq'>
+                <Link to="/contact" className={styles.helpContactLink}>
+                    <h3 className={styles.helpContactTitle}>Contact</h3>
+                    <IKImage
+                        fetchPriority='low'
+                        className={styles.helpContact}
+                        loading='lazy'
+                        path='contactCard.png?updatedAt=1759947270282'
+                        alt='Contact'
+                        transformation={[
+                            {
+                                quality: 100,
+                                dpr: 'auto',
+                                f: 'auto'
+                            }
+                        ]}
+                    />
                 </Link>
+                </IKContext>
+                
 
                 <Link className={styles.helpQandA} to="/QandA">
                     <h3 className={styles.helpQandATitle}>Q and A</h3>
