@@ -20,7 +20,6 @@ export const Products = () => {
    
   const typeFilter = searchParams.get('type')?.split(',') || [];
   const conditionFilter = searchParams.get('condition')?.split(',') || [];
-  const deviceFilter = searchParams.get('device');
 
 
   useEffect(() => {
