@@ -16,8 +16,9 @@ export const HomePage = () => {
           <h1>Review Section Here</h1>
         </div>
         <HomePageServices />
+        <HomePageContact />
        <HomePageStoreSection />
-       <HomePageContact />
+       
        
        </>
     )
