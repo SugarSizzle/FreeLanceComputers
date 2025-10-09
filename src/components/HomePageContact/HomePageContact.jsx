@@ -187,6 +187,7 @@ import {ServicesIcon} from '../../images/Icons/ServicesIcon'
                     onClick={() => setActiveIcon(activeIcon === 'services' ? null : 'services')}
                 />
             </div>
+            
         <div className={styles.gridContainer}>
             
             
