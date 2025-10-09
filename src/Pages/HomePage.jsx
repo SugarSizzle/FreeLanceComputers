@@ -4,7 +4,7 @@ import { HomePageHeroSection } from '../components/HomePageHeroSection/HomePageH
 import { HomePageServices } from '../components/HomePageServices/HomePageServices';
 import { HomePageStoreSection } from '../components/HomePageStoreSection/HomePageStoreSection';
 import { HomePageContact } from '../components/HomePageContact/HomePageContact';
-
+import { HomePageCustomerFeedback } from '../components/HomePageCustomerFeedback/HomePageCustomerFeedback';
 export const HomePage = () => {
 
 
@@ -12,9 +12,7 @@ export const HomePage = () => {
        <>
       
        <HomePageHeroSection />
-       <div className="review-section-container">
-          <h1>Review Section Here</h1>
-        </div>
+       <HomePageCustomerFeedback />
         <HomePageServices />
         <HomePageContact />
        <HomePageStoreSection />
