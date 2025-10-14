@@ -12,7 +12,7 @@ export const HelpSecondOverlay = ({ onClose }) => {
 
         <div className={styles.helpSecondOverlay}>
             <div className={styles.helpHeaderContainer}>
-                <p className={styles.helpHeaderSecondOverlay}>Cornwell</p>
+                <p className={styles.helpHeaderSecondOverlay}>Freelance</p>
 
             </div>
 
