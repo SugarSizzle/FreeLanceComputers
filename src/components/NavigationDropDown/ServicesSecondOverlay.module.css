@@ -17,14 +17,20 @@
 
   
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 80vw;
+    margin: auto;
     align-items: start;
     padding: 2rem;
+    justify-content: space-between;
+
 }
 
 .servicesHeaderSecondOverlay {
-    font-size: 1.2rem;
     color: #f8f8f8;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
 
 }
 
