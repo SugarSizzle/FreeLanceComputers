@@ -1,4 +1,4 @@
-# Cornwell Computers
+# Freelance Computers
 
 This project is built with React and Vite.
 

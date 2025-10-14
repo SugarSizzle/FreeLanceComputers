@@ -59,7 +59,7 @@ export const DropDown = ({ onClose }) => {
         <>
             <div className={styles.dropdownOverlay}>
                 <div className={styles.dropdownHeaderContainer}>
-                    <h3 className={styles.dropdownHeader}>Cornwell</h3>
+                    <h3 className={styles.dropdownHeader}>Freelance</h3>
                     <button className={styles.closeIconDropdown} onClick={onClose}>
                         <h3 className={styles.closeIcon}>✕</h3>
                     </button>

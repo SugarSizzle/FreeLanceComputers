@@ -15,7 +15,7 @@ export const Navigation = () => {
   return (
     <nav className={styles.navigationContainer}>
       <div className={styles.websiteNameContainer}>
-        <Link to="/" className={styles.websiteName}>Cornwell</Link>
+        <Link to="/" className={styles.websiteName}>Freelance</Link>
       </div>
 
       <div className={`${styles.navigationLinks} ${styles.desktopOnly}`}>
