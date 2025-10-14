@@ -1,0 +1,22 @@
+.dataRecoverySvg {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    transition: all 0.5s ease;
+    opacity: 0.2;
+}
+
+.dataRecoverySvg:hover {
+    opacity: 1;
+}
+
+
+.dataRecoveryText {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+
+

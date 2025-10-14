@@ -54,7 +54,7 @@
 }
 
 .cardVirus, .cardData, .cardUpgrade {
-    border: 1px solid #B0B0B0;
+    border: 1px solid #ffffff25;
     border-radius: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -65,34 +65,53 @@
 
 .cardVirus {
     grid-area: virus;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+   
 }
 
 .cardData {
     grid-area: data;
-    filter: saturate(0);
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+   
 }
 
 .cardUpgrade {
     grid-area: computer;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 20vh;
    
 }
 
 .cardTitle {
-    color: #f8f8f8;
-    font-size: 1rem;
+    color: #b0b0b0;
+    font-size: .9rem;
     margin: .25rem;
     text-align: center;
     position: absolute;
-    top: 0;
-    left: 0;
     color: #f8f8f8;
-    padding: .25rem;
-    
+    font-family: 'JetBrains Mono', monospace;
+    position: absolute;
+    top: 0%;
+    left: -20%;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 }
 
-.cardVirus:hover, .cardData:hover, .cardUpgrade:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+
+
+.cardUpgrade:focus {
+    outline: none;
+
 }
 
 .arrowIcon {
