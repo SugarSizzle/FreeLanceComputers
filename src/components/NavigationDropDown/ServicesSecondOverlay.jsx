@@ -15,7 +15,7 @@ export const ServicesSecondOverlay = ({ onClose }) => {
 
         <div className={styles.servicesSecondOverlay}>
             <div className={styles.servicesHeaderContainer}>
-                <p className={styles.servicesHeaderSecondOverlay}>Cornwell</p>
+                <p className={styles.servicesHeaderSecondOverlay}>Freelance</p>
                 <IoMdArrowBack
                  onClick={onClose}
                  className={styles.arrowIcon} />
