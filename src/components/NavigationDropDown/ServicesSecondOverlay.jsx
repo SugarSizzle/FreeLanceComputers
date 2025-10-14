@@ -5,6 +5,9 @@ import virusCardBackground from '../../images/virusCardBackground.png';
 import dataCardBackground from '../../images/DataRecoveryCardBackground.png';
 import computerRepairsCard from '../../images/computerRepairsCard.png';
 import { Link } from 'react-router-dom';
+import { ComputerRepairCards } from '../../images/Icons/ComputerRepairCards';
+import { VirusCard } from '../../images/Icons/VirusCard';
+import { DataRecoveryCard } from '../../images/Icons/DataRecoveryCard';
 
 export const ServicesSecondOverlay = ({ onClose }) => {
 
@@ -21,55 +24,20 @@ export const ServicesSecondOverlay = ({ onClose }) => {
             <div className={styles.cardContainer}>
                
 
-                <Link to="/virus-protection">
-                <div 
-                    className={styles.cardVirus}
-                    style={{
-                        backgroundImage: `url(${virusCardBackground})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'right',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                >
+                <Link className={styles.cardVirus} to="/virus-protection">
                     <h3 className={styles.cardTitle}>Virus Removal</h3>
-                </div>
+                    <VirusCard />
                 </Link>
-                <Link to="/data-recovery">
-                <div
-                style={{
-                    backgroundImage: `url(${dataCardBackground})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'saturate(0)'
-                }}
-                 className={styles.cardData}>
+
+                <Link className={styles.cardData} to="/data-recovery">
                     <h3 className={styles.cardTitle}>Data Recovery</h3>
-                </div>
+                    <DataRecoveryCard />
                 </Link>
 
-                <Link
-                  style={{
-                    backgroundImage: `url(${computerRepairsCard})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                }}
-                 className={styles.cardUpgrade} to="/computer-repairs">
-                    
-                    <h3 className={styles.cardTitle}>Computer Repairs</h3>
-            </Link>   
-                
+                <Link  className={styles.cardUpgrade} to="/computer-repairs">
+                    <ComputerRepairCards />
+                </Link>
             </div>
-
-                <div className={styles.addedInfoContainer}>
-                  
-                </div>
-
         </div>
-
-
-    )
-
-
+    );
 }

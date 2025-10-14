@@ -1,0 +1,24 @@
+.computerRepairSvg {
+    width: 55%;
+  
+    height: auto;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    transition: all 0.5s ease;
+    opacity:.8;
+}
+
+.computerRepairSvg:hover {
+
+    transition: all 0.5s ease;
+    opacity:1;
+}
+
+
+.computerRepairText {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+}
+
+
