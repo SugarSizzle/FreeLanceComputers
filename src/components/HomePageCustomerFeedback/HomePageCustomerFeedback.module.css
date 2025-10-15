@@ -1,69 +1,81 @@
 .sectionContainer{
     display: flex;
-    flex-direction: row;
-    height: 90vh;
+    flex-direction: column;
+    height: auto;
     width: 100vw;
     color: #F5F5F5;
     margin:auto;
-    font-size: 1.5rem;
     font-weight: 600;
-
+    margin-bottom: 10vh;
 
 
 }
 
-.cardContainer{
-    height: 60vh;
-    width: 95vw;
+
+.headerImageContainer{
+    width: 100vw;
+    height: 30vh;
     margin:auto;
+    margin-top: 10vh;
+}
+
+
+.headerImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+.cardContainer{
     display: flex;
-    text-align: left;
     flex-direction: column;
-    border-radius: 1rem;
+    width: 95%;
+    margin:auto;
     border: 1px solid #ffffff25;
-    background: linear-gradient(90deg, #242424fd 10%, #000000 100% );
+    border-radius: 1rem;
+   
 }
 
 .imageContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    gap: 0.8rem;
-    width: 10vw;
-    height: 100%;
-    
-    margin-left: 1.5rem;
-
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0;
 }
 
 .image{
-    width: 10vw;
-    height: 8vh;
+    width: 50px;
+    height: 60px;
     border: 2px solid #ffffff40;
-    border-radius: 0.5rem;
+    border-radius: 30px;
     transition: all 0.3s ease;
-    opacity: 0.5;
+    filter: grayscale(80%);
+    
 }
 
-.image:hover{
-    opacity: 0.8;
-    transform: scale(1.05);
-}
+
 
 .activeImage{
-    border: 2px solid #ffffff !important;
-    opacity: 1 !important;
+ 
+    filter: grayscale(0%) !important;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .clientHeader{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
-    font-size: .8rem;
+    font-size: .7rem;
     width: 100%;
-    border-bottom: 1.5px solid #ffffff40;
   
+ 
 
 }
 
@@ -76,7 +88,8 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: 1.5rem;
+    height:7 0%;
+ 
   
 }
 
@@ -84,21 +97,20 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 50vh;
-    justify-content: center;
-    margin-right: 1rem;
-    
+    text-align: center;
+   
 }
 
 .clientFeedback{
     display: flex;
     align-items: center;
     width: 100%;
-    font-size: .9rem;
+    font-size: 1rem;
     line-height: 1.8;
-    padding-bottom: 1.2rem;
+    padding: 1.5rem;
+   
     border-bottom: 1.5px solid #ffffff40;
-    margin-bottom: 1.2rem;
+  
   
 }
 
@@ -108,10 +120,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    
-    
- 
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.clientNameContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .clientFeedbackText{
@@ -137,12 +154,51 @@
 
 .arrowIcon{
     font-size: 1rem;
-    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 4px 4px rgba(255, 254, 254, 0.2);
 }
 
-.arrowIcon:hover{
-    transform: scale(1.2);
-    color: #4a9eff;
+
+
+.toggleSwitch {
+    width: 70px;
+    height: 35px;
+    border-radius: 17.5px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid #ffffff25;
+    margin:auto;
+    margin-bottom: 2rem;
+}
+
+.toggleSwitch:hover {
+    background-color: #ffffff35;
+}
+
+
+.toggleCircle {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(255, 254, 254, 0.8);
+}
+
+.toggleSwitch.toggled .toggleCircle {
+    transform: translateX(35px);
+}
+
+.toggleIcon {
+    font-size: 10px;
+    color: #ffffff;
 }
 
 /* Fade animations */
