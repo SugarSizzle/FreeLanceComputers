@@ -1,0 +1,189 @@
+.pageContainer {
+    height: auto;
+    width: 100vw;
+    margin:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+  
+  .backButtonContainer {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1rem;
+
+  }
+  .contentWrapper {
+    padding: 1rem;
+  }
+
+  .loadingContainer,
+  .errorContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+
+  
+
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+  .backButton {
+    background: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top:1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border:none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+
+  .serviceTypeSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+  
+  .serviceName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+  
+  }
+  
+  .statusBadge {
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid #ffffff25;
+    background-color: #000000;
+  }
+
+  /* Details Container - Single Container for All Details */
+  .detailsContainer {
+    background-color: #00000050;
+    border: 2px solid #ffffff15;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detailLabel {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #b0b0b0;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .detailValue {
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+  }
+  
+  .detailSection {
+    margin-bottom: 20px;
+    padding: 16px;
+    background-color: #0f0f0f;
+    border-radius: 12px;
+    border: 1px solid #222;
+  }
+  
+  .detailLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  
+  .detailValue {
+    color: #e0e0e0;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Scrollbar styling */
+  .modalContent::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .modalContent::-webkit-scrollbar-track {
+    background: #0f0f0f;
+    border-radius: 4px;
+  }
+  
+  .modalContent::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+  
+  .modalContent::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .modalContent {
+      padding: 24px;
+      max-height: 85vh;
+    }
+  
+    .modalTitle {
+      font-size: 20px;
+    }
+  
+    .serviceName {
+      font-size: 18px;
+    }
+  }

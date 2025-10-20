@@ -1,24 +1,51 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 import styles from './DashboardServices.module.css';
 import {Navigation} from '../../../Layout/Navigation';
 import {Footer} from '../../../Layout/Footer';
 import {SwipeCarousel} from './SwipeCarousel';
-import {FormCollapsable} from './FormCollapsable';
+import { VirusRemovalForm } from './FormComponents/VirusRemovalForm';
+import { DataRecoveryForm } from './FormComponents/DataRecoveryForm';
+import { ComputerRepairsForm } from './FormComponents/ComputerRepairsForm';
 import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
 
 export const DashboardServices = () => {
- 
+    const [selectedService, setSelectedService] = useState(null);
+    const formRef = useRef(null);
 
+    const handleServiceSelect = (serviceName) => {
+        setSelectedService(serviceName);
+        
+        // Scroll to form with smooth behavior
+        setTimeout(() => {
+            formRef.current?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 100);
+    };
+
+    const renderForm = () => {
+        switch (selectedService) {
+            case 'Virus Removal':
+                return <VirusRemovalForm formRef={formRef} />;
+            case 'Data Recovery':
+                return <DataRecoveryForm formRef={formRef} />;
+            case 'Device Repair':
+                return <ComputerRepairsForm formRef={formRef} />;
+            default:
+                return null;
+        }
+    };
 
     return (
         <>
             <Navigation />
             <div className={styles.sectionContainer}>
             <h3 className={styles.servicesTitle}>Services</h3>
-            <SwipeCarousel />
+            <SwipeCarousel onServiceSelect={handleServiceSelect} />
             </div>
-            <FormCollapsable />
+            {renderForm()}
 
             <Footer />
             <DashboardFooter />
