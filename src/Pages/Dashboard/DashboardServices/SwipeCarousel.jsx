@@ -3,11 +3,14 @@ import { motion, useMotionValue } from "framer-motion";
 import { Shield, Database, Wrench } from "lucide-react";
 import styles from './SwipeCarousel.module.css';
 import { SiStyleshare } from "react-icons/si";
+import VirusImage from '../../../images/Virus.jpg';
+import DataRecoveryImage from '../../../images/DataRecovery.webp';
+import ComputerRepairsImage from '../../../images/ComputerRepairs.webp';
 
 const imgs = [
-  { name: "Virus Removal", image: "/imgs/nature/1.jpg", icon: <Shield size={24} /> },
-  { name: "Data Recovery", image: "/imgs/nature/2.jpg", icon: <Database size={24} /> },
-  { name: "Device Repair", image: "/imgs/nature/3.jpg", icon: <Wrench size={24} /> },
+  { name: "Virus Removal", image: VirusImage, icon: <Shield size={24} /> },
+  { name: "Data Recovery", image: DataRecoveryImage, icon: <Database size={24} /> },
+  { name: "Device Repair", image: ComputerRepairsImage, icon: <Wrench size={24} /> },
 ];
 
 const ONE_SECOND = 1000;
@@ -21,12 +24,15 @@ const SPRING_OPTIONS = {
   damping: 50,
 };
 
-export const SwipeCarousel = () => {
+export const SwipeCarousel = ({ onServiceSelect }) => {
   const [imgIndex, setImgIndex] = useState(0);
+  const [autoScroll, setAutoScroll] = useState(true);
 
   const dragX = useMotionValue(0);
 
   useEffect(() => {
+    if (!autoScroll) return;
+    
     const intervalRef = setInterval(() => {
       const x = dragX.get();
 
@@ -41,20 +47,23 @@ export const SwipeCarousel = () => {
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, []);
+  }, [autoScroll]);
 
   const onDragEnd = () => {
     const x = dragX.get();
 
     if (x <= -DRAG_BUFFER && imgIndex < imgs.length - 1) {
+      setAutoScroll(false);
       setImgIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && imgIndex > 0) {
+      setAutoScroll(false);
       setImgIndex((pv) => pv - 1);
     }
   };
 
   return (
     <>
+    <p>Click on a card to request a servi</p>
     <div className={styles.carouselContainer}>
       <motion.div
         drag="x"
@@ -72,24 +81,21 @@ export const SwipeCarousel = () => {
         onDragEnd={onDragEnd}
         className={styles.carouselTrack}
       >
-        <Images imgIndex={imgIndex} />
+        <Images imgIndex={imgIndex} onServiceSelect={onServiceSelect} setAutoScroll={setAutoScroll} />
       </motion.div>
 
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} setAutoScroll={setAutoScroll} />
 
      
      
     </div>
 
-    <div className={styles.moreInfoContainer}>
-        <button className={styles.moreInfoButton}>Request Service</button>
-        <button className={styles.moreInfoButton}>Learn More</button>
-    </div>
+ 
     </>
   );
 };
 
-const Images = ({ imgIndex }) => {
+const Images = ({ imgIndex, onServiceSelect, setAutoScroll }) => {
   return (
     <>
       {imgs.map((item, idx) => {
@@ -100,12 +106,17 @@ const Images = ({ imgIndex }) => {
               backgroundImage: `url(${item.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              cursor: "pointer",
             }}
             animate={{
               scale: imgIndex === idx ? 0.95 : 0.85,
             }}
             transition={SPRING_OPTIONS}
             className={styles.carouselImage}
+            onClick={() => {
+              setAutoScroll(false);
+              onServiceSelect(item.name);
+            }}
           >
             <div className={styles.serviceText}>
               {item.name}

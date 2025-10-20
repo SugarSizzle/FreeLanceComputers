@@ -8,9 +8,10 @@ import { IoHomeOutline } from "react-icons/io5";
 import { TiArrowLeftOutline } from "react-icons/ti";
 
 export const SignInPage = () => {
-    const {signInUser} = useAuth();
+    const {signInUser, signUpUser} = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [isSignUp, setIsSignUp] = useState(false);
 
     const navigate = useNavigate();
@@ -19,20 +20,35 @@ export const SignInPage = () => {
     const from = location.state?.from?.pathname || '/dashboard/overview';
     
     
-    const isFormComplete = email.trim() !== '' && password.trim() !== '';
+    const isFormComplete = isSignUp 
+    ? email.trim() !== '' && password.trim() !== '' && confirmPassword.trim() !== ''
+    : email.trim() !== '' && password.trim() !== '';
 
     
     const [error, submitAction, isPending] = useActionState(
         async (previousState, formData) => {
             const email = formData.get('email');
             const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
 
             try {
-                const {success, data, error: signinError} = await signInUser(email, password);
 
-                if(signinError){
-                    return new Error(signinError)
+                if(isSignUp && password !== confirmPassword){
+                    return new Error('Passwords do not match');
                 }
+               
+
+                const {
+                    success, 
+                    data, 
+                    error: authError
+                } = isSignUp ? await signUpUser(email, password) : await signInUser(email, password);
+
+
+                if(authError){
+                    return new Error(authError);
+                }
+            
                 if(success && data?.session){
                     navigate(from, { replace: true });
                     return null
@@ -45,6 +61,11 @@ export const SignInPage = () => {
             }
         }, null
     );
+
+    const handleModeSwithc =() =>{
+        setIsSignUp(!isSignUp);
+        setConfirmPassword('');
+    }
 
     return (
         <>
@@ -101,6 +122,9 @@ export const SignInPage = () => {
                                 <input
                                     type="password"
                                     id="confirmPassword"
+                                    name="confirmPassword"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
                                     className={styles.inputField}
                                     placeholder="Confirm your password"
                                     required

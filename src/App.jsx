@@ -16,7 +16,7 @@ import Overview from './Pages/Dashboard/DashboardOverview/DashboardOverview'
 import {DashboardServices} from './Pages/Dashboard/DashboardServices/DashboardServices'
 import Financing from './Pages/Dashboard/DashboardFinancing'
 import {DashboardAppointments} from './Pages/Dashboard/DashboardAppointments/DashboardAppointments'
-import ActivityFeed from './Pages/Dashboard/DashboardActivityFeed'
+import {DashboardActivityFeed} from './Pages/Dashboard/DashboardActivityFeed'
 import { Layout } from './Layout/Layout'
 import { DashboardReviewOverlay } from './Pages/Dashboard/DashboardAppointments/DashboardReviewOverlay'
 import { DashboardOrders } from './Pages/Dashboard/DashboardOrder/DashboardOrders'
@@ -24,6 +24,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import { AboutPage } from './Pages/AboutPage'
 import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
 import { WhySignUp } from './components/NotSignedIn/WhySignUp'
+import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetailPage'
 function App() {
   const location = useLocation();
 
@@ -63,8 +64,9 @@ function App() {
                 <Route path="orders" element={<DashboardOrders />} />
                 <Route path="financing" element={<Financing />} />
                 <Route path="appointments" element={<DashboardAppointments />} />
-                <Route path="activityfeed" element={<ActivityFeed />} />
+                <Route path="activityfeed" element={<DashboardActivityFeed />} />
                 <Route path="review" element={<DashboardReviewOverlay />} />
+                <Route path="service-detail/:id" element={<ServiceDetailPage />} />
               </Route>
               
             </Route>

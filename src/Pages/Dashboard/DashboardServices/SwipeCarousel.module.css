@@ -1,8 +1,7 @@
 .carouselContainer {
   position: relative;
   overflow: hidden;
-
-  padding: 2rem 0;
+ 
 }
 
 .carouselTrack {
@@ -99,4 +98,13 @@
     
 }
 
+.carouselInstructions{
+  color: #b0b0b0;
+  font-size: .8rem;
+  font-weight: 600;
+  width: 90vw;
+  margin: auto;
+  text-align: left;
+  margin-bottom: .5rem;
+}
 
