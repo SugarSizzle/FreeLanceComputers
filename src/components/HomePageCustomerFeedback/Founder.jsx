@@ -11,7 +11,7 @@ const founders = [
         title: "CEO & Co-Founder",
         imagePath: "pexels-kampus-7477748.jpg?updatedAt=1760555025779", 
         quote: " True innovation isn't about doing more, it's about doing what matters, faster.  "
-    },
+    },      
     {
         id: 2,
         name: "Sarah Chen",
@@ -26,6 +26,7 @@ const founders = [
         imagePath: "founderClint%20headshot.png?updatedAt=1760553996582", // Replace with your actual ImageKit path
         quote: "Precision isn't optional — it's the language of professionals."
     }
+    
 ];
 
 export const FoundersCard = () => {

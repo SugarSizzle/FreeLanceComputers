@@ -1,0 +1,99 @@
+.recentContainer {
+    width: 95vw;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.recentTitle {
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+.recentActivities {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recentCardContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+
+.activityIcon {
+    color: #b0b0b0;
+    display: flex;
+   
+    width: 8vw;
+    height: 5vh;
+ 
+}
+
+.activityContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 80%;
+    text-align: left;
+}
+
+.activityAction {
+    color: #ffffff;
+    font-size: .9rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.statusBadge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activityRight {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.activityTimestamp {
+    color: #b0b0b0;
+    font-size: 0.8rem;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.viewInfoButton {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.viewInfoButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
