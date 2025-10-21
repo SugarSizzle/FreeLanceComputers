@@ -1,0 +1,196 @@
+/* Timeline Container */
+.timelineContainer {
+ 
+  margin: 2rem auto;
+
+}
+
+.timelineTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: left;
+  margin-bottom: 5vh;
+  margin-left: 1.5rem;
+}
+
+
+.noUpdatesContainer {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.noUpdatesTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.noUpdatesMessage {
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+
+.timeline {
+  position: relative;
+ 
+  width: 95vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: auto;
+}
+
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+
+.currentDot {
+  position: absolute;
+  left: -2rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: #03ff2d;
+  border-radius: 50%;
+
+}
+
+
+
+
+.completedDot {
+  position: absolute;
+  left: -2rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.checkIcon {
+  color: #000000;
+  stroke-width: 3;
+}
+
+
+.timelineLine {
+  position: absolute;
+  left: -1.5rem;
+  top: 1.5rem;
+  bottom: -2.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, #ffffff25, #ffffff10);
+  z-index: 1;
+}
+
+.animatedBorder{
+    position: absolute;
+    top: -.15rem;
+    left: -1px;
+    right: 0;
+    bottom: 0;
+    height: 105%;
+    background: #ffffff;
+    z-index: -1;
+    width: 101%;
+    border-radius: 8px;
+}
+
+.updateCard {
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  background-color: #000000;
+  
+}
+
+
+
+
+.activeCard {
+ border:2px solid #ffffff25;
+}
+
+.activeCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  z-index: -1;
+}
+
+
+
+
+.updateType {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #b0b0b0;
+  margin:auto;
+  transition: color 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  z-index: 2;
+}
+
+.updateNote {
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  z-index: 2;
+}
+
+.updateTime {
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  display: block;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Active Card Text - White */
+.activeCard .updateType,
+.activeCard .updateNote,
+.activeCard .updateTime {
+  color: #ffffff;
+}
+

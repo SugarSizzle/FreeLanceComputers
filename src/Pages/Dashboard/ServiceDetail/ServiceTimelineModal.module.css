@@ -1,0 +1,57 @@
+.modalContainer {
+    padding: 2rem;
+    background-color: #0a0a0a;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    color: #ffffff;
+}
+
+.modalHeader {
+    height:auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modalTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.modalNote {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.noteSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #b0b0b0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.debugInfo {
+    padding-top: 1rem;
+    border-top: 1px solid #ffffff15;
+}
