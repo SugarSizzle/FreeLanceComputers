@@ -3,11 +3,13 @@ import { X, Calendar, Clock, Info, Smartphone, ArrowLeft } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../../lib/supabase';
 import styles from './ServiceDetailPage.module.css';
-
+import { ServiceTimeline } from './ServiceTimeline';
+import { ServiceTimelineModal } from './ServiceTimelineModal';
 export const ServiceDetailPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [service, setService] = useState(null);
+    const [updates, setUpdates] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -23,6 +25,20 @@ export const ServiceDetailPage = () => {
 
                 if (error) throw error;
                 setService(data);
+
+                const {data: updatesData, error: updatesError} = await supabase
+                .from('service_updates')
+                .select('*')
+                .eq('service_request_id', id)
+                .order('created_at' , {ascending:true}); 
+
+                if(updatesError) throw updatesError;
+
+                console.log(updatesData);
+                setUpdates(updatesData);
+
+
+
             } catch (error) {
                 console.error('Error fetching service details:', error);
                 setError('Failed to load service details');
@@ -33,6 +49,56 @@ export const ServiceDetailPage = () => {
 
         fetchServiceDetail();
     }, [id]);
+
+    useEffect(() => {
+        const fetchServiceUpdates = async () => {
+
+            if(!service) return;
+
+            const subscription = supabase
+            .channel('services_updates')
+            .on('postgres_changes', {
+                event: '*',
+                schema: 'public',
+                table: 'services_updates',
+                filter: `service_id=eq.${service.id}`,
+
+            }, (payload) => {
+                console.log('Real Time change detected', payload);
+                if(payload.eventType === 'UPDATE'){
+                    setUpdates(prev => {
+                        prev.map(update =>
+                            update.id === payload.new.id ? payload.new :update
+                        )
+                    })
+                }
+
+                if(payload.eventType === 'INSERT'){
+                    setUpdates(prev => [...prev,payload.new]).sort((a,b) => 
+                        new Date(b.created_at) - new Date(a.created_at));
+                }
+
+                if(payload.eventType === 'DELETE'){
+                    setUpdates(prev => 
+                        prev.filter(update =>update.id !== payload.old.id)
+                    )
+                }
+
+            })
+            .subscribe();
+
+            return() =>{
+                subscription.unsubscribe();
+
+
+            }
+            
+        }
+        console.log(fetchServiceUpdates.id);
+        fetchServiceUpdates();
+    },[service,id]);
+
+   
 
     console.log(service);
 
@@ -158,6 +224,8 @@ export const ServiceDetailPage = () => {
                   
                 </div>
             </div>
+            <ServiceTimelineModal update={updates} />
+            <ServiceTimeline updates={updates} />
         </div>
     );
 };
