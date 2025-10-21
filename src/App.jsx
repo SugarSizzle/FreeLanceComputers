@@ -25,6 +25,9 @@ import { AboutPage } from './Pages/AboutPage'
 import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
 import { WhySignUp } from './components/NotSignedIn/WhySignUp'
 import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetailPage'
+import {ServiceTimeline} from './Pages/Dashboard/ServiceDetail/ServiceTimeline'
+
+
 function App() {
   const location = useLocation();
 
@@ -67,6 +70,7 @@ function App() {
                 <Route path="activityfeed" element={<DashboardActivityFeed />} />
                 <Route path="review" element={<DashboardReviewOverlay />} />
                 <Route path="service-detail/:id" element={<ServiceDetailPage />} />
+               
               </Route>
               
             </Route>
