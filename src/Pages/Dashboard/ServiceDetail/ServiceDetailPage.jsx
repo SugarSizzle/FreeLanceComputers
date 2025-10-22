@@ -12,6 +12,7 @@ export const ServiceDetailPage = () => {
     const [updates, setUpdates] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedUpdate, setSelectedUpdate] = useState(null);
 
     useEffect(() => {
         const fetchServiceDetail = async () => {
@@ -50,21 +51,24 @@ export const ServiceDetailPage = () => {
         fetchServiceDetail();
     }, [id]);
 
+
+ 
+
     useEffect(() => {
         const fetchServiceUpdates = async () => {
 
             if(!service) return;
+           
 
             const subscription = supabase
-            .channel('services_updates')
+            .channel('service_updates')
             .on('postgres_changes', {
                 event: '*',
                 schema: 'public',
-                table: 'services_updates',
-                filter: `service_id=eq.${service.id}`,
+                table: 'service_updates',
+                filter: `service_request_id=eq.${service.id}`,
 
             }, (payload) => {
-                console.log('Real Time change detected', payload);
                 if(payload.eventType === 'UPDATE'){
                     setUpdates(prev => {
                         prev.map(update =>
@@ -83,11 +87,14 @@ export const ServiceDetailPage = () => {
                         prev.filter(update =>update.id !== payload.old.id)
                     )
                 }
+            
+        
 
             })
             .subscribe();
 
             return() =>{
+                console.log('unsubscribing from real time subscription');
                 subscription.unsubscribe();
 
 
@@ -183,49 +190,10 @@ export const ServiceDetailPage = () => {
                         {getStatusDisplay(service.status)}
                     </span>
                 </div>
-
-               
-                <div className={styles.detailsContainer}>
-                    {/* Description */}
-                    <div className={styles.detailItem}>
-                        <span className={styles.detailLabel}>Description</span>
-                        <p className={styles.detailValue}>{service.description}</p>
-                    </div>
-
-                 
-                    {service.device_info && (
-                        <div className={styles.detailItem}>
-                            <span className={styles.detailLabel}>Device</span>
-                            <p className={styles.detailValue}>{service.device_info}</p>
-                        </div>
-                    )}
-
-                    
-                    <div className={styles.detailItem}>
-                        <span className={styles.detailLabel}>Requested</span>
-                        <p className={styles.detailValue}>{formatDate(service.requested_at)}</p>
-                    </div>
-
-               
-                    <div className={styles.detailItem}>
-                        <span className={styles.detailLabel}>Last Updated</span>
-                        <p className={styles.detailValue}>{formatDate(service.updated_at)}</p>
-                    </div>
-
-                
-                    {service.note && (
-                        <div className={styles.detailItem}>
-                            <span className={styles.detailLabel}>Admin Notes</span>
-                            <p className={styles.detailValue}>{service.admin_notes}</p>
-                        </div>
-                    )}
-
-                  
-                  
-                </div>
+   
             </div>
-            <ServiceTimelineModal update={updates} />
-            <ServiceTimeline updates={updates} />
+            <ServiceTimelineModal update={updates} selectedUpdate={selectedUpdate} setSelectedUpdate={setSelectedUpdate} />
+            <ServiceTimeline updates={updates} selectedUpdate={selectedUpdate} setSelectedUpdate={setSelectedUpdate} />
         </div>
     );
 };
