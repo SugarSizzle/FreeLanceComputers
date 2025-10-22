@@ -4,10 +4,11 @@ import styles from './ServiceTimeline.module.css';
 import { useTime, useTransform , AnimatePresence, motion} from 'framer-motion';
 import { ServiceTimelineModal } from './ServiceTimelineModal';
 
-export const ServiceTimeline = ({updates}) => {
+export const ServiceTimeline = ({updates, selectedUpdate, setSelectedUpdate}) => {
     const [activeCard, setActiveCard] = useState(null);
 
-    console.log(updates);
+    console.log('Number of updates fetched:', updates?.length);
+    console.log('All updates:', updates);
 
 
     const getUpdateTypeDisplay = (updateType) => {
@@ -51,8 +52,10 @@ export const ServiceTimeline = ({updates}) => {
     })
 
 
-    return (
 
+
+    return (
+       
 
         <>
             
@@ -62,6 +65,7 @@ export const ServiceTimeline = ({updates}) => {
             
             <div className={styles.timeline}>
                 {updates.map((update, index) => (
+                    console.log(  update),
                     <div key={update.id} className={styles.timelineItem}>
                        
                        
@@ -81,8 +85,8 @@ export const ServiceTimeline = ({updates}) => {
 
                         
                         <div 
-                            className={`${styles.updateCard} ${activeCard === update.id ? styles.activeCard : ''}`}
-                            onClick={() => setActiveCard(activeCard === update.id ? null : update.id)}
+                            className={`${styles.updateCard} ${selectedUpdate === update.id ? styles.activeCard : ''}`}
+                            onClick={() => setSelectedUpdate(selectedUpdate === update.id ? null : update.id)}
                         >
                             {activeCard === update.id && <motion.div className={styles.animatedBorder} style={{background: rotatingBg}}/>}
                             <h3 className={styles.updateType}>
