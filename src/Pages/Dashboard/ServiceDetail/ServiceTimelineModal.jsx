@@ -2,36 +2,36 @@ import React from 'react';
 import styles from './ServiceTimelineModal.module.css';
 
 
-export const ServiceTimelineModal = ({ update }) => {
+export const ServiceTimelineModal = ({  update , selectedUpdate,  }) => {
 
-    console.log('📌 MODAL - Rendering with update:', update);
-    console.log('📌 MODAL - Update ID:', update?.id);
-    console.log('📌 MODAL - Update Note:', update?.note);
 
     if (!update) {
         return <div className={styles.modalContainer}>No update selected</div>;
     }
+    
+    const currentUpdate = update.find(update => update.id === selectedUpdate)
+   
 
     return (
-
+       
         <>
-        {update && (
-        <div className={styles.modalContainer}>
+        {currentUpdate && (
+        <div  className={styles.modalContainer}> 
             <div className={styles.modalHeader}>
                 <h3 className={styles.modalTitle}>
-                    Currently Viewing: Update #{update.id}
+                    Currently Viewing: Update #{currentUpdate.id}
                 </h3>
             </div>
       
             <div className={styles.modalContent}>
                 <div className={styles.noteSection}>
                     <label className={styles.label}>Note:</label>
-                    <p className={styles.modalNote}>{update.note || 'No note provided'}</p>
+                    <p className={styles.modalNote}>{currentUpdate.note || 'No note provided'}</p>
                 </div>
                 
                 <div className={styles.debugInfo}>
                     <p style={{ fontSize: '0.75rem', color: '#666', fontFamily: 'monospace' }}>
-                        Update Type: {update.update_type} | Created: {new Date(update.created_at).toLocaleString()}
+                        Update Type: {currentUpdate.update_type} | Created: {new Date(currentUpdate.created_at).toLocaleString()}
                     </p>
                 </div>
             </div>
