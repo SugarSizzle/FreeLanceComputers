@@ -26,7 +26,7 @@ import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
 import { WhySignUp } from './components/NotSignedIn/WhySignUp'
 import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetailPage'
 import {ServiceTimeline} from './Pages/Dashboard/ServiceDetail/ServiceTimeline'
-
+import { AdminOverViewPage } from './Pages/AdminDashboard/AdminOverViewPage'
 
 function App() {
   const location = useLocation();
@@ -72,6 +72,10 @@ function App() {
                 <Route path="service-detail/:id" element={<ServiceDetailPage />} />
                
               </Route>
+
+            
+                <Route path="admin-overview" element={<AdminOverViewPage />} />
+            
               
             </Route>
           </Routes>
