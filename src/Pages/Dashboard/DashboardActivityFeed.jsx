@@ -77,7 +77,7 @@ export const DashboardActivityFeed = () => {
 
  
 
-  const fetchServiceRequests = async (userId) => {
+  const fetchServiceRequests = async (userId) => { 
     
       try {
         setLoading(true);
