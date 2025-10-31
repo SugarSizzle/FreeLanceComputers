@@ -9,7 +9,6 @@ export const AdminServicesGrid = () => {
             <div className={styles.orderCard}>
                     <h3 className={styles.cardTitle}>Orders</h3>
                     <div className={styles.glossySmallCircle}/>
-                    <div className={styles.glossyLargeBoxFar}/>
                     <div className={styles.glossySmallCirlceFar}/>
                     <div className={styles.glossyUpClose}/>
                     <div className={styles.glossyLargeCircle}/>
@@ -23,7 +22,7 @@ export const AdminServicesGrid = () => {
                 <h3 className={styles.cardTitle}>Appointments</h3>
             </div>
 
-
+            
         </div>
 
     )
