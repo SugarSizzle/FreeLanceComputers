@@ -54,7 +54,7 @@
 
  .glossySmallCircle {
     position: absolute;
-    top: 40%;
+    top: 10%;
     left: 10%;
     width: 30px;
     height: 30px;
@@ -78,28 +78,13 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
     }
 }
 
-.glossyLargeBoxFar {
-    right: 15px;
-    position: absolute;
-    border-radius: 1rem;
-    opacity: 0.5;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0.1) 40%,
-        rgba(255, 255, 255, 0.02) 100%
-    );
-    animation: slowMoving 10s ease-in-out infinite alternate;
-}
 
 .glossySmallCirlceFar {
-    right: 50%;
+    right: 30%;
     top: 10%;
     position: absolute;
     border-radius: 1rem;
@@ -123,7 +108,7 @@
         rgba(255, 255, 255, 0.02) 100%
     );
     top: 50%;
-    right: -10%;
+    right: -30%;
     position: absolute;
     border-radius: 1rem;
     opacity: 1;
@@ -144,8 +129,8 @@
 
 .glossyLargeCircle {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     bottom: 0%;
     left: 30%;
     border-radius: 100%;
