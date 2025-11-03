@@ -11,6 +11,7 @@
     background-color: #000000;
     color: #ffffff;
     padding: 1rem;
+    
 }
 
 .orderCard {
@@ -189,4 +190,45 @@
         background-position: 0% 50%;
     }
 }
+
+
+.moreInfoHeaderContainer {
+   
+    text-align: left;
+    width: 95vw;
+}
+
+.moreInfoHeaderTitle {
+    margin-top: 5vh;
+    color: #b0b0b0;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    margin-left: 1.3rem;
+}
+
+.moreInfoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: 50vh;
+    border:2px solid #ffffff25;
+    border-radius: 1rem;
+    margin: auto;
+    color: #ffffff;
+}
+
+
+.currentService {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 15%;
+
+}
+
+
 
