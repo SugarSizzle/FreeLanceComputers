@@ -1,65 +1,72 @@
-import React , { useState } from 'react'
+import React , { useState, useEffect } from 'react'
 import styles from './AdminOverviewHeroSection.module.css'
 import { IKContext, IKImage } from 'imagekitio-react'
 import { VirusIcon } from '../../images/Icons/VirusIcon'
 import { DataRecoveryIcon } from '../../images/Icons/DataRecoveryIcon'
 import { ComputerRepairsIcon } from '../../images/Icons/ComputerRepairsIcon'
-import { AnimatePresence,motion } from 'framer-motion'
-import { GoChevronUp } from "react-icons/go";
-import { FiChevronDown } from "react-icons/fi";
+import {useTransform, useTime, motion} from 'framer-motion'
+import {AnimatePresence} from 'framer-motion'
+import { supabase } from '../../lib/supabase'
+
+
 
 export const AdminOverviewHeroSection = () => {
 
+    const [dataRequestsReviewing, setDataRequestsReviewing] = useState(null)
+    const [dataRequestsInProgress, setDataRequestsInProgress] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [animatedBorder, setAnimatedBorder] = useState(false)
 
-    const hardCodedDataReviewRequests = [
-        {
-            service_request_id: 2,
-            id: 1,
-            admin_id: 3,
-            update_type: 'reviewing',
-            note: 'We have noticed damages to the RAM causing blue screens. Investigating further...',
-            created_at: '2025-01-01',
-        },
-        {
-            service_request_id: 3,
-            id: 2,
-            admin_id: 3,
-            update_type: 'reviewing',
-            note: 'We have noticed damages to the CPU causing slow performance. Investigating further...',
-            created_at: '2025-01-01',
+    const time = useTime();
+    const rotate = useTransform(time, [0, 1000, 3000], [0, -180, -280], {clamp: false});
+    const rotatingBg = useTransform(rotate , (r) =>{
+        return `conic-gradient(from ${r}deg,rgb(46, 250, 114), transparent, transparent, transparent,transparent)`
+    })
+
+
+
+    useEffect(() => {
+       
+        const fetchDataRequests = async () => {
+
+            try {
+                setLoading(true);
+                const {data, error} = await supabase
+                    .from('service_updates')
+                    .select('*')
+                    .in('update_type', ['reviewing', 'in_progress'])
+                    .order('created_at', {ascending:false})
+                    .limit(4);
+                
+                if(error) {
+                    console.error('Supabase error:', error);
+                    throw error;
+                }
+                
+                if (data) {
+                    
+                    const reviewingRequests = data.filter(request => request.update_type === 'reviewing');
+                    const inProgressRequests = data.filter(request => request.update_type === 'in_progress');
+
+                    setDataRequestsReviewing(reviewingRequests);
+                    setDataRequestsInProgress(inProgressRequests);
+                }
+            
+            } catch (error) {
+                console.error('Error fetching data requests:', error.message, error);
+            } finally {
+                setLoading(false);
+            }
+
         }
-
-    ]
-
-    const hardCodedInProgressRequests = [
-        {
-            service_request_id: 4,
-            id: 3,
-            admin_id: 3,
-            update_type: 'in_progress',
-            note: 'We have revieved that this computer has a virus, we are currently implementing a virus clean up',
-            created_at: '2025-01-01',
-        },
-        {
-            service_request_id: 5,
-            id: 4,
-            admin_id: 3,
-            update_type: 'in_progress',
-            note: 'We have reviewed that the computer has a power supply issues, we are going to swap them out. ',
-            created_at: '2025-01-01',
-        }
-    ]
-
-
-    const [inProgress, setInProgress] = useState(false)
-    const [underReview, setUnderReview] = useState(false)
-
-    const handleUnderReview = () => {
-        setUnderReview(!underReview)
-    }
-    const handleInProgress = () => {
-        setInProgress(!inProgress)
-    }
+        
+        fetchDataRequests();
+    }, []);
+    
+    console.log('Current dataRequestsReviewing state:', dataRequestsReviewing);
+    console.log('Current dataRequestsInProgress state:', dataRequestsInProgress);
+    
+   
 
     return (
         <div className={styles.container}>
@@ -128,76 +135,83 @@ export const AdminOverviewHeroSection = () => {
 
             </div>
 
+
+
+            <div className={styles.headerContainer}>
+                <h3 className={styles.headerTitle}> Current Progress of Jobs </h3>
+            </div>
             <div className={styles.requestMoreInfo}>
-                <motion.div 
-                    className={styles.underReviewContainer}
-                    animate={{ 
-                        borderBottomWidth: underReview ? '2px' : '1px',
-                    }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <h3>Under Review {underReview ? <GoChevronUp onClick={handleUnderReview} /> : <FiChevronDown onClick={handleUnderReview} />}</h3>
-                    <AnimatePresence>
-                        {underReview && (
-                            <motion.div 
-                                className={styles.underReviewContent}
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.4, ease: 'easeInOut' }}
-                            >
-                                {hardCodedDataReviewRequests.map((request) => (
-                                    <div className={styles.requestInfo} key={request.id}>
-                                        <div>
-                                            <p className={styles.timestamp}>{request.created_at}</p>
-                                            <h4 className={styles.note}>{request.note}</h4>
-                                        </div>
-                                        <div className={styles.adminInfo}>
-                                            <p className={styles.adminName}> admin id: {request.admin_id}</p>
-                                            <p className={styles.adminRole}> service request id: {request.service_request_id}</p>
-                                            <p className={styles.adminRole}> update id: {request.id}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.div>
+                  
+                   <div className={styles.taskTabsContainer}>
+                        <div onClick={() => setAnimatedBorder(true)} className={styles.underReviewTab}>
+                            {
+                                <>
+                                {animatedBorder && <motion.div className={styles.animatedBorder} style={{background:rotatingBg}} />}
+                            <div className={styles.tabContent}>
+                                <h3 className={styles.underReviewTitle}>Under Review</h3>
+                            </div>
+                            </>
+                            }
+                        </div>
+
+                        <div onClick={() => setAnimatedBorder(false)} className={styles.inProgressTab}>
+                        {
+                        <>
+                            {!animatedBorder && <motion.div className={styles.animatedBorder} style={{background:rotatingBg}} />}
+                            <div className={styles.tabContent}>
+                                <h3 className={styles.inProgressTitle}>In Progress</h3>
+                            </div>
+                        </>
+                            }
+                        </div>
+                   </div>
                 
-                <motion.div 
-                    className={styles.inProgressContainer}
-                    animate={{ 
-                        borderBottomWidth: inProgress ? '2px' : '1px',
-                    }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <h3>In Progress {inProgress ? <GoChevronUp onClick={handleInProgress} /> : <FiChevronDown onClick={handleInProgress} />}</h3>
-                    <AnimatePresence>
-                        {inProgress && (
-                            <motion.div 
-                                className={styles.inProgressContent}
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                <div className={styles.taskInfoTable}>
+                    <AnimatePresence mode="wait">
+                        {animatedBorder ? (
+                            <motion.div
+                                key="underReview"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className={styles.taskContainer}
                             >
-                                {hardCodedInProgressRequests.map((request) => (
-                                    <div className={styles.requestInfo} key={request.id}>
-                                        <div>
-                                            <p className={styles.timestamp}>{request.created_at}</p>
-                                            <h4 className={styles.note}>{request.note}</h4>
+                                {dataRequestsReviewing && dataRequestsReviewing.map((request) => (
+                                    <div key={request.id} className={styles.taskCard}>
+                                        <div className={styles.taskHeader}>
+                                            <span className={styles.requestId}>Request #{request.service_request_id}</span>
+                                            <span className={styles.statusBadge}>{request.update_type}</span>
                                         </div>
-                                        <div className={styles.adminInfo}>
-                                            <p className={styles.adminName}> admin id: {request.admin_id}</p>
-                                            <p className={styles.adminRole}> service request id: {request.service_request_id}</p>
-                                            <p className={styles.adminRole}> update id: {request.id}</p>
+                                        <p className={styles.taskNote}>{request.note}</p>
+                                        <span className={styles.taskDate}>{request.created_at}</span>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="inProgress"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className={styles.taskContainer}
+                            >
+                                { dataRequestsInProgress && dataRequestsInProgress.map((request) => (
+                                    <div key={request.id} className={styles.taskCard}>
+                                        <div className={styles.taskHeader}>
+                                            <span className={styles.requestId}>Request #{request.service_request_id}</span>
+                                            <span className={styles.statusBadge}>{request.update_type}</span>
                                         </div>
+                                        <p className={styles.taskNote}>{request.note}</p>
+                                        <span className={styles.taskDate}>{request.created_at}</span>
                                     </div>
                                 ))}
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </motion.div>
+                </div>
+          
 
             </div>
 

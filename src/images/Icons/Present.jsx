@@ -8,7 +8,7 @@ export const Present = ({ isActive, onClick }) => {
       className={`${styles.presentContainer} ${isActive ? styles.active : ''}`}
       onClick={onClick}
     >
-        <p className={styles.presentText}>Orders</p>
+     
  
         <svg className={styles.presentSvg} width="25" height="25" viewBox="0 0 150 163" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="PresentFrame">
