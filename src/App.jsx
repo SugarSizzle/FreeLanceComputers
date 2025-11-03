@@ -27,7 +27,7 @@ import { WhySignUp } from './components/NotSignedIn/WhySignUp'
 import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetailPage'
 import {ServiceTimeline} from './Pages/Dashboard/ServiceDetail/ServiceTimeline'
 import { AdminOverViewPage } from './Pages/AdminDashboard/AdminOverViewPage'
-
+import { AdminNewRequests } from './components/AdminNewRequests/AdminNewRequests'
 function App() {
   const location = useLocation();
 
@@ -60,7 +60,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
-              
+
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="overview" element={<Overview />} />
                 <Route path="services" element={<DashboardServices />} />
@@ -75,7 +75,7 @@ function App() {
 
             
                 <Route path="admin-overview" element={<AdminOverViewPage />} />
-            
+                <Route path="admin-new-requests" element={<AdminNewRequests />} />
               
             </Route>
           </Routes>
