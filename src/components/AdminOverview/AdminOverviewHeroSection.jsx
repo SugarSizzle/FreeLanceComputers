@@ -7,7 +7,7 @@ import { ComputerRepairsIcon } from '../../images/Icons/ComputerRepairsIcon'
 import {useTransform, useTime, motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
 import { supabase } from '../../lib/supabase'
-
+import { useNavigate } from 'react-router-dom'
 
 
 export const AdminOverviewHeroSection = () => {
@@ -17,11 +17,16 @@ export const AdminOverviewHeroSection = () => {
     const [loading, setLoading] = useState(false)
     const [animatedBorder, setAnimatedBorder] = useState(false)
 
+
+    const navigate = useNavigate();
+
     const time = useTime();
     const rotate = useTransform(time, [0, 1000, 3000], [0, -180, -280], {clamp: false});
     const rotatingBg = useTransform(rotate , (r) =>{
         return `conic-gradient(from ${r}deg,rgb(46, 250, 114), transparent, transparent, transparent,transparent)`
     })
+
+
 
 
 
@@ -31,6 +36,13 @@ export const AdminOverviewHeroSection = () => {
 
             try {
                 setLoading(true);
+
+
+             
+
+
+             
+
                 const {data, error} = await supabase
                     .from('service_updates')
                     .select('*')
@@ -81,9 +93,13 @@ export const AdminOverviewHeroSection = () => {
                 </IKContext>
             </div>
 
-            <div className={styles.newRequestContainer}>
-                <div className={styles.metallicDiv}>
-                    <h2>New Requests</h2>
+            <div
+                onClick={() => navigate('/admin-new-requests')}
+             className={styles.newRequestContainer}>
+               
+                    <div className={styles.metallicDiv}>
+                        <h2>New Requests</h2>
+                  
                     <div className={styles.buttonContainer}>
                         <button className={styles.button}>
                             <VirusIcon />
@@ -96,6 +112,7 @@ export const AdminOverviewHeroSection = () => {
                         </button>
 
                     </div>
+
                     <svg className={styles.skinnyBeam} width="200" height="150" viewBox="0 0 84 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="63.2179" y="0.701836" width="7" height="7" transform="rotate(52 63.2179 0.701836)" stroke="white" stroke-opacity="0.5"/>
                         <rect x="78.2179" y="22.7018" width="7" height="7" transform="rotate(52 78.2179 22.7018)" stroke="white" stroke-opacity="0.5"/>

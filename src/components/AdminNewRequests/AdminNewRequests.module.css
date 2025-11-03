@@ -1,0 +1,200 @@
+.container {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: 10vh;
+}
+
+.headerContainer {
+    width: 85vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+ 
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.span {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.requestsContainer {
+    width: 85vw;
+    height: auto;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff25;
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+
+}
+
+.requestIdTitle {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #ffffff;
+   
+}
+.requestId, .requestService, .requestDescription, .requestStatus, .requestedAt {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #b0b0b0;
+   
+}
+
+.ticketContainer {
+    width: 90%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    border-bottom: 2px solid #b0b0b0;
+    
+    padding: 1rem;
+   
+
+}
+
+.filteringContainer {
+    width: 85vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+}
+
+.priorityFilterWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.priorityFilterButton {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.priorityFilterButton:hover {
+    background-color: #3a3a3a;
+    border-color: #ffffff50;
+}
+
+.dropdownArrow {
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: #2a2a2a;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    min-width: 150px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dropdownItem {
+    padding: 0.75rem 1rem;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.dropdownItem:hover {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.dropdownItem.active {
+    background-color: #4a4a4a;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.dropdownItem:first-child {
+    border-radius: 0.4rem 0.4rem 0 0;
+}
+
+.dropdownItem:last-child {
+    border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.requestPriority {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #b0b0b0;
+}
+
+.priorityHigh {
+    color: #ff4444;
+    font-weight: 700;
+}
+
+.priorityMedium {
+    color: #ffaa00;
+    font-weight: 700;
+}
+
+.priorityLow {
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+.serviceFilterWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.serviceFilterButton {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.serviceFilterButton:hover {
+    background-color: #3a3a3a;
+    border-color: #ffffff50;
+}
