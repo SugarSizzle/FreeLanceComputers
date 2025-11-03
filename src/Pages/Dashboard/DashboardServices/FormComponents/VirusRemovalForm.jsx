@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import styles from '../FormComponents/VirusRemovalForm.module.css'
 import { supabase } from '../../../../lib/supabase'
 import {IKContext, IKImage} from 'imagekitio-react'
+import { useNavigate } from 'react-router-dom';
 
 
 export const VirusRemovalForm = ({ formRef }) => {
@@ -11,6 +12,8 @@ export const VirusRemovalForm = ({ formRef }) => {
   const [focusedField, setFocusedField] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState({type: '', content: ''})
+
+  const navigate = useNavigate();
 
   const isDescriptionFilled = description.trim().length > 0
 
@@ -117,7 +120,7 @@ export const VirusRemovalForm = ({ formRef }) => {
         >
           Submit
         </button>
-        <button className={styles.learnMoreButton}>Learn More</button>
+        <button onClick={() => navigate('/virus-protection')} className={styles.learnMoreButton}>Learn More</button>
       </div>
     </div>
   )
