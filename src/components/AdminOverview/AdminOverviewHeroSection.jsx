@@ -16,6 +16,7 @@ export const AdminOverviewHeroSection = () => {
     const [dataRequestsInProgress, setDataRequestsInProgress] = useState(null)
     const [loading, setLoading] = useState(false)
     const [animatedBorder, setAnimatedBorder] = useState(false)
+    const [expandedTicketId, setExpandedTicketId] = useState(null)
 
 
     const navigate = useNavigate();
@@ -78,7 +79,37 @@ export const AdminOverviewHeroSection = () => {
     console.log('Current dataRequestsReviewing state:', dataRequestsReviewing);
     console.log('Current dataRequestsInProgress state:', dataRequestsInProgress);
     
-   
+    // Format ticket ID to show first 6 characters with "..."
+    const formatTicketId = (id) => {
+        const idStr = String(id)
+        if (idStr.length > 6 && expandedTicketId !== id) {
+            return idStr.substring(0, 6) + '...'
+        }
+        return idStr
+    }
+
+    // Toggle ticket ID expansion
+    const toggleTicketId = (id) => {
+        setExpandedTicketId(expandedTicketId === id ? null : id)
+    }
+
+    // Format timestamp as "Day Month Year, HH:MM AM/PM"
+    const formatTimestamp = (timestamp) => {
+        if (!timestamp) return 'N/A'
+        
+        const date = new Date(timestamp)
+        const dateStr = date.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        })
+        const timeStr = date.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        })
+        return `${dateStr}, ${timeStr}`
+    }
 
     return (
         <div className={styles.container}>
@@ -197,11 +228,22 @@ export const AdminOverviewHeroSection = () => {
                                 {dataRequestsReviewing && dataRequestsReviewing.map((request) => (
                                     <div key={request.id} className={styles.taskCard}>
                                         <div className={styles.taskHeader}>
-                                            <span className={styles.requestId}>Request #{request.service_request_id}</span>
+                                            <span className={styles.requestId}>
+                                                Request #
+                                                <span 
+                                                    onClick={() => toggleTicketId(request.service_request_id)}
+                                                    style={{ 
+                                                        cursor: String(request.service_request_id).length > 6 ? 'pointer' : 'default',
+                                                        textDecoration: String(request.service_request_id).length > 6 ? 'underline' : 'none'
+                                                    }}
+                                                >
+                                                    {formatTicketId(request.service_request_id)}
+                                                </span>
+                                            </span>
                                             <span className={styles.statusBadge}>{request.update_type}</span>
                                         </div>
                                         <p className={styles.taskNote}>{request.note}</p>
-                                        <span className={styles.taskDate}>{request.created_at}</span>
+                                        <span className={styles.taskDate}>{formatTimestamp(request.created_at)}</span>
                                     </div>
                                 ))}
                             </motion.div>
@@ -217,11 +259,22 @@ export const AdminOverviewHeroSection = () => {
                                 { dataRequestsInProgress && dataRequestsInProgress.map((request) => (
                                     <div key={request.id} className={styles.taskCard}>
                                         <div className={styles.taskHeader}>
-                                            <span className={styles.requestId}>Request #{request.service_request_id}</span>
+                                            <span className={styles.requestId}>
+                                                Request #
+                                                <span 
+                                                    onClick={() => toggleTicketId(request.service_request_id)}
+                                                    style={{ 
+                                                        cursor: String(request.service_request_id).length > 6 ? 'pointer' : 'default',
+                                                        textDecoration: String(request.service_request_id).length > 6 ? 'underline' : 'none'
+                                                    }}
+                                                >
+                                                    {formatTicketId(request.service_request_id)}
+                                                </span>
+                                            </span>
                                             <span className={styles.statusBadge}>{request.update_type}</span>
                                         </div>
                                         <p className={styles.taskNote}>{request.note}</p>
-                                        <span className={styles.taskDate}>{request.created_at}</span>
+                                        <span className={styles.taskDate}>{formatTimestamp(request.created_at)}</span>
                                     </div>
                                 ))}
                             </motion.div>
