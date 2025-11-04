@@ -1,0 +1,49 @@
+.dashboardNav {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 2rem;
+    margin-top: 10vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.userInfo {
+    font-size: 1.0rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.welcomeText {
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.userName {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.timeDisplay {
+    font-size: .8rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 2px;
+    margin: 0.5rem 0;
+}
+
+.dateDisplay {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.95;
+    text-align: center;
+}
