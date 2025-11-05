@@ -22,8 +22,20 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: #ffffff;
-    margin: 0;
+    margin: auto;
+    margin-top: 1rem;
 }
+
+.backButtonContainer {
+    width: 85vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    color:#b0b0b0;
+}
+
 
 .span {
     font-size: .8rem;
@@ -90,7 +102,7 @@
 }
 
 .priorityFilterButton {
-    background-color: #2a2a2a;
+    background-color: #000000;
     color: #ffffff;
     border: 2px solid #ffffff25;
     border-radius: 0.5rem;
@@ -105,7 +117,7 @@
 }
 
 .priorityFilterButton:hover {
-    background-color: #3a3a3a;
+    
     border-color: #ffffff50;
 }
 
@@ -118,7 +130,7 @@
     position: absolute;
     top: 110%;
     left: 0;
-    background-color: #2a2a2a;
+    background-color: #000000;
     border: 2px solid #ffffff25;
     border-radius: 0.5rem;
     min-width: 150px;
@@ -135,12 +147,12 @@
 }
 
 .dropdownItem:hover {
-    background-color: #3a3a3a;
+    background-color: #000000;
     color: #ffffff;
 }
 
 .dropdownItem.active {
-    background-color: #4a4a4a;
+    background-color: #000000;
     color: #ffffff;
     font-weight: 600;
 }
@@ -176,11 +188,11 @@
 
 .serviceFilterWrapper {
     position: relative;
-    display: inline-block;
+   
 }
 
 .serviceFilterButton {
-    background-color: #2a2a2a;
+    background-color: #000000;
     color: #ffffff;
     border: 2px solid #ffffff25;
     border-radius: 0.5rem;
@@ -198,3 +210,46 @@
     background-color: #3a3a3a;
     border-color: #ffffff50;
 }
+
+
+.moreInfoButtonContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin:auto;
+
+   
+
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.moreInfoButton{
+    width: 50vw;
+    height: 6vh;
+    border-radius: .5rem;
+    background: linear-gradient(90deg, #151619, #2d3035, #4a5568, #2d3035, #151619);
+    background-size: 200% 200%;
+    color: #FFFFFF;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    font-weight: 900;
+    cursor: pointer;
+    border: 2px solid #ffffff25;
+    align-self: center;
+    animation: gradientShift 5s ease infinite;
+    margin-top: 1rem;
+    margin:auto;
+}
+
+

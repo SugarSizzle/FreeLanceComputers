@@ -3,11 +3,13 @@ import styles from './AdminNewRequests.module.css'
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { useEffect } from 'react'
-
-
+import { AdminNewRequestModal } from '../AdminNewRequestModal/AdminNewRequestModal'
+import { useNavigate } from 'react-router-dom'
+import { FaChevronLeft } from 'react-icons/fa'
 
 export const AdminNewRequests = () => {
 
+    const navigate = useNavigate()
 
     const [loading, setLoading] = useState(false)
     const [newRequests, setNewRequests] = useState([])
@@ -18,8 +20,10 @@ export const AdminNewRequests = () => {
     
     const [serviceFilter, setServiceFilter] = useState('all')
     const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false)
+    
 
-
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [selectedTicket, setSelectedTicket] = useState(null)
 
 
     useEffect(() => {
@@ -147,8 +151,37 @@ export const AdminNewRequests = () => {
         })
     }
 
+    const handleMoreInfoClick = (request) => {
+        setSelectedTicket(request)
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+        setSelectedTicket(null)
+    }
+
+    const handleUpdateSuccess = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('services_requests')
+                .select('*')
+                .eq('status', 'pending')
+
+            if (error) throw error
+
+            setNewRequests(data)
+        } catch (error) {
+            console.error('Error refreshing requests:', error)
+        }
+    }
+
     return (
         <div className={styles.container}>
+
+            <div className={styles.backButtonContainer}>
+                <FaChevronLeft className={styles.backButtonIcon}   onClick={() => navigate('/admin-overview')} />
+            </div>
 
             <div className={styles.headerContainer}>
                 <h1 className={styles.title}>  Your New Requests</h1>
@@ -259,10 +292,28 @@ export const AdminNewRequests = () => {
                             <p className={styles.requestStatus}> <span className={styles.span}>Status:</span> {request.status}</p>
                             <p className={styles.requestedAt}> <span className={styles.span}>Requested At:</span> {formatTimestamp(request.requested_at || request.created_at)}</p>
 
+                            <div className={styles.moreInfoButtonContainer}>
+                                <button 
+                                    className={styles.moreInfoButton}
+                                    onClick={() => handleMoreInfoClick(request)}
+                                >
+                                    More Info
+                                </button>
+                            </div>
 
                         </div>
                     ))}
 
+    
+            <AdminNewRequestModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                ticket={selectedTicket}
+                getServiceDisplayName={getServiceDisplayName}
+                priorityColor={priorityColor}
+                formatTimestamp={formatTimestamp}
+                onUpdateSuccess={handleUpdateSuccess}
+            />
 
             </div>
 
