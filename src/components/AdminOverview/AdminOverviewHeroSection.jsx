@@ -88,12 +88,10 @@ export const AdminOverviewHeroSection = () => {
         return idStr
     }
 
-    // Toggle ticket ID expansion
     const toggleTicketId = (id) => {
         setExpandedTicketId(expandedTicketId === id ? null : id)
     }
 
-    // Format timestamp as "Day Month Year, HH:MM AM/PM"
     const formatTimestamp = (timestamp) => {
         if (!timestamp) return 'N/A'
         
@@ -129,7 +127,7 @@ export const AdminOverviewHeroSection = () => {
              className={styles.newRequestContainer}>
                
                     <div className={styles.metallicDiv}>
-                        <h2>New Requests</h2>
+                        <h2 className={styles.newRequestTitle}>New Requests</h2>
                   
                     <div className={styles.buttonContainer}>
                         <button className={styles.button}>
@@ -226,7 +224,11 @@ export const AdminOverviewHeroSection = () => {
                                 className={styles.taskContainer}
                             >
                                 {dataRequestsReviewing && dataRequestsReviewing.map((request) => (
-                                    <div key={request.id} className={styles.taskCard}>
+                                    <div 
+                                    onClick={() => navigate('/admin-task-progress', { state: { requestData: request } })}
+                                    key={request.id} 
+                                    className={styles.taskCard}
+                                    style={{ cursor: 'pointer' }}>
                                         <div className={styles.taskHeader}>
                                             <span className={styles.requestId}>
                                                 Request #
@@ -257,7 +259,11 @@ export const AdminOverviewHeroSection = () => {
                                 className={styles.taskContainer}
                             >
                                 { dataRequestsInProgress && dataRequestsInProgress.map((request) => (
-                                    <div key={request.id} className={styles.taskCard}>
+                                    <div 
+                                    onClick={() => navigate('/admin-task-progress', { state: { requestData: request } })}
+                                    key={request.id} 
+                                    className={styles.taskCard}
+                                    style={{ cursor: 'pointer' }}>
                                         <div className={styles.taskHeader}>
                                             <span className={styles.requestId}>
                                                 Request #

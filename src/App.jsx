@@ -28,6 +28,8 @@ import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetail
 import {ServiceTimeline} from './Pages/Dashboard/ServiceDetail/ServiceTimeline'
 import { AdminOverViewPage } from './Pages/AdminDashboard/AdminOverViewPage'
 import { AdminNewRequests } from './components/AdminNewRequests/AdminNewRequests'
+import { AdminTaskProgressPage } from './Pages/AdminDashboard/AdminTaskProgress'
+
 function App() {
   const location = useLocation();
 
@@ -76,7 +78,7 @@ function App() {
             
                 <Route path="admin-overview" element={<AdminOverViewPage />} />
                 <Route path="admin-new-requests" element={<AdminNewRequests />} />
-              
+                <Route path="admin-task-progress" element={<AdminTaskProgressPage />} />
             </Route>
           </Routes>
         </motion.div>
