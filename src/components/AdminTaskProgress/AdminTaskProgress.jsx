@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import styles from './AdminTaskProgress.module.css'
 import { useLocation } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import { AdminTimeLine } from './AdminTimeLine'
+
 
 export const AdminTaskProgress = () => {
     const location = useLocation()
     const requestData = location.state?.requestData
     const [taskProgress, setTaskProgress] = useState([])
+    const [selectedUpdate, setSelectedUpdate] = useState(null)
   
     useEffect(() => {
         const fetchTaskProgress = async () => {
@@ -20,6 +23,10 @@ export const AdminTaskProgress = () => {
             if (error) throw error;
             console.log( 'data: ', data)
             setTaskProgress(data)
+            // Set first update as default selected
+            if (data && data.length > 0) {
+                setSelectedUpdate(data[0])
+            }
         }
         fetchTaskProgress()
     }, [requestData.id])
@@ -27,29 +34,37 @@ export const AdminTaskProgress = () => {
     console.log('requestData: ', requestData)
     console.log('taskProgress: ', taskProgress)
 
-
-  
-
+    // Format the created_at date
+    const formattedDate = selectedUpdate?.created_at 
+        ? new Date(selectedUpdate.created_at).toLocaleDateString('en-US', { 
+            month: 'long', 
+            day: 'numeric', 
+            year: 'numeric' 
+        }) 
+        : '';
 
   return (
     <div className={styles.container}>
-        <h3 className={styles.title}>Admin Task Progress</h3>
+        
+            <div className={styles.infoCardContainer}>
 
-        {taskProgress.length > 0 && (
-            <div className={styles.taskProgressContainer}>
-                {taskProgress.map((update) => (
-                    <div key={update.id} className={styles.taskProgressItem}>
-                        <h4>{update.update_type}</h4>
-                        <p>{update.note}</p>
-                        <p>{update.created_at}</p>
-                    </div>
-                ))}
+                <div className={styles.infoCard}>
+                    <h3 className={styles.currentView}>Currently Viewing</h3>
+                    <h3 className={styles.infoCardTitle}>Update ID : {selectedUpdate?.id}</h3>
+                    <h3 className={styles.infoCardTitle}>Status : {selectedUpdate?.update_type}</h3>
+                    <h3 className={styles.infoCardTitle}>Note : {selectedUpdate?.note}</h3>
+                    <h3 className={styles.infoCardTitle}>Created : {formattedDate}</h3>
+                </div>
+
             </div>
-        )}
 
+            <AdminTimeLine 
+                taskProgress={taskProgress} 
+                selectedUpdate={selectedUpdate}
+                setSelectedUpdate={setSelectedUpdate}
+            />
 
     </div>
   )
 }
 
-export default AdminTaskProgress;

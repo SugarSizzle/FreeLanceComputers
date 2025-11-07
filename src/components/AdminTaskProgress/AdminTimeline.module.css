@@ -1,0 +1,61 @@
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+
+.timeLineContainer {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border: 2px solid #ffffff25;
+
+}
+
+.timelineCard {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff25;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timelineCard:hover {
+    background-color: #ffffff15;
+    transform: translateX(5px);
+}
+
+.timelineCard.active {
+    background-color: #4CAF50;
+    border-left: 4px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.description {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #ffffffcc;
+    margin: 0.25rem 0;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
