@@ -142,7 +142,17 @@ export const AdminOverviewHeroSection = () => {
 
                     </div>
 
-                    <svg className={styles.skinnyBeam} width="200" height="150" viewBox="0 0 84 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <motion.svg 
+                        className={styles.skinnyBeam} 
+                        width="200" 
+                        height="150" 
+                        viewBox="0 0 84 72" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0 }}
+                    >
                         <rect x="63.2179" y="0.701836" width="7" height="7" transform="rotate(52 63.2179 0.701836)" stroke="white" stroke-opacity="0.5"/>
                         <rect x="78.2179" y="22.7018" width="7" height="7" transform="rotate(52 78.2179 22.7018)" stroke="white" stroke-opacity="0.5"/>
                         <rect x="61.8058" y="11" width="18.3471" height="77.1908" transform="rotate(53.1959 61.8058 11)" fill="url(#paint0_linear_398_2)"/>
@@ -152,17 +162,37 @@ export const AdminOverviewHeroSection = () => {
                         <stop offset="0.860577" stop-opacity="0.25"/>
                         </linearGradient>
                         </defs>
-                    </svg>
+                    </motion.svg>
 
-                    <svg className={styles.threeSquares} width="60" height="60" viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <motion.svg 
+                        className={styles.threeSquares} 
+                        width="60" 
+                        height="60" 
+                        viewBox="0 0 30 44" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                    >
                         <g id="Group 3">
                         <rect id="Rectangle 23" y="14" width="15" height="15" fill="white" fill-opacity="0.5"/>
                         <rect id="Rectangle 25" x="15.25" y="0.25" width="14.5" height="14.5" stroke="white" stroke-opacity="0.5" stroke-width="0.5"/>
                         <rect id="Rectangle 24" x="15" y="29" width="15" height="15" fill="white" fill-opacity="0.5"/>
                         </g>
-                    </svg>
+                    </motion.svg>
 
-                    <svg className={styles.bigBeam} width="250" height="175" viewBox="0 0 91 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <motion.svg 
+                        className={styles.bigBeam} 
+                        width="250" 
+                        height="175" 
+                        viewBox="0 0 91 88" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                    >
                         <g id="Group 4">
                         <rect id="Rectangle 7" x="34.8682" y="0.706428" width="7" height="7" transform="rotate(47.51 34.8682 0.706428)" stroke="white" stroke-opacity="0.5"/>
                         <rect id="Rectangle 8" x="5.86819" y="30.7064" width="7" height="7" transform="rotate(47.51 5.86819 30.7064)" stroke="white" stroke-opacity="0.5"/>
@@ -174,7 +204,7 @@ export const AdminOverviewHeroSection = () => {
                         <stop offset="0.860577" stop-opacity="0.25"/>
                         </linearGradient>
                         </defs>
-                    </svg>
+                    </motion.svg>
 
 
                 </div>
