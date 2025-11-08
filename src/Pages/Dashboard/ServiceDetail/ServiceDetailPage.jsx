@@ -15,6 +15,7 @@ export const ServiceDetailPage = () => {
     const [selectedUpdate, setSelectedUpdate] = useState(null);
 
     useEffect(() => {
+        
         const fetchServiceDetail = async () => {
             try {
                 setLoading(true);
