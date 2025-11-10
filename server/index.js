@@ -2,20 +2,43 @@ import express from 'express';
 import cors from 'cors';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
-import apiRouter from './routes/apiRoutes';
+import apiRouter from './routes/apiRoutes.js';
 
 
 dotenv.config();
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 5000;
 
 
-app.use('/api' , apiRouter)
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+app.use(express.json());
 
+
+// Routes
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Express API Server running on port 5000',
+        endpoints: {
+            services: 'http://localhost:5000/api/services',
+            products: 'http://localhost:5000/api/products'
+        },
+        note: 'Frontend runs on http://localhost:3000'
+    });
+});
+
+app.use('/api', apiRouter);
 
 
 export const supabase = createClient(
     process.env.VITE_SUPABASE_URL,
     process.env.VITE_SUPABASE_ANON_KEY
-  );
+);
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
   
