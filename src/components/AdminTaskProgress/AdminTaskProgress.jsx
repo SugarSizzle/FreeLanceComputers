@@ -14,6 +14,7 @@ export const AdminTaskProgress = () => {
     const [taskProgress, setTaskProgress] = useState([])
     const [selectedUpdate, setSelectedUpdate] = useState(null)
     const navigate = useNavigate()
+    
     useEffect(() => {
         const fetchTaskProgress = async () => {
             const { data, error } = await supabase
