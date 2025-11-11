@@ -1,6 +1,5 @@
 import { abductionsData } from './databases/abductionsData.js';
 
-// Truncate details to 50 characters for better terminal display
 const truncatedData = abductionsData.map(report => ({
     location: report.location,
     details: report.details.length > 50 
