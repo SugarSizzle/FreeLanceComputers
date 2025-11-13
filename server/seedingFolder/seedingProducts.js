@@ -24,15 +24,15 @@ async function seedProducts() {
                 await db.run(`INSERT INTO products (id, name, type, price, condition, specs, secondarySpecs, description, images)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
                     [
-                        products.id, 
-                        products.name, 
-                        products.type, 
-                        products.price, 
-                        products.condition, 
-                        JSON.stringify(products.specs), 
-                        JSON.stringify(products.secondarySpecs), 
-                        products.description, 
-                        JSON.stringify(products.images)])
+                        id, 
+                        name, 
+                        type, 
+                        price, 
+                        condition, 
+                        JSON.stringify(specs), 
+                        JSON.stringify(secondarySpecs), 
+                        description, 
+                        JSON.stringify(images)])
             }
 
             await db.run('COMMIT')

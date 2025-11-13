@@ -21,7 +21,7 @@ export const productsDatabase =[
             "starting weight: 4.12 Ib (1.87kg)",
             "1080p at 30 fps"
           ],
-          descriptinon:'A refurbished Dell 16 Laptop, was repaired and now it good as new! Cheap and effective, great for new working laptop.',
+          description:'A refurbished Dell 16 Laptop, was repaired and now it good as new! Cheap and effective, great for new working laptop.',
           images:[
             "https://ik.imagekit.io/irpk6rtbq/LaptopImages/Refurb%20Dell%2016%20Laptop%20FrontView.avif?updatedAt=1752217874987",
             "https://ik.imagekit.io/irpk6rtbq/LaptopImages/Refurb%20Dell%2016%20Laptop%20TopView.avif?updatedAt=1752217875042",
