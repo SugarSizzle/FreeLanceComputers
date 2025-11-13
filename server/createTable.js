@@ -14,9 +14,7 @@ async function createTable() {
     })
 
     await db.exec(`
-        
         CREATE TABLE IF NOT EXISTS products (
-            CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             type TEXT NOT NULL,
@@ -26,8 +24,6 @@ async function createTable() {
             secondarySpecs TEXT NOT NULL,
             description TEXT NOT NULL,
             images TEXT NOT NULL
-            
-        
         )
         `
          
