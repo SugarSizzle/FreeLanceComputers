@@ -3,7 +3,7 @@ import cors from 'cors';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import apiRouter from './routes/apiRoutes.js';
-
+import authRouter from './routes/auth.js';
 
 dotenv.config();
 const app = express();
@@ -29,15 +29,19 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/api', apiRouter);
 
+
+
+
+app.use('/api', apiRouter);
+app.use('/api/auth' , authRouter)
 
 export const supabase = createClient(
     process.env.VITE_SUPABASE_URL,
     process.env.VITE_SUPABASE_ANON_KEY
 );
 
-// Start server
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

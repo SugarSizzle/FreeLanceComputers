@@ -11,7 +11,7 @@ async function viewAllProducts() {
   try {
     const products = await db.all('SELECT * FROM products')
     
-    // Format the data for better readability
+
     const formattedProducts = products.map(product => ({
       id: product.id,
       name: product.name,

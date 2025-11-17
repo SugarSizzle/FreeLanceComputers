@@ -29,6 +29,25 @@ async function createTable() {
          
         )
         console.log('Products table created successfully')
+
+
+        await db.exec(`
+            CREATE TABLE IF NOT EXISTS users  (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                uuid TEXT NOT NULL UNIQUE,
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE,
+                password TEXT NOT NULL,
+                phone TEXT UNIQUE,
+                role TEXT DEFAULT 'customer' CHECK(role IN ('customer' , 'admin')) NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+            )
+            `)
+    
+            console.log('Users table created successfully')
+
         await db.close();
 
 
