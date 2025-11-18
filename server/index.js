@@ -17,7 +17,8 @@ app.use(cors({
 app.use(express.json());
 
 
-// Routes
+
+
 app.get('/', (req, res) => {
     res.json({ 
         message: 'Express API Server running on port 5000',
