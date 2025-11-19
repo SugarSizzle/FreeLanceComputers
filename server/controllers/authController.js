@@ -1,71 +1,97 @@
+import validator from 'validator'
 import { getDBConnection } from '../db/db.js'
-import validator from 'validator';
 import bcrypt from 'bcryptjs'
 
+export async function registerUser(req, res) {
 
+  let { name, email, username, password } = req.body
 
-export async function registerUser(req,res) {
+  if (!name || !email || !username || !password) {
 
-   const db = await getDBConnection();
+    return res.status(400).json({ error: 'All fields are required.' })
 
-   let { firstname, lastname, email, password, phone } = req.body;
+  }
 
-   if (!firstname || !lastname || !email || !password || !phone) {
+  name = name.trim()
+  email = email.trim()
+  username = username.trim()
 
-    return res.status(400).json({ error: 'All fields are required' });
-   }
+  if (!/^[a-zA-Z0-9_-]{1,20}$/.test(username)) {
 
-   firstname = firstname.trim();
-   lastname = lastname.trim();
-   username = username.trim();
-   email = email.trim();
+    return res.status(400).json(
+      { error: 'Username must be 1–20 characters, using letters, numbers, _ or -.' }
+    )
+  }
 
-   if((!/^[a-zA-Z0-9_-]{1,20}$/.test(username))){
-        return res.status(400).json({ error: 'Username can only contain letters, numbers, underscores, and hyphens, and must be between 1 and 20 characters long' });
-   }
+  if (!validator.isEmail(email)) {
 
-   if(!validator.isEmail(email)){
-        return res.status(400).json({ error: 'Invalid email address' });
-   }
+    return res.status(400).json({ error: 'Invalid email format' })
 
-  
+  }
 
-   try {
+  try {
 
+    const db = await getDBConnection()
 
-        const db = await getDBConnection();
+    const existing = await db.get('SELECT id FROM users WHERE email = ? OR username = ?', [email, username])
 
-        const existingUsername = await db.get(`SELECT id FROM users WHERE username = ?`, [username]);
-        const existingEmail = await db.get('SELECT id FROM users WHERE email = ?' , [email])
-        const existingPhone = await db.get('SELECT id FROM users WHERE phone = ?' , [phone])
+    if (existing) {
+      return res.status(400).json({ error: 'Email or username already in use.' })
+    }
 
+    const hashed = await bcrypt.hash(password, 10)
 
-        if( existingUsername){
-          return res.status(400).json({error: 'Username already in use'})
-        } else if(existingEmail){
-          return res.status(400).json({error: 'Email already in use'})
-        } else if(existingPhone){
-          return res.status(400).json({error: 'Phone number already in use'})
-        }
-        
-        const hashed = await bcrypt.hashed(password, 10)
+    const result = await db.run('INSERT INTO users (name, email, username, password) VALUES (?, ?, ?, ?)', [name, email, username, hashed])
+    console.log(result)
 
-        const register = await db.run(`
-          INSERT INTO users(firstname, lastname, email, password, phone)
-          VALUES(? ,? ,? ,?,?)
-          `,[firstname, lastname, email, hashed, phone]) 
+    req.session.userId = result.lastID
 
-          res.status(201).json({message: 'User registered'})
+    res.status(201).json({ message: 'User registered' })
+  } catch (err) {
 
-       
+    console.error('Registration error:', err.message);
+    res.status(500).json({ error: 'Registration failed. Please try again.' })
 
-        
-
-
-   } catch (err) {
-
-    console.error('Registeration error' , err.message)
-    res.status(500).json({error: null, message: 'An unexpected error occured. Please try again.'})
-   }
+  }
 
 }
+
+export async function loginUser(req, res) {
+
+  let { username, password } = req.body
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'All fields are required' } )
+  }
+
+  username = username.trim()
+
+
+
+  try {
+    const db = await getDBConnection()
+
+    const user = await db.get('SELECT * FROM users WHERE username = ?', [username])
+
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials'})
+    }
+
+    const isValid = await bcrypt.compare(password, user.password)
+
+    if (!isValid) {
+
+      return res.status(401).json({ error: 'Invalid credentials'})
+
+    }
+
+    req.session.userId = user.id
+    res.json({ message: 'Logged in' })
+
+
+  } catch (err) {
+    console.error('Login error:', err.message)
+    res.status(500).json({ error: 'Login failed. Please try again.' })
+  }
+}
+
