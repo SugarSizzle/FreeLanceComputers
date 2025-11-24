@@ -10,6 +10,7 @@
     "server": "node server/index.js",
     "view:abductions": "node server/viewAbductions.js",
     "view:products": "node server/logTable.js"
+    
   },
   "dependencies": {
     "@imagekit/react": "^5.0.1",

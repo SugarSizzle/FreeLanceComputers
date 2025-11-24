@@ -1,6 +1,6 @@
 import validator from 'validator'
 import { getDBConnection } from '../db/db.js'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcrypt'
 
 export async function registerUser(req, res) {
 
@@ -95,3 +95,18 @@ export async function loginUser(req, res) {
   }
 }
 
+
+export async function logoutUser (req ,res) {
+
+
+  req.session.destroy(err => {
+
+    if(err){
+      return res.status(400).json({err:'There was an error logging out'})
+    }
+    return res.status(200).json({message:'Logged out!'})
+
+  })
+
+  
+}
