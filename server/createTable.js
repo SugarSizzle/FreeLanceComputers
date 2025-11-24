@@ -48,10 +48,25 @@ async function createTable() {
     
             console.log('Users table created successfully')
 
-        await db.close();
 
+    await db.exec(
+        `
+        CREATE TABLE IF NOT EXISTS cart_items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        product_id INTEGER NOT NULL,
+        quantity INTEGER NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (product_id) REFERENCES products(id)
 
+        )
+        
+        `
+    )
 
+    console.log('Cart items table created successfully')
+
+    await db.close();
 
 
 }
