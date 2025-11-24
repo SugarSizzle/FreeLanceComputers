@@ -15,6 +15,8 @@ async function seedProducts() {
 
     })
 
+    //funtion here
+
 
     try {
             db.run('BEGIN TRANSACTION')
