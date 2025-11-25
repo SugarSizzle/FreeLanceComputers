@@ -4,6 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import apiRouter from './routes/apiRoutes.js';
 import authRouter from './routes/auth.js';
+import cartRouter from './routes/cart.js'
+
 
 dotenv.config();
 const app = express();
@@ -36,6 +38,8 @@ app.get('/', (req, res) => {
 
 app.use('/api', apiRouter);
 app.use('/api/auth' , authRouter)
+
+app.use('api/cart', cartRouter)
 
 export const supabase = createClient(
     process.env.VITE_SUPABASE_URL,
