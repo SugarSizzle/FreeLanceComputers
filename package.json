@@ -11,7 +11,9 @@
     "db:create": "node server/createTable.js",
     "view:abductions": "node server/viewAbductions.js",
     "view:products": "node server/logTable.js",
-    "view:users": "node server/viewUsers.js"
+    "view:users": "node server/viewUsers.js",
+    "start": "node server/index.js",
+    "update": "nodemon server/index.js"
   },
   "dependencies": {
     "@imagekit/react": "^5.0.1",
@@ -41,6 +43,7 @@
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.8",
     "@vitejs/plugin-react": "^5.0.1",
+    "nodemon": "^3.1.11",
     "vite": "^5.0.8"
   },
   "eslintConfig": {

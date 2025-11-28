@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import apiRouter from './routes/apiRoutes.js';
 import authRouter from './routes/auth.js';
 import cartRouter from './routes/cart.js'
-
+import orderRouter from './routes/order.js'
 
 dotenv.config();
 const app = express();
@@ -52,11 +52,24 @@ app.get('/', (req, res) => {
 app.use('/api', apiRouter);
 app.use('/api/auth', authRouter)
 app.use('/api/cart', cartRouter)
+app.use('/api/orders', orderRouter)
+console.log('✅ Order routes registered at /api/orders')
 
-export const supabase = createClient(
-    process.env.VITE_SUPABASE_URL,
-    process.env.VITE_SUPABASE_ANON_KEY
-);
+
+// export const supabase = createClient(
+//     process.env.VITE_SUPABASE_URL,
+//     process.env.VITE_SUPABASE_ANON_KEY
+// );
+
+
+process.on('exit', (code) => {
+    console.log('Process exiting with code:', code);
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught exception:', err);
+});
+
 
 
 app.listen(PORT, () => {
