@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import session from 'express-session';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import apiRouter from './routes/apiRoutes.js';
@@ -17,6 +18,18 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+
+// Session middleware for authentication
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your-secret-key-change-this',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: false, // set to true in production with HTTPS
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+    }
+}));
 
 
 
@@ -37,9 +50,8 @@ app.get('/', (req, res) => {
 
 
 app.use('/api', apiRouter);
-app.use('/api/auth' , authRouter)
-
-app.use('api/cart', cartRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/cart', cartRouter)
 
 export const supabase = createClient(
     process.env.VITE_SUPABASE_URL,

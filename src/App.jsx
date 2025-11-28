@@ -25,10 +25,11 @@ import { AboutPage } from './Pages/AboutPage'
 import { NotSignedIn } from './components/NotSignedIn/NotSignedIn'
 import { WhySignUp } from './components/NotSignedIn/WhySignUp'
 import { ServiceDetailPage } from './Pages/Dashboard/ServiceDetail/ServiceDetailPage'
-import {ServiceTimeline} from './Pages/Dashboard/ServiceDetail/ServiceTimeline'
 import { AdminOverViewPage } from './Pages/AdminDashboard/AdminOverViewPage'
 import { AdminNewRequests } from './components/AdminNewRequests/AdminNewRequests'
 import { AdminTaskProgressPage } from './Pages/AdminDashboard/AdminTaskProgress'
+import {SignUpPage} from './Pages/SignUpPage'
+
 
 function App() {
   const location = useLocation();
@@ -50,6 +51,8 @@ function App() {
         >
           <Routes location={location}>
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="/virus-protection" element={<VirusProtection />} />

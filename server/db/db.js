@@ -5,7 +5,7 @@ import path from 'node:path'
 
 export async function getDBConnection() {
 
-    const dbpath = path.join('server.database.db')
+    const dbpath = path.join('server', 'database.db')
 
     return open({
         filename: dbpath,
