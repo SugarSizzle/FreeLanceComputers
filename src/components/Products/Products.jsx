@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../../lib/supabase';
 import { Link, useSearchParams } from 'react-router-dom';
 import styles from './Products.module.css';
 import {motion} from 'framer-motion';
@@ -24,44 +23,58 @@ export const Products = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-
-      let query = supabase.from('products').select("*");
-
-      if(typeFilter.length > 0) {
-        query = query.in("type" , typeFilter);
-      }
-
-      if(conditionFilter.length > 0) {
-        query = query.in('condition' , conditionFilter);
-      }
-
-      const {data ,error} = await query;
-
-      if(error) {
-        console.error("Supabase error:" , error);
-        setError(error.message);
-      } else{
+      try {
+        // Build query string from URL search params
+        const params = new URLSearchParams();
+        
+        if (typeFilter.length > 0) {
+          params.append('type', typeFilter.join(','));
+        }
+        
+        if (conditionFilter.length > 0) {
+          params.append('condition', conditionFilter.join(','));
+        }
+        
+        const queryString = params.toString();
+        const url = `http://localhost:5000/products${queryString ? `?${queryString}` : ''}`;
+        
+        console.log('Fetching from:', url); // Debug log
+        
+        const response = await fetch(url, {
+          credentials: 'include'
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        
+        const data = await response.json();
+        
+        // No filtering here - backend handles it!
         setProducts(data);
+        
+      } catch(error) {
+        console.error("Fetch error:", error);
+        setError(error.message);
       }
     }
-
+  
     fetchProducts();
-  }, [searchParams]);
-
+  }, [searchParams]); 
 
 
 
 
 
   const paginatedProducts = currentProducts.map((product) => {
+    const firstImage = product.images && product.images.length > 0 ? product.images[0] : '';
 
     return (
   
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/products/${product.id}`} key={product.id}>
         <div 
-          className={styles.individualProductContainer}
-          key={product.id}>
-          <img className={styles.individualProductImage} src={product.img_url} alt={product.name} />
+          className={styles.individualProductContainer}>
+          <img className={styles.individualProductImage} src={firstImage} alt={product.name} />
           <div className={styles.individualProductInfoContainer}>
             <h3 className={styles.individualProductName}>{product.name}</h3>
             <p className={styles.individualProductPrice}>${product.price}</p>
