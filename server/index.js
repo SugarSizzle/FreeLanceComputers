@@ -1,12 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
-import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import apiRouter from './routes/apiRoutes.js';
 import authRouter from './routes/auth.js';
 import cartRouter from './routes/cart.js'
 import orderRouter from './routes/order.js'
+import productsRouter from './routes/products.js'
 
 dotenv.config();
 const app = express();
@@ -14,10 +14,16 @@ const PORT = process.env.PORT || 5000;
 
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 app.use(express.json());
+
+// Request logger middleware
+app.use((req, res, next) => {
+    console.log(`📨 ${req.method} ${req.url}`);
+    next();
+});
 
 // Session middleware for authentication
 app.use(session({
@@ -49,30 +55,34 @@ app.get('/', (req, res) => {
 
 
 
-app.use('/api', apiRouter);
-app.use('/api/auth', authRouter)
-app.use('/api/cart', cartRouter)
-app.use('/api/orders', orderRouter)
-console.log('✅ Order routes registered at /api/orders')
+
+app.use('/auth', authRouter)
+app.use('/cart', cartRouter)
+app.use('/orders', orderRouter)
+app.use('/products', productsRouter)
 
 
-// export const supabase = createClient(
-//     process.env.VITE_SUPABASE_URL,
-//     process.env.VITE_SUPABASE_ANON_KEY
-// );
-
-
-process.on('exit', (code) => {
-    console.log('Process exiting with code:', code);
-});
 
 process.on('uncaughtException', (err) => {
-    console.error('Uncaught exception:', err);
+    console.error('❌ Uncaught exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('❌ Unhandled Rejection:', reason);
 });
 
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+const server = app.listen(PORT, () => {
+    console.log(`✅ Server is running on http://localhost:${PORT}`);
+    console.log('🟢 Server is ready and listening for requests');
+});
+
+server.on('close', () => {
+    console.log('❌ Server is closing');
+});
+
+server.on('error', (err) => {
+    console.error('❌ Server error:', err);
 });
   
