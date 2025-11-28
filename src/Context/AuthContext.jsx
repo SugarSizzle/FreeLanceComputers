@@ -1,113 +1,123 @@
 import {createContext , useState, useContext, useEffect}  from 'react'
-import { supabase } from '../lib/supabase'
 
-const AuthContext= createContext()
+const AuthContext = createContext()
+
+const API_URL = 'http://localhost:5000/api/auth'
 
 export const AuthContextProvider = ({children}) => {
 
-    const [session, setSession] = useState(undefined);
+    const [session, setSession] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-
-    async function getInitialSession(){
-
-        try{
-
-            const {data , error} = await supabase.auth.getSession();
-            if(error) {
-                throw error;
-            }
-            console.log(data.session);
-
-        } catch(error){
-            console.log(`Error getting session` , error.message)
-
-        }
-
-    }
-
-getInitialSession();
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-
-        setSession(session);
-        console.log(`session changed` , session)
-
-    })
-
-    },[]);  
+    useEffect(() => {
+        // Check if user is already logged in (check session)
+        checkSession();
+    }, []);  
     
-    const signInUser = async (email , password) => {
+    const checkSession = async () => {
         try {
-            const {data, error} = await supabase.auth.signInWithPassword({
-                email: email.toLowerCase(),
-                password:password,
-            })
-            if(error){
-                console.error('Supabase sign-in error' , error.message)
-                return {success: false , error:error.message}
+            const response = await fetch(`${API_URL}/session`, {
+                method: 'GET',
+                credentials: 'include', // Important for cookies/sessions
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setSession(data.user);
+            } else {
+                setSession(null);
             }
-            console.log('Supbaase sign-in success' , data);
-            return {success: true, data};
-
-        }  catch(error){
-            console.log('Unexpected error suring sign-in' , error.message)
-            return {success: false, error: 'An unexpected error occured. Please try again.'}
+        } catch (error) {
+            console.error('Error checking session:', error.message);
+            setSession(null);
+        } finally {
+            setLoading(false);
         }
+    };
 
-    }
-
-    const signOutUser = async (email , password) => {
+    const signInUser = async (email, password) => {
         try {
-            const {error} = await supabase.auth.signOut();
-            if(error){
-                console.error('Supabase sign-out error' , error.message)
-                return {success: false, error: error.message}
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include', // Important for cookies/sessions
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                return { success: false, error: data.error || 'Login failed' };
             }
-            console.log('Supabase sign-out success')
-            return {success: true, data: null}
-        } catch(error){
-            console.error('Unexpected error during sign-out' , error.message)
-            return {success: false, error: 'An unexpected error occured. Please try again.'}
+
+            setSession(data.user);
+            console.log('Login success:', data);
+            return { success: true, data: { session: data.user, user: data.user } };
+
+        } catch (error) {
+            console.error('Unexpected error during sign-in:', error.message);
+            return { success: false, error: 'An unexpected error occurred. Please try again.' };
         }
-    }
+    };
 
-
-
-      
-    const signUpUser = async (email , password) => {
+    const signOutUser = async () => {
         try {
-            const {data, error} = await supabase.auth.signUp({
-                email: email.toLowerCase(),
-                password:password,
-            })
-            if(error){
-                console.error('Supabase sign-up error' , error.message)
-                return {success: false , error:error.message}
+            const response = await fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                return { success: false, error: data.error || 'Logout failed' };
             }
-            console.log('Supbaase sign-up success' , data);
-            return {success: true, data};
 
-        }  catch(error){
-            console.log('Unexpected error suring sign-up' , error.message)
-            return {success: false, error: 'An unexpected error occured. Please try again.'}
+            setSession(null);
+            console.log('Logout success');
+            return { success: true, data: null };
+
+        } catch (error) {
+            console.error('Unexpected error during sign-out:', error.message);
+            return { success: false, error: 'An unexpected error occurred. Please try again.' };
         }
+    };
 
-    }
+    const signUpUser = async (email, password, firstname, lastname) => {
+        try {
+            const response = await fetch(`${API_URL}/signup`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ email, password, firstname, lastname }),
+            });
 
-    
+            const data = await response.json();
+
+            if (!response.ok) {
+                return { success: false, error: data.error || 'Sign up failed' };
+            }
+
+            setSession(data.user);
+            console.log('Sign up success:', data);
+            return { success: true, data: { session: data.user, user: data.user } };
+
+        } catch (error) {
+            console.error('Unexpected error during sign-up:', error.message);
+            return { success: false, error: 'An unexpected error occurred. Please try again.' };
+        }
+    };
 
     return (
-        <AuthContext.Provider value={{session, signInUser, signOutUser, signUpUser}}>
+        <AuthContext.Provider value={{session, loading, signInUser, signOutUser, signUpUser}}>
             {children}
         </AuthContext.Provider>
-
-    )
-
+    );
 }
 
 export const useAuth = () => {
-
     return useContext(AuthContext)
-
 }

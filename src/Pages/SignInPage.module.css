@@ -1,10 +1,22 @@
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .signInContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     overflow: hidden;
     background-image: url('https://ik.imagekit.io/irpk6rtbq/SignupMobile.png?updatedAt=1759166699694');
     background-size: cover;
@@ -53,7 +65,7 @@
 .inputContainer {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+  
 }
 
 .inputLabel {
@@ -65,7 +77,7 @@
 
 .inputField {
     width: 100%;
-    padding: 1rem;
+    padding: .75rem;
     border: 1px solid #2c3034;
     border-radius: 0.5rem;
     background-color: #151619;
@@ -131,9 +143,9 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #2c3034;
+    padding-bottom: .5rem;
+    height: 10vh;
+    
 }
 
 .switchText {
@@ -151,6 +163,8 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .switchButton:hover {
@@ -178,3 +192,13 @@
     color: #F5F5F5;
 }
 
+.errorMessage {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(255, 107, 107, 0.1);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}

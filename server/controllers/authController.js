@@ -1,27 +1,20 @@
 import validator from 'validator'
 import { getDBConnection } from '../db/db.js'
 import bcrypt from 'bcrypt'
+import { v4 as uuidv4 } from 'uuid'
 
 export async function registerUser(req, res) {
 
-  let { name, email, username, password } = req.body
+  let { firstname, lastname, email, password } = req.body
 
-  if (!name || !email || !username || !password) {
-
+  if (!firstname || !lastname || !email || !password) {
     return res.status(400).json({ error: 'All fields are required.' })
 
   }
 
-  name = name.trim()
+  firstname = firstname.trim()
+  lastname = lastname.trim()
   email = email.trim()
-  username = username.trim()
-
-  if (!/^[a-zA-Z0-9_-]{1,20}$/.test(username)) {
-
-    return res.status(400).json(
-      { error: 'Username must be 1–20 characters, using letters, numbers, _ or -.' }
-    )
-  }
 
   if (!validator.isEmail(email)) {
 
@@ -33,23 +26,30 @@ export async function registerUser(req, res) {
 
     const db = await getDBConnection()
 
-    const existing = await db.get('SELECT id FROM users WHERE email = ? OR username = ?', [email, username])
+    const existing = await db.get('SELECT id FROM users WHERE email = ?', [email])
 
     if (existing) {
-      return res.status(400).json({ error: 'Email or username already in use.' })
+      return res.status(400).json({ error: 'Email already in use.' })
     }
 
     const hashed = await bcrypt.hash(password, 10)
+    const userId = uuidv4()
 
-    const result = await db.run('INSERT INTO users (name, email, username, password) VALUES (?, ?, ?, ?)', [name, email, username, hashed])
-    console.log(result)
+    const result = await db.run(
+      'INSERT INTO users (uuid, firstname, lastname, email, password) VALUES (?, ?, ?, ?, ?)', 
+      [userId, firstname, lastname, email, hashed]
+    )
+    console.log('User created:', result)
 
     req.session.userId = result.lastID
 
-    res.status(201).json({ message: 'User registered' })
+    res.status(201).json({ 
+      message: 'User registered',
+      user: { id: result.lastID, email, name: `${firstname} ${lastname}` }
+    })
   } catch (err) {
 
-    console.error('Registration error:', err.message);
+    console.error('Registration error:', err);
     res.status(500).json({ error: 'Registration failed. Please try again.' })
 
   }
@@ -58,20 +58,20 @@ export async function registerUser(req, res) {
 
 export async function loginUser(req, res) {
 
-  let { username, password } = req.body
+  let { email, password } = req.body
 
-  if (!username || !password) {
+  if (!email || !password) {
     return res.status(400).json({ error: 'All fields are required' } )
   }
 
-  username = username.trim()
+  email = email.trim()
 
 
 
   try {
     const db = await getDBConnection()
 
-    const user = await db.get('SELECT * FROM users WHERE username = ?', [username])
+    const user = await db.get('SELECT * FROM users WHERE email = ?', [email])
 
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials'})
@@ -86,7 +86,10 @@ export async function loginUser(req, res) {
     }
 
     req.session.userId = user.id
-    res.json({ message: 'Logged in' })
+    res.json({ 
+      message: 'Logged in',
+      user: { id: user.id, email: user.email, name: `${user.firstname} ${user.lastname}`.trim() }
+    })
 
 
   } catch (err) {
@@ -109,4 +112,21 @@ export async function logoutUser (req ,res) {
   })
 
   
+}
+
+export async function getSession(req, res) {
+  if (req.session && req.session.userId) {
+    try {
+      const db = await getDBConnection()
+      const user = await db.get('SELECT id, email, firstname, lastname FROM users WHERE id = ?', [req.session.userId])
+      
+      if (user) {
+        return res.json({ user: { id: user.id, email: user.email, name: `${user.firstname} ${user.lastname}`.trim() } })
+      }
+    } catch (err) {
+      console.error('Session check error:', err.message)
+    }
+  }
+  
+  return res.status(401).json({ error: 'Not authenticated' })
 }
