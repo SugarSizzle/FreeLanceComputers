@@ -15,7 +15,7 @@ async function seedProducts() {
 
     })
 
-    //funtion here
+  
 
 
     try {

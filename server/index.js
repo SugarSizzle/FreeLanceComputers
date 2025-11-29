@@ -19,20 +19,20 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Request logger middleware
+
 app.use((req, res, next) => {
     console.log(`📨 ${req.method} ${req.url}`);
     next();
 });
 
-// Session middleware for authentication
+
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your-secret-key-change-this',
     resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false, // set to true in production with HTTPS
+        secure: false, 
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
     }
 }));
@@ -56,10 +56,10 @@ app.get('/', (req, res) => {
 
 
 
-app.use('/auth', authRouter)
-app.use('/cart', cartRouter)
-app.use('/orders', orderRouter)
-app.use('/products', productsRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/cart', cartRouter)
+app.use('/api/orders', orderRouter)
+app.use('/api/products', productsRouter)
 
 
 
