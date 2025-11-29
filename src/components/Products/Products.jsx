@@ -23,8 +23,10 @@ export const Products = () => {
 
   useEffect(() => {
     async function fetchProducts() {
+
+
       try {
-        // Build query string from URL search params
+       
         const params = new URLSearchParams();
         
         if (typeFilter.length > 0) {
@@ -36,7 +38,7 @@ export const Products = () => {
         }
         
         const queryString = params.toString();
-        const url = `http://localhost:5000/products${queryString ? `?${queryString}` : ''}`;
+        const url = `http://localhost:5000/api/products${queryString ? `?${queryString}` : ''}`;
         
         console.log('Fetching from:', url); // Debug log
         
