@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { Navigation } from '../../Layout/Navigation';
 import { Footer } from '../../Layout/Footer';
-import { FaArrowCircleDown } from "react-icons/fa";
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductsDetails.module.css';
 
@@ -23,15 +22,7 @@ useEffect(() => {
         setIsLoading(true);
 
         try {
-            const {data, error} = await supabase
-            .from('products')
-            .select('*')
-            .eq('id', id);
-
-            if( error) throw error;
-
-            console.log(data);
-            setProduct(data[0]);
+           
 
 
         } catch(error){

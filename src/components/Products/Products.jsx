@@ -40,7 +40,7 @@ export const Products = () => {
         const queryString = params.toString();
         const url = `http://localhost:5000/api/products${queryString ? `?${queryString}` : ''}`;
         
-        console.log('Fetching from:', url); // Debug log
+        console.log('Fetching from:', url); 
         
         const response = await fetch(url, {
           credentials: 'include'
@@ -52,7 +52,7 @@ export const Products = () => {
         
         const data = await response.json();
         
-        // No filtering here - backend handles it!
+       
         setProducts(data);
         
       } catch(error) {
