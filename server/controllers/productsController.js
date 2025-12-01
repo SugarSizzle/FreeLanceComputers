@@ -96,4 +96,44 @@ SELECT * FROM products WHERE LOWER(type) = LOWER(?) AND LOWER(condition) = LOWER
 };
 
 
+const productsDetailedController = async (req,res) => {
+
+    const {id} = req.params;
+     const db = await getDBConnection();
+
+    try {
+        const product = await db.get(
+            `
+            SELECT * FROM products WHERE id = ?
+            `
+            , [id]
+        )
+
+        if(!product){
+            return res.status(404).json({error: 'Product not found'})
+        }
+
+        const parsedProduct = {
+            ...product,
+            specs: JSON.parse(product.specs),
+            secondarySpecs: JSON.parse(product.secondarySpecs),
+            images: JSON.parse(product.images)
+        }
+
+        return res.status(200).json(parsedProduct)
+        
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).json({error: error.message})
+    }
+    finally {
+        await db.close();
+    }
+
+}
+
+
+
+
 export default productsController
+export { productsDetailedController }
