@@ -33,17 +33,36 @@ export async function getCartCount(req, res) {
 
 
 export async function getAll(req, res) {
-
-// Don't touch this code!
   if (!req.session.userId) {
-    return res.json({err: 'not logged in'})
+    return res.status(401).json({ error: 'Not logged in' })
   }
 
   const db = await getDBConnection()
 
-  const items = await db.all(`SELECT ci.id AS cartItemId, ci.quantity, p.title, p.artist, p.price FROM cart_items ci JOIN products p ON p.id = ci.product_id WHERE ci.user_id = ?`, [req.session.userId])
+  const items = await db.all(`
+    SELECT 
+      ci.id AS cartItemId, 
+      ci.quantity, 
+      p.id AS productId,
+      p.name, 
+      p.price,
+      p.images,
+      p.specs,
+      p.secondarySpecs,
+      p.description
+    FROM cart_items ci 
+    JOIN products p ON p.id = ci.product_id 
+    WHERE ci.user_id = ?
+  `, [req.session.userId])
 
-  res.json({ items: items})
+  const parsedItems = items.map(item => ({
+    ...item,
+    images: JSON.parse(item.images),
+    specs: JSON.parse(item.specs),
+    secondarySpecs: JSON.parse(item.secondarySpecs),
+  }))
+
+  res.json({ items: parsedItems })
 } 
 
 
@@ -76,4 +95,33 @@ export async function deleteAll(req, res) {
   await db.run('DELETE FROM cart_items WHERE user_id = ?', [req.session.userId])
 
   res.status(204).send()
+}
+
+export async function updateQuantity (req, res) {
+
+  const db = await getDBConnection()
+
+  
+  const itemId = parseInt(req.params.itemId, 10)
+  const {quantity} = req.body
+
+  if(isNaN(itemId)) {
+    return res.status(400).json({error: 'Invalid item ID'})
+  }
+
+  if(quantity < 1) {
+    return res.status(400).json({error: 'Quantity must be at least 1'})
+  }
+
+  const item = await db.get('SELECT quantity FROM cart_items WHERE id = ? AND user_id = ?', [itemId, req.session.userId])
+
+  if(!item) {
+    return res.status(400).json({error: `Item not found`})
+
+  }
+
+  await db.run(`UPDATE cart_items SET quantity = ? WHERE id = ? AND user_id = ?`, [quantity, itemId, req.session.userId])
+  res.json({message: `Quantity updated`})
+
+  
 }

@@ -93,6 +93,13 @@ export const DropDown = ({ onClose }) => {
                         <h3 className={styles.contactTitle}>Status</h3>
                         <GoArrowRight className={styles.arrowIcon} />
                     </div>
+
+                    <div 
+                    onClick={() => navigate('/cart')}
+                    className={styles.infoSubContainer}>
+                        <h3 className={styles.cartTitle}>Cart</h3>
+                        <GoArrowRight className={styles.arrowIcon} />
+                    </div>
                    
                 </div>
 

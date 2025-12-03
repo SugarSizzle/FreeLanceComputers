@@ -12,18 +12,14 @@ export const Products = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
-
-  
-
   const [searchParams] =useSearchParams();
-   
   const typeFilter = searchParams.get('type')?.split(',') || [];
   const conditionFilter = searchParams.get('condition')?.split(',') || [];
 
 
   useEffect(() => {
     async function fetchProducts() {
-
+      
 
       try {
        
