@@ -29,6 +29,7 @@ import { AdminOverViewPage } from './Pages/AdminDashboard/AdminOverViewPage'
 import { AdminNewRequests } from './components/AdminNewRequests/AdminNewRequests'
 import { AdminTaskProgressPage } from './Pages/AdminDashboard/AdminTaskProgress'
 import {SignUpPage} from './Pages/SignUpPage'
+import { CartPage } from './Pages/CartPage'
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
+              <Route path="/cart" element={<CartPage />} />
 
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="overview" element={<Overview />} />
