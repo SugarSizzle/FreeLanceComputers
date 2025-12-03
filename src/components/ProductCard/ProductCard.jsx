@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import styles from "./ProductCard.module.css"
-import { supabase } from '../../lib/supabase';
 import { FinancingSection } from "../Financing/FinancingSection";
 
 export default function ProductCard({ productData }) {
 
  
-
-
   const [moreInfoExpanded, setMoreInfoExpanded] = useState(false);
   const [featuresExpanded, setFeaturesExpanded] = useState(false);
-
 
 
   const {name, Type, price, description} = productData;
@@ -20,9 +16,28 @@ export default function ProductCard({ productData }) {
     setMoreInfoExpanded(!moreInfoExpanded);
   };
 
-  const toggleFeatures = () => {
-    setFeaturesExpanded(!featuresExpanded);
-  };
+  const handleAddToCart = async () => {
+
+    try {
+      const response = await fetch('http://localhost:5000/api/cart/add', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId: productData.id }),
+      });
+     
+      const data = await response.json();
+      if(!response.ok){
+        throw new Error('Failed to add to cart');
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+
+
+  }
 
   const mainspecs = productData.specs.map((spec, index) => {
     return (
@@ -31,7 +46,7 @@ export default function ProductCard({ productData }) {
 
   })
 
-  const moreInfoSpecs = productData.more_info_specs.map((spec, index) => {
+  const moreInfoSpecs = productData.secondarySpecs.map((spec, index) => {
 
     return(
 
@@ -42,34 +57,32 @@ export default function ProductCard({ productData }) {
   })
 
 
-
   return (
+    <>    
+    
     <div className={styles.productCard}>
       <div className={styles.fadingBorder}>
-        <div className={`${styles.cardInner} ${styles.textFade}`}>
-          {/* Product Header */}
+        <div className={styles.cardInner}>
+          
           <div className={styles.productHeader}>
             <h1 className={styles.productTitle}>{name} {Type}</h1>
             <p className={styles.productPrice}>{price}</p>
           </div>
           
-          {/* Product Description */}
           <div className={styles.productDescription}>
             <p className={styles.descriptionText}>
               {productData.description}
             </p>
           </div>
           
-          {/* Product Specs */}
           <div className={styles.specContainer}>
             <div className={styles.specList}>
               {mainspecs}
             </div>
           </div>
           
-          {/* Collapsible Sections */}
           <div className={styles.collapsibleSections}>
-            {/* More Info Section */}
+           
             <div className={styles.collapsibleSection}>
               <button className={styles.collapsibleButton} onClick={toggleMoreInfo}>
                 <span>More Info</span>
@@ -82,8 +95,7 @@ export default function ProductCard({ productData }) {
               </div>
             </div>
             
-      
-            <div className={styles.collapsibleSection}>
+            {/* <div className={styles.collapsibleSection}>
               <button 
                 className={styles.collapsibleButton}
                 onClick={toggleFeatures}>
@@ -94,16 +106,24 @@ export default function ProductCard({ productData }) {
               <div className={`${styles.collapsibleContent} ${featuresExpanded ? styles.expanded : ''}`}>
                 <FinancingSection />
              
-                   
-                
               </div>
-            </div>
+            </div> */}
+          </div>
+
+          <div className={styles.addToCartButtonContainer}>
+            <button 
+            onClick={handleAddToCart}
+            className={styles.addToCartButton} 
+            
+           >
+           Add to Cart
+
+            </button>
           </div>
           
-        
-        
         </div>
       </div>
     </div>
+    </>
   );
 }
