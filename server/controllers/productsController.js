@@ -100,6 +100,7 @@ const productsDetailedController = async (req,res) => {
 
     const {id} = req.params;
      const db = await getDBConnection();
+     console.log(id)
 
     try {
         const product = await db.get(
@@ -108,10 +109,12 @@ const productsDetailedController = async (req,res) => {
             `
             , [id]
         )
+        console.log(product)
 
         if(!product){
             return res.status(404).json({error: 'Product not found'})
         }
+
 
         const parsedProduct = {
             ...product,
@@ -119,7 +122,7 @@ const productsDetailedController = async (req,res) => {
             secondarySpecs: JSON.parse(product.secondarySpecs),
             images: JSON.parse(product.images)
         }
-
+        console.log(parsedProduct)
         return res.status(200).json(parsedProduct)
         
     } catch (error) {
