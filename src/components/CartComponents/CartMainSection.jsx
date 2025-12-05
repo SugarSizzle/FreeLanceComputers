@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Trash2, Minus, Plus } from 'lucide-react'
 import styles from './CartMainSection.module.css'
+import { CartSummary } from './CartSummary'
 
 export const CartMainSection = () => {
     const [cartItems, setCartItems] = useState([])
@@ -18,10 +19,8 @@ export const CartMainSection = () => {
             }
 
             const data = await response.json()
-            console.log('Fetched Data from Express:', data)
             setCartItems(data.items)
         } catch (error) {
-            console.error('Error fetching cart items:', error.message)
             setError(error.message)
         } finally {
             setLoading(false)
@@ -65,7 +64,7 @@ export const CartMainSection = () => {
         
             const data = await response.json()
 
-            console.log('Quantity updated:', data)
+            
 
         } catch (error) {
             console.error('Error updating quantity:', error)
@@ -81,7 +80,9 @@ export const CartMainSection = () => {
         <>
         <div className={styles.cartTitleContainer}>
             <h1 className={styles.cartTitle}>Your Cart</h1>
+
         </div>
+
         <div className={styles.cartMainSectionContainer}>
             {loading ? (
                 <div className={styles.loadingState}>Loading...</div>
@@ -93,13 +94,14 @@ export const CartMainSection = () => {
                 <div className={styles.cartItemsContainer}>
                     {cartItems.map((item) => (
                         <div key={item.cartItemId} className={styles.cartItemCard}>
+                            
                             <div className={styles.imageContainer}>
                                 <img src={item.images[0]} alt={item.name} />
                             </div>
 
                             <div className={styles.itemInfoContainer}>
                                 <h3 className={styles.itemName}>{item.name}</h3>
-                                <p className={styles.itemPrice}>${item.price}</p>
+                                <p className={styles.itemPrice}>${Number(item.price).toFixed(2)}</p>
                                 <p className={styles.itemDescription}>{item.description}</p>
                             </div>
 
@@ -133,6 +135,7 @@ export const CartMainSection = () => {
                 </div>
             )}
         </div>
+        <CartSummary cartItems={cartItems} />
         </>
     )
 }
