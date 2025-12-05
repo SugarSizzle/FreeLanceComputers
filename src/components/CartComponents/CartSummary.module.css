@@ -1,0 +1,101 @@
+.cartSummaryContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: auto;
+    background-color: #ffffff15;
+    margin:auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    
+}
+
+.cartSummaryTitle {
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: whitesmoke;
+    text-align: left;
+
+}
+
+.cartSummaryItem, .cartSummaryTotal, .cartShipping {  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 70vw;
+    padding: 1rem;
+    text-align: left;
+    
+  
+   
+}
+
+.cartSummaryItem:last-child,  .cartShipping {
+    border-bottom: 1px solid #ffffff15;
+}
+
+.cartSummaryItemName, .cartSummaryTotalTitle, .cartShippingTitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: whitesmoke;
+
+}
+
+.cartSummaryItemPrice, .cartSummaryTotalPrice, .cartShippingPrice {
+    font-size: .9rem;
+    font-weight: 400;
+    color: #ffffff55;
+}
+
+.cartSummaryButtonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 1.5rem;
+}
+
+.cartSummaryButton {
+    background: linear-gradient(90deg, #151619, #2d3035, #4a5568, #2d3035, #151619);
+    background-size: 200% 200%;
+    color: #B0B0B0;
+    border: 2px solid #2d3035;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width:60vw;
+    height:8vh;
+    text-align: center;
+    padding:.75rem;
+    margin:auto;
+    text-decoration: none;
+    animation: gradientShift 4s ease infinite;
+    font-weight: 500;
+    
+}
+
+.cartSummaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.cartSummaryButton:active {
+    transform: translateY(0);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
