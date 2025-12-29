@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import styles from "./ProductCard.module.css"
 import { FinancingSection } from "../Financing/FinancingSection";
+import { useCart } from "../../Context/CartContext";
 
 export default function ProductCard({ productData }) {
 
  
   const [moreInfoExpanded, setMoreInfoExpanded] = useState(false);
   const [featuresExpanded, setFeaturesExpanded] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const { showCartNotification } = useCart();
 
 
   const {name, Type, price, description} = productData;
@@ -32,6 +35,12 @@ export default function ProductCard({ productData }) {
       if(!response.ok){
         throw new Error('Failed to add to cart');
       }
+      
+
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 3000);
+      
+      showCartNotification();
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
@@ -123,6 +132,12 @@ export default function ProductCard({ productData }) {
           
         </div>
       </div>
+    </div>
+    
+    {/* Toast Notification */}
+    <div className={`${styles.notification} ${showNotification ? styles.notificationVisible : ''}`}>
+      <Check size={18} />
+      <span>Item added to your cart</span>
     </div>
     </>
   );

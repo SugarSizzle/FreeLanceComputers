@@ -5,14 +5,17 @@ import App from './App.jsx'
 import './index.css'
 import { UseVirusContext } from './Context/UseVirusContext'
 import { AuthContextProvider } from './Context/AuthContext'
+import { CartContextProvider } from './Context/CartContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <UseVirusContext>
-          <App />
-        </UseVirusContext>
+        <CartContextProvider>
+          <UseVirusContext>
+            <App />
+          </UseVirusContext>
+        </CartContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

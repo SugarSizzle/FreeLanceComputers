@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Monitor, Settings, X, Shield, Wrench, HardDrive, Calendar, Clock, DollarSign, User, Bug, Database, ShoppingCart, ChevronRight } from 'lucide-react';
-
 import styles from './DashboardOverview.module.css';
 import { FaRegClock } from "react-icons/fa";
 import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
 import {DashboardActivityFeed} from '../DashboardActivityFeed';
 import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
+import { useAuth } from '../../../Context/AuthContext';
+
 
 const Overview = () => {
 
@@ -33,11 +33,11 @@ const Overview = () => {
     });
   };
 
+  const { session } = useAuth();
+  const firstName = session?.name?.split(' ')[0];
+  
+  console.log(firstName);
 
-  useEffect(() => {
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
 
 
@@ -47,7 +47,7 @@ const Overview = () => {
     
 
       <div className={styles.welcomeSection}>
-        <p className={styles.welcomeText}>Welcome, user</p> 
+        <p className={styles.welcomeText}>Welcome, {firstName.charAt(0).toUpperCase() + firstName.slice(1) || 'User'}</p> 
         <p className={styles.welcomeText}>{formatTime(currentTime)}</p> 
         <p className={styles.welcomeText}>{formatDate(currentTime)}</p> 
       </div>

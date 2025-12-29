@@ -70,15 +70,55 @@
       display: none;
     }
     
+    .hamburgerWrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10vw;
+      cursor: pointer;
+    }
+
     .hamburgerIcon {
       color: #f8f8f8;
       cursor: pointer;
       transition: color 0.3s ease;
-      margin-right: 10vw;
     }
     
     .hamburgerIcon:hover {
       color: #cccccc;
+    }
+
+    .notificationBadge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      width: 18px;
+      height: 18px;
+      background: #d1d5db;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: badgePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .notificationBadge span {
+      color: #d97706;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    @keyframes badgePop {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
     
     /* Responsive classes */

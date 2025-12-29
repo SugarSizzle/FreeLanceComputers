@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './DropDown.module.css'
-import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
 import { GoArrowRight } from "react-icons/go";
 import { ServicesSecondOverlay } from './ServicesSecondOverlay';
 import { HelpSecondOverlay } from './HelpSecondOverlay';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
+import { useCart } from '../../Context/CartContext';
 
 
 export const DropDown = ({ onClose }) => {
@@ -14,8 +13,27 @@ export const DropDown = ({ onClose }) => {
     const [helpOpen, setHelpOpen] = useState(false);
     const {signOutUser, session} = useAuth();
     const [error, setError] = useState(null);
+    const [cartItemCount, setCartItemCount] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
+    const { hasCartNotification } = useCart();
+
+    useEffect(() => {
+        const fetchCartCount = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/cart', {
+                    credentials: 'include'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setCartItemCount(data.items?.length || 0);
+                }
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+            }
+        };
+        fetchCartCount();
+    }, [hasCartNotification]);
 
     const handleSignOut = async (e) => {
         e.preventDefault();
@@ -94,12 +112,34 @@ export const DropDown = ({ onClose }) => {
                         <GoArrowRight className={styles.arrowIcon} />
                     </div>
 
-                    <div 
-                    onClick={() => navigate('/cart')}
-                    className={styles.infoSubContainer}>
-                        <h3 className={styles.cartTitle}>Cart</h3>
+                    {cartItemCount > 0 && (
+                        <div 
+                        onClick={() => {
+                            navigate('/cart');
+                            onClose();
+                        }}
+                        className={styles.infoSubContainer}>
+                            <h3 className={`${styles.cartTitle} ${hasCartNotification ? styles.cartTitleNotification : ''}`}>
+                                Cart
+                            </h3>
+                            <GoArrowRight className={`${styles.arrowIcon} ${hasCartNotification ? styles.arrowIconNotification : ''}`} />
+                        </div>
+                    )}
+
+                    {
+                        session && (
+                        <div 
+                        onClick={() => {
+                            navigate('/dashboard/overview');
+                            onClose();
+                        }}
+                        className={styles.infoSubContainer}>
+                        <h3 className={styles.cartTitle}>Dashboard</h3>
                         <GoArrowRight className={styles.arrowIcon} />
-                    </div>
+
+                        </div>
+                    )
+                    }
                    
                 </div>
 

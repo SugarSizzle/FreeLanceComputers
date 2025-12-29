@@ -4,9 +4,11 @@ import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import styles from './Navigation.module.css'
 import { GiHamburgerMenu } from "react-icons/gi";
 import {DropDown} from '../components/NavigationDropDown/DropDown'
+import { useCart } from '../Context/CartContext'
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { hasCartNotification } = useCart();
   
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -25,11 +27,17 @@ export const Navigation = () => {
       </div>
 
       <div className={`${styles.mobileMenu} ${styles.mobileOnly}`}>
-        <GiHamburgerMenu 
-          size={24} 
-          className={styles.hamburgerIcon}
-          onClick={toggleMobileMenu}
-        />
+        <div className={styles.hamburgerWrapper} onClick={toggleMobileMenu}>
+          <GiHamburgerMenu 
+            size={24} 
+            className={styles.hamburgerIcon}
+          />
+          {hasCartNotification && (
+            <div className={styles.notificationBadge}>
+              <span>!</span>
+            </div>
+          )}
+        </div>
         {isMobileMenuOpen && (
           <DropDown onClose={() => setIsMobileMenuOpen(false)} />
         )}
