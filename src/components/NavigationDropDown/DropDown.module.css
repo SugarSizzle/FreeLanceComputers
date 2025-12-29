@@ -165,8 +165,16 @@
 .servicesTitle, .helpTitle, .contactTitle, .cartTitle {
     color: #B0B0B0;
     font-size: 1.1rem;
-   
-    
+    transition: color 0.3s ease;
+}
+
+.cartTitleNotification {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.arrowIconNotification {
+    color: #f59e0b;
 }
 
 .arrowIcon {
