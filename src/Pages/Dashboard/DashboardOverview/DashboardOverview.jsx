@@ -36,7 +36,6 @@ const Overview = () => {
   const { session } = useAuth();
   const firstName = session?.name?.split(' ')[0];
   
-  console.log(firstName);
 
 
 

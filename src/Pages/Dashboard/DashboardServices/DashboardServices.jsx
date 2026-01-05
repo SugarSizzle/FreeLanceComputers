@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 
 import styles from './DashboardServices.module.css';
 import {Navigation} from '../../../Layout/Navigation';
-import {Footer} from '../../../Layout/Footer';
 import {SwipeCarousel} from './SwipeCarousel';
 import { VirusRemovalForm } from './FormComponents/VirusRemovalForm';
 import { DataRecoveryForm } from './FormComponents/DataRecoveryForm';
@@ -16,7 +15,6 @@ export const DashboardServices = () => {
     const handleServiceSelect = (serviceName) => {
         setSelectedService(serviceName);
         
-        // Scroll to form with smooth behavior
         setTimeout(() => {
             formRef.current?.scrollIntoView({ 
                 behavior: 'smooth',
@@ -28,11 +26,11 @@ export const DashboardServices = () => {
     const renderForm = () => {
         switch (selectedService) {
             case 'Virus Removal':
-                return <VirusRemovalForm formRef={formRef} />;
+                return <VirusRemovalForm formRef={formRef} serviceType='virus_removal' />;
             case 'Data Recovery':
-                return <DataRecoveryForm formRef={formRef} />;
+                return <DataRecoveryForm formRef={formRef} serviceType='data_recovery' />;
             case 'Device Repair':
-                return <ComputerRepairsForm formRef={formRef} />;
+                return <ComputerRepairsForm formRef={formRef} serviceType='device_repair' />;
             default:
                 return null;
         }
@@ -47,7 +45,6 @@ export const DashboardServices = () => {
             </div>
             {renderForm()}
 
-            <Footer />
             <DashboardFooter />
         </>
     )

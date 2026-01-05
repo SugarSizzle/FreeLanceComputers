@@ -7,6 +7,7 @@ import authRouter from './routes/auth.js';
 import cartRouter from './routes/cart.js'
 import orderRouter from './routes/order.js'
 import productsRouter from './routes/products.js'
+import createServiceRequestRouter from './routes/serviceRequest.js'
 
 dotenv.config();
 const app = express();
@@ -53,13 +54,12 @@ app.get('/', (req, res) => {
 
 
 
-
-
-
 app.use('/api/auth', authRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/orders', orderRouter)
 app.use('/api/products', productsRouter)
+app.use('/api/services', createServiceRequestRouter)
+
 
 
 

@@ -5,6 +5,8 @@ import { HomePageServices } from '../components/HomePageServices/HomePageService
 import { HomePageStoreSection } from '../components/HomePageStoreSection/HomePageStoreSection';
 import { HomePageContact } from '../components/HomePageContact/HomePageContact';
 import { HomePageCustomerFeedback } from '../components/HomePageCustomerFeedback/HomePageCustomerFeedback';
+
+
 export const HomePage = () => {
 
 

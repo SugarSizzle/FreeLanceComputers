@@ -9,8 +9,10 @@ export const AuthContextProvider = ({children}) => {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    console.log('This is the session ', session);
+
     useEffect(() => {
-        // Check if user is already logged in (check session)
+
         checkSession();
     }, []);  
     

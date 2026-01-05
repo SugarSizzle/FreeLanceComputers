@@ -83,6 +83,7 @@
       color: #f8f8f8;
       cursor: pointer;
       transition: color 0.3s ease;
+      margin-right: 10vw;
     }
     
     .hamburgerIcon:hover {
