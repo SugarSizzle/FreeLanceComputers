@@ -12,12 +12,12 @@ export const SignInPage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    
-    const from = location.state?.from?.pathname || '/dashboard/overview';
+
     
     const isFormComplete = email.trim() !== '' && password.trim() !== '';
 
     const [error, submitAction, isPending] = useActionState(
+
         async (previousState, formData) => {
             const email = formData.get('email');
             const password = formData.get('password');
@@ -32,9 +32,14 @@ export const SignInPage = () => {
                 if(authError){
                     return new Error(authError);
                 }
+
             
                 if(success && data?.session){
-                    navigate(from, { replace: true });
+                    if(data.session.role === 'admin'){
+                        navigate('/admin/overview', { replace: true });
+                    } else {
+                        navigate('/dashboard/overview', { replace: true });
+                    }
                     return null
                 }
                 return null
@@ -42,8 +47,8 @@ export const SignInPage = () => {
                 console.error('Sign in error' , error.message)
                 return new Error('An unexpected error occurred. Please try again later.');
             }
-        }, null
-    );
+            }, null
+        );
 
     return (
         <>
