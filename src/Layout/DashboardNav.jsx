@@ -24,7 +24,7 @@ export const DashboardNav = () => {
         })
     }
 
-    // Format date as Day, Month DD, YYYY
+  
     const formatDate = (date) => {
         return date.toLocaleDateString('en-US', {
             weekday: 'long',
@@ -34,18 +34,13 @@ export const DashboardNav = () => {
         })
     }
 
-    // Get user display name from session
+    
     const getUserName = () => {
-        if (!session || !session.user) return 'Guest'
+        if (!session || !session.name) return 'Guest'
         
-        // Try to get name from user metadata, fallback to email
-        const metadata = session.user.user_metadata
-        if (metadata?.full_name) return metadata.full_name
-        if (metadata?.name) return metadata.name
-        
-        // Fallback to email (show first part before @)
-        const email = session.user.email
-        return email ? email.split('@')[0] : 'User'
+       
+        const name = session.name
+        return name ? name : 'User'
     }
 
     return (

@@ -30,6 +30,7 @@ import { AdminNewRequests } from './components/AdminNewRequests/AdminNewRequests
 import { AdminTaskProgressPage } from './Pages/AdminDashboard/AdminTaskProgress'
 import {SignUpPage} from './Pages/SignUpPage'
 import { CartPage } from './Pages/CartPage'
+import { AdminProtectedRoute } from './components/AdminProtectedRoute'
 
 
 function App() {
@@ -80,10 +81,11 @@ function App() {
                
               </Route>
 
-            
-                <Route path="admin-overview" element={<AdminOverViewPage />} />
-                <Route path="admin-new-requests" element={<AdminNewRequests />} />
-                <Route path="admin-task-progress" element={<AdminTaskProgressPage />} />
+                <Route path="admin" element={<AdminProtectedRoute />}>
+                  <Route path="overview" element={<AdminOverViewPage />} />
+                  <Route path="admin-new-requests" element={<AdminNewRequests />} />
+                  <Route path="admin-task-progress" element={<AdminTaskProgressPage />} />
+                </Route>
             </Route>
           </Routes>
         </motion.div>

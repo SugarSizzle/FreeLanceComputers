@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from '../FormComponents/VirusRemovalForm.module.css'
-import { supabase } from '../../../../lib/supabase'
 import {IKContext, IKImage} from 'imagekitio-react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../Context/AuthContext';
+
+export const VirusRemovalForm = ({ formRef, serviceType }) => {
 
 
-export const VirusRemovalForm = ({ formRef }) => {
+  const {session} = useAuth();
   const [description, setDescription] = useState('')
-  const [deviceType, setDeviceType] = useState('')
+  const [deviceInfo, setDeviceInfo] = useState('')
   const [focusedField, setFocusedField] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState({type: '', content: ''})
@@ -16,44 +18,46 @@ export const VirusRemovalForm = ({ formRef }) => {
   const navigate = useNavigate();
 
   const isDescriptionFilled = description.trim().length > 0
+  const isDeviceFilled = deviceInfo.trim().length > 0
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-   if(!isDescriptionFilled){
+   if(!isDescriptionFilled || !isDeviceFilled){
       setMessage({type: 'error', content: 'Please fill in the description field'})
       return;
    }
 
    setIsSubmitting(true);
+   console.log('This is the session', session);
     
    try{
-    const {data:{user} ,error:authError} = await supabase.auth.getUser();
 
-    if(authError || !user){
+    if(!session){
       setMessage({type: 'error', content: 'Please sign in to submit a request'})
       setIsSubmitting(false);
       return;
     }   
 
-    const {data, error} = await supabase
-    .from('services_requests')
-    .insert([
-      {
-        user_id: user.id,
-        service_type: 'virus_protection',
-        description: description.trim(),
-        device_info: deviceType.trim() || null,
-        status: 'pending',
-        
-      }
-    ]).select();
+    const response = await fetch(`http://localhost:5000/api/services`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({description, deviceInfo, user_id: session.id, serviceType }),
+    });
 
-    if(error) throw error;
+    const data = await response.json();
+
+    if(!response.ok){
+      setMessage({type: 'error', content: data.error})
+      setIsSubmitting(false);
+      return;
+    }
 
     setMessage({type: 'success', content: 'Request submitted successfully!'})
     setDescription('');
-    setDeviceType('');
+    setDeviceInfo('');
    
 
     console.log('request successfully submitted', data);
@@ -104,9 +108,9 @@ export const VirusRemovalForm = ({ formRef }) => {
           type="text"
           className={styles.formInputOptional}
           placeholder='The device I need help with is....'
-          value={deviceType}
-          onChange={(e) => setDeviceType(e.target.value)}
-          onFocus={() => setFocusedField('deviceType')}
+          value={deviceInfo}
+          onChange={(e) => setDeviceInfo(e.target.value)}
+          onFocus={() => setFocusedField('deviceInfo')}
           onBlur={() => setFocusedField(null)}
         />
       </form>

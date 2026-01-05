@@ -12,6 +12,8 @@
     "view:abductions": "node server/viewAbductions.js",
     "view:products": "node server/logTable.js",
     "view:users": "node server/viewUsers.js",
+    "view:allTables": "node server/viewAllTables.js",
+    "view:serviceRequests": "node server/controllers/createServiceRequestController.js",
     "start": "node server/index.js",
     "update": "nodemon server/index.js"
   },

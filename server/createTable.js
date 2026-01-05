@@ -102,9 +102,56 @@ async function createTable() {
     )
 
     console.log('Order items table created successfully')
-    await db.close();
+   
+
+
+
+    await db.exec(`
+    
+        CREATE TABLE IF NOT EXISTS service_requests
+            (
+    
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            uuid TEXT NOT NULL UNIQUE,
+            user_id INTEGER NOT NULL,
+            service_type TEXT NOT NULL,
+            description TEXT NOT NULL,
+            device_info TEXT NOT NULL,
+            status TEXT DEFAULT 'pending' CHECK(status IN ('pending' , 'in_progress' , 'completed' , 'cancelled')) NOT NULL,
+            requested_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            admin_notes TEXT,
+            seen_by_admin BOOLEAN DEFAULT FALSE NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+            
+            )
+        `);
+    
+        console.log('Service requests table created successfully')
+    
+        await db.exec(`
+            CREATE TABLE IF NOT EXISTS service_updates
+            (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                admin_id INTEGER NOT NULL,
+                service_request_id INTEGER NOT NULL,
+                update_type TEXT NOT NULL,
+                update_description TEXT NOT NULL,
+                update_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+                images TEXT,
+                is_visible_to_customer BOOLEAN DEFAULT TRUE NOT NULL,
+                FOREIGN KEY (service_request_id) REFERENCES service_requests(id),
+                FOREIGN KEY (admin_id) REFERENCES users(id)
+            )
+    
+            `);
+            await db.close();
+            console.log('Database closed successfully')
 
 
 }
+
+
+
 
 createTable();

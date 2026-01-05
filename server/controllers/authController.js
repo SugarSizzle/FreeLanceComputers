@@ -86,9 +86,15 @@ export async function loginUser(req, res) {
     }
 
     req.session.userId = user.id
+
     res.json({ 
       message: 'Logged in',
-      user: { id: user.id, email: user.email, name: `${user.firstname} ${user.lastname}`.trim() }
+      user: { id: user.id, 
+        email: user.email, 
+        name: `${user.firstname} 
+        ${user.lastname}`.trim(),
+        role: user.role
+      }
     })
 
 
@@ -118,10 +124,10 @@ export async function getSession(req, res) {
   if (req.session && req.session.userId) {
     try {
       const db = await getDBConnection()
-      const user = await db.get('SELECT id, email, firstname, lastname FROM users WHERE id = ?', [req.session.userId])
+      const user = await db.get('SELECT id, email, firstname, lastname, role FROM users WHERE id = ?', [req.session.userId])
       
       if (user) {
-        return res.json({ user: { id: user.id, email: user.email, name: `${user.firstname} ${user.lastname}`.trim() } })
+        return res.json({ user: { id: user.id, email: user.email, name: `${user.firstname} ${user.lastname}`.trim(), role: user.role } })
       }
     } catch (err) {
       console.error('Session check error:', err.message)

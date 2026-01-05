@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, } from 'react'
 import styles from './AdminOverviewHeroSection.module.css'
 import { IKContext, IKImage } from 'imagekitio-react'
 import { VirusIcon } from '../../images/Icons/VirusIcon'
@@ -6,8 +6,8 @@ import { DataRecoveryIcon } from '../../images/Icons/DataRecoveryIcon'
 import { ComputerRepairsIcon } from '../../images/Icons/ComputerRepairsIcon'
 import {useTransform, useTime, motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
-import { supabase } from '../../lib/supabase'
 import { useNavigate } from 'react-router-dom'
+
 
 
 export const AdminOverviewHeroSection = () => {
@@ -28,9 +28,6 @@ export const AdminOverviewHeroSection = () => {
     })
 
 
-
-
-
     useEffect(() => {
        
         const fetchDataRequests = async () => {
@@ -38,32 +35,15 @@ export const AdminOverviewHeroSection = () => {
             try {
                 setLoading(true);
 
-
-             
-
-
-             
-
-                const {data, error} = await supabase
-                    .from('service_updates')
-                    .select('*')
-                    .in('update_type', ['reviewing', 'in_progress'])
-                    .order('created_at', {ascending:false})
-                    .limit(4);
-                
-                if(error) {
-                    console.error('Supabase error:', error);
-                    throw error;
-                }
-                
-                if (data) {
-                    
-                    const reviewingRequests = data.filter(request => request.update_type === 'reviewing');
-                    const inProgressRequests = data.filter(request => request.update_type === 'in_progress');
-
-                    setDataRequestsReviewing(reviewingRequests);
-                    setDataRequestsInProgress(inProgressRequests);
-                }
+                const response = await fetch('http://localhost:5000/api/service-requests', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                const data = await response.json()
+                console.log('Data:', data)
             
             } catch (error) {
                 console.error('Error fetching data requests:', error.message, error);
@@ -79,7 +59,7 @@ export const AdminOverviewHeroSection = () => {
     console.log('Current dataRequestsReviewing state:', dataRequestsReviewing);
     console.log('Current dataRequestsInProgress state:', dataRequestsInProgress);
     
-    // Format ticket ID to show first 6 characters with "..."
+    
     const formatTicketId = (id) => {
         const idStr = String(id)
         if (idStr.length > 6 && expandedTicketId !== id) {
@@ -123,7 +103,7 @@ export const AdminOverviewHeroSection = () => {
             </div>
 
             <div
-                onClick={() => navigate('/admin-new-requests')}
+                onClick={() => navigate('/admin/admin-new-requests')}
              className={styles.newRequestContainer}>
                
                     <div className={styles.metallicDiv}>
@@ -255,7 +235,7 @@ export const AdminOverviewHeroSection = () => {
                             >
                                 {dataRequestsReviewing && dataRequestsReviewing.map((request) => (
                                     <div 
-                                    onClick={() => navigate('/admin-task-progress', { state: { requestData: request } })}
+                                    onClick={() => navigate('/admin/admin-task-progress', { state: { requestData: request } })}
                                     key={request.id} 
                                     className={styles.taskCard}
                                     style={{ cursor: 'pointer' }}>
@@ -290,7 +270,7 @@ export const AdminOverviewHeroSection = () => {
                             >
                                 { dataRequestsInProgress && dataRequestsInProgress.map((request) => (
                                     <div 
-                                    onClick={() => navigate('/admin-task-progress', { state: { requestData: request } })}
+                                    onClick={() => navigate('/admin/admin-task-progress', { state: { requestData: request } })}
                                     key={request.id} 
                                     className={styles.taskCard}
                                     style={{ cursor: 'pointer' }}>
