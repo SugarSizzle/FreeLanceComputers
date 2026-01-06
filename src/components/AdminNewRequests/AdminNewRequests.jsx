@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './AdminNewRequests.module.css'
 import { useState } from 'react'
-import { supabase } from '../../lib/supabase'
+
 import { useEffect } from 'react'
 import { AdminNewRequestModal } from '../AdminNewRequestModal/AdminNewRequestModal'
 import { useNavigate } from 'react-router-dom'
@@ -34,13 +34,16 @@ export const AdminNewRequests = () => {
             try {
 
                 setLoading(true)
-                const {data, error} = await supabase
-                .from('services_requests')
-                .select('*')
-                .eq('status', 'pending')
+                const response = await fetch(`http://localhost:5000/api/service-requests/new`, {
+                    method: 'GET',
+                    credentials: 'include',
+                })
 
-                if(error) throw error
+                if(!response.ok){
+                    throw new Error('Failed to fetch new requests')
+                }
 
+                const data = await response.json()
                 setNewRequests(data)
             } catch (error) {
 
