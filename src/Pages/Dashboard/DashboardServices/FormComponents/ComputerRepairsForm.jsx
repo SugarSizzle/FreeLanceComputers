@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from '../FormComponents/ComputerRepairsForm.module.css'
-import { supabase } from '../../../../lib/supabase'
 import {IKContext, IKImage} from 'imagekitio-react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../Context/AuthContext';
 
-export const ComputerRepairsForm = ({ formRef }) => {
+
+export const ComputerRepairsForm = ({ formRef, serviceType }) => {
+
+  const {session} = useAuth();
+  
   const [description, setDescription] = useState('')
   const [deviceType, setDeviceType] = useState('')
   const [focusedField, setFocusedField] = useState(null)
@@ -27,37 +31,34 @@ export const ComputerRepairsForm = ({ formRef }) => {
     }
 
     setLoading(true);
-
+    console.log('This is the session', session);
+    if(!session){
+      setMessage({type: 'error', content: 'Please sign in to submit a request'})
+      setLoading(false);
+      return;
+    }
 
     try{
 
-      const {data:{user} , error:authError} = await supabase.auth.getUser();
-      if(authError || !user){
-        setMessage({type: 'error' , content: 'Please sign in to submit a request' })
+      const response = await fetch(`http://localhost:5000/api/services`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({description, deviceType, user_id: session.id, serviceType }),
+      });
+
+      const data = await response.json();
+
+      if(!response.ok){
+        setMessage({type: 'error', content: data.error})
         setLoading(false);
         return;
-
       }
-
-
-      const {data, error} = await supabase
-      .from('services_requests')
-      .insert([
-        {
-          user_id:user.id,
-          service_type: 'computer_repair',
-          description: description.trim(),
-          device_info: deviceType.trim() || null,
-          status: 'pending',
-        }
-      ]).select();
-
-      if(error) throw error;
 
       setMessage({type: 'success', content: 'Request submitted successfully!'})
       setDescription('');
       setDeviceType('');
-      console.log('request successfully submitted', data);
 
 
     } catch(error){
@@ -107,7 +108,7 @@ export const ComputerRepairsForm = ({ formRef }) => {
         />
 
         <div className={styles.buttonContainer}>
-          <button d
+          <button 
             type='submit'
             onClick={handleSubmit}
             className={`${styles.submitButton} ${isDescriptionFilled ? styles.submitButtonActive : ''}`}

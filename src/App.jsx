@@ -81,7 +81,7 @@ function App() {
                
               </Route>
 
-                <Route path="admin" element={<AdminProtectedRoute />}>
+                <Route path="/admin" element={<AdminProtectedRoute />}>
                   <Route path="overview" element={<AdminOverViewPage />} />
                   <Route path="admin-new-requests" element={<AdminNewRequests />} />
                   <Route path="admin-task-progress" element={<AdminTaskProgressPage />} />

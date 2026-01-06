@@ -1,51 +1,39 @@
 import {getDBConnection} from '../db/db.js'
 import { v4 as uuidv4 } from 'uuid'
 
-
-
 export async function createServiceRequest(req, res) {
 
-
-  
 try {
-      const db = await getDBConnection()
 
-      const {description, deviceInfo, user_id, serviceType} = req.body
-      console.log('This is the user_id', user_id);
-      console.log('This is the serviceType', serviceType);
-      if(!description || !deviceInfo || !user_id  ){
-        return res.status(400).json({error:'All fields are required'})
-      }
+    if(!req.session.userId || !res.session){
+      return res.status(401).json({error:'authentication required'})
+    }
 
-      const uuid = uuidv4()
+    const user_id = req.session.userId
 
-   
+    const {description, device_info, service_type} = req.body
 
-      const result =await db.run (`
-        INSERT INTO service_requests (
-        uuid, 
-        description, 
-        device_info, 
-        user_id,
-        service_type
-        ) VALUES (?, ?, ?, ?, ?)
-        `, [ uuid, description, deviceInfo, user_id, serviceType ])
+    if(!description || !device_info || !service_type){
+      return res.status(400).json({error: `All fields are required`})
+    }
 
-        console.log('This is the uuid', uuid);
-        console.log('This is the description', description);
-        console.log('This is the deviceInfo', deviceInfo);
-        console.log('This is the user_id', user_id);
-        console.log('This is the serviceType', serviceType);
+    description = description.trim()
+    device_info = device_info.trim()
+    service_type = service_type.trim()
 
+    const uuid = uuidv4()
 
+    const db = await getDBConnection()
 
-      if(!result){
+    const result = await db.run(`
+      INSERT INTO service_requests (uuid, description, device_info, user_id, service_type, status) VALUES (?, ?, ?, ?, ?, ?)
+      `, [uuid, description, device_info, user_id, service_type, 'pending'])
+      
+      if(!result.lastID){ 
         return res.status(400).json({error:'Failed to create service request'})
       }
 
-      return res.status(200).json({message:'Service request created successfully'})
-
-
+      return res.status(200).json({message:'Service request created successfully', request:{id:result.lastID, uuid, description, device_info, service_type}})
 
     } catch (error){
       console.error('Error in createServiceRequest:', error)
