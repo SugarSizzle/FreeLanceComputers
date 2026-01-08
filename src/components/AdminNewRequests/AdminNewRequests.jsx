@@ -65,7 +65,7 @@ export const AdminNewRequests = () => {
         const serviceMap = {
             'virus_protection': 'Virus Removal',
             'data_recovery': 'Data Recovery',
-            'computer_repair': 'Device Repair',
+            'device_repair': 'Device Repair',
         }
         return serviceMap[serviceType] || serviceType
     }
@@ -183,7 +183,7 @@ export const AdminNewRequests = () => {
         <div className={styles.container}>
 
             <div className={styles.backButtonContainer}>
-                <FaChevronLeft className={styles.backButtonIcon}   onClick={() => navigate('/admin-overview')} />
+                <FaChevronLeft className={styles.backButtonIcon}   onClick={() => navigate('/admin/overview')} />
             </div>
 
             <div className={styles.headerContainer}>
@@ -260,8 +260,8 @@ export const AdminNewRequests = () => {
                                 Virus Removal
                             </div>
                             <div 
-                                className={`${styles.dropdownItem} ${serviceFilter === 'computer_repair' ? styles.active : ''}`}
-                                onClick={() => handleServiceSelect('computer_repair')}
+                                className={`${styles.dropdownItem} ${serviceFilter === 'device_repair' ? styles.active : ''}`}
+                                onClick={() => handleServiceSelect('device_repair')}
                             >
                                 Device Repair
                             </div>

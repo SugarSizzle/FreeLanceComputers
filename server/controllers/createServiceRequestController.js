@@ -5,21 +5,21 @@ export async function createServiceRequest(req, res) {
 
 try {
 
-    if(!req.session.userId || !res.session){
-      return res.status(401).json({error:'authentication required'})
+    if(!req.session || !req.session.userId){
+      return res.status(401).json({error:'Authentication required'})
     }
 
     const user_id = req.session.userId
 
-    const {description, device_info, service_type} = req.body
+    const {description, deviceInfo, serviceType} = req.body
 
-    if(!description || !device_info || !service_type){
+    if(!description || !deviceInfo || !serviceType){
       return res.status(400).json({error: `All fields are required`})
     }
 
-    description = description.trim()
-    device_info = device_info.trim()
-    service_type = service_type.trim()
+    const cleanDescription = description.trim()
+    const cleanDeviceInfo = deviceInfo.trim()
+    const cleanServiceType = serviceType.trim()
 
     const uuid = uuidv4()
 
@@ -27,13 +27,13 @@ try {
 
     const result = await db.run(`
       INSERT INTO service_requests (uuid, description, device_info, user_id, service_type, status) VALUES (?, ?, ?, ?, ?, ?)
-      `, [uuid, description, device_info, user_id, service_type, 'pending'])
+      `, [uuid, cleanDescription, cleanDeviceInfo, user_id, cleanServiceType, 'pending'])
       
       if(!result.lastID){ 
         return res.status(400).json({error:'Failed to create service request'})
       }
 
-      return res.status(200).json({message:'Service request created successfully', request:{id:result.lastID, uuid, description, device_info, service_type}})
+      return res.status(200).json({message:'Service request created successfully', request:{id:result.lastID, uuid, description: cleanDescription, device_info: cleanDeviceInfo, service_type: cleanServiceType}})
 
     } catch (error){
       console.error('Error in createServiceRequest:', error)

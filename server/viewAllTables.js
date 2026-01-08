@@ -58,6 +58,20 @@ async function viewAllTables() {
 
     console.table(formattedServiceRequests)
 
+    // Service Updates
+    console.log('\n📝 SERVICE UPDATES TABLE\n')
+    const serviceUpdates = await db.all('SELECT * FROM service_updates')
+    const formattedServiceUpdates = serviceUpdates.map(update => ({
+      id: update.id,
+      admin_id: update.admin_id,
+      service_request_id: update.service_request_id,
+      update_type: update.update_type,
+      update_description: update.update_description,
+      update_time: update.update_time,
+      is_visible_to_customer: update.is_visible_to_customer
+    }))
+    console.table(formattedServiceUpdates)
+
   } catch (err) {
     console.error('Error fetching data:', err.message)
   } finally {

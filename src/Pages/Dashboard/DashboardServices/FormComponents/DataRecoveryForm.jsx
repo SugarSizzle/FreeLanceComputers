@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from '../FormComponents/DataRecoveryForm.module.css'
-import { supabase } from '../../../../lib/supabase'
 import {IKContext, IKImage} from 'imagekitio-react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../Context/AuthContext';
 
 
-export const DataRecoveryForm = ({ formRef }) => {
+export const DataRecoveryForm = ({ formRef, serviceType }) => {
+
+  const {session} = useAuth();
+
   const [description, setDescription] = useState('')
-  const [deviceType, setDeviceType] = useState('')
+  const [deviceInfo, setDeviceInfo] = useState('')
   const [focusedField, setFocusedField] = useState(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({type: '', content: ''})
 
@@ -17,50 +21,50 @@ export const DataRecoveryForm = ({ formRef }) => {
   const navigate = useNavigate();
 
   const isDescriptionFilled = description.trim().length > 0
+  const isDeviceFilled = deviceInfo.trim().length > 0
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
 
-    if(!isDescriptionFilled){
+    if(!isDescriptionFilled || !isDeviceFilled){
       setMessage({type: 'error', content: 'Please fill in the description field'})
       return 
     }
 
-    setLoading(true);
 
+
+    setIsSubmitting(true);
+    if(!session){
+      setMessage({type: 'error', content: 'Please sign in to submit a request'})
+      setIsSubmitting(false);
+      return;
+    }
 
     try{
 
-      const {data:{user} , error:authError} = await supabase.auth.getUser();
-
-      if(authError || !user){
-        setMessage({type: 'error', content:' Please sign in to submit a requerst'
-        })
-        setLoading(false);
+    
+      const response = await fetch(`http://localhost:5000/api/services`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({description, deviceInfo, serviceType }),
+      });
+  
+      const data = await response.json();
+  
+      if(!response.ok){
+        setMessage({type: 'error', content: data.error})
+        setIsSubmitting(false);
         return;
       }
-
-      const {data , error} = await supabase
-      .from('services_requests')
-      .insert([
-        {
-          user_id: user.id,
-          service_type: 'data_recovery',
-          description: description.trim(),
-          device_info: deviceType.trim() || null,
-          status: 'pending',
-        }
-      ]).select();
-
-      if(error) throw error;
-
+  
       setMessage({type: 'success', content: 'Request submitted successfully!'})
       setDescription('');
-      setDeviceType('');
-      setLoading(false);
-      console.log('request successfully submitted', data);
+      setDeviceInfo('');
 
 
     } catch(error){
@@ -100,8 +104,8 @@ export const DataRecoveryForm = ({ formRef }) => {
           type="text"
           className={styles.formInputOptional}
           placeholder='Device Type (Optional)'
-          value={deviceType}
-          onChange={(e) => setDeviceType(e.target.value)}
+          value={deviceInfo}
+          onChange={(e) => setDeviceInfo(e.target.value)}
           onFocus={() => setFocusedField('deviceType')}
           onBlur={() => setFocusedField(null)}
         />
