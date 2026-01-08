@@ -44,7 +44,8 @@ export const VirusRemovalForm = ({ formRef, serviceType }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({description, deviceInfo, user_id: session.id, serviceType }),
+      credentials: 'include',
+      body: JSON.stringify({description, deviceInfo, serviceType }),
     });
 
     const data = await response.json();

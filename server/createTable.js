@@ -40,8 +40,10 @@ async function createTable() {
                 email TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL,
                 phone TEXT UNIQUE,
+                image TEXT,
                 role TEXT DEFAULT 'customer' CHECK(role IN ('customer' , 'admin')) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
 
             )
             `)

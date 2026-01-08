@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import styles from './AdminNewRequestModal.module.css'
 import { IKContext, IKImage, IKUpload } from 'imagekitio-react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../Context/AuthContext'
+import { FaChevronDown } from 'react-icons/fa'
 
 export const AdminNewRequestModal = ({ 
     isOpen, 
@@ -17,6 +18,13 @@ export const AdminNewRequestModal = ({
     const [updateStatus, setUpdateStatus] = useState(ticket?.status || 'pending')
     const [uploadedImagePath, setUploadedImagePath] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isCustomerInfoExpanded, setIsCustomerInfoExpanded] = useState(false)
+
+    const { session } = useAuth()
+
+
+    console.log(ticket)
+
 
   
 
@@ -38,54 +46,41 @@ export const AdminNewRequestModal = ({
             alert('Please enter a note')
             return
         }
-
+    
         try {
             setIsSubmitting(true)
-
-            async function getAdminID(){
-
-                const {data: {user}, error: userError} = await supabase.auth.getUser();
-                if (userError) throw userError
-                const currentAdminID = user.id
-                return currentAdminID
+    
+            const API_URL = 'http://localhost:5000/api/service-requests/update'
+    
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({service_request_id: ticket.id, status: updateStatus, note: updateNote, image: uploadedImagePath || null}),
+            })
+    
+            const data = await response.json()
+            
+            if(!response.ok){
+                
+                console.error('Server error:', data)
+                throw new Error(data.error || 'Failed to update ticket')
             }
-
-            const currentAdminID = await getAdminID()
-
-            const { error: updateError } = await supabase
-                .from('services_requests')
-                .update({ status: updateStatus })
-                .eq('id', ticket.id)
-
-            if (updateError) throw updateError
-
+    
+            console.log('Ticket updated successfully:', data)
+            
         
-            const updateData = {
-                admin_id: currentAdminID,
-                service_request_id: ticket.id,
-                update_type: updateStatus,
-                note: updateNote
-            }
-
-            const { error: insertError } = await supabase
-                .from('service_updates')
-                .insert([updateData])
-
-            if (insertError) throw insertError
-
-           
-            if (onUpdateSuccess) {
-                await onUpdateSuccess()
-            }
-
             
             setUpdateNote('')
             setUploadedImagePath('')
             onClose()
             alert('Ticket updated successfully!')
+    
         } catch (error) {
             console.error('Error updating ticket:', error)
-            alert('Failed to update ticket. Please try again.')
+            alert(error.message || 'Failed to update ticket. Please try again.')
         } finally {
             setIsSubmitting(false)
         }
@@ -119,6 +114,7 @@ export const AdminNewRequestModal = ({
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                         onClick={(e) => e.stopPropagation()}
                     >
+
                         <div className={styles.modalHeader}>
                             <h2 className={styles.modalTitle}>Ticket Details</h2>
                             <button className={styles.closeButton} onClick={handleClose}>
@@ -127,7 +123,7 @@ export const AdminNewRequestModal = ({
                         </div>
 
                         <div className={styles.modalBody}>
-                            {/* Ticket Information */}
+                            
                             <div className={styles.ticketInfo}>
                                 <div className={styles.infoRow}>
                                     <span className={styles.infoLabel}>Ticket ID:</span>
@@ -155,6 +151,40 @@ export const AdminNewRequestModal = ({
                                     <span className={styles.infoLabel}>Description:</span>
                                     <p className={styles.infoDescription}>{ticket.description}</p>
                                 </div>
+
+                                
+
+                                <div 
+                                    className={styles.customerInfoHeader}
+                                    onClick={() => setIsCustomerInfoExpanded(!isCustomerInfoExpanded)}
+                                >
+                                    <span className={styles.customerInfo}>Customer Info</span>
+                                    <FaChevronDown 
+                                        className={`${styles.chevronIcon} ${isCustomerInfoExpanded ? styles.chevronRotated : ''}`}
+                                    />
+                                </div>
+
+                                <AnimatePresence>
+                                    {isCustomerInfoExpanded && (
+                                        <motion.div 
+                                            className={styles.customerInfoContainer}
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                        >
+                                            <div className={styles.customerNameEmail}>
+                                                <p className={styles.customerName}>Name: <br></br> {ticket.firstname} {ticket.lastname}</p>
+                                                <p className={styles.customerEmail}>Email: {ticket.email}</p>
+                                            </div>
+
+                                            <div className={styles.customerPhoneImage}>
+                                                <p className={styles.customerPhone}>Phone: {ticket.phone || 'N/A'}</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+
                                 {ticket.customer_email && (
                                     <div className={styles.infoRow}>
                                         <span className={styles.infoLabel}>Customer Email:</span>
@@ -165,11 +195,18 @@ export const AdminNewRequestModal = ({
                                     <div className={styles.infoRow}>
                                         <span className={styles.infoLabel}>Customer Phone:</span>
                                         <span className={styles.infoValue}>{ticket.customer_phone}</span>
+
+                                    </div>
+                                )}
+                                {ticket.image && (
+                                    <div className={styles.infoRow}>
+                                        <span className={styles.infoLabel}>Customer Image:</span>
+                                        <span className={styles.infoValue}>{ticket.image && <img src={ticket.image} alt="Customer Image" /> || 'No image available'}</span>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Update Form */}
+                           
                             <form className={styles.updateForm} onSubmit={handleSubmitUpdate}>
                                 <h3 className={styles.formTitle}>Update Ticket</h3>
                                 
@@ -182,7 +219,7 @@ export const AdminNewRequestModal = ({
                                         required
                                     >
                                         <option value="pending">pending</option>
-                                        <option value="reviewing">reviewing</option>
+                                        
                                         <option value="in_progress">in_progress</option>
                                         <option value="completed">completed</option>
                                         <option value="cancelled">cancelled</option>
@@ -232,6 +269,7 @@ export const AdminNewRequestModal = ({
                                     type="submit" 
                                     className={styles.submitButton}
                                     disabled={isSubmitting}
+                                    onClick={handleSubmitUpdate}
                                 >
                                     {isSubmitting ? 'Updating...' : 'Submit Update'}
                                 </button>

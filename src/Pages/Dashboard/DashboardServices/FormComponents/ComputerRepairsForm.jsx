@@ -45,7 +45,8 @@ export const ComputerRepairsForm = ({ formRef, serviceType }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({description, deviceType, user_id: session.id, serviceType }),
+        credentials: 'include',
+        body: JSON.stringify({description, deviceInfo: deviceType, serviceType }),
       });
 
       const data = await response.json();
