@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const AdminOverviewHeroSection = () => {
 
-    const [dataRequestsReviewing, setDataRequestsReviewing] = useState(null)
+    const [dataRequestsCompleted, setDataRequestsCompleted] = useState(null)
     const [dataRequestsInProgress, setDataRequestsInProgress] = useState(null)
     const [loading, setLoading] = useState(false)
     const [animatedBorder, setAnimatedBorder] = useState(false)
@@ -35,15 +35,35 @@ export const AdminOverviewHeroSection = () => {
             try {
                 setLoading(true);
 
-                const response = await fetch('http://localhost:5000/api/service-requests', {
+                // Fetch in-progress tickets
+                const inProgressResponse = await fetch('http://localhost:5000/api/service-requests/in-progress', {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 })
-                const data = await response.json()
-                console.log('Data:', data)
+                if(!inProgressResponse.ok){
+                    throw new Error('Failed to fetch in progress tickets')
+                }
+                const inProgressData = await inProgressResponse.json()
+                console.log('In Progress Data:', inProgressData)
+                setDataRequestsInProgress(inProgressData.tickets)
+
+                // Fetch completed tickets
+                const completedResponse = await fetch('http://localhost:5000/api/service-requests/in-progress/completed', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                if(!completedResponse.ok){
+                    throw new Error('Failed to fetch completed tickets')
+                }
+                const completedData = await completedResponse.json()
+                console.log('Completed Data:', completedData)
+                setDataRequestsCompleted(completedData.tickets)
             
             } catch (error) {
                 console.error('Error fetching data requests:', error.message, error);
@@ -56,7 +76,7 @@ export const AdminOverviewHeroSection = () => {
         fetchDataRequests();
     }, []);
     
-    console.log('Current dataRequestsReviewing state:', dataRequestsReviewing);
+    console.log('Current dataRequestsCompleted state:', dataRequestsCompleted);
     console.log('Current dataRequestsInProgress state:', dataRequestsInProgress);
     
     
@@ -204,7 +224,7 @@ export const AdminOverviewHeroSection = () => {
                                 <>
                                 {animatedBorder && <motion.div className={styles.animatedBorder} style={{background:rotatingBg}} />}
                             <div className={styles.tabContent}>
-                                <h3 className={styles.underReviewTitle}>Under Review</h3>
+                                <h3 className={styles.underReviewTitle}>Completed</h3>
                             </div>
                             </>
                             }
@@ -233,7 +253,7 @@ export const AdminOverviewHeroSection = () => {
                                 transition={{ duration: 0.3 }}
                                 className={styles.taskContainer}
                             >
-                                {dataRequestsReviewing && dataRequestsReviewing.map((request) => (
+                                {dataRequestsCompleted && dataRequestsCompleted.map((request) => (
                                     <div 
                                     onClick={() => navigate('/admin/admin-task-progress', { state: { requestData: request } })}
                                     key={request.id} 
