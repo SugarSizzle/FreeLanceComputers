@@ -54,7 +54,7 @@ export const AdminTaskProgress = () => {
             <FaChevronLeft 
 
             className={styles.backButtonIcon} 
-            onClick={() => navigate('/admin-overview')} />
+            onClick={() => navigate('/admin/overview')} />
 
         </div>
         
