@@ -49,6 +49,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    margin-bottom: 10vh;
 }
 
 .infoCard {
@@ -77,3 +78,96 @@
     font-weight: 400;
     color: #ffffff;
 }
+
+.updateContainer {
+    width: 80vw;
+    height: auto;
+    border: 2px solid #ffffff25;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+ 
+ 
+}
+
+.formTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 90%;
+    color: #ffffff;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ffffff25;
+    margin:auto;
+   
+}
+
+    .dropdownContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  
+}
+
+.dropdownLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.formTextarea {
+    width:70vw;
+    height: 15vh;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    border: 2px solid #ffffff25;
+}
+
+.formLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.submitButton {
+    width: 80%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    border: 2px solid #ffffff25;
+    background-color: #ffffff25;
+    color: #ffffff;
+}
+
+      

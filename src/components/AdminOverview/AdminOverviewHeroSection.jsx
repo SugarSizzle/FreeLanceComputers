@@ -6,7 +6,7 @@ import { DataRecoveryIcon } from '../../images/Icons/DataRecoveryIcon'
 import { ComputerRepairsIcon } from '../../images/Icons/ComputerRepairsIcon'
 import {useTransform, useTime, motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 
 
@@ -14,12 +14,13 @@ export const AdminOverviewHeroSection = () => {
 
     const [dataRequestsCompleted, setDataRequestsCompleted] = useState(null)
     const [dataRequestsInProgress, setDataRequestsInProgress] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [animatedBorder, setAnimatedBorder] = useState(false)
     const [expandedTicketId, setExpandedTicketId] = useState(null)
 
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const time = useTime();
     const rotate = useTransform(time, [0, 1000, 3000], [0, -180, -280], {clamp: false});
@@ -74,7 +75,7 @@ export const AdminOverviewHeroSection = () => {
         }
         
         fetchDataRequests();
-    }, []);
+    }, [location.pathname]);
     
     console.log('Current dataRequestsCompleted state:', dataRequestsCompleted);
     console.log('Current dataRequestsInProgress state:', dataRequestsInProgress);
@@ -244,7 +245,19 @@ export const AdminOverviewHeroSection = () => {
                 
                 <div className={styles.taskInfoTable}>
                     <AnimatePresence mode="wait">
-                        {animatedBorder ? (
+                        {loading ? (
+                            <motion.div
+                                key="loading"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className={styles.loadingContainer}
+                            >
+                                <div className={styles.loadingSpinner}></div>
+                                <p className={styles.loadingText}>Loading tickets...</p>
+                            </motion.div>
+                        ) : animatedBorder ? (
                             <motion.div
                                 key="underReview"
                                 initial={{ opacity: 0, y: 20 }}
@@ -253,31 +266,35 @@ export const AdminOverviewHeroSection = () => {
                                 transition={{ duration: 0.3 }}
                                 className={styles.taskContainer}
                             >
-                                {dataRequestsCompleted && dataRequestsCompleted.map((request) => (
-                                    <div 
-                                    onClick={() => navigate('/admin/admin-task-progress', { state: { requestData: request } })}
-                                    key={request.id} 
-                                    className={styles.taskCard}
-                                    style={{ cursor: 'pointer' }}>
-                                        <div className={styles.taskHeader}>
-                                            <span className={styles.requestId}>
-                                                Request #
-                                                <span 
-                                                    onClick={() => toggleTicketId(request.service_request_id)}
-                                                    style={{ 
-                                                        cursor: String(request.service_request_id).length > 6 ? 'pointer' : 'default',
-                                                        textDecoration: String(request.service_request_id).length > 6 ? 'underline' : 'none'
-                                                    }}
-                                                >
-                                                    {formatTicketId(request.service_request_id)}
+                                {dataRequestsCompleted && dataRequestsCompleted.length > 0 ? (
+                                    dataRequestsCompleted.map((request) => (
+                                        <div 
+                                        onClick={() => navigate(`/admin/admin-task-progress/${request.id}`)}
+                                        key={request.id} 
+                                        className={styles.taskCard}
+                                        style={{ cursor: 'pointer' }}>
+                                            <div className={styles.taskHeader}>
+                                                <span className={styles.requestId}>
+                                                    Request #
+                                                    <span 
+                                                        onClick={() => toggleTicketId(request.uuid)}
+                                                        style={{ 
+                                                            cursor: String(request.uuid).length > 6 ? 'pointer' : 'default',
+                                                            textDecoration: String(request.uuid).length > 6 ? 'underline' : 'none'
+                                                        }}
+                                                    >
+                                                        {formatTicketId(request.id)}
+                                                    </span>
                                                 </span>
-                                            </span>
-                                            <span className={styles.statusBadge}>{request.update_type}</span>
+                                                <span className={styles.statusBadge}>{request.status}</span>
+                                            </div>
+                                            <p className={styles.taskNote}>{request.description}</p>
+                                            <span className={styles.taskDate}>{formatTimestamp(request.requested_at)}</span>
                                         </div>
-                                        <p className={styles.taskNote}>{request.note}</p>
-                                        <span className={styles.taskDate}>{formatTimestamp(request.created_at)}</span>
-                                    </div>
-                                ))}
+                                    ))
+                                ) : (
+                                    <div className={styles.emptyState}>No completed tickets</div>
+                                )}
                             </motion.div>
                         ) : (
                             <motion.div
@@ -288,31 +305,35 @@ export const AdminOverviewHeroSection = () => {
                                 transition={{ duration: 0.3 }}
                                 className={styles.taskContainer}
                             >
-                                { dataRequestsInProgress && dataRequestsInProgress.map((request) => (
-                                    <div 
-                                    onClick={() => navigate('/admin/admin-task-progress', { state: { requestData: request } })}
-                                    key={request.id} 
-                                    className={styles.taskCard}
-                                    style={{ cursor: 'pointer' }}>
-                                        <div className={styles.taskHeader}>
-                                            <span className={styles.requestId}>
-                                                Request #
-                                                <span 
-                                                    onClick={() => toggleTicketId(request.service_request_id)}
-                                                    style={{ 
-                                                        cursor: String(request.service_request_id).length > 6 ? 'pointer' : 'default',
-                                                        textDecoration: String(request.service_request_id).length > 6 ? 'underline' : 'none'
-                                                    }}
-                                                >
-                                                    {formatTicketId(request.service_request_id)}
+                                {dataRequestsInProgress && dataRequestsInProgress.length > 0 ? (
+                                    dataRequestsInProgress.map((request) => (
+                                        <div 
+                                        onClick={() => navigate(`/admin/admin-task-progress/${request.id}`)}
+                                        key={request.id} 
+                                        className={styles.taskCard}
+                                        style={{ cursor: 'pointer' }}>
+                                            <div className={styles.taskHeader}>
+                                                <span className={styles.requestId}>
+                                                    Request #
+                                                    <span 
+                                                        onClick={() => toggleTicketId(request.uuid)}
+                                                        style={{ 
+                                                            cursor: String(request.uuid).length > 6 ? 'pointer' : 'default',
+                                                            textDecoration: String(request.uuid).length > 6 ? 'underline' : 'none'
+                                                        }}
+                                                    >
+                                                        {formatTicketId(request.id)}
+                                                    </span>
                                                 </span>
-                                            </span>
-                                            <span className={styles.statusBadge}>{request.update_type}</span>
+                                                <span className={styles.statusBadge}>{request.status}</span>
+                                            </div>
+                                            <p className={styles.taskNote}>{request.description}</p>
+                                            <span className={styles.taskDate}>{formatTimestamp(request.requested_at)}</span>
                                         </div>
-                                        <p className={styles.taskNote}>{request.note}</p>
-                                        <span className={styles.taskDate}>{formatTimestamp(request.created_at)}</span>
-                                    </div>
-                                ))}
+                                    ))
+                                ) : (
+                                    <div className={styles.emptyState}>No in-progress tickets</div>
+                                )}
                             </motion.div>
                         )}
                     </AnimatePresence>

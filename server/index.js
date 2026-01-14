@@ -11,6 +11,8 @@ import createServiceRequestRouter from './routes/serviceRequest.js'
 import newServiceRequestRouter from './routes/newServiceRequests.js'
 import updateServiceRequestRouter from './routes/updateServiceRequests.js'
 import inProgressRouter from './routes/inProgressRoutes.js'
+import timeLineRouter from './routes/timelineRoute.js'
+
 
 dotenv.config();
 const app = express();
@@ -65,6 +67,7 @@ app.use('/api/services', createServiceRequestRouter)
 app.use('/api/service-requests/update', updateServiceRequestRouter)
 app.use(`/api/service-requests/`, newServiceRequestRouter)
 app.use('/api/service-requests/in-progress', inProgressRouter)
+app.use('/api/service-requests/timeline', timeLineRouter)
 
 
 
