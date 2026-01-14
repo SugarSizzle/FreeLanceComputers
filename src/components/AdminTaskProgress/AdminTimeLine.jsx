@@ -37,7 +37,7 @@ export const AdminTimeLine =  ({taskProgress, selectedUpdate, setSelectedUpdate}
 
         <div className={styles.timeLineContainer}>
                 { taskProgress && taskProgress.map((task, index) => {
-                    const formattedDate = formatDate(task.created_at);
+                    const formattedDate = formatDate(task.update_time);
                     const truncatedId = truncateId(task.id);
                     const statusClass = getStatusClass(task.update_type);
                     
