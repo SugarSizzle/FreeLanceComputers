@@ -31,6 +31,8 @@ import { AdminTaskProgressPage } from './Pages/AdminDashboard/AdminTaskProgress'
 import {SignUpPage} from './Pages/SignUpPage'
 import { CartPage } from './Pages/CartPage'
 import { AdminProtectedRoute } from './components/AdminProtectedRoute'
+import { DashboardTickets } from './Pages/Dashboard/DashboardOverview/DashboardTickets'
+import { DashboardTaskProgress } from './Pages/Dashboard/DashboardOverview/DashboardTaskProgress'
 
 
 function App() {
@@ -68,6 +70,7 @@ function App() {
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/dashboard/tickets" element={<DashboardTickets />} />
 
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="overview" element={<Overview />} />
@@ -78,7 +81,7 @@ function App() {
                 <Route path="activityfeed" element={<DashboardActivityFeed />} />
                 <Route path="review" element={<DashboardReviewOverlay />} />
                 <Route path="service-detail/:id" element={<ServiceDetailPage />} />
-               
+                <Route path="ticket-progress/:id" element={<DashboardTaskProgress />} />
               </Route>
 
                 <Route path="/admin" element={<AdminProtectedRoute />}>

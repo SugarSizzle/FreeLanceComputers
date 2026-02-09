@@ -20,7 +20,7 @@ export const AuthContextProvider = ({children}) => {
         try {
             const response = await fetch(`${API_URL}/session`, {
                 method: 'GET',
-                credentials: 'include', // Important for cookies/sessions
+                credentials: 'include', 
             });
 
             if (response.ok) {
@@ -44,7 +44,7 @@ export const AuthContextProvider = ({children}) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include', // Important for cookies/sessions
+                credentials: 'include', 
                 body: JSON.stringify({ email, password }),
             });
 

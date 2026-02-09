@@ -1,0 +1,191 @@
+.container {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingContainer,
+.errorContainer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #b0b0b0;
+}
+
+.backButtonContainer {
+    width: 3vw;
+    height: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    align-self: flex-start;
+    color: #b0b0b0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 7vw;
+    box-shadow: inset 0 4px 4px rgba(255, 254, 254, .2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.backButtonIcon {
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+    color: #b0b0b0;
+    cursor: pointer;
+}
+
+/* Ticket Info Card */
+.ticketInfoContainer {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.ticketInfoCard {
+    width: 100%;
+    height: auto;
+    background-color: #0e0d0d50;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.ticketTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ffffff25;
+}
+
+.ticketDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ticketDetail {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin: 0;
+}
+
+.ticketDescription {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin: 0;
+    margin-top: 0.5rem;
+}
+
+.detailLabel {
+    color: #ffffff;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.statusBadge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.statusSubmitted {
+    background-color: #000000;
+    color: #a855f7;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusPending {
+    background-color: #000000;
+    color: #b9a293a1;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusInProgress {
+    background-color: #000000;
+    color: #fbff00;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusCompleted {
+    background-color: #000000;
+    color: #06ff1b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusCancelled {
+    background-color: #000000;
+    color: #991b1b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Info Card for Selected Update */
+.infoCardContainer {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.infoCard {
+    width: 100%;
+    height: auto;
+    background-color: #0e0d0d50;
+    border: 2px solid #ffffff25;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.infoCardTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0.5rem 0;
+}
+
+.currentView {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ffffff25;
+}
+
+/* No Updates State */
+.noUpdatesContainer {
+    text-align: center;
+    padding: 60px 20px;
+    width: 80vw;
+    background-color: #0e0d0d50;
+    border-radius: 12px;
+    border: 2px dashed #ffffff25;
+}
+
+.noUpdatesText {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-bottom: 0.5rem;
+}
+
+.noUpdatesSubtext {
+    font-size: 1rem;
+    color: #666;
+}
+
