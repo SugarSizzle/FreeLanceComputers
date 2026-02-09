@@ -5,6 +5,8 @@ import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
 import {DashboardActivityFeed} from '../DashboardActivityFeed';
 import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
 import { useAuth } from '../../../Context/AuthContext';
+import {DashboardTickets} from './DashboardTickets';
+
 
 
 const Overview = () => {
@@ -65,7 +67,7 @@ const Overview = () => {
             <button className={styles.newInfoButton}>View More</button>
         </div>
       </div>
-
+      <DashboardTickets />
       <DashboardOverviewServices />
       <DashboardActivityFeed />
 

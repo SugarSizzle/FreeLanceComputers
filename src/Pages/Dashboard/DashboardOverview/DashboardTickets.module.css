@@ -1,0 +1,290 @@
+.dashboardTickets {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dashboardTicketsTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #b0b0b0;
+}
+
+/* Loading & Error States */
+.loadingContainer,
+.errorContainer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.retryButton {
+    margin-top: 16px;
+    padding: 10px 24px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+    background-color: #2563eb;
+}
+
+/* No Tickets State */
+.noTicketsContainer {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: 2px dashed #e5e7eb;
+}
+
+.noTicketsText {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.requestServicesButton {
+    padding: 12px 32px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.requestServicesButton:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+/* Tickets List */
+.dashboardTicketsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ticketsPageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dashboardTicket {
+
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.1s;
+    text-align: left;
+ 
+}
+
+.span {
+    color: #ffffff;
+}
+
+.dashboardTicket:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticketHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.dashboardTicketTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b0b0b0;
+    margin: 0;
+}
+
+/* Status Badges */
+.ticketStatus {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.statusPending {
+    background-color: #000000;
+    color: #b9a293a1;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.statusInProgress {
+    background-color: #000000;
+    color: #fbff00;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.statusCompleted {
+    background-color: #000000;
+    color: #06ff1b;
+    border:1px solid rgba(255,255,255,0.2);
+    }
+
+.statusCancelled {
+    background-color: #000000;
+    color: #991b1b;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.ticketDevice {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+}
+
+.ticketDescription {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.ticketDate {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+}
+
+/* Modal Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.dashboardTicketsModal {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.closeModalButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #6b7280;
+    line-height: 1;
+    padding: 0;
+}
+
+.closeModalButton:hover {
+    color: #1f2937;
+}
+
+.dashboardTicketsModalTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 24px;
+}
+
+.dashboardTicketsModalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modalField {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modalLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.modalValue {
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.dashboardTicketsModalDescription {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Pagination Styles */
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.paginationButton {
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.paginationButton:hover:not(:disabled) {
+    background-color: #2563eb;
+}
+
+.paginationButtonDisabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.paginationButtonDisabled:hover {
+    background-color: #9ca3af;
+}
+
+.paginationInfo {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
