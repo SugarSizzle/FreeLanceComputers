@@ -135,7 +135,7 @@ export const CartMainSection = () => {
                 </div>
             )}
         </div>
-        <CartSummary cartItems={cartItems} />
+        <CartSummary cartItems={cartItems} onOrderComplete={fetchCartItems} />
         </>
     )
 }

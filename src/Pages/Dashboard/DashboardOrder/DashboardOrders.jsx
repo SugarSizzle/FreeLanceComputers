@@ -1,10 +1,107 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './DashboardOrders.module.css';
 import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
 
  export const DashboardOrders = () => {
   const [activeButton, setActiveButton] = useState(null);
-  const [orderStatus, setOrderStatus] = useState('Complete');
+  const [orders, setOrders] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        setLoading(true);
+        
+
+        const response = await fetch('http://localhost:5000/api/orders', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || 'Failed to fetch orders');
+        }
+
+        const data = await response.json();
+        setOrders(data.orders || []);
+        
+       
+        if (data.orders && data.orders.length > 0) {
+          setSelectedOrder(data.orders[0]);
+        }
+      } catch (err) {
+        console.error('Error fetching orders:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }) + ' at ' + date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
+  console.log(orders);
+
+  const calculateSubtotal = (items) => {
+    if (!items) return 0;
+    return items.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+  };
+
+  const getTotalItems = (items) => {
+    if (!items) return 0;
+    return items.reduce((sum, item) => sum + item.quantity, 0);
+  };
+
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <p>Loading orders...</p>
+        </div>
+        <DashboardFooter />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <p>Error: {error}</p>
+        </div>
+        <DashboardFooter />
+      </div>
+    );
+  }
+
+  if (!selectedOrder) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <p>No orders found.</p>
+        </div>
+        <DashboardFooter />
+      </div>
+    );
+  }
+
+  const orderStatus = selectedOrder.status;
 
   return (
     <div className={styles.container}>
@@ -15,12 +112,12 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
           <div className={styles.titleLeft}>
             
             <div className={styles.orderDetails}>
-              <h1 className={styles.orderId}>Order ID: 334902445</h1>
-              <p className={styles.orderDate}>January 8,2024 at 10:00AM</p>
+              <h1 className={styles.orderId}>Order ID: {selectedOrder.id}</h1>
+              <p className={styles.orderDate}>{formatDate(selectedOrder.created_at)}</p>
             </div>
 
             <h1 className={`${styles.orderStatus} ${styles.statusProcessing}`}>
-              {orderStatus === 'Processing' ? <span style={{color:'#ffd700'}}>Processing</span> : <span style={{color:'#03ff2d'}}>Complete</span>}</h1>
+              {orderStatus === 'processing' ? <span style={{color:'#ffd700'}}>Processing</span> : <span style={{color:'#03ff2d'}}>Complete</span>}</h1>
           </div>
         </div>
 
@@ -31,26 +128,31 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
             <div className={styles.section}>
               <div className={styles.sectionHeader}>
                 <h2 className={styles.orderItemTitle}>Order Item</h2>
-                <p className={styles.productTitle}>Laptop</p>
-                <p className={styles.productSubtitle}>Macbook Air</p>
+                {selectedOrder.items && selectedOrder.items.length > 0 && (
+                  <>
+                    <p className={styles.productTitle}>{selectedOrder.items[0].product_type}</p>
+                    <p className={styles.productSubtitle}>{selectedOrder.items[0].product_name}</p>
+                  </>
+                )}
             </div>
               
-              <div className={styles.orderItem}>
-                <div className={styles.productImage}>
-                  <div className={styles.placeholder}>Laptop Image</div>
-                </div>
-                <div className={styles.productDetails}>
-                  <div className={styles.productVariant}>
-                    <span>Medium</span>
-                    <span>Black</span>
-                    
+              {selectedOrder.items && selectedOrder.items.map((item, index) => (
+                <div key={index} className={styles.orderItem}>
+                  <div className={styles.productImage}>
+                    <div className={styles.placeholder}>{item.product_type} Image</div>
+                  </div>
+                  <div className={styles.productDetails}>
+                    <div className={styles.productVariant}>
+                      <span>{item.product_name}</span>
+                      <span>{item.product_type}</span>
+                    </div>
+                  </div>
+                  <div className={styles.productQuantity}>
+                    <span className={styles.productQuantityTitle}>{item.quantity} x ${parseFloat(item.price).toFixed(2)}</span>
+                    <span className={styles.price}>${(item.quantity * parseFloat(item.price)).toFixed(2)}</span>
                   </div>
                 </div>
-                <div className={styles.productQuantity}>
-                  <span className={styles.productQuantityTitle}>3 x $500.00</span>
-                  <span className={styles.price}>$1,500.00</span>
-                </div>
-              </div>
+              ))}
 
               
               <div className={styles.actionButtons}>
@@ -75,8 +177,8 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
               <div className={styles.summaryTable}>
                 <div className={styles.summaryRow}>
                   <span>Subtotal</span>
-                  <span>1 item</span>
-                  <span>$1,500</span>
+                  <span>{getTotalItems(selectedOrder.items)} item{getTotalItems(selectedOrder.items) !== 1 ? 's' : ''}</span>
+                  <span>${calculateSubtotal(selectedOrder.items).toFixed(2)}</span>
                 </div>
              
                 <div className={styles.summaryRow}>
@@ -86,17 +188,17 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
                 </div>
                 <div className={`${styles.summaryRow} ${styles.total}`}>
                   <span>Total</span>
-                  <span>$1,499</span>
+                  <span>${parseFloat(selectedOrder.total).toFixed(2)}</span>
                 </div>
               </div>
 
               <div className={styles.paymentInfo}>
                 <div className={styles.summaryRow}>
                   <span>Paid by customer</span>
-                  <span>$0.00</span>
+                  <span>${parseFloat(selectedOrder.total).toFixed(2)}</span>
                 </div>
                 <div className={styles.summaryRow}>
-                  <span>Payment due when invoice is sent</span>
+                  <span>Payment {orderStatus === 'complete' ? 'completed' : 'due when invoice is sent'}</span>
                 </div>
               </div>
               
