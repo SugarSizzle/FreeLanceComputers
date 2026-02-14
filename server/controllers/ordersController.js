@@ -3,6 +3,7 @@ import {getDBConnection} from '../db/db.js'
 
 
 async function createOrder(req, res) {
+    
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ error: 'Authentication required' })
     }
