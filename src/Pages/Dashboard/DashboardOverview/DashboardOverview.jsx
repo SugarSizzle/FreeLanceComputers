@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './DashboardOverview.module.css';
 import { FaRegClock } from "react-icons/fa";
 import {DashboardOverviewServices} from './DashboardOverviewServices.JSX';
@@ -12,7 +13,61 @@ import {DashboardTickets} from './DashboardTickets';
 const Overview = () => {
 
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [latestUpdate, setLatestUpdate] = useState(null);
+  const [updateLoading, setUpdateLoading] = useState(true);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchLatestUpdate = async () => {
+      try {
+        setUpdateLoading(true);
+        const response = await fetch('http://localhost:5000/api/user/tickets/latest-update', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setLatestUpdate(data.update);
+        }
+      } catch (error) {
+        console.error('Error fetching latest update:', error);
+      } finally {
+        setUpdateLoading(false);
+      }
+    };
+
+    fetchLatestUpdate();
+  }, []);
+
+  const formatServiceType = (serviceType) => {
+    if (!serviceType) return '';
+    return serviceType
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const formatStatus = (status) => {
+    if (!status) return '';
+    return status
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const formatUpdateTime = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+    }) + ' at ' + date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
   const updateTime = () => {
     setCurrentTime(new Date());
@@ -55,18 +110,37 @@ const Overview = () => {
 
       <div className={styles.newInfoSection}>
         <div className={styles.newInfoLeft}>
-          <h3 className={styles.newInfoSectionTitle}>What's Coming Up</h3>
+          <h3 className={styles.newInfoSectionTitle}>Latest Service Update</h3>
 
-          <p className={styles.newInfoSectionText}>Appointment: October 3rd, 10:00AM</p>
-          <p className={styles.newInfoStatus}>Confirmed</p>
+          {updateLoading ? (
+            <p className={styles.newInfoSectionText}>Loading...</p>
+          ) : latestUpdate ? (
+            <>
+              <p className={styles.newInfoSectionText}>
+                {formatServiceType(latestUpdate.service_type)}: {formatUpdateTime(latestUpdate.update_time)}
+              </p>
+              <p className={styles.newInfoStatus}>
+                {formatStatus(latestUpdate.previous_status)} → {formatStatus(latestUpdate.new_status)}
+              </p>
+            </>
+          ) : (
+            <p className={styles.newInfoSectionText}>No recent updates</p>
+          )}
         </div>
 
         <div className={styles.newInfoRight}>
 
             <FaRegClock className={styles.newInfoClockIcon} />
-            <button className={styles.newInfoButton}>View More</button>
+            <button 
+              className={styles.newInfoButton}
+              onClick={() => latestUpdate && navigate(`/dashboard/ticket-progress/${latestUpdate.service_request_id}`)}
+              disabled={!latestUpdate}
+            >
+              View More
+            </button>
         </div>
       </div>
+      
       <DashboardTickets />
       <DashboardOverviewServices />
       <DashboardActivityFeed />

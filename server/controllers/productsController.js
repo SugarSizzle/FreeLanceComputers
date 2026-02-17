@@ -84,9 +84,6 @@ SELECT * FROM products WHERE LOWER(type) = LOWER(?) AND LOWER(condition) = LOWER
         }));
         return res.status(200).json(parsedProducts);
 
-        await db.close();
-        
-
         }
 
     } catch (error) {
