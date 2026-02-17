@@ -30,10 +30,12 @@ async function createOrder(req, res) {
             return res.status(400).json({ error: 'Your cart is empty' })
         }
 
-        // Calculate total
-        const total = cartItems.reduce((sum, item) => {
+        // Calculate total (subtotal + shipping)
+        const subtotal = cartItems.reduce((sum, item) => {
             return sum + (parseFloat(item.price) * item.quantity)
         }, 0)
+        const shippingFee = 10.00
+        const total = subtotal + shippingFee
 
         // Create the order
         const orderResult = await db.run(
