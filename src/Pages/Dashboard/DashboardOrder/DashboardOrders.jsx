@@ -183,8 +183,8 @@ import { DashboardFooter } from '../DashboardFooter/DashboardFooter';
              
                 <div className={styles.summaryRow}>
                   <span>Shipping</span>
-                  <span>Free shipping (0.0 lb)</span>
-                  <span>$0.00</span>
+                  <span>Standard shipping</span>
+                  <span>$10.00</span>
                 </div>
                 <div className={`${styles.summaryRow} ${styles.total}`}>
                   <span>Total</span>
