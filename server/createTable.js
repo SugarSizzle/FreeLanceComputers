@@ -83,7 +83,13 @@ async function createTable() {
         `
     )
 
-    console.log('Orders table created successfully') 
+    console.log('Orders table created successfully')
+
+    await db.exec(`
+        CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id)
+    `)
+
+    console.log('Index on orders.user_id created successfully') 
     
 
 
@@ -128,9 +134,21 @@ async function createTable() {
             
             )
         `);
+
+
+        await db.exec(`
+            CREATE INDEX IF NOT EXISTS idx_service_requests_user_id ON service_requests(user_id)
+            `)
+            console.log('Index on service_requests.user_id created successfully')
+
+        await db.exec(`
+            CREATE INDEX IF NOT EXISTS idx_service_requests_status ON service_requests(status)
+            `)
+            console.log('Index on service_requests.status created successfully')
     
         console.log('Service requests table created successfully')
     
+        
         await db.exec(`
             CREATE TABLE IF NOT EXISTS service_updates
             (
