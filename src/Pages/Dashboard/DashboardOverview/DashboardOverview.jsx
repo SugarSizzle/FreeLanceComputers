@@ -91,10 +91,7 @@ const Overview = () => {
   };
 
   const { session } = useAuth();
-  const firstName = session?.name?.split(' ')[0];
-  
-
-
+  const firstName = session?.name?.split(' ')[0] || 'User';
 
 
   return (
@@ -103,7 +100,7 @@ const Overview = () => {
     
 
       <div className={styles.welcomeSection}>
-        <p className={styles.welcomeText}>Welcome, {firstName.charAt(0).toUpperCase() + firstName.slice(1) || 'User'}</p> 
+        <p className={styles.welcomeText}>Welcome, {firstName.charAt(0).toUpperCase() + firstName.slice(1)}</p> 
         <p className={styles.welcomeText}>{formatTime(currentTime)}</p> 
         <p className={styles.welcomeText}>{formatDate(currentTime)}</p> 
       </div>

@@ -80,7 +80,7 @@ export const DashboardTickets = () => {
     }
 
     const handleRequestServices = () => {
-        navigate('/services')
+        navigate('/dashboard/services')
     }
 
     const handleTicketClick = (ticketId) => {
@@ -186,8 +186,7 @@ export const DashboardTickets = () => {
                                                 </span>
                                             </div>
                                             <p className={styles.ticketDevice}> <span className={styles.span}>Device:</span> {ticket.device_info}</p>
-                                            <p className={styles.ticketDescription}> <span className={styles.span}>Description:</span> {ticket.description}
-                                                {ticket.description.length > 100 
+                                            <p className={styles.ticketDescription}> <span className={styles.span}>Description:</span> {ticket.description.length > 100 
                                                     ? `${ticket.description.substring(0, 100)}...` 
                                                     : ticket.description
                                                 }

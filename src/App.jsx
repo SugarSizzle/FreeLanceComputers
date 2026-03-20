@@ -70,7 +70,6 @@ function App() {
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/dashboard/tickets" element={<DashboardTickets />} />
 
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="overview" element={<Overview />} />
@@ -82,6 +81,7 @@ function App() {
                 <Route path="review" element={<DashboardReviewOverlay />} />
                 <Route path="service-detail/:id" element={<ServiceDetailPage />} />
                 <Route path="ticket-progress/:id" element={<DashboardTaskProgress />} />
+                <Route path="tickets" element={<DashboardTickets />} />
               </Route>
 
                 <Route path="/admin" element={<AdminProtectedRoute />}>
