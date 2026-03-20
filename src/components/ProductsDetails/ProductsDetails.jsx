@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { Navigation } from '../../Layout/Navigation';
-import { Footer } from '../../Layout/Footer';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductsDetails.module.css';
 
@@ -56,7 +54,7 @@ useEffect(() => {
 }, [id]);
     console.log(product)
 
-   const secondaryImages = product?.images.map((image, index) => {
+   const secondaryImages = product?.images?.map((image, index) => {
     return (
 
     <>
@@ -75,12 +73,11 @@ useEffect(() => {
 
     return (
         <>
-            <Navigation />
             <div className={styles.productDetailsContainer}>
                 {product ? (
                     <>
                 <div>
-                   <img className={styles.productDetailsImageContainer} src={optimizedImages(product.images[selectedImage], 800, 85)} alt={product.name} />
+                   <img className={styles.productDetailsImageContainer} src={optimizedImages(product.images?.[selectedImage], 800, 85)} alt={product.name} />
                 </div>
 
                     <div className={styles.secondaryImagesContainer}>

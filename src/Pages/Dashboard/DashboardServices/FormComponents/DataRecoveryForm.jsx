@@ -112,7 +112,7 @@ export const DataRecoveryForm = ({ formRef, serviceType }) => {
       </form>
 
       <div className={styles.buttonContainer}>
-          <button d
+          <button
             type='submit'
             onClick={handleSubmit}
             className={`${styles.submitButton} ${isDescriptionFilled ? styles.submitButtonActive : ''}`}
