@@ -112,6 +112,16 @@ export const DropDown = ({ onClose }) => {
                         <GoArrowRight className={styles.arrowIcon} />
                     </div>
 
+                    <div 
+                        onClick={() => {
+                            navigate('/technicians');
+                            onClose();
+                        }}
+                        className={styles.infoSubContainer}>
+                        <h3 className={styles.contactTitle}>Our Technicians</h3>
+                        <GoArrowRight className={styles.arrowIcon} />
+                    </div>
+
                     {cartItemCount > 0 && (
                         <div 
                         onClick={() => {

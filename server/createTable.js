@@ -115,6 +115,22 @@ async function createTable() {
 
 
     await db.exec(`
+        CREATE TABLE IF NOT EXISTS technicians (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            uuid TEXT NOT NULL UNIQUE,
+            name TEXT NOT NULL,
+            specialty TEXT NOT NULL,
+            bio TEXT,
+            photo TEXT,
+            phone TEXT,
+            email TEXT,
+            is_active BOOLEAN DEFAULT TRUE NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+    console.log('Technicians table created successfully')
+
+    await db.exec(`
     
         CREATE TABLE IF NOT EXISTS service_requests
             (
@@ -130,7 +146,9 @@ async function createTable() {
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             admin_notes TEXT,
             seen_by_admin BOOLEAN DEFAULT FALSE NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users(id)
+            technician_id INTEGER,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (technician_id) REFERENCES technicians(id)
             
             )
         `);

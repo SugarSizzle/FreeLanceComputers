@@ -144,6 +144,29 @@ export const DashboardTaskProgress = () => {
                                 <span className={styles.detailLabel}>Description:</span> {ticket.description}
                             </p>
                         </div>
+
+                        {ticket.technician_name && (
+                            <div className={styles.technicianSection}>
+                                <div className={styles.technicianCard}>
+                                    {ticket.technician_photo ? (
+                                        <img
+                                            src={ticket.technician_photo}
+                                            alt={ticket.technician_name}
+                                            className={styles.technicianPhoto}
+                                        />
+                                    ) : (
+                                        <div className={styles.technicianPhotoPlaceholder}>
+                                            {ticket.technician_name.charAt(0)}
+                                        </div>
+                                    )}
+                                    <div className={styles.technicianInfo}>
+                                        <p className={styles.technicianLabel}>Assigned Technician</p>
+                                        <p className={styles.technicianName}>{ticket.technician_name}</p>
+                                        <p className={styles.technicianSpecialty}>{ticket.technician_specialty}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

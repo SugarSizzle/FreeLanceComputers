@@ -13,16 +13,21 @@ export async function getUserTickets(req, res) {
 
         const userTickets = await db.all(
             `SELECT 
-                id,
-                uuid,
-                description,
-                device_info,
-                service_type,
-                status,
-                requested_at
-            FROM service_requests 
-            WHERE user_id = ?
-            ORDER BY requested_at DESC`,
+                sr.id,
+                sr.uuid,
+                sr.description,
+                sr.device_info,
+                sr.service_type,
+                sr.status,
+                sr.requested_at,
+                sr.technician_id,
+                t.name AS technician_name,
+                t.specialty AS technician_specialty,
+                t.photo AS technician_photo
+            FROM service_requests sr
+            LEFT JOIN technicians t ON sr.technician_id = t.id
+            WHERE sr.user_id = ?
+            ORDER BY sr.requested_at DESC`,
             [userId]
         )
 

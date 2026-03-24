@@ -131,6 +131,72 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Assigned Technician */
+.technicianSection {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ffffff25;
+}
+
+.technicianCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: #0a0a0a;
+    border-radius: 0.5rem;
+    border: 1px solid #ffffff15;
+}
+
+.technicianPhoto {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.technicianPhotoPlaceholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff50;
+    flex-shrink: 0;
+}
+
+.technicianInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.technicianLabel {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.technicianName {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.technicianSpecialty {
+    font-size: 0.8rem;
+    color: #6c9bff;
+    margin: 0;
+}
+
 /* Info Card for Selected Update */
 .infoCardContainer {
     width: 80vw;

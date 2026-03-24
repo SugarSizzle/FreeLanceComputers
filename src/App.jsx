@@ -33,6 +33,7 @@ import { CartPage } from './Pages/CartPage'
 import { AdminProtectedRoute } from './components/AdminProtectedRoute'
 import { DashboardTickets } from './Pages/Dashboard/DashboardOverview/DashboardTickets'
 import { DashboardTaskProgress } from './Pages/Dashboard/DashboardOverview/DashboardTaskProgress'
+import { TechniciansPage } from './Pages/TechniciansPage'
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/QandA" element={<QandA />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/technicians" element={<TechniciansPage />} />
               <Route path="/notsignedin" element={<NotSignedIn />} />
               <Route path="/why-sign-up" element={<WhySignUp />} />
               <Route path="/cart" element={<CartPage />} />

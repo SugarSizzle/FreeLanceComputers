@@ -13,6 +13,7 @@ import updateServiceRequestRouter from './routes/updateServiceRequests.js'
 import inProgressRouter from './routes/inProgressRoutes.js'
 import timeLineRouter from './routes/timelineRoute.js'
 import userTicketsRouter from './routes/userTickets.js'
+import techniciansRouter from './routes/technicians.js'
 
 
 dotenv.config();
@@ -70,6 +71,7 @@ app.use(`/api/service-requests/`, newServiceRequestRouter)
 app.use('/api/service-requests/in-progress', inProgressRouter)
 app.use('/api/service-requests/timeline', timeLineRouter)
 app.use('/api/user/tickets', userTicketsRouter)
+app.use('/api/technicians', techniciansRouter)
 
 
 
