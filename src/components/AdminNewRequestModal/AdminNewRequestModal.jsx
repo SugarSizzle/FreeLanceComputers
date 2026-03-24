@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './AdminNewRequestModal.module.css'
 import { IKContext, IKImage, IKUpload } from 'imagekitio-react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -19,11 +19,30 @@ export const AdminNewRequestModal = ({
     const [uploadedImagePath, setUploadedImagePath] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isCustomerInfoExpanded, setIsCustomerInfoExpanded] = useState(false)
+    const [technicians, setTechnicians] = useState([])
+    const [selectedTechnicianId, setSelectedTechnicianId] = useState('')
 
     const { session } = useAuth()
 
+    useEffect(() => {
+        if (!isOpen) return
 
-    console.log(ticket)
+        async function fetchTechnicians() {
+            try {
+                const response = await fetch('http://localhost:5000/api/technicians', {
+                    credentials: 'include'
+                })
+                if (response.ok) {
+                    const data = await response.json()
+                    setTechnicians(data.technicians)
+                }
+            } catch (err) {
+                console.error('Error fetching technicians:', err)
+            }
+        }
+
+        fetchTechnicians()
+    }, [isOpen])
 
 
   
@@ -58,7 +77,13 @@ export const AdminNewRequestModal = ({
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({service_request_id: ticket.id, status: updateStatus, note: updateNote, image: uploadedImagePath || null}),
+                body: JSON.stringify({
+                    service_request_id: ticket.id, 
+                    status: updateStatus, 
+                    note: updateNote, 
+                    image: uploadedImagePath || null,
+                    technician_id: selectedTechnicianId ? Number(selectedTechnicianId) : null
+                }),
             })
     
             const data = await response.json()
@@ -75,6 +100,7 @@ export const AdminNewRequestModal = ({
             
             setUpdateNote('')
             setUploadedImagePath('')
+            setSelectedTechnicianId('')
             onClose()
             alert('Ticket updated successfully!')
     
@@ -90,6 +116,7 @@ export const AdminNewRequestModal = ({
         setUpdateNote('')
         setUpdateStatus(ticket?.status || 'pending')
         setUploadedImagePath('')
+        setSelectedTechnicianId('')
         onClose()
     }
 
@@ -224,6 +251,45 @@ export const AdminNewRequestModal = ({
                                         <option value="completed">completed</option>
                                         <option value="cancelled">cancelled</option>
                                     </select>
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.formLabel}>Assign Technician</label>
+                                    <select
+                                        className={styles.formSelect}
+                                        value={selectedTechnicianId}
+                                        onChange={(e) => setSelectedTechnicianId(e.target.value)}
+                                    >
+                                        <option value="">Unassigned</option>
+                                        {technicians.map((tech) => (
+                                            <option key={tech.id} value={tech.id}>
+                                                {tech.name} — {tech.specialty}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {selectedTechnicianId && (
+                                        <div className={styles.selectedTechPreview}>
+                                            {(() => {
+                                                const tech = technicians.find(t => String(t.id) === selectedTechnicianId)
+                                                if (!tech) return null
+                                                return (
+                                                    <>
+                                                        {tech.photo ? (
+                                                            <img src={tech.photo} alt={tech.name} className={styles.techPreviewPhoto} />
+                                                        ) : (
+                                                            <div className={styles.techPreviewPlaceholder}>
+                                                                {tech.name.charAt(0)}
+                                                            </div>
+                                                        )}
+                                                        <div className={styles.techPreviewInfo}>
+                                                            <span className={styles.techPreviewName}>{tech.name}</span>
+                                                            <span className={styles.techPreviewSpecialty}>{tech.specialty}</span>
+                                                        </div>
+                                                    </>
+                                                )
+                                            })()}
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className={styles.formGroup}>

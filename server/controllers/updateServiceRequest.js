@@ -9,14 +9,14 @@ export async function updateServiceRequest(req, res) {
     console.log('Session userId:', req.session?.userId)
     console.log('Request cookies:', req.headers.cookie)
 
-    // Check authentication first
+
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ error: 'Authentication required' })
     }
 
     const currentID = req.session.userId
 
-    const { service_request_id, status, note, image } = req.body
+    const { service_request_id, status, note, image, technician_id } = req.body
 
     if (!service_request_id || !status || !note) {
         return res.status(400).json({ error: 'All fields are required' })
@@ -26,12 +26,20 @@ export async function updateServiceRequest(req, res) {
 
     try {
         const db = await getDBConnection()
-        // Check if user is admin
+    
         const user = await db.get('SELECT id, role FROM users WHERE id = ?', [currentID])
         if (!user) return res.status(401).json({ error: 'User not found' })
         if (user.role !== 'admin') return res.status(403).json({ error: 'User is not an admin' })
 
-        const update = await db.run('UPDATE service_requests SET status = ? WHERE id = ?', [status, service_request_id])
+        if (technician_id) {
+            const technician = await db.get('SELECT id FROM technicians WHERE id = ? AND is_active = 1', [technician_id])
+            if (!technician) return res.status(400).json({ error: 'Technician not found or inactive' })
+        }
+
+        const update = await db.run(
+            'UPDATE service_requests SET status = ?, technician_id = ? WHERE id = ?',
+            [status, technician_id || null, service_request_id]
+        )
 
         if (!update) {
             return res.status(400).json({ error: 'Failed to update service request' })

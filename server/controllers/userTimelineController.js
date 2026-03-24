@@ -35,8 +35,13 @@ export async function getUserTicketTimeline(req, res) {
 
         // Also fetch the ticket details
         const ticketDetails = await db.get(
-            `SELECT id, uuid, description, device_info, service_type, status, requested_at 
-             FROM service_requests WHERE id = ?`,
+            `SELECT sr.id, sr.uuid, sr.description, sr.device_info, sr.service_type, 
+                    sr.status, sr.requested_at, sr.technician_id,
+                    t.name AS technician_name, t.specialty AS technician_specialty, 
+                    t.photo AS technician_photo
+             FROM service_requests sr
+             LEFT JOIN technicians t ON sr.technician_id = t.id
+             WHERE sr.id = ?`,
             [ticketId]
         )
 
